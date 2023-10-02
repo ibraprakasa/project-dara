@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [                  
+            'driver' => 'jwt',  
+            'provider' => 'pendonor',
+        ]
     ],
 
     /*
@@ -63,6 +67,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+        'pendonor' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pendonor::class,
         ],
 
         // 'users' => [
