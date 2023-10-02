@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GolonganDarah;
 use App\Models\Pendonor;
 use App\Models\Role;
 use App\Models\User;
@@ -13,6 +14,7 @@ class KelolaAkunController extends Controller
     public function index(Request $request)
     {
         $roles = Role::all(); // Mengambil semua peran dari model Role
+        $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
         if(isset($_GET['search'])){
             $search = $_GET['search'];
             $data = Pendonor::where('nama', 'LIKE', '%' . $search . '%')->get();
@@ -22,7 +24,7 @@ class KelolaAkunController extends Controller
             $data1 = User::all();
         }
 
-        return view('partials.kelolaakun', compact('data', 'data1', 'roles'));
+        return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar'));
     }
 
     public function insertpendonorsuper(Request $request)

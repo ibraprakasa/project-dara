@@ -224,10 +224,9 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="goldar">Golongan Darah</label>
                         <select class="kolom form-control" name="id_golongan_darah" id="goldar">
-                            <option class="kolom form-control" value="5">A</option>
-                            <option class="kolom form-control" value="6">B</option>
-                            <option class="kolom form-control" value="7">AB</option>
-                            <option class="kolom form-control" value="4">O</option>
+                            @foreach($goldar as $darah)
+                            <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">

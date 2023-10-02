@@ -19,7 +19,7 @@ class GolonganDarah extends Authenticatable implements JWTSubject
      */
 
      protected $table = 'golongandarah';
-     protected $primaryKey = 'id_stok';
+     protected $primaryKey = 'id';
      protected $guarded = [];
  
      public function pendonor()
