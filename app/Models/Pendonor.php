@@ -27,4 +27,6 @@ class Pendonor extends Model
     {
         return $this->hasMany(RiwayatDonor::class, 'pendonor_id', 'id');
     }
+
+
 }

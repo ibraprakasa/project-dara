@@ -46,9 +46,17 @@ class BeritaController extends Controller
 
     public function deleteberita($id){
         $berita = Berita::find($id);
-
-        $berita ->delete();
-
-        return redirect()->route('berita')->with('success','Berita berhasil dihapus.');    
+    
+        $gambarPath = public_path('assets/img/' . $berita->gambar);
+    
+        // Hapus file gambar jika ada
+        if (file_exists($gambarPath)) {
+            unlink($gambarPath);
+        }
+    
+        $berita->delete();
+    
+        return redirect()->route('berita')->with('success', 'Berita berhasil dihapus.');
     }
+    
 }

@@ -64,8 +64,8 @@
             @endif
         </div>
     </div>
-    <table id="tabelpendonor" class="table table-bordered" style="display:none;text-align:center">
-        <thead class="thead" style="background-color:#3B4B65; color:white;">
+    <table id="tabelpendonor" class="table table-bordered">
+        <thead class="thead">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">No. Pendonor</th>

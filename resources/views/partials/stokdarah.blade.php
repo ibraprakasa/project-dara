@@ -10,10 +10,10 @@
 </head>
 
 <div class="filter btn-group">
-    <button class="btn btn-light" type="button" style="background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+    <button class="btn btn-light dropdownstyle" type="button">
         Cari Golongan Darah...
     </button>
-    <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size:15px;background-color: #3B4B65;border-radius:0 0 15px 0;">
+    <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split ikontoggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div style="background-color:#D9D9D9" class="dropdown-menu">
@@ -89,7 +89,7 @@
                         <label for="goldar">Kode Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="goldar">
                             @foreach($kode_pendonor as $kp)
-                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }}</option>
+                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -126,7 +126,7 @@
                         <label for="goldar">Kode Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="goldar">
                             @foreach($kode_pendonor as $kp)
-                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }}</option>
+                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
                             @endforeach
                         </select>
                     </div>

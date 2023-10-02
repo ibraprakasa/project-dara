@@ -192,3 +192,39 @@ td:nth-child(2) {
     width: 100%;
 }
 
+#tabelpendonor,
+#tabeluser {
+    width: 100%; /* Adjust the width as needed */
+    margin: 0 auto; /* Center the table horizontally */
+    display:none;
+    text-align:center;
+}
+
+/* Style for table cells */
+table th,
+table td {
+    padding: 5px; /* Adjust cell padding as needed */
+}
+
+/* Style for table header */
+.thead th {
+    height: 40px; /* Adjust header height as needed */
+    background-color:#3B4B65; color:white;
+}
+
+/* Style for table rows */
+.waduh td {
+    height: 30px; /* Adjust row height as needed */
+}
+
+.dropdownstyle {
+    background-color: #d9d9d9; 
+    color:black;
+    border-radius:15px 0 0 0;
+}
+
+.ikontoggle{
+    font-size:15px;
+    background-color: #3B4B65;
+    border-radius:0 0 15px 0;
+}

@@ -31,4 +31,5 @@ class RiwayatDonorController extends Controller
         });
         return view('partials.riwayatdonor', compact('riwayat_donor','riwayat_ambil'));
     }
+    
 }

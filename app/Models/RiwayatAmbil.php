@@ -19,5 +19,10 @@ class RiwayatAmbil extends Model
     //       'pendonor_id',
     // ];
 
+    public function pendonor()
+    {
+        return $this->belongsTo(Pendonor::class);
+    }
+
 
 }

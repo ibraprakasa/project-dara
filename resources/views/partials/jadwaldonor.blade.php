@@ -72,7 +72,7 @@
                 <td>{{ $row->lokasi }}</td>
                 <td class="truncate-text">{{ $row->alamat }}</td>
                 <td>{{ $row->tanggal_donor }}</td>
-                <td>{{ $row->jam_mulai }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->jam_mulai)->format('H:i') }}</td>
                 <td>{{ $row->jam_selesai }}</td>
                 <td>{{ $row->kontak }}</td>
                 <td>20</td>
