@@ -21,7 +21,9 @@ Route::get('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->nam
 
 // LUPA PASSWORD
 
-Route::get('sendpasswordotp', 'App\Http\Controllers\LupaPasswordController@index')->name('sendpasswordotp');
+Route::get('sendpasswordotp1', 'App\Http\Controllers\LupaPasswordController@index')->name('sendpasswordotp1');
+Route::post('inputpasswordotp2', 'App\Http\Controllers\LupaPasswordOTPController@index')->name('inputpasswordotp2');
+Route::post('resetpasswordotp3', 'App\Http\Controllers\LupaPasswordResetController@index')->name('resetpasswordotp3');
 
 // END
 

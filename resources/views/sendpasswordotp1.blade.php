@@ -36,23 +36,27 @@
         </div>
         @endif
 
-        <form action="{{ route('loginaksi') }}" method="post">
+        <form action="{{ route('inputpasswordotp2') }}" method="post">
             @csrf
-            <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email" required="">
-            </div>
 
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
-            </div>
-
-            <p style="margin-top:-15px"class="text-right">
-            <a href="{{ route('sendpasswordotp1') }}" style="color:red">
-                Lupa Password?
-            </a>
+            <p style="text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+                Kode OTP akan segera dikirimkan ke alamat email yang terdaftar di akun Anda. Silakan cek kotak masuk email Anda dalam beberapa saat.
             </p>
 
-            <button type="submit" class="btn btn-block">Log In</button>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group button-container">
+                        <button type="submit" class="btn"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="margin-top:0;margin-bottom:0">
 
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">

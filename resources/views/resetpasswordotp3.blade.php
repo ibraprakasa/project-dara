@@ -36,20 +36,30 @@
         </div>
         @endif
 
-        <form action="{{ route('loginaksi') }}" method="post">
+        <form action="{{ route('resetpasswordotp3') }}" method="post">
             @csrf
 
-            <p style="text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
-                Kode OTP akan segera dikirimkan ke alamat email yang terdaftar di akun Anda. Silakan cek kotak masuk email Anda dalam beberapa saat.
+            <p style="text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:#3B4B65;font-weight:bolder;">
+                Silahkan Masukkan Password Baru
             </p>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Masukkan Password Baru" required>
+                    </div>
+                </div>
+                <div class="col">
+                </div>
+            </div>
 
             <div class="row">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                        <input type="password" class="form-control" placeholder="Konfirmasi Password Baru" required>
                     </div>
                 </div>
-                <div class="col-md-1">
+                <div class="col">
                     <div class="form-group button-container">
                         <button type="submit" class="btn"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
                     </div>
