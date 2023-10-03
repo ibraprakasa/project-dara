@@ -141,11 +141,11 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="longitude">Longitude</label>
-                        <input class="kolom form-control" name="longitude" type="number" id="longitude" name="longitude" step="any" min="-180" max="180" placeholder="ex : xx.xxx" required>
+                        <input class="kolom form-control" name="longitude" type="number" id="longitude" name="longitude" step="any"  placeholder="ex : xx.xxx" required>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="latitude">Latitude</label>
-                        <input class="kolom form-control" name="latitude" type="number" id="latitude" name="latitude" step="any" min="-90" max="90" placeholder="ex : xx.xxx" required>
+                        <input class="kolom form-control" name="latitude" type="number" id="latitude" name="latitude" step="any"  placeholder="ex : xx.xxx" required>
                     </div>
             </div>
             <div class="modal-footer">
