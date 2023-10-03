@@ -46,6 +46,8 @@
                 <input type="password" name="password" class="form-control" placeholder="Password" required="">
             </div>
 
+            <p style="margin-top:-15px"class="text-right"><a style="color:red"href="#">Lupa Password?</a></p>
+
             <button type="submit" class="btn btn-block">Log In</button>
 
             <div class="text-center logopmi">

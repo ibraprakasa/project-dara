@@ -72,40 +72,7 @@
 </div>
 
 <!-- MODAL TAMBAH -->
-@foreach($data as $row)
-<div class="modal fade tambahstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Stok Donor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
-              <span aria-hidden=" true">&times;</span>
-                </button>
-            </div>
-            <form action="/insertstok" method="POST">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Kode Pendonor</label>
-                        <select class="kolom form-control" name="kode_pendonor" id="goldar">
-                            @foreach($kode_pendonor as $kp)
-                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jumlah">Jumlah Kantong</label>
-                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5">
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endforeach
+
 <!-- END MODAL -->
 
 <!-- MODAL AMBIL -->

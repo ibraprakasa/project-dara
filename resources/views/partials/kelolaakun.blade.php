@@ -368,7 +368,7 @@
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Tanggal Lahir</label>
-                            <input class="kolom form-control" name="tanggal_lahir" type="date" id="nomor" placeholder="{{ $row->tanggal_lahir }}" readonly>
+                            <input class="kolom form-control" name="tanggal_lahir" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}" readonly>
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Jenis Kelamin</label>
@@ -394,7 +394,7 @@
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Alamat</label>
-                            <textarea class="kolom form-control" name="alamat_pendonor" id="alamat" rows="6" style="height: 6em;" readonly>{{ $row->alamat_pendonor }}</textarea>
+                            <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
                         </div>
                     </div>
                 </div>
