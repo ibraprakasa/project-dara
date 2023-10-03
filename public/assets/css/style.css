@@ -30,6 +30,7 @@ body{
 
 
 .title{
+    display: flex;
     padding-top:13px;
     color:#EB1F3E;
     font-weight: bold;
@@ -37,6 +38,7 @@ body{
 }
 
 .slogan{
+    display: flex;
     color:black !important;
     font-size: 13px;
     font-weight: bold;
@@ -55,6 +57,20 @@ body{
 
 .logopmi{
     margin-top: 10px;
+}
+
+
+.iconjudul{
+    width:60px; 
+    height:60px; 
+    margin-right:10px; 
+    float:left;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Mengatur tombol di tengah horizontal */
+    align-items: center; /* Mengatur tombol di tengah vertikal */
 }
 
 
