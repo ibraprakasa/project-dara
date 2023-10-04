@@ -30,23 +30,23 @@
         <div style="clear: both;"></div>
         <hr class="line">
 
-        @if (session('error'))
+        @if (session('email'))
         <div class="alert alert-danger">
-            <b>Opps!</b> {{ session('error') }}
+            <b>Opps!</b> {{ session('email') }}
         </div>
         @endif
 
-        <form action="{{ route('resetpasswordotp3') }}" method="post">
+        <form action="/postEmail" method="POST">
             @csrf
 
             <p style="text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
-                Kami telah mengirimkan kode OTP ke email Anda. Masukkan 4 digit kode OTP yang telah dikirim.
+                Kode OTP akan segera dikirimkan ke alamat email yang terdaftar di akun Anda. Silakan cek kotak masuk email Anda dalam beberapa saat.
             </p>
 
             <div class="row">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input type="text" id="otpInput" class="form-control" placeholder="Kode OTP Anda" required>
+                        <input type="email" name="email" class="form-control" placeholder="Email" required="">
                     </div>
                 </div>
                 <div class="col-md-1">
@@ -66,20 +66,3 @@
 </body>
 
 </html>
-
-<script>
-document.getElementById("otpInput").addEventListener("input", function() {
-  let inputValue = this.value;
-  
-  // Hapus karakter yang bukan angka
-  inputValue = inputValue.replace(/\D/g, "");
-
-  // Batasi input menjadi 4 karakter
-  if (inputValue.length > 4) {
-    inputValue = inputValue.slice(0, 4);
-  }
-
-  // Update nilai input
-  this.value = inputValue;
-});
-</script>

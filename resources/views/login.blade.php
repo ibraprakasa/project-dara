@@ -52,7 +52,7 @@
             </a>
             </p>
 
-            <button type="submit" class="btn btn-block">Log In</button>
+            <button type="submit" class="btn btn-block">Masuk</button>
 
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">

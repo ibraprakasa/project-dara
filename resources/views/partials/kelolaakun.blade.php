@@ -214,7 +214,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password" placeholder="******">
+                        <input class="kolom form-control" name="password" type="text" id="password">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="goldar">Golongan Darah</label>
@@ -283,7 +283,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password" placeholder="********">
+                        <input class="kolom form-control" name="password" type="text" id="password">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
@@ -409,64 +409,6 @@
         </div>
     </div>
 </div>
-
-<!-- <div class="modal fade" id="infopendonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Informasi Detail Pendonor</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Nomor</label>
-                    <input class="kolom form-control" name="kode_pendonor" type="text" id="nomor" placeholder="{{ $row->kode_pendonor }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Nama</label>
-                    <input class="kolom form-control" name="nama" type="text" id="nomor" placeholder="{{ $row->nama }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Tanggal Lahir</label>
-                    <input class="kolom form-control" name="tanggal_lahir" type="date" id="nomor" placeholder="{{ $row->tanggal_lahir }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Jenis Kelamin</label>
-                    <input class="kolom form-control" name="jenis_kelamin" type="text" id="nomor" placeholder="{{ $row->jenis_kelamin }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Golongan Darah</label>
-                    <input class="kolom form-control" name="goldar" type="text" id="nomor" placeholder="{{ $row->golongandarah->nama }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Berat Badan</label>
-                    <input class="kolom form-control" name="berat_badan" type="text" id="nomor" placeholder="{{ $row->berat_badan }} KG" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Kontak</label>
-                    <input class="kolom form-control" name="kontak_pendonor" type="text" id="nomor" placeholder="{{ $row->kontak_pendonor }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Email</label>
-                    <input class="kolom form-control" name="email" type="text" id="nomor" placeholder="{{ $row->email }}" readonly>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">Alamat</label>
-                    <textarea class="kolom form-control" name="alamat_pendonor" id="alamat" rows="3" readonly>{{ $row->alamat_pendonor }}</textarea>
-                </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">UPDATED_AT</label>
-                    <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
-                </div>
-            </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
-                </div>
-        </div>
-    </div>
-</div> -->
 @endforeach
 <!-- END MODAL -->
 
@@ -490,7 +432,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="password" id="password" placeholder="******">
+                        <input class="kolom form-control" name="password" type="password" id="password">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>

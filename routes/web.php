@@ -21,9 +21,15 @@ Route::get('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->nam
 
 // LUPA PASSWORD
 
-Route::get('sendpasswordotp1', 'App\Http\Controllers\LupaPasswordController@index')->name('sendpasswordotp1');
-Route::post('inputpasswordotp2', 'App\Http\Controllers\LupaPasswordOTPController@index')->name('inputpasswordotp2');
-Route::post('resetpasswordotp3', 'App\Http\Controllers\LupaPasswordResetController@index')->name('resetpasswordotp3');
+Route::get('lupapassword1', 'App\Http\Controllers\LupaPasswordController@getEmail')->name('lupapassword1');
+Route::post('lupapassword1', 'App\Http\Controllers\LupaPasswordController@postEmail')->name('lupapassword1.post');
+
+Route::get('lupapassword2', 'App\Http\Controllers\LupaPasswordController@getOTP')->name('lupapassword2');
+Route::post('lupapassword2', 'App\Http\Controllers\LupaPasswordController@postOTP')->name('lupapassword2.post');
+
+Route::get('lupapassword3', 'App\Http\Controllers\LupaPasswordController@getPasswordResetForm')->name('lupapassword3');
+Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPasswordReset')->name('lupapassword3.post');
+
 
 // END
 
