@@ -50,6 +50,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
 
     //JADWAL DONOR 
     Route::get('jadwaldonor', 'App\Http\Controllers\JadwalDonorController@index')->name('jadwaldonor');
+    Route::get('infojadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@infojadwaldonor')->name('infojadwaldonor');
     Route::post('insertjadwaldonor', 'App\Http\Controllers\JadwalDonorController@insertjadwaldonor')->name('insertjadwaldonor');
     Route::post('updatejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@updatejadwaldonor')->name('updatejadwaldonor');
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');

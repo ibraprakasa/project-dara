@@ -75,7 +75,7 @@
                 <td>{{ \Carbon\Carbon::parse($row->jam_mulai)->format('H:i') }}</td>
                 <td>{{ $row->jam_selesai }}</td>
                 <td>{{ $row->kontak }}</td>
-                <td>20</td>
+                <td>{{ $row->jumlah_pendonor }}</td>
                 <!-- <td>-</td> -->
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#editjadwaldonor{{ $row->id }}">
@@ -88,7 +88,7 @@
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target=".infojadwaldonor">
+                    <button class="custom-button" data-toggle="modal" data-toggle="modal" data-target="#infojadwaldonor{{ $row->id }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -256,7 +256,8 @@
 <!-- END MODAL -->
 
 <!-- MODAL INFO JADWAL DONOR -->
-<div class="modal fade infojadwaldonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+@foreach($data as $key => $row)
+<div class="modal fade" id="infojadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -279,44 +280,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                        {{-- @foreach($pendaftar as $key => $row1)
                             <tr>
-                                <th scope="row">1</th>
-                                <td>1</td>
-                                <td>2101082006</td>
-                                <td>Ibra Prakasa</td>
-                                <td>O</td>
-                                <td>082235221771</td>
+                                <th scope="row">{{ $key+1 }}</th>
+                                <td></td>
+                                <td>{{$row1['kode_pendonor']}}</td>
+                                <td>{{$row1['nama']}}</td>
+                                <td>{{$row1['goldar']}}</td>
+                                <td>{{$row1['kontak']}}</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Larry</td>
-                                <td>the Bird</td>
-                                <td>@twitter</td>
-                            </tr>
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -327,6 +300,7 @@
         </div>
     </div>
 </div>
+@endforeach
 <!-- END MODAL -->
 
 @endsection

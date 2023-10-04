@@ -129,6 +129,10 @@ class JadwalPendonorControllerAPI extends Controller
             'id_pendonor' => $request->id_pendonor,
             'id_jadwal_donor_darah' => $request->id_jadwal_donor_darah
         ]);
+
+        $jadwalDonor = JadwalDonor::where('id', $request->id_jadwal_donor_darah)->first();
+        $jadwalDonor->jumlah_pendonor = $jadwalDonor->jumlah_pendonor + 1;
+        $jadwalDonor->update();
     
         if($jadwalBaru){
             return response()->json([
