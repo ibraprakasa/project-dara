@@ -22,6 +22,7 @@ class LoginController extends Controller
 
     public function loginaksi(Request $request)
     {   
+
         $data = [
             'email' => $request->input('email'),
             'password' => $request->input('password'),
@@ -29,6 +30,7 @@ class LoginController extends Controller
         
         if (Auth::Attempt($data)) 
         {
+            Session(['email' => $request->input('email')]);
             return redirect('dashboard');
         }
         else
@@ -41,7 +43,7 @@ class LoginController extends Controller
     public function logoutaksi()
     {
         Auth::logout();
-        
+                
         return redirect('/');
     }
 }

@@ -15,6 +15,7 @@ class KelolaAkunController extends Controller
     {
         $roles = Role::all(); // Mengambil semua peran dari model Role
         $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
+
         if(isset($_GET['search'])){
             $search = $_GET['search'];
             $data = Pendonor::where('nama', 'LIKE', '%' . $search . '%')->get();
@@ -23,7 +24,6 @@ class KelolaAkunController extends Controller
             $data = Pendonor::all();
             $data1 = User::all();
         }
-
         return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar'));
     }
 

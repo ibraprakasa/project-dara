@@ -71,9 +71,9 @@
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $row->lokasi }}</td>
                 <td class="truncate-text">{{ $row->alamat }}</td>
-                <td>{{ $row->tanggal_donor }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->tanggal_donor)->format('d-m-Y') }}</td>
                 <td>{{ \Carbon\Carbon::parse($row->jam_mulai)->format('H:i') }}</td>
-                <td>{{ $row->jam_selesai }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->jam_selesai)->format('H:i') }}</td>
                 <td>{{ $row->kontak }}</td>
                 <td>20</td>
                 <!-- <td>-</td> -->

@@ -12,11 +12,20 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//LOGIN LOGOUT
+
+// LOGIN LOGOUT
 Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
 Route::post('loginaksi', 'App\Http\Controllers\LoginController@loginaksi')->name('loginaksi');
 Route::get('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->name('logoutaksi')->middleware('auth');
-//END 
+// END 
+
+// LUPA PASSWORD
+
+Route::get('sendpasswordotp1', 'App\Http\Controllers\LupaPasswordController@index')->name('sendpasswordotp1');
+Route::post('inputpasswordotp2', 'App\Http\Controllers\LupaPasswordOTPController@index')->name('inputpasswordotp2');
+Route::post('resetpasswordotp3', 'App\Http\Controllers\LupaPasswordResetController@index')->name('resetpasswordotp3');
+
+// END
 
 //SIDEBAR
 
@@ -54,6 +63,8 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::post('updatejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@updatejadwaldonor')->name('updatejadwaldonor');
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');
     //END JADWAL DONOR
+
+    
 });
 
 
