@@ -21,19 +21,18 @@ class LupaPasswordController extends Controller
             'email' => 'required|email',
         ]);
 
-        // Temukan User berdasarkan alamat email yang diberikan oleh pengguna
         $user = User::where('email', $request->email)->first();
 
         if ($user) {
-            // Email ditemukan, lakukan proses selanjutnya
             $otp = mt_rand(1000, 9999);
 
-            // Kirim email OTP
+            $user->otp = $otp;
+            $user->save();
+
             Mail::to($request->email)->send(new SendOTP($otp));
 
             return redirect()->route('lupapassword2');
         } else {
-            // Jika email tidak ditemukan, mungkin Anda ingin memberikan pesan kesalahan kepada pengguna
             return back()->with('email', 'Email tidak ditemukan.');
         }
     }
@@ -49,10 +48,18 @@ class LupaPasswordController extends Controller
             'otp' => 'required|numeric|digits:4',
         ]);
 
-        // Validasi OTP di sini, jika sesuai, lanjutkan ke halaman reset kata sandi
-        // Anda dapat menggunakan session atau metode lain untuk membandingkan OTP yang dikirim dengan yang diinput oleh pengguna
+        $user = User::where('email', $request->email)->first();
 
-        return redirect()->route('lupapassword3');
+        if ($user) {
+            if ($request->otp == $user->otp) {
+                return redirect()->route('lupapassword3');
+                
+            } else {
+                return back()->with(['otp' => 'OTP yang Anda masukkan salah.']);
+            }
+        } else {
+            return back()->with('email', 'Email tidak ditemukan.');
+        }
     }
 
     public function getPasswordResetForm()
@@ -62,8 +69,17 @@ class LupaPasswordController extends Controller
 
     public function postPasswordReset(Request $request)
     {
-        // Proses reset kata sandi di sini
+        $cek = $request->passwordbaru == $request->passwordkonfirmasi;
 
-        return redirect()->route('login')->with('success', 'Kata Sandi Anda berhasil diperbarui. Silahkan Login menggunakan Password yang baru.');
+        if (!$cek) {
+            return redirect()->route('lupapassword3')->with('error','Kata Sandi Baru dan Konfirmasinya tidak sama.');
+        }
+
+        if (auth()->user() instanceof User) {
+            User::where('id', auth()->user()->id)->update([
+                'password' => Hash::make($request->passwordbaru)
+            ]);
+            return redirect()->route('login')->with('success','Kata Sandi Anda berhasil diperbarui. Silahkan Login menggunakan Password yang baru.');
+        }
     }
 }

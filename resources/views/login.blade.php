@@ -47,7 +47,7 @@
             </div>
 
             <p style="margin-top:-15px"class="text-right">
-            <a href="{{ route('sendpasswordotp1') }}" style="color:red">
+            <a href="{{ route('lupapassword1') }}" style="color:red">
                 Lupa Password?
             </a>
             </p>

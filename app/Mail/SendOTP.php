@@ -39,7 +39,7 @@ class SendOTP extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'inputpasswordotp2',
+            view: 'otp',
         );
     }
 
