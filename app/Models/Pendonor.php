@@ -16,6 +16,21 @@ class Pendonor extends Authenticatable implements JWTSubject
     protected $primaryKey = 'id';
     protected $guarded = [];
 
+    protected $fillable = [
+        'gambar',
+        'nama',
+        'email',
+        'tanggal_lahir',
+        'kode_pendonor',
+        'jenis_kelamin',
+        'id_golongan_darah',
+        'berat_badan',
+        'kontak_pendonor',
+        'alamat_pendonor',
+        'password',
+        'stok_darah_tersedia',
+    ];
+
     public function jadwalPendonor()
     {
         return $this->hasMany(JadwalPendonor::class, 'id_pendonor','id');

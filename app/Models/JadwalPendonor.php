@@ -13,6 +13,12 @@ class jadwalPendonor extends Authenticatable implements JWTSubject
     use HasApiTokens, HasFactory, Notifiable;
 
     protected $table = 'jadwalpendonor';
+    protected $guard = [];
+
+    protected $fillable = [
+        'id_pendonor',
+        'id_jadwal_donor_darah'
+    ];
 
     public function jadwalDonor()
     {

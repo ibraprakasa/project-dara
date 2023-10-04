@@ -147,7 +147,7 @@ class DataPendonorControllerAPI extends Controller
     public function updateGambar(Request $request) {
         // Validasi request
         $validator = Validator::make($request->all(), [
-            'gambar' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // Sesuaikan dengan jenis gambar yang diterima
+            'gambar' => 'image', // Sesuaikan dengan jenis gambar yang diterima
         ]);
     
         if ($validator->fails()) {
