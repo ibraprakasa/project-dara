@@ -30,9 +30,9 @@
         <div style="clear: both;"></div>
         <hr class="line">
 
-        @if (session('error'))
+        @if (session('otp'))
         <div class="alert alert-danger">
-            <b>Opps!</b> {{ session('error') }}
+            <b>Opps!</b> {{ session('otp') }}
         </div>
         @endif
 
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input type="text" id="otpInput" class="form-control" placeholder="Kode OTP Anda" required>
+                        <input type="text" id="otpInput" name="otp" class="form-control" placeholder="Kode OTP Anda" required>
                     </div>
                 </div>
                 <div class="col-md-1">

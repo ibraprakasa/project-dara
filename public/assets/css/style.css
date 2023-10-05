@@ -73,4 +73,19 @@ body{
     align-items: center; /* Mengatur tombol di tengah vertikal */
 }
 
+.alert-container1 {
+    display: flex;
+    width:100%;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #03A13B; /* Warna merah */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
 
+.alert-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}

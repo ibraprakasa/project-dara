@@ -34,6 +34,13 @@
         <div class="alert alert-danger">
             <b>Opps!</b> {{ session('error') }}
         </div>
+        @elseif(session('success'))
+        <div class="alert-container1 success">
+            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+            <div>
+                {{ session('success') }}
+            </div>
+        </div>
         @endif
 
         <form action="{{ route('loginaksi') }}" method="post">
@@ -46,10 +53,10 @@
                 <input type="password" name="password" class="form-control" placeholder="Password" required="">
             </div>
 
-            <p style="margin-top:-15px"class="text-right">
-            <a href="{{ route('lupapassword1') }}" style="color:red">
-                Lupa Password?
-            </a>
+            <p style="margin-top:-15px" class="text-right">
+                <a href="{{ route('lupapassword1') }}" style="color:red">
+                    Lupa Password?
+                </a>
             </p>
 
             <button type="submit" class="btn btn-block">Masuk</button>

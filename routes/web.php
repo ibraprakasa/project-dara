@@ -23,15 +23,11 @@ Route::get('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->nam
 Route::get('lupapassword1', 'App\Http\Controllers\LupaPasswordController@getEmail')->name('lupapassword1');
 Route::post('lupapassword1', 'App\Http\Controllers\LupaPasswordController@postEmail')->name('lupapassword1.post');
 
-Route::middleware(['checkPasswordResetStep:lupapassword2'])->group(function () {
-    Route::get('lupapassword2', 'App\Http\Controllers\LupaPasswordController@getOTP')->name('lupapassword2');
-    Route::post('lupapassword2', 'App\Http\Controllers\LupaPasswordController@postOTP');
-});
+Route::get('lupapassword2', 'App\Http\Controllers\LupaPasswordController@getOTP')->name('lupapassword2');
+Route::post('lupapassword2', 'App\Http\Controllers\LupaPasswordController@postOTP')->name('lupapassword2.post');
 
-Route::middleware(['checkPasswordResetStep:lupapassword3'])->group(function () {
-    Route::get('lupapassword3', 'App\Http\Controllers\LupaPasswordController@getPasswordResetForm')->name('lupapassword3');
-    Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPasswordReset');
-});
+Route::get('lupapassword3', 'App\Http\Controllers\LupaPasswordController@getPasswordResetForm')->name('lupapassword3');
+Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPasswordReset')->name('lupapassword3.post');
 
 // END
 

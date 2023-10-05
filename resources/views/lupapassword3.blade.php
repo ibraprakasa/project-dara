@@ -36,7 +36,7 @@
         </div>
         @endif
 
-        <form action="" method="post">
+        <form action="{{ route('lupapassword3.post') }}" method="post">
             @csrf
 
             <p style="margin-bottom:20px;text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;color:#3B4B65;font-weight:bolder;">
