@@ -7,21 +7,33 @@
 
 // class CheckPasswordResetStep
 // {
-//     public function handle(Request $request, Closure $next, $step)
+//     public function handle(Request $request, Closure $next)
 //     {
-//         $expectedStep = $step;
+//         // Tentukan langkah-langkah yang valid dalam proses reset password
+//         $validSteps = ['lupapassword1', 'lupapassword2', 'lupapassword3'];
 
-//         $previousSteps = ['lupapassword1', 'lupapassword2'];
+//         // Dapatkan langkah saat ini dari URL
+//         $currentStep = $request->segment(1); // Ini akan mengambil bagian pertama dari URL
 
-//         if (in_array($expectedStep, $previousSteps)) {
-//             foreach ($previousSteps as $previousStep) {
-//                 if ($request->session()->has('password_reset_' . $previousStep)) {
-//                     return $next($request);
+//         // Periksa apakah langkah saat ini adalah langkah yang valid
+//         if (in_array($currentStep, $validSteps)) {
+//             // Periksa apakah pengguna telah melalui langkah-langkah sebelumnya
+//             $currentStepIndex = array_search($currentStep, $validSteps);
+
+//             for ($i = 0; $i < $currentStepIndex; $i++) {
+//                 $step = $validSteps[$i];
+
+//                 if (!$request->session()->has('password_reset_' . $step)) {
+//                     // Jika langkah sebelumnya belum selesai, arahkan ke halaman login
+//                     return redirect()->route('login');
 //                 }
 //             }
+//         } else {
+//             // Jika langkah saat ini tidak valid, arahkan ke halaman login
+//             return redirect()->route('login');
 //         }
 
-//         // Jika belum, arahkan mereka kembali ke halaman awal yang sesuai
-//         return redirect()->route('login');
+//         // Lanjutkan ke langkah berikutnya jika semuanya valid
+//         return $next($request);
 //     }
-// }
+

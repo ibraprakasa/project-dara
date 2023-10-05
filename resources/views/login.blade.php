@@ -39,6 +39,7 @@
             <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
             <div>
                 {{ session('success') }}
+                <i class="bi bi-emoji-smile"></i>
             </div>
         </div>
         @endif

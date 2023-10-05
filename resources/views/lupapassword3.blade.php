@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
-                        <input type="password" name="passwordbaru" id="passwordbaru" class="form-control" placeholder="Masukkan Password Baru" required>
+                        <input type="password" name="passwordbaru" id="passwordbaru" class="form-control" placeholder="Masukkan Password Baru" required autofocus>
                     </div>
                 </div>
                 <div class="col">

@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input type="text" id="otpInput" name="otp" class="form-control" placeholder="Kode OTP Anda" required>
+                        <input type="text" id="otpInput" name="otp" class="form-control" placeholder="Kode OTP Anda" required autofocus>
                     </div>
                 </div>
                 <div class="col-md-1">
