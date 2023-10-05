@@ -467,9 +467,6 @@
         </div>
     </div>
 </div> -->
->>>>>>> gabung2
-=======
->>>>>>> f0590b331cc42b786b7074ab6eb2365cd59d14c9
 @endforeach
 <!-- END MODAL -->
 
