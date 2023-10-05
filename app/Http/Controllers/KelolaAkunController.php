@@ -25,6 +25,7 @@ class KelolaAkunController extends Controller
         }
 
         return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar'));
+
     }
 
     public function insertpendonorsuper(Request $request)

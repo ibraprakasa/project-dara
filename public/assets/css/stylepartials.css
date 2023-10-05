@@ -48,6 +48,13 @@
     min-height: 250px; /* Tinggi minimum awal textarea */
   }
 
+  .resizablealamat {
+    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 120px; /* Tinggi minimum awal textarea */
+  }
+
+
   #gambar {
     background-color: #000000; /* Warna latar belakang */
     color: #FFF; /* Warna teks */

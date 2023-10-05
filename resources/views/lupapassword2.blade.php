@@ -30,36 +30,33 @@
         <div style="clear: both;"></div>
         <hr class="line">
 
-        @if (session('error'))
+        @if (session('otp'))
         <div class="alert alert-danger">
-            <b>Opps!</b> {{ session('error') }}
-        </div>
-        @elseif(session('success'))
-        <div class="alert-container1 success">
-            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-            <div>
-                {{ session('success') }}
-            </div>
+            <b>Opps!</b> {{ session('otp') }}
         </div>
         @endif
 
-        <form action="{{ route('loginaksi') }}" method="post">
+        <form action="{{ route('lupapassword2.post') }}" method="POST">
             @csrf
-            <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email" required="">
-            </div>
 
-            <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
-            </div>
-
-            <p style="margin-top:-15px" class="text-right">
-                <a href="{{ route('lupapassword1') }}" style="color:red">
-                    Lupa Password?
-                </a>
+            <p style="text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+                Kami telah mengirimkan kode OTP ke email Anda. Masukkan 4 digit kode OTP yang telah dikirim.
             </p>
 
-            <button type="submit" class="btn btn-block">Masuk</button>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="form-group">
+                        <input type="text" id="otpInput" name="otp" class="form-control" placeholder="Kode OTP Anda" required>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="form-group button-container">
+                        <button type="submit" class="btn"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <hr style="margin-top:0;margin-bottom:0">
 
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">
@@ -69,3 +66,20 @@
 </body>
 
 </html>
+
+<script>
+document.getElementById("otpInput").addEventListener("input", function() {
+  let inputValue = this.value;
+  
+  // Hapus karakter yang bukan angka
+  inputValue = inputValue.replace(/\D/g, "");
+
+  // Batasi input menjadi 4 karakter
+  if (inputValue.length > 4) {
+    inputValue = inputValue.slice(0, 4);
+  }
+
+  // Update nilai input
+  this.value = inputValue;
+});
+</script>

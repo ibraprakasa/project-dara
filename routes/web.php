@@ -12,15 +12,25 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//LOGIN LOGOUT
+
+// LOGIN LOGOUT
 Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
 Route::post('loginaksi', 'App\Http\Controllers\LoginController@loginaksi')->name('loginaksi');
 Route::get('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->name('logoutaksi')->middleware('auth');
-//END 
+// END 
 
-//SIDEBAR
+// LUPA PASSWORD
+Route::get('lupapassword1', 'App\Http\Controllers\LupaPasswordController@getEmail')->name('lupapassword1');
+Route::post('lupapassword1', 'App\Http\Controllers\LupaPasswordController@postEmail')->name('lupapassword1.post');
 
-//END SIDEBAR
+Route::get('lupapassword2', 'App\Http\Controllers\LupaPasswordController@getOTP')->name('lupapassword2');
+Route::post('lupapassword2', 'App\Http\Controllers\LupaPasswordController@postOTP')->name('lupapassword2.post');
+
+Route::get('lupapassword3', 'App\Http\Controllers\LupaPasswordController@getPasswordResetForm')->name('lupapassword3');
+Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPasswordReset')->name('lupapassword3.post');
+
+// END
+
 
 Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::get('dashboard', 'App\Http\Controllers\DashboardController@index')->name('dashboard')->middleware('auth');
@@ -54,6 +64,8 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::post('updatejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@updatejadwaldonor')->name('updatejadwaldonor');
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');
     //END JADWAL DONOR
+
+    
 });
 
 

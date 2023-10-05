@@ -69,7 +69,7 @@
                 <td>
                     <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
                 </td>
-                <td>{{ $row->judul }}</td>
+                <td class="truncate-text">{{ $row->judul }}</td>
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
                 <td>{{ $row->created_at->diffForHumans() }}</td>
                 <td>
@@ -111,7 +111,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="judulberita">Judul Berita</label>
-                        <input class="kolom form-control" name="judul" type="text" id="judulberita" placeholder="ex: Ketersediaan Darah">
+                        <textarea class="kolom form-control" name="judul" type="text" id="judulberita" placeholder="ex: Ketersediaan Darah"></textarea>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Deskripsi</label>

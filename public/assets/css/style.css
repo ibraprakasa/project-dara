@@ -30,6 +30,7 @@ body{
 
 
 .title{
+    display: flex;
     padding-top:13px;
     color:#EB1F3E;
     font-weight: bold;
@@ -37,6 +38,7 @@ body{
 }
 
 .slogan{
+    display: flex;
     color:black !important;
     font-size: 13px;
     font-weight: bold;
@@ -58,3 +60,32 @@ body{
 }
 
 
+.iconjudul{
+    width:60px; 
+    height:60px; 
+    margin-right:10px; 
+    float:left;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Mengatur tombol di tengah horizontal */
+    align-items: center; /* Mengatur tombol di tengah vertikal */
+}
+
+.alert-container1 {
+    display: flex;
+    width:100%;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #03A13B; /* Warna merah */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.alert-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
