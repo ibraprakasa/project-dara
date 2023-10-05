@@ -39,6 +39,10 @@
             <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
             <div>
                 {{ session('success') }}
+<<<<<<< HEAD
+=======
+                <i class="bi bi-emoji-smile"></i>
+>>>>>>> f0590b331cc42b786b7074ab6eb2365cd59d14c9
             </div>
         </div>
         @endif
@@ -58,7 +62,6 @@
                     Lupa Password?
                 </a>
             </p>
-
             <button type="submit" class="btn btn-block">Masuk</button>
 
             <div class="text-center logopmi">

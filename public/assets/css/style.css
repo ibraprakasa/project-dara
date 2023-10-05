@@ -78,11 +78,11 @@ body{
     width:100%;
     align-items: center;
     padding: 10px 20px;
-    background-color: #03A13B; /* Warna merah */
+    background-color: #4CAF50; /* Warna hijau yang lebih ringan */
     color: white;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .alert-icon {
