@@ -52,7 +52,7 @@
             <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Password" required="">
             </div>
-
+            
             <p style="margin-top:-15px" class="text-right">
                 <a href="{{ route('lupapassword1') }}" style="color:red">
                     Lupa Password?

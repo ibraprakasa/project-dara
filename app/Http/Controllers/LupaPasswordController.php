@@ -101,5 +101,4 @@ class LupaPasswordController extends Controller
 
         return redirect()->route('login')->with('success', 'Kata Sandi Anda berhasil diperbarui. Silahkan Login kembali');
     }
-
 }
