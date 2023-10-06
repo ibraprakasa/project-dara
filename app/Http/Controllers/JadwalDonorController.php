@@ -64,7 +64,8 @@ class JadwalDonorController extends Controller
 
     public function deletejadwaldonor($id){
         $jadwalDonor = JadwalDonor::find($id);
-
+        $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah',$jadwalDonor->id);
+        $jadwalPendonor ->delete();
         $jadwalDonor ->delete();
 
         return redirect()->route('jadwaldonor')->with('success','Jadwal berhasil dihapus.');    
