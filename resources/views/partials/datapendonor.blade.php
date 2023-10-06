@@ -30,6 +30,24 @@
 
 </div>
 
+<div class="filter btn-group">
+            @if(session('error'))
+            <div class="alert-container">
+                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                <div>
+                    {{ session('error') }}
+                </div>
+            </div>
+            @elseif(session('success'))
+            <div class="alert-container1 success">
+                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div>
+                    {{ session('success') }}
+                </div>
+            </div>
+            @endif
+        </div>
+
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
@@ -168,7 +186,8 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password" placeholder="*********">
+                        <input class="kolom form-control" name="password" type="text" id="password">
+
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>

@@ -30,7 +30,7 @@
 
 </div>
 <div class="filter btn-group wow">
-@if(session('error'))
+    @if(session('error'))
   <div class="alert-container">
     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
     <div>
@@ -68,7 +68,7 @@
         <tbody class="waduh">
             @foreach($data as $key => $row)
             <tr>
-                <th scope="row">{{ $key+1 }}</th>
+                <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>{{ $row->lokasi }}</td>
                 <td class="truncate-text">{{ $row->alamat }}</td>
                 <td>{{ \Carbon\Carbon::parse($row->tanggal_donor)->format('d-m-Y') }}</td>
@@ -76,7 +76,6 @@
                 <td>{{ \Carbon\Carbon::parse($row->jam_selesai)->format('H:i') }}</td>
                 <td>{{ $row->kontak }}</td>
                 <td>{{ $row->jumlah_pendonor }}</td>
-                <!-- <td>-</td> -->
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#editjadwaldonor{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
@@ -96,6 +95,8 @@
             @endforeach
         </tbody>
     </table>
+    {{ $data ->links() }}
+
 </div>
 
 <!-- MODAL INSERT JADWAL DONOR -->

@@ -65,11 +65,11 @@
         <tbody class="waduh">
             @foreach($data as $key => $row)
             <tr>
-                <th scope="row">{{ $key+1 }}</th>
+                <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>
                     <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
                 </td>
-                <td class="truncate-text">{{ $row->judul }}</td>
+                <td class="truncate-text1">{{ $row->judul }}</td>
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
                 <td>{{ $row->created_at->diffForHumans() }}</td>
                 <td>
@@ -86,6 +86,8 @@
             @endforeach
         </tbody>
     </table>
+    {{ $data ->links() }}
+
 </div>
 
 <!-- MODAL INSERT BERITA -->

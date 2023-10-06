@@ -11,16 +11,20 @@ use Illuminate\Http\Request;
 class JadwalDonorController extends Controller
 {
     public function index()
-{
-    $data = [];
-    if (isset($_GET['search'])) {
-        $search = $_GET['search'];
-        $data = JadwalDonor::where('lokasi', 'LIKE', '%' . $search . '%')->get();
-    } else {
-        $data = JadwalDonor::all();
+    {
+        $search = request()->input('search');
+
+        $query = JadwalDonor::query();
+
+        if ($search) {
+            $query->where('lokasi', 'LIKE', '%' . $search . '%');
+        }
+
+        $data = $query->paginate(5);
+
+        return view('partials.jadwaldonor', compact('data'));
     }
-    return view('partials.jadwaldonor', compact('data'));
-}
+
 
     public function infojadwaldonor($id){
         // Mengambil data pendaftar untuk semua jadwal donor

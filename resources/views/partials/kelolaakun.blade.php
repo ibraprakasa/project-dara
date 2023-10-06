@@ -81,7 +81,7 @@
         <tbody class="waduh">
             @foreach($data as $key => $row)
             <tr>
-                <th scope="row">{{ $key+1 }}</th>
+                <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>{{ $row->kode_pendonor }}</td>
                 <td>{{ $row->nama }}</td>
                 <td>{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}</td>
@@ -109,6 +109,7 @@
             @endforeach
         </tbody>
     </table>
+    {{ $data->links() }}
 
     <div class="tes2" id="filteruser" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">

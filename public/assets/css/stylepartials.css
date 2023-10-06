@@ -6,6 +6,13 @@
     /* Atur lebar maksimum yang Anda inginkan */
 }
 
+.truncate-text1 {
+    width: 200px;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    /* Atur lebar maksimum yang Anda inginkan */
+}
+
 .bi {
     font-weight: bold;
     font-size: 22px;
