@@ -105,6 +105,7 @@ Coded by www.creative-tim.com
       'datapendonor': 'DATA PENDONOR',
       'berita': 'BERITA DONOR',
       'akun': 'AKUN',
+      'infopendaftar' : 'INFO PENDAFTAR'
       // Tambahkan halaman lain dan judulnya di sini
     };
 

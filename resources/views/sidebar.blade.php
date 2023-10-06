@@ -35,7 +35,7 @@
                 </a>
             </li>
             <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
-            <li class="{{ request()->routeIs('jadwaldonor') ? 'active' : '' }}">
+            <li class="{{ request()->routeIs('jadwaldonor', 'infopendaftar') ? 'active' : '' }}">
                 <a href="{{ route('jadwaldonor') }}" style="color: white; font-weight:bold; ">
                     <i class="bi bi-calendar-event" style="color: white; font-weight:bold;"></i>
                     <p>Jadwal</p>
@@ -86,8 +86,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 @endsection
