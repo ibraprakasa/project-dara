@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GolonganDarah;
 use App\Models\JadwalDonor;
-use App\Models\jadwalPendonor;
+use App\Models\JadwalPendonor;
 use App\Models\Pendonor;
 use Illuminate\Http\Request;
 
