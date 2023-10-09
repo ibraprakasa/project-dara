@@ -22,6 +22,9 @@ class GolonganDarahSeeder extends Seeder
         DB::table('golongandarah')->insertGetId(array(
             'nama' => 'AB',
         ));
+        DB::table('golongandarah')->insertGetId(array(
+            'nama' => 'O',
+        ));
     
     }
 }

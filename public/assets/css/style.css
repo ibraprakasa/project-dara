@@ -69,8 +69,8 @@ body{
 
 .button-container {
     display: flex;
-    justify-content: center; /* Mengatur tombol di tengah horizontal */
-    align-items: center; /* Mengatur tombol di tengah vertikal */
+    justify-content: center;
+    align-items: center; 
 }
 
 .alert-container1 {
@@ -78,7 +78,7 @@ body{
     width:100%;
     align-items: center;
     padding: 10px 20px;
-    background-color: #4CAF50; /* Warna hijau yang lebih ringan */
+    background-color: #4CAF50; 
     color: white;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -89,3 +89,76 @@ body{
     font-size: 24px;
     margin-right: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    .login-form {
+      width: 70%;
+      padding: 10px;
+    }
+  
+    .title {
+      font-size: 14px;
+    }
+  
+    .slogan {
+      font-size: 10px;
+    }
+  
+    .logopmi {
+      margin-top: 5px;
+    }
+  
+    .iconjudul {
+      margin-right: 5px;
+    }
+  
+    .btn {
+      padding: 5px 10px;
+    }
+  
+    .alert-container1 {
+      padding: 5px 10px;
+    }
+  
+    .alert-icon {
+      font-size: 20px;
+    }
+  }
+  
+  @media screen and (max-width: 1024px) and (min-width: 768px) {
+    .login-form {
+      width: 50%; 
+      padding: 10px; 
+    }
+  
+    .title {
+      font-size: 18px; 
+    }
+  
+    .slogan {
+      font-size: 10px; 
+    }
+  
+    .logopmi {
+      margin-top: 5px; 
+    }
+  
+    .iconjudul {
+      margin-right: 5px; 
+    }
+  
+    .btn {
+      padding: 5px 10px; 
+    }
+  
+    .alert-container1 {
+      padding: 5px 10px; 
+    }
+  
+    .alert-icon {
+      font-size: 20px;
+    }
+  }
+  
+
+  

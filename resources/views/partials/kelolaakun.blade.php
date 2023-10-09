@@ -109,7 +109,9 @@
             @endforeach
         </tbody>
     </table>
-    {{ $data->links() }}
+    <div class="pagination1">
+        {{ $data->links() }}
+    </div>
 
     <div class="tes2" id="filteruser" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
@@ -189,7 +191,9 @@
             </tr>
             @endforeach
     </table>
-
+    <div class="pagination2">
+        {{ $data1->links() }}
+    </div>
 
 </div>
 
@@ -215,7 +219,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password">
+                        <input class="kolom form-control" name="password" type="password" id="password">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="goldar">Golongan Darah</label>
@@ -282,10 +286,10 @@
                         <label for="nama">Nama</label>
                         <input class="kolom form-control" name="nama" type="text" id="nama" value="{{ $row->nama }}">
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
+                    <!-- <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
                         <input class="kolom form-control" name="password" type="text" id="password">
-                    </div>
+                    </div> -->
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
                         <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" value="{{ $row->kontak_pendonor }}">
@@ -595,6 +599,8 @@
         const filteruser = document.getElementById("filteruser");
         const tombolpendonor = document.getElementById("tombolpendonor");
         const tomboluser = document.getElementById("tomboluser");
+        const pagination1 = document.querySelector(".pagination1");
+        const pagination2 = document.querySelector(".pagination2");
 
         if (idTabel === "tabelpendonor") {
             tabelpendonor.style.display = "table";
@@ -605,6 +611,8 @@
             tombolpendonor.classList.add("tabel-aktif");
             tomboluser.classList.remove("tabel-aktif");
             tomboluser.classList.add("tabel-mati");
+            pagination1.style.display = "block"; // Menampilkan paginasi 1
+            pagination2.style.display = "none"; // Menyembunyikan paginasi 2
         } else if (idTabel === "tabeluser") {
             tabelpendonor.style.display = "none";
             filterpendonor.style.display = "none"; // Menyembunyikan filter pendonor
@@ -614,6 +622,8 @@
             tombolpendonor.classList.remove("tabel-aktif");
             tomboluser.classList.add("tabel-aktif");
             tombolpendonor.classList.add("tabel-mati");
+            pagination1.style.display = "none"; // Menyembunyikan paginasi 1
+            pagination2.style.display = "block"; // Menampilkan paginasi 2
         }
 
         // Simpan status ke localStorage

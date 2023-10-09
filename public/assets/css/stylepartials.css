@@ -147,7 +147,7 @@
 
 .alert-container1 {
     display: flex;
-    width:100%;
+    width:50%;
     align-items: center;
     padding: 10px 20px;
     background-color: #03A13B; /* Warna merah */
@@ -242,3 +242,12 @@ table td {
     background-color: #3B4B65;
     border-radius:0 0 15px 0;
 }
+
+.sizeicon{
+    font-size: 3rem;
+}
+
+.small-text{
+    font-size: 25px;
+}
+
