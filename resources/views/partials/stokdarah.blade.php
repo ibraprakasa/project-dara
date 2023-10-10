@@ -97,6 +97,14 @@
                         <label for="jumlah">Jumlah Kantong</label>
                         <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5">
                     </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="lokasi">Lokasi</label>
+                        <select class="kolom form-control" name="lokasi" id="lokasi">
+                            @foreach($lokasi as $lp)
+                            <option class="kolom form-control" value="{{ $lp->lokasi }}">{{ $lp->lokasi }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>

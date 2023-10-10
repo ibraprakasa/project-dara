@@ -44,6 +44,31 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        User::create([
+            'name'=>'Ibra Prakasa',
+            'email'=>'ibraprakasa5@gmail.com',
+            'email_verified_at' => now(),
+            'password'=>Hash::make('ibra123'),
+            'role_id' => $superadminRoleId,
+            'remember_token' => Str::random(10),
+            'alamat' => 'Codelabs2',
+            'nohp' => '082235221771',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        User::create([
+            'name'=>'Afif Permana',
+            'email'=>'afifp04@gmail.com',
+            'password'=>Hash::make('afif123'),
+            'role_id' => $adminRoleId,
+            'remember_token' => Str::random(10),
+            'alamat' => 'Codelabs5',
+            'nohp' => '089823242145',
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
 
     }
 }

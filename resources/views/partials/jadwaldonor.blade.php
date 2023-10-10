@@ -140,10 +140,6 @@
                         <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jumlah_pendonor">Jumlah Pendonor</label>
-                        <input class="kolom form-control" name="jumlah_pendonor" type="number" id="jumlahpendonor" placeholder="20">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
                         <label for="longitude">Longitude</label>
                         <input class="kolom form-control" name="longitude" type="number" id="longitude" name="longitude" step="any"  placeholder="ex : xx.xxx" required>
                     </div>
@@ -199,10 +195,6 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
                         <input class="kolom form-control" name="kontak" type="number" id="kontak" value="{{ $row->kontak }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jumlah_pendonor">Jumlah Pendonor</label>
-                        <input class="kolom form-control" name="jumlah_pendonor" type="number" id="jumlahpendonor"value="{{ $row->jumlah_pendonor }}">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="longitude">Longitude</label>

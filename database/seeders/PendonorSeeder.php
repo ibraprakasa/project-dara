@@ -35,7 +35,7 @@ class PendonorSeeder extends Seeder
             'tanggal_lahir' => '2003-02-15',
             'kode_pendonor' => 'dara'.rand(10000, 99999),
             'jenis_kelamin' => 'Laki-Laki',
-            'id_golongan_darah'=> 5,
+            'id_golongan_darah'=> 4,
             'berat_badan' => 76,
             'kontak_pendonor' => '08877541516',
             'email' => 'ibraprakasa5@gmail.com',

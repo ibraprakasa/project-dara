@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('riwayatdonor', function (Blueprint $table) {
             $table->id('id_riwayat');
             $table->unsignedBigInteger('pendonor_id');
-            $table->integer('jumlah_donor');
-            $table->date('tanggal_donor');
+            $table->integer('jumlah_donor')->nullable(false);
+            $table->date('tanggal_donor')->nullable(false);
+            $table->string('lokasi_donor',100)->nullable(false);
             $table->timestamps();
         });
     }

@@ -7,8 +7,8 @@
                 <img src="../assets/img/daraicon.png">
             </div>
         </a>
-        <a href="#" class="simple-text logo-normal" style="font-weight:bold">
-            DARA
+        <a href="#" class="simple-text logo-normal" style="font-weight:bold; font-size: 14px;">
+            Hi, {{ Auth::user()->name }}!
         </a>
     </div>
     <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:hidden; height:100vh">

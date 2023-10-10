@@ -41,6 +41,7 @@
                 <th scope="col">Jumlah Donor</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Gol. Darah</th>
+                <th scope="col">Lokasi</th>
             </tr>
         </thead>
         <tbody class="waduh">
@@ -51,6 +52,7 @@
                 <td>{{ $rd->jumlah_donor }}</td>
                 <td>{{ date('F jS, Y', strtotime($rd->tanggal_donor)) }}</td>
                 <td>{{ $rd->gol_darah }}</td>
+                <td>{{ $rd->lokasi_donor }}</td>
             </tr>
             @endforeach
         </tbody>
