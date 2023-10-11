@@ -163,7 +163,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B;border-radius:10px;">Simpan</button>
                 </div>
             </form>
         </div>

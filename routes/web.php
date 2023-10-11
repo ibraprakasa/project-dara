@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 // LOGIN LOGOUT
 Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
 Route::post('loginaksi', 'App\Http\Controllers\LoginController@loginaksi')->name('loginaksi');
-Route::get('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->name('logoutaksi')->middleware('auth');
+Route::post('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->name('logoutaksi')->middleware('auth');
 // END 
 
 // LUPA PASSWORD
