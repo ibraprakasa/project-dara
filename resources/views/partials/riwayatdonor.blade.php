@@ -47,7 +47,7 @@
         <tbody class="waduh">
             @foreach($riwayat_donor as $key => $rd)
             <tr>
-                <th scope="row">{{ $key+1 }}</th>
+                <th scope="row">{{ $key+$riwayat_donor->firstItem() }}</th>
                 <td>{{ $rd->nama }}</td>
                 <td>{{ $rd->jumlah_donor }}</td>
                 <td>{{ date('F jS, Y', strtotime($rd->tanggal_donor)) }}</td>
@@ -57,6 +57,9 @@
             @endforeach
         </tbody>
     </table>
+    <div class="pagination1">
+        {{ $riwayat_donor->links() }}
+    </div>
 
     <table class="table table-bordered" id="tabel2">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
@@ -83,19 +86,10 @@
                 </tr>
             @endforeach
        </tbody>
-
-        <!-- <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-        </tbody> -->
     </table>
+    <div class="pagination2">
+        {{ $riwayat_donor->links() }}
+    </div>
 
 
 </div>
@@ -103,6 +97,8 @@
     function tampilkanTabel(idTabel) {
         const tabel1 = document.getElementById("tabel1");
         const tabel2 = document.getElementById("tabel2");
+        const pagination1 = document.querySelector(".pagination1");
+        const pagination2 = document.querySelector(".pagination2");
 
         if (idTabel === "tabel1") {
             tabel1.style.display = "table";
@@ -111,6 +107,8 @@
             document.getElementById("tombol1").classList.add("tabel-aktif");
             document.getElementById("tombol2").classList.remove("tabel-aktif");
             document.getElementById("tombol2").classList.add("tabel-mati");
+            pagination1.style.display = "block"; // Menampilkan paginasi 1
+            pagination2.style.display = "none"; // Menyembunyikan paginasi 2
         } else if (idTabel === "tabel2") {
             tabel1.style.display = "none";
             tabel2.style.display = "table";
@@ -118,6 +116,8 @@
             document.getElementById("tombol1").classList.remove("tabel-aktif");
             document.getElementById("tombol2").classList.add("tabel-aktif");
             document.getElementById("tombol1").classList.add("tabel-mati");
+            pagination1.style.display = "none"; // Menyembunyikan paginasi 1
+            pagination2.style.display = "block"; // Menampilkan paginasi 2
 
         }
 	// Simpan status ke localStorage

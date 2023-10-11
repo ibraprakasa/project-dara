@@ -12,7 +12,8 @@ class RiwayatDonorController extends Controller
 {
     public function index()
     {
-        $riwayat_donor = RiwayatDonor::all();
+
+        $riwayat_donor =  RiwayatDonor::paginate(5);
         // Iterasi melalui koleksi $riwayat_donor untuk mengakses properti pendonor_id
         $riwayat_donor->map(function ($item) {
             $id_goldar = Pendonor::where('id', $item->pendonor_id)->first()->id_golongan_darah;
@@ -21,7 +22,7 @@ class RiwayatDonorController extends Controller
             return $item;
         });
 
-        $riwayat_ambil = RiwayatAmbil::all();
+        $riwayat_ambil =  RiwayatAmbil::paginate(5);
         // Iterasi melalui koleksi $riwayat_ambil untuk mengakses properti pendonor_id
         $riwayat_ambil->map(function ($item) {
             $id_goldar = Pendonor::where('id', $item->pendonor_id)->first()->id_golongan_darah;

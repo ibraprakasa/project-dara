@@ -86,7 +86,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Kode Pendonor</label>
+                        <label for="goldar">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="goldar">
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
@@ -131,7 +131,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Kode Pendonor</label>
+                        <label for="goldar">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="goldar">
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
