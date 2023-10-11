@@ -15,20 +15,24 @@ class StokDarahController extends Controller
 
     public $timestamps = true;
 
-    public function index()
+    public function index(Request $request)
     {
-        $data = StokDarah::all();
+        $search = $request->input('search'); // Ambil parameter pencarian dari input form
+        $query = StokDarah::query();
+
+        if ($search) {
+            $query->whereHas('golongandarah', function ($query) use ($search) {
+                $query->where('nama', 'LIKE', '%' . $search . '%');
+            });
+        }
+
+        $data = $query->get();
         $kode_pendonor = Pendonor::all();
         $lokasi = JadwalDonor::all();
-        return view('partials.stokdarah', compact('data','kode_pendonor','lokasi'));
+
+        return view('partials.stokdarah', compact('data', 'kode_pendonor', 'lokasi'));
     }
 
-    // public function insertstok(Request $request)
-    // {
-    //     StokDarah::create($request->all());
-    //     return redirect()->route('stokdarah');
-
-    // }
 
     public function insertstok(Request $request)
     {

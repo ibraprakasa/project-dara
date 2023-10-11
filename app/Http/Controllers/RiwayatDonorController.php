@@ -8,6 +8,7 @@ use App\Models\RiwayatAmbil;
 use App\Models\RiwayatDonor;
 use Illuminate\Http\Request;
 
+
 class RiwayatDonorController extends Controller
 {
     public function index()

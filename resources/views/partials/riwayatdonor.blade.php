@@ -1,3 +1,7 @@
+@php
+use Carbon\Carbon;
+@endphp
+
 @extends('template')
 @extends('sidebar')
 @section('content')
@@ -50,7 +54,7 @@
                 <th scope="row">{{ $key+$riwayat_donor->firstItem() }}</th>
                 <td>{{ $rd->nama }}</td>
                 <td>{{ $rd->jumlah_donor }}</td>
-                <td>{{ date('F jS, Y', strtotime($rd->tanggal_donor)) }}</td>
+                <td>{{ Carbon::parse($rd->tanggal_donor)->translatedFormat('l, j F Y') }}</td>
                 <td>{{ $rd->gol_darah }}</td>
                 <td>{{ $rd->lokasi_donor }}</td>
             </tr>
