@@ -14,19 +14,25 @@ use function PHPUnit\Framework\isNull;
 class JadwalDonorController extends Controller
 {
     public function index()
-    {
-        $search = request()->input('search');
+{
+    $search = request()->input('search');
 
-        $query = JadwalDonor::query();
+    $query = JadwalDonor::query();
 
-        if ($search) {
-            $query->where('lokasi', 'LIKE', '%' . $search . '%');
-        }
-
-        $data = $query->paginate(5);
-
-        return view('partials.jadwaldonor', compact('data'));
+    if ($search) {
+        $query->where('lokasi', 'LIKE', '%' . $search . '%');
     }
+
+    $data = $query->paginate(5);
+
+    foreach ($data as $jadwalDonor) {
+        $jumlahPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id)->count();
+        $jadwalDonor->jumlah_pendonor = $jumlahPendonor;
+    }
+
+    return view('partials.jadwaldonor', compact('data'));
+}
+
 
     public function infopendaftar(Request $request)
 {

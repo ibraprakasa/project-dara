@@ -321,7 +321,7 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL DELETE JADWAL DONOR -->
+<!-- MODAL DELETE DONOR -->
 @foreach($data as $key => $row)
 <div class="modal fade" id="deletependonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

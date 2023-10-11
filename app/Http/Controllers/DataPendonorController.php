@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\JadwalDonor;
+use App\Models\jadwalPendonor;
 use App\Models\Pendonor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -48,7 +50,10 @@ class DataPendonorController extends Controller
     public function deletependonor($id)
     {
         $pendonor = Pendonor::find($id);
-
+        $jadwalDonor = jadwalPendonor::where('id_pendonor',$pendonor->id);
+        if($jadwalDonor){
+            $jadwalDonor->delete();
+        }
         $pendonor->delete();
 
         return redirect()->route('datapendonor');
