@@ -88,11 +88,5 @@ class DatabaseSeeder extends Seeder
             'stok_darah_tersedia' =>3,
             'created_at' =>now(),
         ));
-
-        RiwayatDonor::create(array(
-            'pendonor_id' => $pendonor, // Mengacu pada kolom 'id_goldar' di tabel 'golongandarah'
-            'jumlah_donor' => 10,
-            'tanggal_donor' => '2023-08-19'
-        ));
     }
 }

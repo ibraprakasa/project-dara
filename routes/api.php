@@ -5,6 +5,7 @@ use App\Http\Controllers\DataPendonorControllerAPI;
 use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
 use App\Http\Controllers\LupaPasswordControllerAPI;
+use App\Http\Controllers\RiwayatDonorControllerAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -30,6 +31,8 @@ Route::get('/berita', [BeritaControllerAPI::class, 'show']);
 
 //untuk menu lokasi donor
 Route::get('/jadwal-donor-darah', [JadwalDonorControllerAPI::class, 'show']);
+//menu riwayat donor
+Route::get('/riwayat-donor-darah', [RiwayatDonorControllerAPI::class, 'show']);
 
 Route::get('/jadwal-donor-pendonor/{id}/{idl}', [JadwalPendonorControllerAPI::class, 'check']);
 Route::post('/jadwal-donor-pendonor', [JadwalPendonorControllerAPI::class, 'daftar']);
