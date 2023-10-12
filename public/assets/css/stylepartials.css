@@ -162,6 +162,18 @@
     margin-bottom: 5px;
 }
 
+.alert-container2 {
+    display: flex;
+    width:50%;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #03A13B; /* Warna merah */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
 .alert-icon {
     font-size: 24px;
     margin-right: 10px;
@@ -252,7 +264,18 @@ table td {
     font-size: 3rem;
 }
 
-.small-text{
-    font-size: 25px;
+
+.jaraksidebar{
+    font-weight:bold; 
+    border-top:2px solid white; 
+    margin-top:2px;
+    margin-bottom:-9px
 }
 
+/* Gambar di dalam sidebar */
+.gambar {
+    width: 260px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px; 
+}

@@ -29,6 +29,18 @@
     </button>
 </div>
 
+<div class="filter1 btn-group wow">
+  @if(session('success'))
+  <div class="alert-container1 success">
+    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+    <div>
+      {{ session('success') }}
+    </div>
+  </div>
+  @endif
+  </div>
+
+
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered">
         <thead class="thead" style="background-color:#3B4B65; color:white;">

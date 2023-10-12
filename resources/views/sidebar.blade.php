@@ -1,5 +1,8 @@
 @section('sidebar')
 
+<link href="../assets/css/stylepartials.css" rel="stylesheet">
+
+
 <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo" style="margin-left:2px">
         <a href="#" class="simple-text logo-mini">
@@ -19,7 +22,7 @@
                     <p>Dashboard</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             </li>
             <li class="{{ request()->routeIs('stokdarah') ? 'active' : '' }}">
                 <a href="{{ route('stokdarah') }}" style="color: white; font-weight:bold;">
@@ -27,28 +30,28 @@
                     <p>Stok Darah</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             <li class="{{ request()->routeIs('riwayatdonor') ? 'active' : '' }}">
                 <a href="{{ route('riwayatdonor') }}" style="color: #FFFF; font-weight:bold;">
                     <i class="bi bi-hourglass-split" style="color: white; font-weight:bold;"></i>
                     <p>Riwayat</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             <li class="{{ request()->routeIs('jadwaldonor', 'infopendaftar') ? 'active' : '' }}">
                 <a href="{{ route('jadwaldonor') }}" style="color: white; font-weight:bold; ">
                     <i class="bi bi-calendar-event" style="color: white; font-weight:bold;"></i>
                     <p>Jadwal</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             <li class="{{ request()->routeIs('berita') ? 'active' : '' }}">
                 <a href="{{ route('berita') }}" style="color: white; font-weight:bold;">
                     <i class="bi bi-newspaper" style="color: white; font-weight:bold;"></i>
                     <p>Berita</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             @if(auth()->user()->role_id == '1')
             <li class="{{ request()->routeIs('kelolaakun') ? 'active' : '' }}">
                 <a href="{{ route('kelolaakun') }}" style="color: white; font-weight:bold;">
@@ -56,7 +59,7 @@
                     <p>Kelola Akun</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             @elseif(auth()->user()->role_id == '2')
             <li class="{{ request()->routeIs('datapendonor') ? 'active' : '' }}">
                 <a href="{{ route('datapendonor') }}" style="color: white; font-weight:bold;">
@@ -64,7 +67,7 @@
                     <p>Data Pendonor</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             @endif
             <li class="{{ request()->routeIs('akun') ? 'active' : '' }}">
                 <a href="{{ route('akun') }}" style="color: white; font-weight:bold;">
@@ -72,7 +75,7 @@
                     <p>Akun Saya</p>
                 </a>
             </li>
-            <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:-9px">
+            <hr class="jaraksidebar">
             <li>
                 <a href="#logoutdara" style="color: white; font-weight:bold;" data-toggle="modal" data-target=".logoutdara">
                     <i class="bi bi-box-arrow-left whitebold" style="color: white; font-weight:bold;"></i>
@@ -82,7 +85,7 @@
             </li>
             <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:3px">
         </ul>
-        <div class="text-center" style="width:260px; margin-top:80px">
+        <div class="text-center gambar">
             <img src="../assets/img/logopmi.png" alt="">
         </div>
     </div>

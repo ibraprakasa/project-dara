@@ -57,7 +57,7 @@ class StokDarahController extends Controller
         ]);
 
         // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
-        return redirect()->route('stokdarah');
+        return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil ditambahkan.');
     }
 
     public function updatestok(Request $request)
@@ -94,6 +94,6 @@ class StokDarahController extends Controller
         ]);
 
         // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
-        return redirect()->route('stokdarah');
+        return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil diperbarui.');
     }
 }

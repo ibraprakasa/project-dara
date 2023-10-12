@@ -39,7 +39,7 @@ class KelolaAkunController extends Controller
         ]);
 
         Pendonor::create($request->all());
-        return redirect()->route('kelolaakun')->with('success','Pendonor berhasil ditambahkan.');    
+        return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil ditambahkan.');    
     }
 
     public function insertuser(Request $request)
@@ -88,7 +88,7 @@ class KelolaAkunController extends Controller
 
         $pendonor ->delete();
 
-        return redirect()->route('kelolaakun')->with('success','Pendonor berhasil dihapus.');    
+        return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil dihapus.');    
     }
 
     public function deleteuser($id){
