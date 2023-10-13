@@ -9,47 +9,7 @@
   <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.43.0/apexcharts.min.css" integrity="sha512-nnNXPeQKvNOEUd+TrFbofWwHT0ezcZiFU5E/Lv2+JlZCQwQ/ACM33FxPoQ6ZEFNnERrTho8lF0MCEH9DBZ/wWw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.43.0/apexcharts.min.js" integrity="sha512-vv0F8Er+ByFK3l86WDjP5Zc0h8uxNWPzF+l4wGK0/BlHWxDiFHbYr/91dn8G0OO8tTnN40L4s2Whom+X2NxPog==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-  var options = {
-    series: [{
-      name: "Desktops",
-      data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
-    }],
-    chart: {
-      height: 350,
-      type: 'line',
-      zoom: {
-        enabled: false
-      }
-    },
-    dataLabels: {
-      enabled: false
-    },
-    stroke: {
-      curve: 'straight'
-    },
-    title: {
-      text: 'Product Trends by Month',
-      align: 'left'
-    },
-    grid: {
-      row: {
-        colors: ['#f3f3f3', 'transparent'], // takes an array which will be repeated on columns
-        opacity: 0.5
-      },
-    },
-    xaxis: {
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
-    }
-  };
-
-  var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
-  chart.render();
-</script>
-<div class="content" style="background-color:white">
+<div class="content">
 
   <div class="row">
     @foreach ($golonganDarahCounts as $golonganDarahCount)
@@ -185,6 +145,102 @@
     </div>
   </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<script>
+  var options = {
+    series: [{
+        name: "A",
+        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+      },
+      {
+        name: "AB",
+        data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+      },
+      {
+        name: 'B',
+        data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+      },
+      {
+        name: 'O',
+        data: [22, 17, 94, 44, 11, 62, 25, 94, 35, 52, 51, 21]
+      }
+    ],
+    chart: {
+      height: 350,
+      type: 'line',
+      zoom: {
+        enabled: false
+      },
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      width: [7, 7, 7, 7],
+      curve: 'straight',
+      dashArray: [0, 0, 0, 0]
+    },
+    title: {
+      text: 'Page Statistics',
+      align: 'left'
+    },
+    legend: {
+      tooltipHoverFormatter: function(val, opts) {
+        return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+      }
+    },
+    markers: {
+      size: 0,
+      hover: {
+        sizeOffset: 6
+      }
+    },
+    xaxis: {
+      categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
+        '10 Jan', '11 Jan', '12 Jan'
+      ],
+    },
+    tooltip: {
+      y: [{
+          title: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        },
+        {
+          title: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        },
+        {
+          title: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        },
+        {
+          title: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        }
+      ]
+    },
+    grid: {
+      borderColor: '#f1f1f1',
+    }
+  };
+
+  var chart = new ApexCharts(document.querySelector("#chartContainer"), options);
+  chart.render();
+</script>
 
 
 
