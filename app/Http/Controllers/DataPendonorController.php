@@ -50,11 +50,21 @@ class DataPendonorController extends Controller
     public function deletependonor($id)
     {
         $pendonor = Pendonor::find($id);
-        $jadwalDonor = jadwalPendonor::where('id_pendonor',$pendonor->id);
-        if($jadwalDonor){
-            $jadwalDonor->delete();
+        if ($pendonor) {
+            // Mendapatkan nama file gambar pendonor
+            $imageFilename = $pendonor->gambar;
+
+            // Hapus file gambar terkait dengan pendonor jika ada
+            if (!empty($imageFilename) && file_exists(public_path('images/' . $imageFilename))) {
+                unlink(public_path('images/' . $imageFilename));
+            }
+
+            $jadwalDonor = jadwalPendonor::where('id_pendonor', $pendonor->id);
+            if ($jadwalDonor) {
+                $jadwalDonor->delete();
+            }
+            $pendonor->delete();
         }
-        $pendonor->delete();
 
         return redirect()->route('datapendonor');
     }
