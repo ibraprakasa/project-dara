@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalDonor;
-use App\Models\jadwalPendonor;
+use App\Models\JadwalPendonor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
