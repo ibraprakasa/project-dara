@@ -67,6 +67,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($data) == 0)
+        <tr>
+            <td colspan="11" style="text-align:center;">Jadwal donor belum ada</td>
+        </tr>
+        @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
@@ -97,6 +102,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
     {{ $data ->links() }}

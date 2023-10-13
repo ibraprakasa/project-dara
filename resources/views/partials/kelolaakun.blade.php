@@ -79,6 +79,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($data) == 0)
+        <tr>
+            <td colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+        </tr>
+        @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
@@ -107,6 +112,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
     <div class="pagination1">
@@ -165,6 +171,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($data1) == 0)
+        <tr>
+            <td colspan="8" style="text-align:center;">Datanya belum ada</td>
+        </tr>
+        @else
             @foreach($data1 as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
@@ -190,6 +201,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
     </table>
     <div class="pagination2">
         {{ $data1->links() }}
