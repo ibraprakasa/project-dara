@@ -199,7 +199,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jamselesai">Jam Selesai</label>
-                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" value="{{ $row->jam_mulai }}">
+                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" value="{{ $row->jam_selesai }}">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
