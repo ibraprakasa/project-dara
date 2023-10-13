@@ -200,7 +200,6 @@
 <!-- TABEL PENDONOR -->
 
 <!-- MODAL INSERT PENDONOR -->
-@foreach($data as $row)
 <div class="modal fade tambahpendonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -210,7 +209,7 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/insertpendonorsuper" method="POST">
+            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -265,7 +264,6 @@
         </div>
     </div>
 </div>
-@endforeach
 <!-- END MODAL -->
 
 <!-- MODAL EDIT PENDONOR -->

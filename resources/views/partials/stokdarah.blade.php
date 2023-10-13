@@ -72,7 +72,6 @@
 </div>
 
 <!-- MODAL TAMBAH -->
-@foreach($data as $row)
 <div class="modal fade tambahstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -95,7 +94,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Jumlah Kantong</label>
-                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5">
+                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5" required>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="lokasi">Lokasi</label>
@@ -113,7 +112,6 @@
         </div>
     </div>
 </div>
-@endforeach
 <!-- END MODAL -->
 
 <!-- MODAL AMBIL -->
