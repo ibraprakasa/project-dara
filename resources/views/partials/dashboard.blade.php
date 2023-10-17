@@ -92,7 +92,7 @@
           <hr>
           <div class="stats">
             <i class="fa fa-refresh"></i>
-            Terbaru
+            Baru saja
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@
             <div class="col-7 col-md-8">
               <div class="numbers">
                 <p class="card-category">Berita</p>
-                <p class="card-title">{{ $totalBerita }}
+                <p class="card-title">{{ $thisYearBerita }}
                 <p>
               </div>
             </div>
@@ -119,26 +119,33 @@
           <hr>
           <div class="stats">
             <i class="fa fa-clock-o"></i>
-            Dalam 1 minggu terakhir
+            Dalam 1 tahun terakhir
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="card ">
-        <div class="card-header ">
-          <h5 class="card-title">Stok Darah Tersedia</h5>
-          <p class="card-category">Dalam Waktu 1 Tahun</p>
-        </div>
         <div class="card-body ">
           <div id="chartContainer"></div>
         </div>
-        <div class="card-footer ">
-          <hr>
+        <div class="card-footer">
           <div class="stats">
-            <i class="fa fa-history"></i> Updated 3 minutes ago
+            <i class="fa fa-history"></i> Baru saja 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card ">
+        <div class="card-body ">
+          <div id="chartGoldar"></div>
+        </div>
+        <div class="card-footer">
+          <div class="stats">
+            <i class="fa fa-history"></i> Baru saja 
           </div>
         </div>
       </div>
@@ -151,90 +158,38 @@
 <script>
   var options = {
     series: [{
-        name: "A",
-        data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-      },
-      {
-        name: "AB",
-        data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-      },
-      {
-        name: 'B',
-        data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-      },
-      {
-        name: 'O',
-        data: [22, 17, 94, 44, 11, 62, 25, 94, 35, 52, 51, 21]
-      }
-    ],
+      name: "Jumlah Acara Donor",
+      data: @json($jumlahAcaraDonor)
+    }],
     chart: {
       height: 350,
-      type: 'line',
+      type: 'bar',
       zoom: {
         enabled: false
-      },
+      }
     },
     dataLabels: {
       enabled: false
     },
     stroke: {
-      width: [7, 7, 7, 7],
-      curve: 'straight',
-      dashArray: [0, 0, 0, 0]
+      curve: 'smooth'
     },
     title: {
-      text: 'Page Statistics',
+      text: 'Jadwal Donor Terlaksana',
       align: 'left'
     },
-    legend: {
-      tooltipHoverFormatter: function(val, opts) {
-        return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
-      }
-    },
-    markers: {
-      size: 0,
-      hover: {
-        sizeOffset: 6
-      }
-    },
-    xaxis: {
-      categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-        '10 Jan', '11 Jan', '12 Jan'
-      ],
-    },
-    tooltip: {
-      y: [{
-          title: {
-            formatter: function(val) {
-              return val;
-            }
-          }
-        },
-        {
-          title: {
-            formatter: function(val) {
-              return val;
-            }
-          }
-        },
-        {
-          title: {
-            formatter: function(val) {
-              return val;
-            }
-          }
-        },
-        {
-          title: {
-            formatter: function(val) {
-              return val;
-            }
-          }
-        }
-      ]
+    subtitle: {
+      text: 'Dalam 1 tahun',
+      align: 'left'
     },
     grid: {
-      borderColor: '#f1f1f1',
+      row: {
+        colors: ['#f3f3f3', 'transparent'],
+        opacity: 0.5
+      },
+    },
+    xaxis: {
+      categories: @json($bulan)
     }
   };
 
@@ -242,6 +197,93 @@
   chart.render();
 </script>
 
+<script>
+var options = {
+          series: [{
+            name: "A",
+            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
+          },
+          {
+            name: "AB",
+            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
+          },
+          {
+            name: 'B',
+            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
+          },
+          {
+            name: 'O',
+            data: [23, 24, 56, 26, 52, 17, 87, 83, 29, 28, 43, 89]
+          }
+        ],
+          chart: {
+          height: 350,
+          type: 'line',
+          zoom: {
+            enabled: false
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          width: [2, 2, 2, 2],
+          curve: 'straight',
+          dashArray: [0, 0, 0, 0]
+        },
+        title: {
+          text: 'Stok Darah Masuk',
+          align: 'left'
+        },
+        subtitle: {
+          text: 'Dalam 1 tahun',
+          align: 'left'
+        },
+        legend: {
+          tooltipHoverFormatter: function(val, opts) {
+            return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+          }
+        },
+        markers: {
+          size: 0,
+          hover: {
+            sizeOffset: 6
+          }
+        },
+        xaxis: {
+          categories: @json($bulan)
+        },
+        tooltip: {
+          y: [
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " (mins)"
+                }
+              }
+            },
+            {
+              title: {
+                formatter: function (val) {
+                  return val + " per session"
+                }
+              }
+            },
+            {
+              title: {
+                formatter: function (val) {
+                  return val;
+                }
+              }
+            }
+          ]
+        },
+        grid: {
+          borderColor: '#f1f1f1',
+        }
+        };
 
-
+        var chart = new ApexCharts(document.querySelector("#chartGoldar"), options);
+        chart.render();
+</script>
 @endsection
