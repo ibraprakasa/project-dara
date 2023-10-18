@@ -5,6 +5,7 @@ use App\Http\Controllers\DataPendonorControllerAPI;
 use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
 use App\Http\Controllers\LupaPasswordControllerAPI;
+use App\Http\Controllers\PostControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -46,3 +47,6 @@ Route::post('/profile-edit-password', [DataPendonorControllerAPI::class, 'editPa
 Route::post('/otp/send', [LupaPasswordControllerAPI::class, 'sendOtp']);
 Route::post('/otp/check', [LupaPasswordControllerAPI::class, 'checkOtp']);
 Route::post('/otp/reset-password', [LupaPasswordControllerAPI::class, 'resetPassword']);
+
+//forum
+Route::get('/post', [PostControllerAPI::class, 'show']);
