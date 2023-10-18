@@ -156,6 +156,7 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
+  
   var options = {
     series: [{
       name: "Jumlah Acara Donor",
@@ -258,14 +259,14 @@ var options = {
             {
               title: {
                 formatter: function (val) {
-                  return val + " (mins)"
+                  return val;
                 }
               }
             },
             {
               title: {
                 formatter: function (val) {
-                  return val + " per session"
+                  return val;
                 }
               }
             },

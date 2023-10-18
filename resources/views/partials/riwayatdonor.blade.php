@@ -83,7 +83,7 @@ use Carbon\Carbon;
                     <th scope="row">{{ $key+1 }}</th>
                     <td>{{ $rd->nama }}</td>
                     <td>{{ $rd->jumlah_ambil }}</td>
-                    <td>{{ date('F jS, Y', strtotime($rd->tanggal_ambil)) }}</td>
+                    <td>{{ Carbon::parse($rd->tanggal_ambil)->translatedFormat('l, j F Y') }}</td>
                     <td>{{ $rd->gol_darah }}</td>
                     <td>{{ $rd->penerima }}</td>
                     <td>{{ $rd->kontak_penerima }}</td>

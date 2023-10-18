@@ -143,22 +143,6 @@
                         <label for="jumlah">Kontak</label>
                         <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 0822******">
                     </div>
-                    <!-- <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="nomorpendonor">Nomor Pendonor</label>
-                        <input class="kolom form-control" type="number" id="nomorpendonor" placeholder="ex: 00000000">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak Penerima</label>
-                        <input class="kolom form-control" type="number" id="kontak" placeholder="ex : 082235221771">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jumlahambil">Jumlah Ambil Kantong</label>
-                        <input class="kolom form-control" type="number" id="jumlahambil" placeholder="ex : 3">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="penerimadonor">Penerima Donor</label>
-                        <input class="kolom form-control" type="text" id="penerimadonor" placeholder="ex : Ibra Prakasa">
-                    </div> -->
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>

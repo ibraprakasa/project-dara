@@ -16,6 +16,7 @@ class JadwalDonorController extends Controller
     public function index()
     {
         $search = request()->input('search');
+        $sort = request()->input('sort');
 
         $query = JadwalDonor::query();
 
@@ -23,7 +24,18 @@ class JadwalDonorController extends Controller
             $query->where('lokasi', 'LIKE', '%' . $search . '%');
         }
 
-        $data = $query->paginate(5);
+        if ($sort) {
+            if ($sort === 'tanggal_asc') {
+                $query->orderBy('tanggal_donor')->orderBy('jam_mulai');
+            } elseif ($sort === 'tanggal_desc') {
+                $query->orderByDesc('tanggal_donor')->orderBy('jam_mulai');
+            }
+        }else {
+            // Default sorting (you can change this to your preferred default sorting)
+            $query->orderBy('jam_mulai');
+        }
+
+        $data = $query->paginate(10);
 
         return view('partials.jadwaldonor', compact('data'));
     }

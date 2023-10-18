@@ -19,7 +19,6 @@
 </div>
 
 <div class="filter btn-group">
-
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahjadwaldonor" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
@@ -27,8 +26,23 @@
     <button class="btn btn-secondary" type="button" data-toggle="modal" data-target=".tambahjadwaldonor" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Tambah
     </button>
-
 </div>
+
+<div class="filter btn-group">
+    <form action="/jadwaldonor" method="GET" style="display: flex;">
+        <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:15px 0 15px 0;">
+                Urutkan berdasarkan
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
+                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="default">Default</button>
+                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
+                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 <div class="filter btn-group wow">
     @if(session('error'))
   <div class="alert-container">

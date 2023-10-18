@@ -11,11 +11,13 @@ use Illuminate\Support\Facades\Hash;
 
 class KelolaAkunController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $roles = Role::all(); // Mengambil semua peran dari model Role
         $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
-        $search = request()->input('search');
+        $search = request()->input('search'); 
+        $golonganDarah = request()->input('id_golongan_darah');
+        $jenisKelamin = request()->input('jenis_kelamin');
 
         $query = Pendonor::query();
         $query1 = User::query();
@@ -23,6 +25,16 @@ class KelolaAkunController extends Controller
         if ($search) {
             $query->where('nama', 'LIKE', '%' . $search . '%');
             $query1->where('name', 'LIKE', '%' . $search . '%');
+        }
+
+        if ($golonganDarah) {
+            $query->whereHas('golonganDarah', function ($q) use ($golonganDarah) {
+                $q->where('id', $golonganDarah);
+            });
+        }
+
+        if ($jenisKelamin) {
+            $query->where('jenis_kelamin', $jenisKelamin);
         }
 
         $data = $query->paginate(5);

@@ -44,6 +44,16 @@
                 Tambah
             </button>
 
+
+        </div>
+
+        <div class="filter btn-group">
+            <button class="btn urutberdasarkan" type="button" data-toggle="modal" data-target=".filterpendonor">
+                Filter Berdasarkan...
+            </button>
+            <button type="submit" class="btn btn-dark" data-toggle="modal" data-target=".filterpendonor" style="border-radius:0 15px 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #d9d9d9;">
+                <i class="bi bi-filter" style="font-size: 20px; color: black;"></i>
+            </button>
         </div>
 
         <div class="filter btn-group wow">
@@ -134,6 +144,8 @@
             </button>
 
         </div>
+
+
         <div class="filter btn-group wow">
             @if(session('error'))
             <div class="alert-container">
@@ -416,6 +428,47 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
+<!-- MODALL FILTER PENDONOR -->
+@foreach($data as $row)
+<div class="modal fade filterpendonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Filter Berdasarkan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
+              <span aria-hidden=" true">&times;</span>
+                </button>
+            </div>
+            <form action="/kelolaakun" method="GET">
+                <div class="modal-body">
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="goldar">Golongan Darah</label>
+                        <select class="kolom form-control" name="id_golongan_darah" id="goldar">
+                            <option value="">-</option>
+                            @foreach($goldar as $darah)
+                            <option class="kolom form-control" value="{{ $darah->id }}" @if(request('id_golongan_darah')==$darah->id) selected @endif>{{ $darah->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="jenis_kelamin">Jenis Kelamin</label>
+                        <select class="kolom form-control" name="jenis_kelamin" id="jenis_kelamin">
+                            <option value="-">-</option>
+                            <option value="laki-laki">Laki-Laki</option>
+                            <option value="perempuan">Perempuan</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Terapkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!--  END MODAL  -->
 
 <!-- MODAL INSERT USER -->
 @foreach($data1 as $row)
