@@ -28,7 +28,7 @@ class KelolaAkunController extends Controller
         }
 
         if ($golonganDarah) {
-            $query->whereHas('golonganDarah', function ($q) use ($golonganDarah) {
+            $query->whereHas('golongandarah', function ($q) use ($golonganDarah) {
                 $q->where('id', $golonganDarah);
             });
         }

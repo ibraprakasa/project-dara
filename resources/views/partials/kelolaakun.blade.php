@@ -48,11 +48,9 @@
         </div>
 
         <div class="filter btn-group">
-            <button class="btn urutberdasarkan" type="button" data-toggle="modal" data-target=".filterpendonor">
-                Filter Berdasarkan...
-            </button>
-            <button type="submit" class="btn btn-dark" data-toggle="modal" data-target=".filterpendonor" style="border-radius:0 15px 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #d9d9d9;">
-                <i class="bi bi-filter" style="font-size: 20px; color: black;"></i>
+            <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpendonor">
+                <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+                <span style="font-size: 12px; color: white;">Filter</span>
             </button>
         </div>
 
@@ -80,7 +78,7 @@
                 <th scope="col">#</th>
                 <th scope="col">No. Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
-                <th scope="col">Tgl Lahir</th>
+                <th scope="col">Tanggal Lahir</th>
                 <th scope="col">Jenis Kelamin</th>
                 <th scope="col">Goldar</th>
                 <th scope="col">Kontak</th>
@@ -454,7 +452,7 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jenis_kelamin">Jenis Kelamin</label>
                         <select class="kolom form-control" name="jenis_kelamin" id="jenis_kelamin">
-                            <option value="-">-</option>
+                            <option value="">-</option>
                             <option value="laki-laki">Laki-Laki</option>
                             <option value="perempuan">Perempuan</option>
                         </select>

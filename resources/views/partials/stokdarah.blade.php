@@ -32,7 +32,7 @@
 <div class="filter1 btn-group wow">
   @if(session('success'))
   <div class="alert-container1 success">
-    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+<div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
     <div>
       {{ session('success') }}
     </div>

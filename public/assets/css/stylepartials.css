@@ -300,10 +300,26 @@ table td {
 }
 
 
-.urutberdasarkan{
+.filter-icon{
+    border-radius:0 15px 15px 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+        background-color: #3B4B65;
+    }
+
+.insert-icon{
+    border-radius:0 0 15px 0;
+    width: 22px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+     background-color: #3B4B65;
+}
+
+.search-icon{
     height:42px;
-    background-color: #3B4B65; 
-    color:white;
-    border-radius:15px 0 0 15px;
-    font-weight: bold;
+    background-color: #d9d9d9; 
+    color:black;
+    border-radius:15px 0 0 0;
 }
