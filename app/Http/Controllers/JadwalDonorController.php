@@ -32,7 +32,7 @@ class JadwalDonorController extends Controller
             }
         }else {
             // Default sorting (you can change this to your preferred default sorting)
-            $query->orderBy('updated_at');
+            $query->orderBy('created_at');
         }
 
         $data = $query->paginate(10);

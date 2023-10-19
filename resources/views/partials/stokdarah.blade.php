@@ -141,7 +141,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Kontak</label>
-                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 0822******">
+                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
                     </div>
                 </div>
                 <div class="modal-footer">
