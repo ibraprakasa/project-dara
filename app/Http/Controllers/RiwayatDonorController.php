@@ -19,7 +19,9 @@ class RiwayatDonorController extends Controller
 
         $goldar = request()->input('id_golongan_darah');
         $lokasi = request()->input('lokasi');
-        $tanggal = request()->input('tanggal');
+        $tanggalawal = request()->input('tanggal_dari');
+        $tanggalakhir = request()->input('tanggal_sampai');
+
         // dd($goldar,$lokasi);
 
         $query = RiwayatDonor::query();
@@ -36,12 +38,11 @@ class RiwayatDonorController extends Controller
             });
         }
 
-        if ($tanggal) {
-            $query->where('tanggal_donor', $tanggal);
-            $query1->where('tanggal_ambil', $tanggal);
+        if ($tanggalawal && $tanggalakhir) {
+            $query->whereBetween('tanggal_donor', [$tanggalawal, $tanggalakhir]);
+            $query1->whereBetween('tanggal_ambil', [$tanggalawal, $tanggalakhir]);
         }
         
-
         $riwayat_donor =  $query->paginate(7);
         $riwayat_ambil =  $query1->paginate(7);
         

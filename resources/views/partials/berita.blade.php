@@ -12,7 +12,7 @@
 <div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
-        <input class="btn search-icon" type="search" name="search" placeholder="Cari Judul Berita...">
+        <input class="btn search-icon" type="search" name="search" placeholder="Cari Judul...">
         <button type="submit" class="btn btn-dark insert-icon">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

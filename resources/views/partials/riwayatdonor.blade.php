@@ -56,11 +56,11 @@ use Carbon\Carbon;
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($riwayat_donor) == 0)
-        <tr>
-            <td colspan="6" style="text-align:center;">Riwayat donor belum ada</td>
-        </tr>
-        @else
+            @if(count($riwayat_donor) == 0)
+            <tr>
+                <td colspan="6" style="text-align:center;">Riwayat donor belum ada</td>
+            </tr>
+            @else
             @foreach($riwayat_donor as $key => $rd)
             <tr>
                 <th scope="row">{{ $key+$riwayat_donor->firstItem() }}</th>
@@ -91,11 +91,11 @@ use Carbon\Carbon;
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($riwayat_ambil) == 0)
-        <tr>
-            <td colspan="7" style="text-align:center;">Riwayat ambil belum ada</td>
-        </tr>
-        @else
+            @if(count($riwayat_ambil) == 0)
+            <tr>
+                <td colspan="7" style="text-align:center;">Riwayat ambil belum ada</td>
+            </tr>
+            @else
             @foreach($riwayat_ambil as $key => $rd)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
@@ -107,7 +107,7 @@ use Carbon\Carbon;
                 <td>{{ $rd->kontak_penerima }}</td>
             </tr>
             @endforeach
-        @endif
+            @endif
         </tbody>
     </table>
     <div class="pagination2">
@@ -118,24 +118,34 @@ use Carbon\Carbon;
 </div>
 
 <!-- MODAL FILTER RIWAYAT -->
-@foreach($riwayat_donor as $row) 
+@foreach($riwayat_donor as $row)
 <div class="modal fade filterriwayat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Filter Berdasarkan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="/riwayatdonor" method="GET">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="tanggal">Tanggal</label>
-                        <input type="date" class="kolom form-control" name="tanggal">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                            </div>
+                        </div>
                     </div>
-                    <div class "form-group">
-                        <label for="goldar">Golongan Darah</label>
+                    <div class="form-group">
+                        <label style="color:black;font-weight:bold" for="goldar">Golongan Darah</label>
                         <select class="kolom form-control" name="id_golongan_darah">
                             <option value="">-</option>
                             @foreach($goldarDaftar as $darah)
@@ -144,13 +154,13 @@ use Carbon\Carbon;
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="lokasi">Lokasi</label>
+                        <label style="color:black;font-weight:bold" for="lokasi">Lokasi</label>
                         <select class="kolom form-control" name="lokasi" id="lokasi">
-                             <option class="kolom form-control" value="">-</option>
+                            <option class="kolom form-control" value="">-</option>
                             @foreach($lokasiDaftar as $lp)
                             <option class="kolom form-control" value="{{ $lp->lokasi }}">{{ $lp->lokasi }}</option>
                             @endforeach
-                        </select>                    
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -213,5 +223,7 @@ use Carbon\Carbon;
         }
     };
 </script>
+
+
 
 @endsection
