@@ -107,6 +107,7 @@ use Carbon\Carbon;
                 <td>{{ $rd->kontak_penerima }}</td>
             </tr>
             @endforeach
+        @endif
         </tbody>
     </table>
     <div class="pagination2">
@@ -116,15 +117,15 @@ use Carbon\Carbon;
 
 </div>
 
-<!-- MODALL FILTER RIWAYAT -->
+<!-- MODAL FILTER RIWAYAT -->
 @foreach($riwayat_donor as $row) 
 <div class="modal fade filterriwayat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Filter Berdasarkan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
-              <span aria-hidden=" true">&times;</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <form action="/riwayatdonor" method="GET">
@@ -133,7 +134,7 @@ use Carbon\Carbon;
                         <label for="tanggal">Tanggal</label>
                         <input type="date" class="kolom form-control" name="tanggal">
                     </div>
-                    <div class="form-group">
+                    <div class "form-group">
                         <label for="goldar">Golongan Darah</label>
                         <select class="kolom form-control" name="id_golongan_darah">
                             <option value="">-</option>
@@ -212,7 +213,5 @@ use Carbon\Carbon;
         }
     };
 </script>
-
-
 
 @endsection
