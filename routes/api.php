@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BeritaControllerAPI;
+use App\Http\Controllers\CommentControllerAPI;
 use App\Http\Controllers\DataPendonorControllerAPI;
 use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
@@ -50,3 +51,6 @@ Route::post('/otp/reset-password', [LupaPasswordControllerAPI::class, 'resetPass
 
 //forum
 Route::get('/post', [PostControllerAPI::class, 'show']);
+Route::post('/post/add', [PostControllerAPI::class, 'addPost']);
+Route::get('/comment/{id}', [CommentControllerAPI::class, 'show']);
+Route::post('/comment/add', [CommentControllerAPI::class, 'addComment']);

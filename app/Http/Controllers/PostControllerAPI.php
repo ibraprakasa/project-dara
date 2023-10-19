@@ -17,7 +17,7 @@ class PostControllerAPI extends Controller
 
     public function show()
 {
-    $posts = Post::all();
+    $posts = Post::orderBy('id', 'desc')->get();
     $responseData = [];
 
     foreach ($posts as $post) {
@@ -67,8 +67,18 @@ class PostControllerAPI extends Controller
             'gambar' => $request->gambar
         ]);
 
-        if($post){
-            
+        // Mengunggah gambar baru jika ada
+        if ($request->hasFile('gambar')) {
+            $file = $request->file('gambar');
+            $file_name = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('assets/post/'), $file_name);
+            $post->gambar = $file_name;
+            $post->save();
         }
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Berhasil tambah post'
+        ]);
     }
 }

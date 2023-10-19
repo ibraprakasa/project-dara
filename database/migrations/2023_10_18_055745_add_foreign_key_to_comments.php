@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('comments', function (Blueprint $table) {
+            $table->foreign('id_pendonor')->references('id')->on('pendonor')->onDelete('cascade');
             $table->foreign('id_post')->references('id')->on('posts')->onDelete('cascade');
         });
     }
@@ -22,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('comments', function (Blueprint $table) {
+            $table->dropForeign(['id_pendonor']);
             $table->dropForeign(['id_post']);
         });
     }
