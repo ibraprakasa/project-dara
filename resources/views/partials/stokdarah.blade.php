@@ -9,23 +9,7 @@
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="filter btn-group">
-    <button class="btn btn-light dropdownstyle" type="button">
-        Cari Golongan Darah...
-    </button>
-    <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split ikontoggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-    </button>
-    <div style="background-color:#D9D9D9" class="dropdown-menu">
-        <a class="dropdown-item" href="#" data-value="A">A</a>
-        <a class="dropdown-item" href="#">AB</a>
-        <a class="dropdown-item" href="#">B</a>
-        <a class="dropdown-item" href="#">O</a>
-    </div>
-</div>
-
-<div class="filter btn-group">
-
+<div class="filter1 btn-group">
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahstokdarah" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
@@ -33,11 +17,9 @@
     <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahstokdarah" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Tambah
     </button>
-
 </div>
 
-<div class="filter btn-group">
-
+<div class="filter1 btn-group">
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".ambilstokdarah" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
         <i class="bi bi-file-minus" style="font-size: 20px; color: white;"></i>
     </button>
@@ -45,8 +27,19 @@
     <button class="btn btn-secondary" data-toggle="modal" data-target=".ambilstokdarah" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Ambil
     </button>
-
 </div>
+
+<div class="filter1 btn-group wow">
+  @if(session('success'))
+  <div class="alert-container1 success">
+<div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+    <div>
+      {{ session('success') }}
+    </div>
+  </div>
+  @endif
+  </div>
+
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered">
@@ -91,7 +84,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Kode Pendonor</label>
+                        <label for="goldar">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="goldar">
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
@@ -135,7 +128,7 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Kode Pendonor</label>
+                        <label for="goldar">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="goldar">
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
@@ -152,7 +145,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Kontak</label>
-                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 0822******">
+                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
                     </div>
                 </div>
                 <div class="modal-footer">

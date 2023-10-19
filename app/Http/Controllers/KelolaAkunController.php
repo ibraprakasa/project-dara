@@ -12,11 +12,13 @@ use Illuminate\Support\Facades\Hash;
 
 class KelolaAkunController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $roles = Role::all(); // Mengambil semua peran dari model Role
         $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
-        $search = request()->input('search');
+        $search = request()->input('search'); 
+        $golonganDarah = request()->input('id_golongan_darah');
+        $jenisKelamin = request()->input('jenis_kelamin');
 
         $query = Pendonor::query();
         $query1 = User::query();
@@ -24,6 +26,16 @@ class KelolaAkunController extends Controller
         if ($search) {
             $query->where('nama', 'LIKE', '%' . $search . '%');
             $query1->where('name', 'LIKE', '%' . $search . '%');
+        }
+
+        if ($golonganDarah) {
+            $query->whereHas('golongandarah', function ($q) use ($golonganDarah) {
+                $q->where('id', $golonganDarah);
+            });
+        }
+
+        if ($jenisKelamin) {
+            $query->where('jenis_kelamin', $jenisKelamin);
         }
 
         $data = $query->paginate(5);
@@ -40,7 +52,7 @@ class KelolaAkunController extends Controller
         ]);
 
         Pendonor::create($request->all());
-        return redirect()->route('kelolaakun')->with('success','Pendonor berhasil ditambahkan.');    
+        return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil ditambahkan.');    
     }
 
     public function insertuser(Request $request)
@@ -92,7 +104,7 @@ class KelolaAkunController extends Controller
         }
         $pendonor->delete();
 
-        return redirect()->route('kelolaakun')->with('success','Pendonor berhasil dihapus.');    
+        return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil dihapus.');    
     }
 
     public function deleteuser($id){

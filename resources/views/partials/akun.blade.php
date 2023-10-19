@@ -18,7 +18,7 @@
     </div>
   </div>
   @elseif(session('success'))
-  <div class="alert-container1 success">
+  <div class="alert-container2 success">
     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
     <div>
       {{ session('success') }}
@@ -32,7 +32,7 @@
   <div class="form-group">
     <label for="password">Kata Sandi</label>
     <div class="password-input-wrapper">
-      <input class="form-control" type="password" id="password" placeholder="*******" readonly>
+      <input class="form-control" type="password" id="password" placeholder="**********" readonly>
       <button type="button" class="btn btn-success edit-button" data-toggle="modal" data-target=".editkatasandi">
         <i style="font-size:20px" class="bi bi-pencil-square"></i>
       </button>

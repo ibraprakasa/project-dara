@@ -23,6 +23,11 @@
     margin-left:27px;
 }
 
+.filter1{
+    margin-top:100px; 
+    margin-left:40px;
+}
+
 .wow{
     width: auto;
 }
@@ -157,6 +162,18 @@
     margin-bottom: 5px;
 }
 
+.alert-container2 {
+    display: flex;
+    width:50%;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #03A13B; /* Warna merah */
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
 .alert-icon {
     font-size: 24px;
     margin-right: 10px;
@@ -247,7 +264,62 @@ table td {
     font-size: 3rem;
 }
 
-.small-text{
-    font-size: 25px;
+
+.jaraksidebar{
+    font-weight:bold; 
+    border-top:2px solid white; 
+    margin-top:2px;
+    margin-bottom:-9px
 }
 
+/* Gambar di dalam sidebar */
+.gambar {
+    width: 260px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px; 
+}
+
+.dropdown-menu .dropdown-item {
+    border-bottom: 1px solid black;
+  }
+  .dropdown-menu .dropdown-item:last-child {
+    border-bottom: none;
+  }
+
+.dropdown-menu {
+    min-width: 100%;
+    /* Sesuaikan lebar dengan kebutuhan Anda */
+}
+
+.dropdown-item {
+    width: 100%;
+    /* Sesuaikan lebar dengan kebutuhan Anda */
+    
+    /* Pusatkan teks pada dropdown item */
+}
+
+
+.filter-icon{
+    border-radius:0 15px 15px 0; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+        background-color: #3B4B65;
+    }
+
+.insert-icon{
+    border-radius:0 0 15px 0;
+    width: 22px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+     background-color: #3B4B65;
+}
+
+.search-icon{
+    height:42px;
+    background-color: #d9d9d9; 
+    color:black;
+    border-radius:15px 0 0 0;
+}

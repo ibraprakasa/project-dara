@@ -24,7 +24,7 @@
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahpendonor" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
         Tambah
     </button>
 
@@ -120,10 +120,9 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="goldar">Golongan Darah</label>
                         <select class="kolom form-control" name="id_golongan_darah" id="goldar">
-                            <option class="kolom form-control" value="5">A</option>
-                            <option class="kolom form-control" value="6">B</option>
-                            <option class="kolom form-control" value="7">AB</option>
-                            <option class="kolom form-control" value="4">O</option>
+                            @foreach($goldar as $darah)
+                            <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -181,11 +180,6 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="nama">Nama</label>
                         <input class="kolom form-control" name="nama" type="text" id="nama" value="{{ $row->nama }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password">
-
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>

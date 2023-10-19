@@ -14,16 +14,29 @@ use function PHPUnit\Framework\isNull;
 class JadwalDonorController extends Controller
 {
     public function index()
-{
-    $search = request()->input('search');
+
+    {
+        $search = request()->input('search');
+        $sort = request()->input('sort');
 
     $query = JadwalDonor::query();
 
-    if ($search) {
-        $query->where('lokasi', 'LIKE', '%' . $search . '%');
-    }
+        if ($search) {
+            $query->where('lokasi', 'LIKE', '%' . $search . '%');
+        }
 
-    $data = $query->paginate(5);
+        if ($sort) {
+            if ($sort === 'tanggal_asc') {
+                $query->orderBy('tanggal_donor')->orderBy('jam_mulai');
+            } elseif ($sort === 'tanggal_desc') {
+                $query->orderByDesc('tanggal_donor')->orderBy('jam_mulai');
+            }
+        }else {
+            // Default sorting (you can change this to your preferred default sorting)
+            $query->orderBy('created_at');
+        }
+
+        $data = $query->paginate(10);
 
     foreach ($data as $jadwalDonor) {
         $jumlahPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id)->count();

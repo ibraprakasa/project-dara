@@ -12,8 +12,8 @@
 <div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
-        <input class="btn" type="search" name="search" placeholder="Cari Judul Berita..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-        <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+        <input class="btn search-icon" type="search" name="search" placeholder="Cari Judul Berita...">
+        <button type="submit" class="btn btn-dark insert-icon">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -23,7 +23,7 @@
 <div class="filter btn-group">
 
     <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-dark" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-        <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+        <i class="bi bi-file-plus " style="font-size: 20px; color: white;"></i>
     </button>
 
     <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahberita" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
@@ -58,7 +58,7 @@
                 <th scope="col">Gambar</th>
                 <th width="150px" scope="col">Judul</th>
                 <th scope="col">Deskripsi</th>
-                <th scope="col">CREATED_AT</th>
+                <th scope="col">UPDATED_AT</th>
                 <th colspan="2" scope="col">Action</th>
             </tr>
         </thead>
@@ -76,7 +76,7 @@
                 </td>
                 <td class="truncate-text1">{{ $row->judul }}</td>
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
-                <td>{{ $row->created_at->diffForHumans() }}</td>
+                <td>{{ $row->updated_at->diffForHumans() }}</td>
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#editberita{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
@@ -167,7 +167,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B;border-radius:10px;">Simpan</button>
                 </div>
             </form>
         </div>

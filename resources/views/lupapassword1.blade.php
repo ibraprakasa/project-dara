@@ -56,7 +56,7 @@
                 </div>
             </div>
 
-            <hr style="margin-top:0;margin-bottom:0">
+            <hr>
 
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">

@@ -23,13 +23,6 @@ class StokDarahController extends Controller
         return view('partials.stokdarah', compact('data','kode_pendonor','lokasi'));
     }
 
-    // public function insertstok(Request $request)
-    // {
-    //     StokDarah::create($request->all());
-    //     return redirect()->route('stokdarah');
-
-    // }
-
     public function insertstok(Request $request)
     {
         $kode_pendonor = $request->input('kode_pendonor');
@@ -64,7 +57,7 @@ class StokDarahController extends Controller
         ]);
 
         // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
-        return redirect()->route('stokdarah');
+        return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil ditambahkan.');
     }
 
     public function updatestok(Request $request)
@@ -101,6 +94,6 @@ class StokDarahController extends Controller
         ]);
 
         // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
-        return redirect()->route('stokdarah');
+        return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil diperbarui.');
     }
 }

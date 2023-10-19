@@ -4,22 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\JadwalDonor;
 use App\Models\jadwalPendonor;
+use App\Models\GolonganDarah;
 use App\Models\Pendonor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class DataPendonorController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
-        if (isset($_GET['search'])) {
-            $search = $_GET['search'];
-            $data = Pendonor::where('nama', 'LIKE', '%' . $search . '%')->get();
-        } else {
-            $data = Pendonor::all();
+        $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
+        $search = request()->input('search');
+
+        $query = Pendonor::query();
+
+        if ($search) {
+            $query->where('nama', 'LIKE', '%' . $search . '%');
         }
 
-        return view('partials.datapendonor', compact('data'));
+        $data = $query->paginate(5);
+
+        return view('partials.datapendonor', compact('data','goldar'));
     }
 
     public function insertpendonor(Request $request)
@@ -29,11 +34,8 @@ class DataPendonorController extends Controller
             'jenis_kelamin' => 'required|in:laki-laki,perempuan',
         ]);
 
-        // Enkripsi password sebelum menyimpannya
-        $request['password'] = Hash::make($request->password);
-
         Pendonor::create($request->all());
-        return redirect()->route('datapendonor');
+        return redirect()->route('datapendonor')->with('success','Data Pendonor berhasil ditambahkan.');    
     }
 
     public function updatependonor(Request $request, $id)
@@ -42,9 +44,11 @@ class DataPendonorController extends Controller
         $pendonor = Pendonor::find($id);
 
         // Memperbarui data dengan nilai dari $request->all()
-        $pendonor->update($request->all());
-
-        return redirect()->route('datapendonor');
+        if($pendonor->update($request->all())){
+            return redirect()->route('datapendonor')->with('success','Data Pendonor berhasil diperbarui.');    
+        }else{
+            return redirect()->route('datapendonor')->with('error','Data Pendonor gagal diperbarui. Silahkan cek');    
+        }
     }
 
     public function deletependonor($id)
@@ -66,6 +70,6 @@ class DataPendonorController extends Controller
             $pendonor->delete();
         }
 
-        return redirect()->route('datapendonor');
+        return redirect()->route('datapendonor')->with('success','Data Pendonor berhasil dihapus.');    
     }
 }
