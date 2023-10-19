@@ -51,6 +51,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($pendaftar) == 0)
+        <tr>
+            <td colspan="6" style="text-align:center;">Pedaftar belum ada</td>
+        </tr>
+        @else
             @foreach($pendaftar as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
@@ -66,6 +71,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>

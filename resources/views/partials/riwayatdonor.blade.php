@@ -56,6 +56,11 @@ use Carbon\Carbon;
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($riwayat_donor) == 0)
+        <tr>
+            <td colspan="6" style="text-align:center;">Riwayat donor belum ada</td>
+        </tr>
+        @else
             @foreach($riwayat_donor as $key => $rd)
             <tr>
                 <th scope="row">{{ $key+$riwayat_donor->firstItem() }}</th>
@@ -66,6 +71,7 @@ use Carbon\Carbon;
                 <td>{{ $rd->lokasi_donor }}</td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
     <div class="pagination1">
@@ -85,6 +91,11 @@ use Carbon\Carbon;
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($riwayat_ambil) == 0)
+        <tr>
+            <td colspan="7" style="text-align:center;">Riwayat ambil belum ada</td>
+        </tr>
+        @else
             @foreach($riwayat_ambil as $key => $rd)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>

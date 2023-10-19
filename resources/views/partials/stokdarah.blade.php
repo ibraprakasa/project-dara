@@ -52,6 +52,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($data) == 0)
+        <tr>
+            <td colspan="4" style="text-align:center;">Stok Darah belum ada</td>
+        </tr>
+        @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
@@ -60,12 +65,12 @@
                 <td>{{ $row->updated_at->diffForHumans() }}</td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>
 
 <!-- MODAL TAMBAH -->
-@foreach($data as $row)
 <div class="modal fade tambahstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -88,7 +93,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Jumlah Kantong</label>
-                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5">
+                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5" required>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="lokasi">Lokasi</label>
@@ -106,7 +111,6 @@
         </div>
     </div>
 </div>
-@endforeach
 <!-- END MODAL -->
 
 <!-- MODAL AMBIL -->

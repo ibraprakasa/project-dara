@@ -87,6 +87,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($data) == 0)
+        <tr>
+            <td colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+        </tr>
+        @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
@@ -115,6 +120,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
     <div class="pagination1">
@@ -175,6 +181,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+        @if(count($data1) == 0)
+        <tr>
+            <td colspan="8" style="text-align:center;">Datanya belum ada</td>
+        </tr>
+        @else
             @foreach($data1 as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
@@ -200,6 +211,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
     </table>
     <div class="pagination2">
         {{ $data1->links() }}
@@ -210,7 +222,6 @@
 <!-- TABEL PENDONOR -->
 
 <!-- MODAL INSERT PENDONOR -->
-@foreach($data as $row)
 <div class="modal fade tambahpendonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -220,7 +231,7 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/insertpendonorsuper" method="POST">
+            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -275,7 +286,6 @@
         </div>
     </div>
 </div>
-@endforeach
 <!-- END MODAL -->
 
 <!-- MODAL EDIT PENDONOR -->
@@ -331,7 +341,7 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL DELETE JADWAL DONOR -->
+<!-- MODAL DELETE DONOR -->
 @foreach($data as $key => $row)
 <div class="modal fade" id="deletependonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -469,7 +479,6 @@
 <!--  END MODAL  -->
 
 <!-- MODAL INSERT USER -->
-@foreach($data1 as $row)
 <div class="modal fade tambahuser" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -518,7 +527,6 @@
         </div>
     </div>
 </div>
-@endforeach
 <!-- END MODAL -->
 
 <!-- MODAL EDIT USER -->

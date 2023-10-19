@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\GolonganDarah;
 use App\Models\JadwalDonor;
-use App\Models\jadwalPendonor;
+use App\Models\JadwalPendonor;
 use App\Models\Pendonor;
 use Illuminate\Http\Request;
 
@@ -14,11 +14,12 @@ use function PHPUnit\Framework\isNull;
 class JadwalDonorController extends Controller
 {
     public function index()
+
     {
         $search = request()->input('search');
         $sort = request()->input('sort');
 
-        $query = JadwalDonor::query();
+    $query = JadwalDonor::query();
 
         if ($search) {
             $query->where('lokasi', 'LIKE', '%' . $search . '%');
@@ -37,8 +38,14 @@ class JadwalDonorController extends Controller
 
         $data = $query->paginate(10);
 
-        return view('partials.jadwaldonor', compact('data'));
+    foreach ($data as $jadwalDonor) {
+        $jumlahPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id)->count();
+        $jadwalDonor->jumlah_pendonor = $jumlahPendonor;
     }
+
+    return view('partials.jadwaldonor', compact('data'));
+}
+
 
     public function infopendaftar(Request $request)
 {

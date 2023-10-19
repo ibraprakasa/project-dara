@@ -1,0 +1,67 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Comment;
+use App\Models\Pendonor;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class CommentControllerAPI extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('auth:api', ['except' => []]);
+    }
+
+    public function show($id) {
+        $comments = Comment::where('id_post', $id)->get();
+    
+        if (count($comments) > 0) {
+            $responseData = [];
+    
+            foreach ($comments as $comment) {
+                $pendonor = Pendonor::find($comment->id_pendonor);
+    
+                // Pastikan pendonor ditemukan sebelum mencoba mengakses propertinya
+                if ($pendonor) {
+                    $responseData[] = [
+                        'id_post' => $id,
+                        'comment' => $comment,
+                        'pendonor' => $pendonor,
+                    ];
+                }
+            }
+    
+            return response()->json($responseData);
+        } else {
+            return response()->json(['message' => 'Tidak ada data post comment'], 404);
+        }
+    }
+    
+
+    public function addComment(Request $request){
+        $validasi = Validator::make($request->all(), [
+            'id_pendonor' => 'required|integer',
+            'id_post' => 'required|integer',
+            'text' => 'required'
+        ]);
+    
+        if($validasi->fails()){
+            return response()->json([
+                'status' => false,
+                'message' => $validasi->errors()
+            ]);
+        }
+
+        $addComment = Comment::create([
+            'id_pendonor' => $request->id_pendonor,
+            'id_post' => $request->id_post,
+            'text' => $request->text
+        ]);
+        return response()->json([
+            'status' => true,
+            'message' => 'Success'
+        ]);
+    }
+}

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GolonganDarah;
+use App\Models\jadwalPendonor;
 use App\Models\Pendonor;
 use App\Models\Role;
 use App\Models\User;
@@ -97,8 +98,11 @@ class KelolaAkunController extends Controller
 
     public function deletependonorsuper($id){
         $pendonor = Pendonor::find($id);
-
-        $pendonor ->delete();
+        $jadwalDonor = jadwalPendonor::where('id_pendonor',$pendonor->id);
+        if($jadwalDonor){
+            $jadwalDonor->delete();
+        }
+        $pendonor->delete();
 
         return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil dihapus.');    
     }
