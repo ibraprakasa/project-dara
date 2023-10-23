@@ -91,7 +91,8 @@
       'datapendonor': 'DATA PENDONOR',
       'berita': 'BERITA DONOR',
       'akun': 'AKUN',
-      'infopendaftar' : 'INFO PENDAFTAR'
+      'infopendaftar' : 'INFO PENDAFTAR',
+      'forum' : 'FORUM'
       // Tambahkan halaman lain dan judulnya di sini
     };
 

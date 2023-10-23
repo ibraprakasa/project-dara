@@ -76,7 +76,7 @@
         <thead class="thead">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">No. Pendonor</th>
+                <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
                 <th scope="col">Tanggal Lahir</th>
                 <th scope="col">Jenis Kelamin</th>

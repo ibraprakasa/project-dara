@@ -69,8 +69,8 @@
             </li>
             <hr class="jaraksidebar">
             @endif
-            <li class="{{ request()->routeIs('forum') ? 'active' : '' }}">
-                <a href="{{ route('forum') }}" style="color: white; font-weight:bold;">
+            <li class="{{ request()->routeIs('forum-postingan') ? 'active' : '' }}">
+                <a href="{{ route('forum-postingan') }}" style="color: white; font-weight:bold;">
                     <i class="fa fa-comments" style="color: white; font-weight:bold;"></i>
                     <p>Forum</p>
                 </a>
