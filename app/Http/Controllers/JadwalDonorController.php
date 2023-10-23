@@ -19,7 +19,7 @@ class JadwalDonorController extends Controller
         $search = request()->input('search');
         $sort = request()->input('sort');
 
-    $query = JadwalDonor::query();
+        $query = JadwalDonor::query();
 
         if ($search) {
             $query->where('lokasi', 'LIKE', '%' . $search . '%');
@@ -31,57 +31,58 @@ class JadwalDonorController extends Controller
             } elseif ($sort === 'tanggal_desc') {
                 $query->orderByDesc('tanggal_donor')->orderBy('jam_mulai');
             }
-        }else {
+        } else {
             // Default sorting (you can change this to your preferred default sorting)
             $query->orderBy('created_at');
         }
 
         $data = $query->paginate(10);
 
-    foreach ($data as $jadwalDonor) {
-        $jumlahPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id)->count();
-        $jadwalDonor->jumlah_pendonor = $jumlahPendonor;
-    }
+        foreach ($data as $jadwalDonor) {
+            $jumlahPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id)->count();
+            $jadwalDonor->jumlah_pendonor = $jumlahPendonor;
+        }
 
-    return view('partials.jadwaldonor', compact('data'));
-}
+        return view('partials.jadwaldonor', compact('data'));
+    }
 
 
     public function infopendaftar(Request $request)
-{
-    $id = $request->input('id');
-    $search = $request->input('search');
+    {
+        $id = $request->input('id');
+        $search = $request->input('search');
 
-    $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $id)->get();
-    $pendaftar = [];
+        $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $id)->get();
+        $pendaftar = [];
 
-    if ($search) {
-        $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $id)
-            ->whereHas('pendonor', function ($query) use ($search) {
-                $query->where('nama', 'LIKE', '%' . $search . '%');
-            })->get();
+        if ($search) {
+            $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $id)
+                ->whereHas('pendonor', function ($query) use ($search) {
+                    $query->where('nama', 'LIKE', '%' . $search . '%');
+                })->get();
+        }
+
+        foreach ($jadwalPendonor as $pendonor) {
+            $dataPendonor = Pendonor::find($pendonor->id_pendonor);
+            $Pendonor = [
+                'id' => $dataPendonor->id,
+                'kode_pendonor' => $dataPendonor->kode_pendonor,
+                'nama' => $dataPendonor->nama,
+                'goldar' => GolonganDarah::where('id', $dataPendonor->id_golongan_darah)->first()->nama,
+                'kontak' => $dataPendonor->kontak_pendonor,
+                // tambahkan kolom lain yang Anda perlukan di sini
+            ];
+
+            // Menambahkan data pendonor ke dalam array pendaftar
+            $pendaftar[] = $Pendonor;
+        }
+        return view('partials.infopendaftar', compact('pendaftar'));
     }
 
-    foreach ($jadwalPendonor as $pendonor) {
-        $dataPendonor = Pendonor::find($pendonor->id_pendonor);
-        $Pendonor = [
-            'id' => $dataPendonor->id,
-            'kode_pendonor' => $dataPendonor->kode_pendonor,
-            'nama' => $dataPendonor->nama,
-            'goldar' => GolonganDarah::where('id', $dataPendonor->id_golongan_darah)->first()->nama,
-            'kontak' => $dataPendonor->kontak_pendonor,
-            // tambahkan kolom lain yang Anda perlukan di sini
-        ];
-
-        // Menambahkan data pendonor ke dalam array pendaftar
-        $pendaftar[] = $Pendonor;
-    }
-    return view('partials.infopendaftar', compact('pendaftar'));
-}
-
-    public function deletejadwalpendonor($id,Request $request){
-        $pendaftar = jadwalPendonor::where('id_pendonor',$id)->where('id_jadwal_donor_darah',$request->input('id_jadwal'))->first();
-        $jumlahPendaftar = JadwalDonor::where('id',$request->input('id_jadwal'))->first();
+    public function deletejadwalpendonor($id, Request $request)
+    {
+        $pendaftar = jadwalPendonor::where('id_pendonor', $id)->where('id_jadwal_donor_darah', $request->input('id_jadwal'))->first();
+        $jumlahPendaftar = JadwalDonor::where('id', $request->input('id_jadwal'))->first();
         $jumlahPendaftar->jumlah_pendonor = $jumlahPendaftar->jumlah_pendonor -  1;
         $pendaftar->delete();
         $jumlahPendaftar->update();

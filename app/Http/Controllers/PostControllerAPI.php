@@ -26,6 +26,9 @@ class PostControllerAPI extends Controller
 
         // Pastikan pendonor ditemukan sebelum mencoba mengakses propertinya
         if ($pendonor) {
+            $diff = $post->updated_at->diffForHumans();
+            $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+        
             $responseData[] = [
                 'id' => $post->id,
                 'gambar_profile' => $pendonor->gambar,
@@ -33,9 +36,10 @@ class PostControllerAPI extends Controller
                 'text' => $post->text,
                 'gambar' => $post->gambar,
                 'jumlah_comment' => $jumlah_comment,
-                'updated_at' => $post->updated_at
+                'updated_at' => $diff
             ];
         }
+        
     }
 
     if (count($responseData) > 0) {
@@ -51,20 +55,23 @@ class PostControllerAPI extends Controller
         $user = auth()->guard('api')->user();
 
         //set validation
-       $validator = Validator::make($request->all(), [
-        'text' => 'required_without:gambar', // text harus ada jika gambar kosong
-        'gambar' => 'required_without:text', // gambar harus ada jika text kosong
-        ]);
+    //    $validator = Validator::make($request->all(), [
+    //     'text' => 'required_without:gambar', // text harus ada jika gambar kosong
+    //     'gambar' => 'required_without:text', // gambar harus ada jika text kosong
+    //     ]);
 
-        //if validation fails
-        if ($validator->fails()) {
-            return response()->json($validator->errors());
-        }
+    //     //if validation fails
+    //     if ($validator->fails()) {
+    //         return response()->json([
+    //             'success' => false,
+    //             'message' => $validator->errors()
+    //         ]);
+    //     }
 
         $post = Post::create([
             'id_pendonor' => $user->id,
             'text' => $request->text,
-            'gambar' => $request->gambar
+            // 'gambar' => $request->gambar
         ]);
 
         // Mengunggah gambar baru jika ada
@@ -79,6 +86,23 @@ class PostControllerAPI extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Berhasil tambah post'
+        ]);
+    }
+
+    public function findPost($id){
+        $post = Post::find($id);
+        $pendonor = Pendonor::where('id',$post->id_pendonor)->first();
+        $diff = $post->updated_at->diffForHumans();
+        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+        $jumlah_comment = Comment::where('id_post',$post->id)->count();
+        return response()->json([
+            'id' => $post->id,
+            'gambar_profile' => $pendonor->gambar,
+            'nama' => $pendonor->nama,
+            'text' => $post->text,
+            'gambar' => $post->gambar,
+            'jumlah_comment' => $jumlah_comment,
+            'update_at' => $diff
         ]);
     }
 }

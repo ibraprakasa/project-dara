@@ -52,5 +52,6 @@ Route::post('/otp/reset-password', [LupaPasswordControllerAPI::class, 'resetPass
 //forum
 Route::get('/post', [PostControllerAPI::class, 'show']);
 Route::post('/post/add', [PostControllerAPI::class, 'addPost']);
+Route::get('/post/{id}', [PostControllerAPI::class, 'findPost']);
 Route::get('/comment/{id}', [CommentControllerAPI::class, 'show']);
 Route::post('/comment/add', [CommentControllerAPI::class, 'addComment']);
