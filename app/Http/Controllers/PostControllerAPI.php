@@ -90,6 +90,7 @@ class PostControllerAPI extends Controller
     }
 
     public function findPost($id){
+        
         $post = Post::find($id);
         $pendonor = Pendonor::where('id',$post->id_pendonor)->first();
         $diff = $post->updated_at->diffForHumans();
