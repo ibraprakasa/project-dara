@@ -36,9 +36,9 @@
     background-color: #3B4B65;
   }
   
-.btn-secondary:hover {
+.btn-primary:hover {
     background-color: white;
-    color: black; /* Anda juga mungkin perlu mengatur warna teks saat hover sesuai kebutuhan Anda */
+    color: #3B4B65; /* Anda juga mungkin perlu mengatur warna teks saat hover sesuai kebutuhan Anda */
   }
 
 .kolom{
@@ -52,6 +52,11 @@
     border: none;
     outline: none;
     cursor: pointer;
+}
+
+.custom-button:hover {
+    transform: scale(1.3);
+    transition: transform 0.2s; /* Menambahkan transisi agar efek menjadi mulus */
 }
 
 .resizable {
@@ -277,7 +282,7 @@ table td {
     width: 260px; 
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px; 
+    margin-top: 20px; 
 }
 
 .dropdown-menu .dropdown-item {
@@ -322,4 +327,8 @@ table td {
     background-color: #d9d9d9; 
     color:black;
     border-radius:15px 0 0 0;
+}
+
+.submenu {
+    display: none;
 }

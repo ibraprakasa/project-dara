@@ -19,7 +19,8 @@ class Post extends Authenticatable implements JWTSubject
     protected $fillable = [
        'id_pendonor',
        'text',
-       'gambar'
+       'gambar',
+       'jumlah_komentar'
     ];
 
     public function getJWTIdentifier()
@@ -35,5 +36,9 @@ class Post extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function pendonor(){
+        return $this->belongsTo(Pendonor::class, 'id_pendonor','id');
     }
 }

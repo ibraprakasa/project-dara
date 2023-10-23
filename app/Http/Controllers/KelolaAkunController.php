@@ -17,6 +17,7 @@ class KelolaAkunController extends Controller
         $roles = Role::all(); // Mengambil semua peran dari model Role
         $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
         $search = request()->input('search'); 
+        $sort = request()->input('sortuser');
         $golonganDarah = request()->input('id_golongan_darah');
         $jenisKelamin = request()->input('jenis_kelamin');
 
@@ -24,9 +25,25 @@ class KelolaAkunController extends Controller
         $query1 = User::query();
 
         if ($search) {
-            $query->where('nama', 'LIKE', '%' . $search . '%');
-            $query1->where('name', 'LIKE', '%' . $search . '%');
+            $query  ->Where('nama', 'LIKE', '%' . $search . '%')
+                    ->orWhere('kode_pendonor', 'LIKE', '%' . $search . '%')
+                    ->orWhere('email', 'LIKE', '%' . $search . '%')
+                    ->orWhere('kontak_pendonor', 'LIKE', '%' . $search . '%')
+                    ->orWhere('tanggal_lahir', 'LIKE', '%' . $search . '%');
+
+            $query1 ->where('name', 'LIKE', '%' . $search . '%');
         }
+
+        if ($sort) {
+            if ($sort === 'superadmin') {
+                $query1->where('role_id',1)->orderBy('name');
+            } elseif ($sort === 'admin') {
+                $query1->where('role_id',2)->orderBy('name');
+            }
+        }else{
+            $query1->orderByDesc('role_id')->orderBy('created_at');
+        }
+        
 
         if ($golonganDarah) {
             $query->whereHas('golongandarah', function ($q) use ($golonganDarah) {
@@ -37,6 +54,8 @@ class KelolaAkunController extends Controller
         if ($jenisKelamin) {
             $query->where('jenis_kelamin', $jenisKelamin);
         }
+
+        $query->orderBy('kode_pendonor');
 
         $data = $query->paginate(5);
         $data1 = $query1->paginate(5);

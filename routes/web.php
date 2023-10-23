@@ -64,11 +64,16 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::post('updatejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@updatejadwaldonor')->name('updatejadwaldonor');
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');
     //END JADWAL DONOR
+
+    //FORUM DONOR 
+    Route::get('forum', 'App\Http\Controllers\ForumController@index')->name('forum-postingan');
+    Route::delete('deletepostingan/{id}', 'App\Http\Controllers\App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
+    //END FORUM DONOR
     
     //INFO PENDAFTAR
     Route::get('/infopendaftar', 'App\Http\Controllers\JadwalDonorController@infopendaftar')->name('infopendaftar');
     Route::delete('deletejadwalpendonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwalpendonor')->name('deletejadwalpendonor');
-    
+    //END INFO PENDAFTAR
 });
 
 

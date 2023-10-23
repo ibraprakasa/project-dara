@@ -76,7 +76,7 @@
         <thead class="thead">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">No. Pendonor</th>
+                <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
                 <th scope="col">Tanggal Lahir</th>
                 <th scope="col">Jenis Kelamin</th>
@@ -87,11 +87,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($data) == 0)
-        <tr>
-            <td colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
-        </tr>
-        @else
+            @if(count($data) == 0)
+            <tr>
+                <td colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+            </tr>
+            @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
@@ -149,6 +149,20 @@
 
         </div>
 
+        <div class="filter btn-group">
+            <form action="/kelolaakun" method="GET" style="display: flex;">
+                <div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
+                        Filter berdasarkan
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
+                        <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
+                        <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="admin">Admin saja</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
 
         <div class="filter btn-group wow">
             @if(session('error'))
@@ -181,11 +195,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($data1) == 0)
-        <tr>
-            <td colspan="8" style="text-align:center;">Datanya belum ada</td>
-        </tr>
-        @else
+            @if(count($data1) == 0)
+            <tr>
+                <td colspan="8" style="text-align:center;">Datanya belum ada</td>
+            </tr>
+            @else
             @foreach($data1 as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>

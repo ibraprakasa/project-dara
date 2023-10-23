@@ -20,6 +20,7 @@ class StokDarahController extends Controller
         $data = StokDarah::all();
         $kode_pendonor = Pendonor::all();
         $lokasi = JadwalDonor::all();
+        
         return view('partials.stokdarah', compact('data','kode_pendonor','lokasi'));
     }
 
