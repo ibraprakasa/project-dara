@@ -42,6 +42,11 @@ class Comment extends Authenticatable implements JWTSubject
         return $this->belongsTo(Post::class, 'id_post'); // Sesuaikan dengan nama kolom yang digunakan di tabel comments
     }
 
+    public function reply()
+    {
+        return $this->hasMany(BalasComment::class, 'id_comment'); // Sesuaikan dengan nama kolom yang digunakan di tabel comments
+    }
+
     public function pendonor()
     {
         return $this->belongsTo(Pendonor::class, 'id_pendonor');

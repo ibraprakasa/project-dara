@@ -36,4 +36,14 @@ class BalasComment extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function pendonor()
+    {
+        return $this->belongsTo(Pendonor::class, 'id_pendonor');
+    }
+
+    public function comments()
+    {
+        return $this->belongsTo(Comment::class, 'id_comment');
+    }
 }

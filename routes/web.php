@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
 
     Route::get('forum-komentar/{id_post}', 'App\Http\Controllers\ForumController@getKomentar')->name('forum-komentar');
 
+    Route::get('forum-balasan/{id_comment}', 'App\Http\Controllers\ForumController@getBalasan')->name('forum-balasan');
+
     //END FORUM DONOR
     
     //INFO PENDAFTAR

@@ -39,6 +39,14 @@ class ForumController extends Controller
         return view('partials.forum-komentar', compact('komentar'));
     }
 
+    public function getBalasan($id_comment)
+    {
+        $comment = Comment::find($id_comment);
+        $balas = $comment->reply; // Ambil komentar untuk postingan tertentu
+        return view('partials.forum-balasan', compact('balas'));
+    }
+
+
 
     public function deletepostingan($id)
     {
