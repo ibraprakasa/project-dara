@@ -28,9 +28,10 @@
       <nav class="navbar" style="margin-bottom:-80px">
         <div class="title">
           <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
-            Title
+            <span id="pageTitle">Title</span>
           </a>
         </div>
+
       </nav>
       <!-- End Navbar -->
       <!-- Content -->
@@ -63,61 +64,62 @@
 
   </script>
 
- <script>
-  $(document).ready(function() {
-    // Mendapatkan path URL saat ini
-    var currentPath = window.location.pathname;
+  <script>
+    $(document).ready(function() {
+      // Mendapatkan path URL saat ini
+      var currentPath = window.location.pathname;
 
-    var titleElement = document.querySelector('.navbar-brand');
+      var titleElement = document.querySelector('.navbar-brand');
 
-    // Loop melalui setiap tautan sidebar
-    $(".sidebar a").each(function() {
-      // Memeriksa apakah tautan saat ini sesuai dengan path URL saat ini
-      if ($(this).attr("href") === currentPath) {
-        // Mengubah warna latar belakang sidebar
+      // Loop melalui setiap tautan sidebar
+      $(".sidebar a").each(function() {
+        // Memeriksa apakah tautan saat ini sesuai dengan path URL saat ini
+        if ($(this).attr("href") === currentPath) {
+          // Mengubah warna latar belakang sidebar
+          $(".active").css("background-color", "#1B77A0");
+          return false; // Berhenti dari loop jika tautan cocok
+        }
+      });
+
+      // Mendapatkan parameter query 'search' dari URL
+      var searchParam = new URLSearchParams(window.location.search).get('search');
+      var pageTitleMap = {
+        'dashboard': 'DASHBOARD',
+        'stokdarah': 'STOK DARAH',
+        'riwayatdonor': 'RIWAYAT',
+        'jadwaldonor': 'JADWAL DONOR',
+        'kelolaakun': 'KELOLA AKUN',
+        'datapendonor': 'DATA PENDONOR',
+        'berita': 'BERITA DONOR',
+        'akun': 'AKUN',
+        'infopendaftar': 'INFO PENDAFTAR',
+        'forum': 'FORUM',
+        'forum-komentar': 'KOMENTAR'
+        // Tambahkan halaman lain dan judulnya di sini
+      };
+
+      // Mendapatkan nama halaman dari path URL saat ini
+      var currentPage = currentPath.split('/').pop();
+
+      // Simpan judul asli sebelumnya
+      var originalTitle = pageTitleMap[currentPage] || '';
+
+      // Jika ada parameter pencarian, tambahkan "Hasil Pencarian: [searchParam]" ke judul
+      if (searchParam) {
+        // titleElement.innerHTML = originalTitle + ' - Hasil Pencarian: ' + searchParam;
+        titleElement.innerHTML = originalTitle;
         $(".active").css("background-color", "#1B77A0");
-        return false; // Berhenti dari loop jika tautan cocok
+      } else {
+        // Jika tidak ada parameter pencarian, tampilkan judul asli
+        titleElement.innerHTML = originalTitle;
+        $(".active").css("background-color", "#1B77A0");
+
       }
+
+      // Tampilkan judul
+      titleElement.style.visibility = 'visible';
     });
-
-    // Mendapatkan parameter query 'search' dari URL
-    var searchParam = new URLSearchParams(window.location.search).get('search');
-    var pageTitleMap = {
-      'dashboard': 'DASHBOARD',
-      'stokdarah': 'STOK DARAH',
-      'riwayatdonor': 'RIWAYAT',
-      'jadwaldonor': 'JADWAL DONOR',
-      'kelolaakun': 'KELOLA AKUN',
-      'datapendonor': 'DATA PENDONOR',
-      'berita': 'BERITA DONOR',
-      'akun': 'AKUN',
-      'infopendaftar' : 'INFO PENDAFTAR',
-      'forum' : 'FORUM'
-      // Tambahkan halaman lain dan judulnya di sini
-    };
-
-    // Mendapatkan nama halaman dari path URL saat ini
-    var currentPage = currentPath.split('/').pop();
-
-    // Simpan judul asli sebelumnya
-    var originalTitle = pageTitleMap[currentPage] || '';
-
-    // Jika ada parameter pencarian, tambahkan "Hasil Pencarian: [searchParam]" ke judul
-    if (searchParam) {
-      // titleElement.innerHTML = originalTitle + ' - Hasil Pencarian: ' + searchParam;
-      titleElement.innerHTML = originalTitle;
-      $(".active").css("background-color", "#1B77A0");
-    } else {
-      // Jika tidak ada parameter pencarian, tampilkan judul asli
-      titleElement.innerHTML = originalTitle;
-      $(".active").css("background-color", "#1B77A0");
-
-    }
-
-    // Tampilkan judul
-    titleElement.style.visibility = 'visible';
-  });
-</script>
+  </script>
 
 
 

@@ -66,8 +66,11 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     //END JADWAL DONOR
 
     //FORUM DONOR 
-    Route::get('forum', 'App\Http\Controllers\ForumController@index')->name('forum-postingan');
+    Route::get('forum', 'App\Http\Controllers\ForumController@getPostingan')->name('forum-postingan');
     Route::delete('deletepostingan/{id}', 'App\Http\Controllers\App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
+
+    Route::get('forum-komentar/{id_post}', 'App\Http\Controllers\ForumController@getKomentar')->name('forum-komentar');
+
     //END FORUM DONOR
     
     //INFO PENDAFTAR

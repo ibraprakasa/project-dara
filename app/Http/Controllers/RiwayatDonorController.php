@@ -21,15 +21,25 @@ class RiwayatDonorController extends Controller
         $lokasi = request()->input('lokasi');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $search = request()->input('search');
 
         // dd($goldar,$lokasi);
 
         $query = RiwayatDonor::query();
         $query1 = RiwayatAmbil::query();
 
+        if($search){
+            $query->whereHas('pendonor', function ($q) use ($search) {
+                $q->where('nama', 'LIKE', '%' . $search . '%');
+            });
+        
+            $query1->whereHas('pendonor', function ($q) use ($search) {
+                $q->where('nama', 'LIKE', '%' . $search . '%');
+            });
+        }
+
         if ($lokasi) {
             $query->where('lokasi_donor', $lokasi);
-            $query1->where('lokasi_ambil', $lokasi);
         }
         
         if ($goldar) {
