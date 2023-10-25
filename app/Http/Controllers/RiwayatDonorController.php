@@ -52,9 +52,12 @@ class RiwayatDonorController extends Controller
             $query->whereBetween('tanggal_donor', [$tanggalawal, $tanggalakhir]);
             $query1->whereBetween('tanggal_ambil', [$tanggalawal, $tanggalakhir]);
         }
+
+        $query->join('pendonor', 'riwayatdonor.pendonor_id', '=', 'pendonor.id')
+        ->orderBy('pendonor.nama');
         
-        $riwayat_donor =  $query->paginate(7);
-        $riwayat_ambil =  $query1->paginate(7);
+        $riwayat_donor =  $query->paginate(10);
+        $riwayat_ambil =  $query1->paginate(10);
         
         
         return view('partials.riwayatdonor', compact('riwayat_donor','riwayat_ambil','lokasiDaftar','goldarDaftar'));

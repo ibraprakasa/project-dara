@@ -83,6 +83,8 @@
 
       // Mendapatkan parameter query 'search' dari URL
       var searchParam = new URLSearchParams(window.location.search).get('search');
+      var idParam = new URLSearchParams(window.location.search).get('id'); // Mendapatkan parameter 'id' dari URL
+
       var pageTitleMap = {
         'dashboard': 'DASHBOARD',
         'stokdarah': 'STOK DARAH',
@@ -93,8 +95,8 @@
         'berita': 'BERITA DONOR',
         'akun': 'AKUN',
         'infopendaftar': 'INFO PENDAFTAR',
-        'forum': 'FORUM',
-        'forum-komentar': 'KOMENTAR'
+        'forum-postingan': 'FORUM DONOR',
+        'laporan' : 'LAPORAN'
         // Tambahkan halaman lain dan judulnya di sini
       };
 
@@ -105,16 +107,20 @@
       var originalTitle = pageTitleMap[currentPage] || '';
 
       // Jika ada parameter pencarian, tambahkan "Hasil Pencarian: [searchParam]" ke judul
-      if (searchParam) {
-        // titleElement.innerHTML = originalTitle + ' - Hasil Pencarian: ' + searchParam;
+      if (idParam) {
+        titleElement.innerHTML = 'FORUM DONOR';
+        $(".active").css("background-color", "#1B77A0");
+      } else if (searchParam) {
         titleElement.innerHTML = originalTitle;
         $(".active").css("background-color", "#1B77A0");
       } else {
-        // Jika tidak ada parameter pencarian, tampilkan judul asli
         titleElement.innerHTML = originalTitle;
         $(".active").css("background-color", "#1B77A0");
-
       }
+
+
+
+
 
       // Tampilkan judul
       titleElement.style.visibility = 'visible';

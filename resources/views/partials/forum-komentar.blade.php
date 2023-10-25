@@ -53,7 +53,7 @@
         <tbody class="waduh">
         @if(count($komentar) == 0)
         <tr>
-            <td colspan="7" style="text-align:center;">Komentar belum ada</td>
+            <td style="font-weight:bold" colspan="7" style="text-align:center;">Komentar belum ada</td>
         </tr>
         @else
             @foreach($komentar as $nomor => $komen)

@@ -51,4 +51,9 @@ class Comment extends Authenticatable implements JWTSubject
     {
         return $this->belongsTo(Pendonor::class, 'id_pendonor');
     }
+
+    public function reports()
+    {
+        return $this->hasMany(Laporan::class, 'id_pendonor');
+    }
 }

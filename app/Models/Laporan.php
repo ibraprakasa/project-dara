@@ -8,18 +8,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
 use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class BalasComment extends Authenticatable implements JWTSubject
+class Laporan extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'balas_comments';
+    protected $table = 'reports';
     protected $primaryKey = 'id';
     protected $guarded = [];
 
     protected $fillable = [
        'id_pendonor',
+       'id_post',
        'id_comment',
-       'text'
+       'id_reply',
+       'text',
+       'type',
+       'created_at',
+       'updated_at'
     ];
 
     public function getJWTIdentifier()
@@ -42,13 +47,18 @@ class BalasComment extends Authenticatable implements JWTSubject
         return $this->belongsTo(Pendonor::class, 'id_pendonor');
     }
 
+    public function posts()
+    {
+        return $this->belongsTo(Post::class, 'id_post');
+    }
+
     public function comments()
     {
         return $this->belongsTo(Comment::class, 'id_comment');
     }
 
-    public function reports()
+    public function reply()
     {
-        return $this->hasMany(Laporan::class, 'id_pendonor');
+        return $this->belongsTo(BalasComment::class, 'id_reply');
     }
 }

@@ -66,14 +66,19 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     //END JADWAL DONOR
 
     //FORUM DONOR 
-    Route::get('forum', 'App\Http\Controllers\ForumController@getPostingan')->name('forum-postingan');
-    Route::delete('deletepostingan/{id}', 'App\Http\Controllers\App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
+    Route::get('forum-postingan', 'App\Http\Controllers\ForumController@getPostingan')->name('forum-postingan');
+    Route::delete('deletepostingan/{id}', 'App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
 
     Route::get('forum-komentar/{id_post}', 'App\Http\Controllers\ForumController@getKomentar')->name('forum-komentar');
 
     Route::get('forum-balasan/{id_comment}', 'App\Http\Controllers\ForumController@getBalasan')->name('forum-balasan');
-
     //END FORUM DONOR
+
+    // LAPORAN DONOR
+ 
+    Route::get('laporan','App\Http\Controllers\LaporanController@getLaporan')->name('laporan');
+
+    // END LAPORAN
     
     //INFO PENDAFTAR
     Route::get('/infopendaftar', 'App\Http\Controllers\JadwalDonorController@infopendaftar')->name('infopendaftar');

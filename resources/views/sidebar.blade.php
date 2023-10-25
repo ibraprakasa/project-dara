@@ -14,7 +14,7 @@
             Hi, {{ Auth::user()->name }} !
         </a>
     </div>
-    <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:hidden; height:100vh">
+    <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:auto; height:100vh">
         <ul class="nav">
             <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <a href="{{ route('dashboard') }}" style="color: white !important; font-weight:bold;">
@@ -69,10 +69,17 @@
             </li>
             <hr class="jaraksidebar">
             @endif
-            <li class="{{ request()->routeIs('forum-postingan', 'forum-komentar') ? 'active' : '' }}">
+            <li class="{{ request()->routeIs('forum-postingan', 'forum-komentar','forum-balasan') ? 'active' : '' }}">
                 <a href="{{ route('forum-postingan') }}" style="color: white; font-weight:bold;">
                     <i class="fa fa-comments" style="color: white; font-weight:bold;"></i>
                     <p>Forum</p>
+                </a>
+            </li>
+            <hr class="jaraksidebar">
+            <li class="{{ request()->routeIs('laporan') ? 'active' : '' }}">
+                <a href="{{ route('laporan') }}" style="color: white; font-weight:bold;">
+                    <i class="bi bi-file-earmark-text-fill" style="color: white; font-weight:bold;"></i>
+                    <p>Laporan</p>
                 </a>
             </li>
             <hr class="jaraksidebar">

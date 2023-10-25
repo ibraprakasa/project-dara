@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BalasComment;
 use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -46,20 +47,29 @@ class ForumController extends Controller
         return view('partials.forum-balasan', compact('balas'));
     }
 
-
-
     public function deletepostingan($id)
     {
         $postingan = Post::find($id);
-        // $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id);
-        // $jadwposalPendonor->delete();
-        $postingan->delete();
-
-        return redirect()->route('forum-postingan')->with('success', 'Postingan berhasil dihapus.');
-    }
-
     
-
-
+        if ($postingan) {
+            $komentar = Comment::where('id_post', $postingan->id)->get();
+    
+            if ($komentar) {
+                // Hapus semua komentar yang terkait
+                foreach ($komentar as $comment) {
+                    BalasComment::where('id_comment', $comment->id)->delete();
+                }
+    
+                // Hapus semua komentar yang terkait
+                $komentar->each->delete();
+            }
+    
+            $postingan->delete();
+    
+            return redirect()->route('forum-postingan')->with('success', 'Postingan berhasil dihapus.');
+        }
+    
+        return redirect()->route('forum-postingan')->with('error', 'Postingan tidak ditemukan.');
+    }
     
 }
