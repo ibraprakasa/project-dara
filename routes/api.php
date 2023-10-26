@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BalasCommentControllerAPI;
 use App\Http\Controllers\BeritaControllerAPI;
 use App\Http\Controllers\CommentControllerAPI;
 use App\Http\Controllers\DataPendonorControllerAPI;
@@ -55,3 +56,5 @@ Route::post('/post/add', [PostControllerAPI::class, 'addPost']);
 Route::get('/post/{id}', [PostControllerAPI::class, 'findPost']);
 Route::get('/comment/{id}', [CommentControllerAPI::class, 'show']);
 Route::post('/comment/add', [CommentControllerAPI::class, 'addComment']);
+Route::get('/balas-comment/{id}', [BalasCommentControllerAPI::class, 'show']);
+Route::post('/balas-comment/add', [BalasCommentControllerAPI::class, 'addBalasComment']);

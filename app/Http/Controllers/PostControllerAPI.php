@@ -90,7 +90,7 @@ class PostControllerAPI extends Controller
     }
 
     public function findPost($id){
-        
+
         $post = Post::find($id);
         $pendonor = Pendonor::where('id',$post->id_pendonor)->first();
         $diff = $post->updated_at->diffForHumans();
@@ -103,7 +103,7 @@ class PostControllerAPI extends Controller
             'text' => $post->text,
             'gambar' => $post->gambar,
             'jumlah_comment' => $jumlah_comment,
-            'update_at' => $diff
+            'updated_at' => $diff
         ]);
     }
 }
