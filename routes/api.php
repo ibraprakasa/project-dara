@@ -8,6 +8,7 @@ use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
 use App\Http\Controllers\LupaPasswordControllerAPI;
 use App\Http\Controllers\PostControllerAPI;
+use App\Http\Controllers\PostFavoriteControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -50,11 +51,21 @@ Route::post('/otp/send', [LupaPasswordControllerAPI::class, 'sendOtp']);
 Route::post('/otp/check', [LupaPasswordControllerAPI::class, 'checkOtp']);
 Route::post('/otp/reset-password', [LupaPasswordControllerAPI::class, 'resetPassword']);
 
-//forum
+//===forum===//
+//postingan
 Route::get('/post', [PostControllerAPI::class, 'show']);
+Route::get('/post/me', [PostControllerAPI::class, 'postMe']);
 Route::post('/post/add', [PostControllerAPI::class, 'addPost']);
 Route::get('/post/{id}', [PostControllerAPI::class, 'findPost']);
+Route::delete('/post/delete/{id}', [PostControllerAPI::class, 'delete']);
+//comentar
 Route::get('/comment/{id}', [CommentControllerAPI::class, 'show']);
 Route::post('/comment/add', [CommentControllerAPI::class, 'addComment']);
+//balas comentar
 Route::get('/balas-comment/{id}', [BalasCommentControllerAPI::class, 'show']);
 Route::post('/balas-comment/add', [BalasCommentControllerAPI::class, 'addBalasComment']);
+//post favorite
+Route::get('/post-favorite', [PostFavoriteControllerAPI::class, 'show']);
+Route::get('/post-favorite/check/{id}', [PostFavoriteControllerAPI::class, 'status']);
+Route::post('/post-favorite/add/{id}', [PostFavoriteControllerAPI::class, 'add']);
+Route::delete('/post-favorite/delete/{id}', [PostFavoriteControllerAPI::class, 'delete']);
