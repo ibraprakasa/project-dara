@@ -62,7 +62,7 @@
 .resizable {
     resize: both; /* Memungkinkan pengguna untuk menarik textarea */
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 250px; /* Tinggi minimum awal textarea */
+    min-height: 120px; /* Tinggi minimum awal textarea */
   }
 
   .resizablealamat {
@@ -70,6 +70,13 @@
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 120px; /* Tinggi minimum awal textarea */
   }
+
+  .resizablestatus {
+    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 180px; /* Tinggi minimum awal textarea */
+  }
+  
 
 
   #gambar {
@@ -345,4 +352,6 @@ table td {
   .sidebar-wrapper::-webkit-scrollbar-track {
     background-color: #f1f1f1; /* Warna track scrollbar */
   }
+  
+
   

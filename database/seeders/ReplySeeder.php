@@ -14,8 +14,8 @@ class ReplySeeder extends Seeder
     public function run(): void
     {
         DB::table('balas_comments')->insertGetId(array(
-            'id_pendonor' => '5',
-            'id_comment' => '2',
+            'id_pendonor' => '13',
+            'id_comment' => '7',
             'text' => 'Ini adalah balas komen dari pendonor A',
             'created_at' =>now(),
             'updated_at' =>now(),

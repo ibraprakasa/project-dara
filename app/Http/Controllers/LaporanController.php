@@ -32,7 +32,7 @@ class LaporanController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
-        $report = $query->get();
+        $report = $query->paginate(10);
         return view('partials.laporan', compact('report','daftarType'));
     }
 }

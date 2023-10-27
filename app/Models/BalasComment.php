@@ -19,7 +19,9 @@ class BalasComment extends Authenticatable implements JWTSubject
     protected $fillable = [
        'id_pendonor',
        'id_comment',
-       'text'
+       'text',
+       'created_at',
+       'updated_at'
     ];
 
     public function getJWTIdentifier()

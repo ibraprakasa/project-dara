@@ -36,14 +36,50 @@ class ForumController extends Controller
     public function getKomentar($id_post)
     {
         $post = Post::find($id_post);
-        $komentar = $post->comments; // Ambil komentar untuk postingan tertentu
+
+        $search = request()->input('search');
+        $tanggalawal = request()->input('tanggal_dari');
+        $tanggalakhir = request()->input('tanggal_sampai');
+
+        $query = Comment::where('id_post', $id_post);
+
+
+        if ($search) {
+            $query->where('text', 'LIKE', '%' . $search . '%')
+                ->orWhereHas('pendonor', function ($q) use ($search) {
+                    $q->where('kode_pendonor', 'LIKE', '%' . $search . '%')
+                        ->orWhere('nama', 'LIKE', '%' . $search . '%');
+                });
+        }
+
+        if ($tanggalawal && $tanggalakhir) {
+            $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
+        }
+        
+        $komentar = $query->get();
+
         return view('partials.forum-komentar', compact('komentar'));
+        
     }
 
     public function getBalasan($id_comment)
     {
         $comment = Comment::find($id_comment);
-        $balas = $comment->reply; // Ambil komentar untuk postingan tertentu
+
+        $search = request()->input('search');
+
+        $query = BalasComment::where('id_comment', $id_comment);
+
+        if ($search) {
+            $query->where('text', 'LIKE', '%' . $search . '%')
+                ->orWhereHas('pendonor', function ($q) use ($search) {
+                    $q->where('kode_pendonor', 'LIKE', '%' . $search . '%')
+                        ->orWhere('nama', 'LIKE', '%' . $search . '%');
+                });
+        }
+
+        $balas = $query->get();
+
         return view('partials.forum-balasan', compact('balas'));
     }
 

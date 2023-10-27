@@ -21,37 +21,29 @@
 
 
 <div class="filter btn-group">
-    <form action="/laporan" method="GET" style="display: flex;">
-        <div class="dropdown">
-            <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
-                Filter berdasarkan
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="postingan">Postingan saja</button>
-                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="komentar">Komentar saja</button>
-                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="balaskomentar">Balas Komentar saja</button>
-            </div>
-        </div>
-    </form>
+    <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterlaporan">
+        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+        <span style="font-size: 12px; color: white;">Filter</span>
+    </button>
 </div>
 
 <div class="filter btn-group wow">
     @if(session('error'))
-  <div class="alert-container">
-    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-    <div>
-      {{ session('error') }}
+    <div class="alert-container">
+        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+        <div>
+            {{ session('error') }}
+        </div>
     </div>
-  </div>
-  @elseif(session('success'))
-  <div class="alert-container1 success">
-    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-    <div>
-      {{ session('success') }}
+    @elseif(session('success'))
+    <div class="alert-container1 success">
+        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+        <div>
+            {{ session('success') }}
+        </div>
     </div>
-  </div>
-  @endif
-  </div>
+    @endif
+</div>
 
 
 
@@ -69,22 +61,23 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($report) == 0)
-        <tr>
-            <td style="font-weight: bold;" colspan="7" style="text-align:center;">Laporan tidak ditemukan</td>
-        </tr>
-        @else
+            @if(count($report) == 0)
+            <tr>
+                <td style="font-weight: bold;" colspan="7" style="text-align:center;">Laporan tidak ditemukan</td>
+            </tr>
+            @else
             @foreach($report as $key => $laporan)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $laporan->pendonor->kode_pendonor }}</td>
                 <td>{{ $laporan->pendonor->nama }}</td>
-                <td class="truncate-text">{{ $laporan->text }}</td>
+                <td>{{ $laporan->text }}</td>
                 <td>{{ $laporan->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $laporan->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
+                <td>{{ $laporan->type }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $row->id }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -93,12 +86,57 @@
             @endif
         </tbody>
     </table>
-    {{ $data ->links() }}
+    {{ $report ->links() }}
 
 </div>
 
+<!-- MODAL FILTER LAPORAN -->
+<div class="modal fade filterlaporan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Filter Berdasarkan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/laporan" method="GET">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:black;font-weight:bold" for="type">Jenis Laporan</label>
+                        <select class="kolom form-control" name="type">
+                            <option class="kolom form-control" value="">-</option>
+                            <option class="kolom form-control" value="postingan">Postingan</option>
+                            <option class="kolom form-control" value="komentar">Komentar</option>
+                            <option class="kolom form-control" value="balasan">Balasan Komentar</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--  END MODAL  -->
+
 <!-- MODAL DETAIL LAPORAN -->
-@foreach($data as $key => $row)
+@foreach($report as $key => $row)
 <div class="modal fade" id="infolaporan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -129,7 +167,7 @@
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Golongan Darah</label>
-                            <input class="kolom form-control" name="goldar" type="text" id="nomor" placeholder="{{ $row->golongandarah->nama }}" readonly>
+                            <input class="kolom form-control" name="goldar" type="text" id="nomor" placeholder="{{ $row->nama }}" readonly>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -166,7 +204,7 @@
 <!-- END MODAL -->
 
 <!-- MODAL DELETE LAPORAN -->
-@foreach($data as $key => $row)
+@foreach($report as $key => $row)
 <div class="modal fade" id="deletejadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -177,7 +215,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
+                Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
             </div>
             <form action="{{ route('deletejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf

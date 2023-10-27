@@ -433,7 +433,7 @@
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Alamat</label>
-                            <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
+                            <textarea class="kolom form-control resizable" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
                         </div>
                     </div>
                 </div>

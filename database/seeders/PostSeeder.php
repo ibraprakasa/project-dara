@@ -19,13 +19,13 @@ class PostSeeder extends Seeder
             'updated_at' =>now(),
         ));
 
-        DB::table('posts')->insertGetId(array(
-            'id_pendonor' => '10',
-            'text' => 'Ini adalah status dari halo oee',
-            'gambar' => 'Kosong 123',
-            'created_at' =>now(),
-            'updated_at' =>now(),
-        ));
+        // DB::table('posts')->insertGetId(array(
+        //     'id_pendonor' => '10',
+        //     'text' => 'Ini adalah status dari halo oee',
+        //     'gambar' => 'Kosong 123',
+        //     'created_at' =>now(),
+        //     'updated_at' =>now(),
+        // ));
         
     }
 }

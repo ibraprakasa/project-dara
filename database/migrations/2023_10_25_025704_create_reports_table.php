@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pendonor')->nullable(false);
-            $table->unsignedBigInteger('id_post')->nullable(false);
-            $table->unsignedBigInteger('id_comment')->nullable(false);
-            $table->unsignedBigInteger('id_reply')->nullable(false);
+            $table->unsignedBigInteger('id_post')->nullable();
+            $table->unsignedBigInteger('id_comment')->nullable();
+            $table->unsignedBigInteger('id_reply')->nullable();
             $table->text('text')->nullable(false);
             $table->enum('type',['Postingan','Komentar','Balasan'])->nullable(false);
             $table->timestamps();

@@ -95,7 +95,6 @@
                     <i class="bi bi-box-arrow-left whitebold" style="color: white; font-weight:bold;"></i>
                     <p>Keluar</p>
                 </a>
-
             </li>
             <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:3px">
         </ul>
