@@ -91,9 +91,9 @@
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>{{ $row->lokasi }}</td>
                 <td class="truncate-text">{{ $row->alamat }}</td>
-                <td>{{ \Carbon\Carbon::parse($row->tanggal_donor)->format('d-m-Y') }}</td>
-                <td>{{ \Carbon\Carbon::parse($row->jam_mulai)->format('H:i') }}</td>
-                <td>{{ \Carbon\Carbon::parse($row->jam_selesai)->format('H:i') }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->tanggal_donor)->translatedFormat('l, j F Y') }}</td>
+                <td>{{ \Carbon\Carbon::parse($row->jam_mulai)->format('H:i') }} WIB</td>
+                <td>{{ \Carbon\Carbon::parse($row->jam_selesai)->format('H:i') }} WIB</td>
                 <td>{{ $row->kontak }}</td>
                 <td>{{ $row->jumlah_pendonor }}</td>
                 <td>
