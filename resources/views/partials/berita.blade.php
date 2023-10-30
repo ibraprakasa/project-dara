@@ -193,7 +193,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
+                Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deleteberita', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -221,13 +221,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <label style="display: block;font-size:20px;font-weight:bold;text-align: center;"for="judulberita">{{ $row->judul }}</label><br>
-                <div class="form-group beritaDetail" style="text-align: center;">
+                <label class="berita-title" for="judulberita">{{ $row->judul }}</label><br>
+                <div class="form-group" style="text-align: center;">
                     <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
                 </div>
 
                 <label style="color:black;font-weight:bold">Deskripsi</label>
-                <div class="form-group" style="color:black;">
+                <div class="form-group" style="color:black;background-color: white;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->deskripsi }}</textarea>
                 </div>
             </div>

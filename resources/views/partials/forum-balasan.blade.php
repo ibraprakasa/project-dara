@@ -59,7 +59,7 @@
             @else
             @foreach($balas as $nomor => $row)
             <tr>
-                <td>{{ $nomor+1 }}</td>
+                <td>{{ $nomor+$balas->firstItem() }}</td>
                 <td>{{ $row->pendonor->kode_pendonor }}</td>
                 <td>{{ $row->pendonor->nama }}</td>
                 <td>{{ $row->text }}</td>
@@ -67,7 +67,7 @@
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deletebalasan">
+                    <button class="custom-button" data-toggle="modal" data-target="#deletebalasan{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
                     </button>
                 </td>
@@ -76,8 +76,36 @@
             @endif
         </tbody>
     </table>
+    {{ $balas ->links() }}
 </div>
 
+<!-- MODAL DELETE BALASAN -->
+@foreach($balas as $nomor => $row)
+<div class="modal fade" id="deletebalasan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Peringatan!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin untuk menghapus balasan komentar ke-{{ $nomor+$balas->firstItem() }}?
+            </div>
+            <form action="{{ route('deletebalasan', ['id' => $row->id, 'comment_id' => request('id')]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('DELETE')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
 
 
 @endsection

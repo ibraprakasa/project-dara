@@ -77,7 +77,7 @@
                 </td>
                 <td>{{ $laporan->type }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -137,7 +137,7 @@
 
 <!-- MODAL DETAIL LAPORAN -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="infolaporan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="infolaporan{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -147,51 +147,13 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Nomor</label>
-                            <input class="kolom form-control" name="kode_pendonor" type="text" id="nomor" placeholder="{{ $row->kode_pendonor }}" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Nama</label>
-                            <input class="kolom form-control" name="nama" type="text" id="nomor" placeholder="{{ $row->nama }}" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Tanggal Lahir</label>
-                            <input class="kolom form-control" name="tanggal_lahir" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Jenis Kelamin</label>
-                            <input class="kolom form-control" name="jenis_kelamin" type="text" id="nomor" placeholder="{{ $row->jenis_kelamin }}" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Golongan Darah</label>
-                            <input class="kolom form-control" name="goldar" type="text" id="nomor" placeholder="{{ $row->nama }}" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Berat Badan</label>
-                            <input class="kolom form-control" name="berat_badan" type="text" id="nomor" placeholder="{{ $row->berat_badan }} KG" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Kontak</label>
-                            <input class="kolom form-control" name="kontak_pendonor" type="text" id="nomor" placeholder="{{ $row->kontak_pendonor }}" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Email</label>
-                            <input class="kolom form-control" name="email" type="text" id="nomor" placeholder="{{ $row->email }}" readonly>
-                        </div>
-                        <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Alamat</label>
-                            <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
-                        </div>
-                    </div>
+                <div class="form-group" style="text-align: center;">
+                    <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
-                <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">UPDATED_AT</label>
-                    <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
+
+                <label style="color:black;font-weight:bold">Status</label>
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
                 </div>
             </div>
             <div class="modal-footer">

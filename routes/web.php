@@ -70,8 +70,10 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::delete('deletepostingan/{id}', 'App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
 
     Route::get('forum-komentar/{id_post}', 'App\Http\Controllers\ForumController@getKomentar')->name('forum-komentar');
+    Route::delete('deletekomentar/{id}', 'App\Http\Controllers\ForumController@deletekomentar')->name('deletekomentar');
 
     Route::get('forum-balasan/{id_comment}', 'App\Http\Controllers\ForumController@getBalasan')->name('forum-balasan');
+    Route::delete('deletebalasan/{id}', 'App\Http\Controllers\ForumController@deletebalasan')->name('deletebalasan');
     //END FORUM DONOR
 
     // LAPORAN DONOR

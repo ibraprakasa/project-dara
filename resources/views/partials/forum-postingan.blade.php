@@ -60,7 +60,7 @@
             @else
             @foreach($postingan as $key => $row)
             <tr>
-                <th scope="row">{{ $key+1 }}</th>
+                <th scope="row">{{ $key+$postingan->firstItem() }}</th>
                 <td>{{ $row->pendonor->kode_pendonor }}</td>
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
@@ -94,6 +94,7 @@
             @endif
         </tbody>
     </table>
+    {{ $postingan ->links() }}
 </div>
 
 <!-- MODAL DELETE POSTINGAN -->
@@ -108,7 +109,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus postingan di baris {{ $key+1 }}?
+                Apakah Anda yakin untuk menghapus postingan di baris {{ $key+$postingan->firstItem() }}?
             </div>
             <form action="{{ route('deletepostingan', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf

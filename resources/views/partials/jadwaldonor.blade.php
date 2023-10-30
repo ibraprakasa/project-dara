@@ -257,7 +257,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
+            Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deletejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf

@@ -29,7 +29,7 @@ class ForumController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
-        $postingan = $query->get();
+        $postingan = $query->paginate(10);
         return view('partials.forum-postingan', compact('postingan'));
     }
 
@@ -56,7 +56,7 @@ class ForumController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
         
-        $komentar = $query->get();
+        $komentar = $query->paginate(10);
 
         return view('partials.forum-komentar', compact('komentar'));
         
@@ -78,7 +78,7 @@ class ForumController extends Controller
                 });
         }
 
-        $balas = $query->get();
+        $balas = $query->paginate(10);
 
         return view('partials.forum-balasan', compact('balas'));
     }
@@ -107,5 +107,30 @@ class ForumController extends Controller
     
         return redirect()->route('forum-postingan')->with('error', 'Postingan tidak ditemukan.');
     }
-    
+
+    public function deleteKomentar($id)
+    {
+        $komentar = Comment::find($id);
+
+        if ($komentar) {
+            $balasanKomentar = BalasComment::where('id_comment', $komentar->id)->get();
+
+            if ($balasanKomentar) {
+                $balasanKomentar->each->delete();
+            }
+
+            $komentar->delete();
+
+            return redirect()->route('forum-komentar', ['id_post' => request('post_id')])->with('success', 'Komentar berhasil dihapus.');
+        }
+
+        return redirect()->route('forum-komentar', ['id_post' => request('post_id')])->with('error', 'Komentar tidak dapat ditemukan atau terjadi kesalahan.');
+    }
+
+    public function deletebalasan($id)
+    {
+        $balas = BalasComment::find($id);
+        $balas->delete();
+        return redirect()->route('forum-balasan', ['id_comment' => request('comment_id')])->with('success', 'Balasan Komentar berhasil dihapus.');
+    }
 }

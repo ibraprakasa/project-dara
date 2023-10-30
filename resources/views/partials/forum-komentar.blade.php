@@ -84,7 +84,7 @@
                 <td>{{ $komen->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $komen->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deletekomentar">
+                    <button class="custom-button" data-toggle="modal" data-target="#deletekomentar{{ $komen->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
                     </button>
                 </td>
@@ -93,6 +93,7 @@
             @endif
         </tbody>
     </table>
+    {{ $komentar ->links() }}
 </div>
 
 <!-- MODAL FILTER KOMENTAR -->
@@ -134,5 +135,33 @@
 </div>
 <!--  END MODAL  -->
 
+<!-- MODAL DELETE KOMENTAR -->
+@foreach($komentar as $key => $row)
+<div class="modal fade" id="deletekomentar{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Peringatan!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin untuk menghapus komentar di baris {{ $key+$komentar->firstItem() }}?
+            </div>
+            <form action="{{ route('deletekomentar', ['id' => $row->id, 'post_id' => request('id')]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name="id" value="{{ request('id') }}">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
 
 @endsection
