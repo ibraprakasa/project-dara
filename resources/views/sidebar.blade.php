@@ -69,6 +69,7 @@
             </li>
             <hr class="jaraksidebar">
             @endif
+            @if(auth()->user()->role_id == '1')
             <li class="{{ request()->routeIs('forum-postingan', 'forum-komentar','forum-balasan') ? 'active' : '' }}">
                 <a href="{{ route('forum-postingan') }}" style="color: white; font-weight:bold;">
                     <i class="fa fa-comments" style="color: white; font-weight:bold;"></i>
@@ -83,6 +84,7 @@
                 </a>
             </li>
             <hr class="jaraksidebar">
+            @endif
             <li class="{{ request()->routeIs('akun') ? 'active' : '' }}">
                 <a href="{{ route('akun') }}" style="color: white; font-weight:bold;">
                     <i class="nc-icon nc-single-02" style="color: white; font-weight:bold;"></i>
@@ -98,9 +100,15 @@
             </li>
             <hr style="font-weight:bold; border-top:2px solid white; margin-top:2px; margin-bottom:3px">
         </ul>
+        @if(auth()->user()->role_id == '1')
         <div class="text-center gambar">
             <img src="../assets/img/logopmi.png" alt="">
         </div>
+        @elseif(auth()->user()->role_id == '2')
+        <div class="text-center gambar1">
+            <img src="../assets/img/logopmi.png" alt="">
+        </div>
+        @endif
     </div>
 </div>
 

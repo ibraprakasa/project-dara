@@ -65,24 +65,9 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');
     //END JADWAL DONOR
 
-    //FORUM DONOR 
-    Route::get('forum-postingan', 'App\Http\Controllers\ForumController@getPostingan')->name('forum-postingan');
-    Route::delete('deletepostingan/{id}', 'App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
+    
 
-    Route::get('forum-komentar/{id_post}', 'App\Http\Controllers\ForumController@getKomentar')->name('forum-komentar');
-    Route::delete('deletekomentar/{id}', 'App\Http\Controllers\ForumController@deletekomentar')->name('deletekomentar');
-
-    Route::get('forum-balasan/{id_comment}', 'App\Http\Controllers\ForumController@getBalasan')->name('forum-balasan');
-    Route::delete('deletebalasan/{id}', 'App\Http\Controllers\ForumController@deletebalasan')->name('deletebalasan');
-    //END FORUM DONOR
-
-    // LAPORAN DONOR
- 
-    Route::get('laporan','App\Http\Controllers\LaporanController@getLaporan')->name('laporan');
-    Route::delete('deletelaporanasli/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanAsli')->name('deletelaporanasli');
-    Route::delete('deletelaporanpalsu/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanPalsu')->name('deletelaporanpalsu');
-
-    // END LAPORAN
+    
     
     //INFO PENDAFTAR
     Route::get('/infopendaftar', 'App\Http\Controllers\JadwalDonorController@infopendaftar')->name('infopendaftar');
@@ -107,6 +92,26 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::delete('deleteuser/{id}', 'App\Http\Controllers\KelolaAkunController@deleteuser')->name('deleteuser');
     Route::post('updatepassworduser/{id}', 'App\Http\Controllers\KelolaAkunController@updatepassworduser')->name('updatepassworduser');
     // END USER
+
+
+    //FORUM DONOR 
+    Route::get('forum-postingan', 'App\Http\Controllers\ForumController@getPostingan')->name('forum-postingan');
+    Route::delete('deletepostingan/{id}', 'App\Http\Controllers\ForumController@deletepostingan')->name('deletepostingan');
+
+    Route::get('forum-komentar/{id_post}', 'App\Http\Controllers\ForumController@getKomentar')->name('forum-komentar');
+    Route::delete('deletekomentar/{id}', 'App\Http\Controllers\ForumController@deletekomentar')->name('deletekomentar');
+
+    Route::get('forum-balasan/{id_comment}', 'App\Http\Controllers\ForumController@getBalasan')->name('forum-balasan');
+    Route::delete('deletebalasan/{id}', 'App\Http\Controllers\ForumController@deletebalasan')->name('deletebalasan');
+    //END FORUM DONOR
+    
+    // LAPORAN DONOR
+ 
+    Route::get('laporan','App\Http\Controllers\LaporanController@getLaporan')->name('laporan');
+    Route::delete('deletelaporanasli/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanAsli')->name('deletelaporanasli');
+    Route::delete('deletelaporanpalsu/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanPalsu')->name('deletelaporanpalsu');
+
+    // END LAPORAN
 });
 
 //untuk admin

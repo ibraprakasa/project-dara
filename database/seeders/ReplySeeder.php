@@ -15,7 +15,7 @@ class ReplySeeder extends Seeder
     {
         DB::table('balas_comments')->insertGetId(array(
             'id_pendonor' => '10',
-            'id_comment' => '24',
+            'id_comment' => '26',
             'text' => 'Ini adalah balas komen dari pendonor A',
             'created_at' =>now(),
             'updated_at' =>now(),
@@ -23,7 +23,7 @@ class ReplySeeder extends Seeder
 
         DB::table('balas_comments')->insertGetId(array(
             'id_pendonor' => '12',
-            'id_comment' => '24',
+            'id_comment' => '26',
             'text' => 'Ini adalah balas komen dari pendonor B',
             'created_at' =>now(),
             'updated_at' =>now(),

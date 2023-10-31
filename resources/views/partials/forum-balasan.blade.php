@@ -39,7 +39,7 @@
     @endif
 </div>
 
-<div class="filter btn-group">
+<div class="filter btn-group" style="margin-left:-4px">
     <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterbalasan">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
