@@ -152,11 +152,19 @@
                 <div class="form-group" style="text-align: center;">
                     <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
-                @endif
                 <label style="color:black;font-weight:bold">Status</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
                 </div>
+                @elseif($row->comments->text)
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->comments->text }}</textarea>
+                </div>
+                @else($row->reply->text)
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->reply->text }}</textarea>
+                </div>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id_post }}">Hapus Laporan Asli</button>
