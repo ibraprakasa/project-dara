@@ -14,11 +14,11 @@ class LaporanSeeder extends Seeder
     public function run(): void
     {
         DB::table('reports')->insertGetId(array(
-            'id_pendonor' => '13',
-            'id_post' =>  '5',
-            'id_comment' =>  null,
+            'id_pendonor' => '10',
+            'id_post' =>  null,
+            'id_comment' =>  '27',
             'id_reply' =>  null,
-            'text' => 'Laporan ini mengandung SARA, mohon ditindaklanjuti, terimakasih.',
+            'text' => 'Komentar ini mengandung SARA, mohon ditindaklanjuti, terimakasih.',
             'type' => 'Postingan',
             'created_at' =>now(),
             'updated_at' =>now(),

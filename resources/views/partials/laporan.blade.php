@@ -1,7 +1,7 @@
 @extends('template')
 @extends('sidebar')
 @section('content')
-
+ 
 <head>
     <title>
         DARA || Laporan
@@ -71,7 +71,7 @@
                 <th scope="row">{{ $key+1 }}</th>
                 <td>{{ $laporan->pendonor->kode_pendonor }}</td>
                 <td>{{ $laporan->pendonor->nama }}</td>
-                <td>{{ $laporan->text }}</td>
+                <td class="truncate-text-report">{{ $laporan->text }}</td>
                 <td>{{ $laporan->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $laporan->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
@@ -128,6 +128,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    </button>
                 </div>
             </form>
         </div>
@@ -141,7 +142,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Informasi Detail Pendonor</h5>
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Informasi Detail Laporan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -157,7 +158,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id_post }}">Hapus Laporan Asli</button>
+                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id_post }}">Hapus Laporan Palsu</button>
             </div>
         </div>
     </div>
@@ -165,9 +167,9 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL DELETE LAPORAN -->
+<!-- MODAL DELETE LAPORAN ASLI -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="deletejadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletelaporanpalsu{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -177,9 +179,37 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
+                Apakah Anda yakin untuk menghapus laporan palsu ini ?
             </div>
-            <form action="{{ route('deletejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('DELETE')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL DELETE LAPORAN ASLI -->
+@foreach($report as $key => $row)
+<div class="modal fade" id="deletelaporanasli{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Peringatan!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin untuk menghapus laporan asli beserta {{ $row->type }}nya?
+            </div>
+            <form action="{{ route('deletelaporanasli', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">

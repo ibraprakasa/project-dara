@@ -62,7 +62,7 @@
 .resizable {
     resize: both; /* Memungkinkan pengguna untuk menarik textarea */
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 120px; /* Tinggi minimum awal textarea */
+    min-height: 280px; /* Tinggi minimum awal textarea */
   }
 
   .resizablealamat {
@@ -366,4 +366,8 @@ table td {
   background-position: center;
   width: 100%;
   height: 100%;
+}
+
+.truncate-text-report{
+    max-width: 300px;
 }

@@ -79,6 +79,8 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     // LAPORAN DONOR
  
     Route::get('laporan','App\Http\Controllers\LaporanController@getLaporan')->name('laporan');
+    Route::delete('deletelaporanasli/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanAsli')->name('deletelaporanasli');
+    Route::delete('deletelaporanpalsu/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanPalsu')->name('deletelaporanpalsu');
 
     // END LAPORAN
     

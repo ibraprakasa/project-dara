@@ -37,4 +37,20 @@ class LaporanController extends Controller
         $report = $query->paginate(10);
         return view('partials.laporan', compact('report','daftarType','postingan'));
     }
+
+    public function deleteLaporanPalsu($id){
+        $laporan = Laporan::find($id);
+        $laporan->delete();
+
+        return redirect()->route('laporan')->with('success', 'Laporan Palsu berhasil dihapus.');
+    }
+
+    public function deleteLaporanAsli($id, $id_post){
+        $laporan = Laporan::find($id);
+        $postingan = Laporan::find($id_post);
+        $postingan->delete();
+        $laporan->delete();
+
+        return redirect()->route('laporan')->with('success', 'Laporan Palsu berhasil dihapus.');
+    }
 }
