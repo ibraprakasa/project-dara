@@ -41,6 +41,7 @@ use Carbon\Carbon;
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
+    
 </div>
 
 <div class="content">

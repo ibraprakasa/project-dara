@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Laporan;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ class LaporanController extends Controller
 {
     public function getLaporan(){
         $daftarType=Laporan::all();
-        $postingan=Post::all();
+        $postingan=Post::with('comments','comments.reply')->get();
         $search = request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
@@ -35,6 +36,7 @@ class LaporanController extends Controller
         }
 
         $report = $query->paginate(10);
+        // dd($report);
         return view('partials.laporan', compact('report','daftarType','postingan'));
     }
 

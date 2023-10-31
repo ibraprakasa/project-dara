@@ -148,17 +148,14 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if($row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
                     <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
-
+                @endif
                 <label style="color:black;font-weight:bold">Status</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
-                </div>
-
-                <div class="form-group" style="color:black;">
-                    <input type="text" class="kolom form-control" name="comment" id="comment" placeholder="{{ $row->comments->text }}" readonly>
                 </div>
             </div>
             <div class="modal-footer">
@@ -171,7 +168,7 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL DELETE LAPORAN ASLI -->
+<!-- MODAL DELETE LAPORAN PALSU -->
 @foreach($report as $key => $row)
 <div class="modal fade" id="deletelaporanpalsu{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -211,7 +208,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus laporan asli beserta {{ $row->type }}nya?
+                Apakah Anda yakin untuk menghapus {{ $row->type }} ini?
             </div>
             <form action="{{ route('deletelaporanasli', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
                 @csrf

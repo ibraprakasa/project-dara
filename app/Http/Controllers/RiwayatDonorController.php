@@ -23,8 +23,6 @@ class RiwayatDonorController extends Controller
         $tanggalakhir = request()->input('tanggal_sampai');
         $search = request()->input('search');
 
-        // dd($goldar,$lokasi);
-
         $query = RiwayatDonor::query();
         $query1 = RiwayatAmbil::query();
 
@@ -55,6 +53,8 @@ class RiwayatDonorController extends Controller
 
         $query->join('pendonor', 'riwayatdonor.pendonor_id', '=', 'pendonor.id')
         ->orderBy('pendonor.nama');
+
+        
         
         $riwayat_donor =  $query->paginate(10);
         $riwayat_ambil =  $query1->paginate(10);
