@@ -21,15 +21,25 @@ class RiwayatDonorController extends Controller
         $lokasi = request()->input('lokasi');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $search = request()->input('search');
 
         // dd($goldar,$lokasi);
 
         $query = RiwayatDonor::query();
         $query1 = RiwayatAmbil::query();
 
+        if($search){
+            $query->whereHas('pendonor', function ($q) use ($search) {
+                $q->where('nama', 'LIKE', '%' . $search . '%');
+            });
+        
+            $query1->whereHas('pendonor', function ($q) use ($search) {
+                $q->where('nama', 'LIKE', '%' . $search . '%');
+            });
+        }
+
         if ($lokasi) {
             $query->where('lokasi_donor', $lokasi);
-            $query1->where('lokasi_ambil', $lokasi);
         }
         
         if ($goldar) {
@@ -42,9 +52,12 @@ class RiwayatDonorController extends Controller
             $query->whereBetween('tanggal_donor', [$tanggalawal, $tanggalakhir]);
             $query1->whereBetween('tanggal_ambil', [$tanggalawal, $tanggalakhir]);
         }
+
+        $query->join('pendonor', 'riwayatdonor.pendonor_id', '=', 'pendonor.id')
+        ->orderBy('pendonor.nama');
         
-        $riwayat_donor =  $query->paginate(7);
-        $riwayat_ambil =  $query1->paginate(7);
+        $riwayat_donor =  $query->paginate(10);
+        $riwayat_ambil =  $query1->paginate(10);
         
         
         return view('partials.riwayatdonor', compact('riwayat_donor','riwayat_ambil','lokasiDaftar','goldarDaftar'));

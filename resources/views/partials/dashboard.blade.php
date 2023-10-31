@@ -65,7 +65,7 @@
           <hr>
           <div class="stats">
             <i class="fa fa-calendar-o"></i>
-            Dalam 1 bulan kedepan
+            Dalam bulan ini
           </div>
         </div>
       </div>

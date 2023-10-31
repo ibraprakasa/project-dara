@@ -19,7 +19,9 @@ class BalasComment extends Authenticatable implements JWTSubject
     protected $fillable = [
        'id_pendonor',
        'id_comment',
-       'text'
+       'text',
+       'created_at',
+       'updated_at'
     ];
 
     public function getJWTIdentifier()
@@ -35,5 +37,20 @@ class BalasComment extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function pendonor()
+    {
+        return $this->belongsTo(Pendonor::class, 'id_pendonor');
+    }
+
+    public function comments()
+    {
+        return $this->belongsTo(Comment::class, 'id_comment');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Laporan::class, 'id_pendonor');
     }
 }

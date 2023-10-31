@@ -62,7 +62,7 @@
 .resizable {
     resize: both; /* Memungkinkan pengguna untuk menarik textarea */
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 250px; /* Tinggi minimum awal textarea */
+    min-height: 280px; /* Tinggi minimum awal textarea */
   }
 
   .resizablealamat {
@@ -70,6 +70,13 @@
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 120px; /* Tinggi minimum awal textarea */
   }
+
+  .resizablestatus {
+    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 180px; /* Tinggi minimum awal textarea */
+  }
+  
 
 
   #gambar {
@@ -282,7 +289,7 @@ table td {
     width: 260px; 
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px; 
+    margin-top: 45px; 
 }
 
 .dropdown-menu .dropdown-item {
@@ -331,4 +338,36 @@ table td {
 
 .submenu {
     display: none;
+}
+
+.sidebar-wrapper::-webkit-scrollbar {
+    width: 0; /* Lebar scrollbar horizontal */
+  }
+  
+  .sidebar-wrapper::-webkit-scrollbar-thumb {
+    background-color: white; /* Warna tombol scrollbar */
+    border-radius: 4px; /* Sudut tombol scrollbar */
+  }
+  
+  .sidebar-wrapper::-webkit-scrollbar-track {
+    background-color: #f1f1f1; /* Warna track scrollbar */
+  }
+  
+
+.berita-title{
+    display: block;
+    font-size:20px;
+    font-weight:bold;
+    text-align: center;
+}
+
+.image-background {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100%;
+}
+
+.truncate-text-report{
+    max-width: 300px;
 }

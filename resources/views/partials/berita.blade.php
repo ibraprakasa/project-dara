@@ -59,7 +59,7 @@
                 <th width="150px" scope="col">Judul</th>
                 <th scope="col">Deskripsi</th>
                 <th scope="col">UPDATED_AT</th>
-                <th colspan="2" scope="col">Action</th>
+                <th colspan="3" scope="col">Action</th>
             </tr>
         </thead>
         <tbody class="waduh">
@@ -85,6 +85,11 @@
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deleteberita{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
+                    </button>
+                </td>
+                <td>
+                    <button class="custom-button" data-toggle="modal" data-target="#infoberita{{ $row->id }}">
+                        <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
             </tr>
@@ -188,7 +193,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
+                Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deleteberita', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -204,6 +209,37 @@
 @endforeach
 <!-- END MODAL -->
 
+<!-- MODAL INFO BERITA -->
+@foreach($data as $key => $row)
+<div class="modal fade" id="infoberita{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Berita</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label class="berita-title" for="judulberita">{{ $row->judul }}</label><br>
+                <div class="form-group" style="text-align: center;">
+                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
+                </div>
+
+                <label style="color:black;font-weight:bold">Deskripsi</label>
+                <div class="form-group" style="color:black;background-color: white;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->deskripsi }}</textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@endforeach
+<!-- END MODAL -->
 <script>
     // Mendapatkan elemen input file
     var inputGambar = document.getElementById('gambar');
