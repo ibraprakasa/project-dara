@@ -67,6 +67,8 @@ class ForumController extends Controller
         $comment = Comment::find($id_comment);
 
         $search = request()->input('search');
+        $tanggalawal = request()->input('tanggal_dari');
+        $tanggalakhir = request()->input('tanggal_sampai');
 
         $query = BalasComment::where('id_comment', $id_comment);
 
@@ -76,6 +78,10 @@ class ForumController extends Controller
                     $q->where('kode_pendonor', 'LIKE', '%' . $search . '%')
                         ->orWhere('nama', 'LIKE', '%' . $search . '%');
                 });
+        }
+
+        if ($tanggalawal && $tanggalakhir) {
+            $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
         $balas = $query->paginate(10);

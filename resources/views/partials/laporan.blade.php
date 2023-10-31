@@ -77,7 +77,7 @@
                 </td>
                 <td>{{ $laporan->type }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}">
+                <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}-{{ $laporan->id_comment }}-{{ $laporan->id_reply }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -138,7 +138,7 @@
 
 <!-- MODAL DETAIL LAPORAN -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="infolaporan{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="infolaporan{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -155,6 +155,10 @@
                 <label style="color:black;font-weight:bold">Status</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
+                </div>
+
+                <div class="form-group" style="color:black;">
+                    <input type="text" class="kolom form-control" name="comment" id="comment" placeholder="{{ $row->comments->text }}" readonly>
                 </div>
             </div>
             <div class="modal-footer">
