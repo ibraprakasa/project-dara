@@ -115,7 +115,7 @@
 <!-- END MODAL -->
 
 <!-- MODAL FILTER BALASAN -->
-<div class="modal fade" id="filterkomentar" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade" id="filterbalasan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -124,8 +124,8 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            @foreach($komentar as $row)
-            <form action="{{ route('forum-komentar', ['id_post' => $row->id]) }}" method="GET">
+            @foreach($balas as $row)
+            <form action="{{ route('forum-balasan', ['id_comment' => $row->id]) }}" method="GET">
             @endforeach
             <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
                 <div class="modal-body">
