@@ -54,7 +54,7 @@
         <tbody class="waduh">
         @if(count($data) == 0)
         <tr>
-            <td colspan="4" style="text-align:center;">Stok Darah belum ada</td>
+            <td style="font-weight: bold;"colspan="4" style="text-align:center;">Stok Darah belum ada</td>
         </tr>
         @else
             @foreach($data as $key => $row)

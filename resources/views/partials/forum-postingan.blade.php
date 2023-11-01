@@ -55,7 +55,7 @@
         <tbody class="waduh">
             @if(count($postingan) == 0)
             <tr>
-                <td colspan="9" style="text-align:center;">Postingan tidak ada</td>
+                <td colspan="9" style="font-weight: bold;text-align:center;">Postingan tidak ada</td>
             </tr>
             @else
             @foreach($postingan as $key => $row)

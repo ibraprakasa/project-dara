@@ -59,7 +59,7 @@ use Carbon\Carbon;
         <tbody class="waduh">
             @if(count($riwayat_donor) == 0)
             <tr>
-                <td colspan="6" style="text-align:center;">Riwayat donor belum ada</td>
+                <td colspan="6" style="font-weight: bold;text-align:center;">Riwayat donor belum ada</td>
             </tr>
             @else
             @foreach($riwayat_donor as $key => $rd)
@@ -94,7 +94,7 @@ use Carbon\Carbon;
         <tbody class="waduh">
             @if(count($riwayat_ambil) == 0)
             <tr>
-                <td colspan="7" style="text-align:center;">Riwayat ambil belum ada</td>
+                <td colspan="7" style="font-weight: bold;text-align:center;">Riwayat ambil belum ada</td>
             </tr>
             @else
             @foreach($riwayat_ambil as $key => $rd)

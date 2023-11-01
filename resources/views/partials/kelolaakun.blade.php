@@ -197,7 +197,7 @@
         <tbody class="waduh">
             @if(count($data1) == 0)
             <tr>
-                <td colspan="8" style="text-align:center;">Datanya belum ada</td>
+                <td colspan="8" style="font-weight: bold;text-align:center;">User belum ada</td>
             </tr>
             @else
             @foreach($data1 as $key => $row)

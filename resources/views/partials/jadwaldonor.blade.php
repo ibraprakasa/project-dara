@@ -83,7 +83,7 @@
         <tbody class="waduh">
         @if(count($data) == 0)
         <tr>
-            <td colspan="11" style="text-align:center;">Jadwal donor belum ada</td>
+            <td colspan="11" style="font-weight: bold;text-align:center;">Jadwal donor belum ada</td>
         </tr>
         @else
             @foreach($data as $key => $row)
