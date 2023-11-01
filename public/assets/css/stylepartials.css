@@ -75,6 +75,8 @@
     resize: both; /* Memungkinkan pengguna untuk menarik textarea */
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 180px; /* Tinggi minimum awal textarea */
+    color: black;
+    font-weight: bold; 
   }
   
 

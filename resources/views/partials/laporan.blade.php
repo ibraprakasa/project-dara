@@ -148,27 +148,29 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if($row->posts->gambar != null)
+                @if ($row->posts && $row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
                     <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
-                <label style="color:black;font-weight:bold">Status</label>
+                <label style="color:red;font-weight:bold">Status yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
                 </div>
-                @elseif($row->comments->text)
+                @elseif ($row->comments && $row->comments->text)
+                <label style="color:red;font-weight:bold">Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->comments->text }}</textarea>
                 </div>
-                @else($row->reply->text)
+                @elseif ($row->reply && $row->reply->text)
+                <label style="color:red;font-weight:bold">Balasan Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->reply->text }}</textarea>
                 </div>
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id_post }}">Hapus Laporan Asli</button>
-                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id_post }}">Hapus Laporan Palsu</button>
+                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}">Hapus Laporan Asli</button>
+                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}">Hapus Laporan Palsu</button>
             </div>
         </div>
     </div>
@@ -178,7 +180,7 @@
 
 <!-- MODAL DELETE LAPORAN PALSU -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="deletelaporanpalsu{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletelaporanpalsu{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -190,7 +192,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus laporan palsu ini ?
             </div>
-            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id_post . '-' . $row->id_comment . '-' . $row->id_reply]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
@@ -206,7 +208,7 @@
 
 <!-- MODAL DELETE LAPORAN ASLI -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="deletelaporanasli{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletelaporanasli{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -218,7 +220,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus {{ $row->type }} ini?
             </div>
-            <form action="{{ route('deletelaporanasli', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanasli', ['id' =>$row->id_post . '-' . $row->id_comment . '-' . $row->id_reply]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
