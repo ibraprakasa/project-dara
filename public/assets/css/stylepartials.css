@@ -152,9 +152,9 @@
       
   }
   
-.alert-container {
+.alert-container11 {
     display: flex;
-    width:50%;
+    width:100%;
     align-items: center;
     padding: 10px 20px;
     background-color: #EB1F3E; /* Warna merah */

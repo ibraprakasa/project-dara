@@ -29,7 +29,7 @@
 
 <div class="filter btn-group wow">
     @if(session('error'))
-    <div class="alert-container">
+    <div class="alert-container11">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
         <div>
             {{ session('error') }}
@@ -117,12 +117,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label style="color:black;font-weight:bold" for="type">Jenis Laporan</label>
+                        <label style="color:black;font-weight:bold" for="type">Tipe</label>
                         <select class="kolom form-control" name="type">
                             <option class="kolom form-control" value="">-</option>
                             <option class="kolom form-control" value="postingan">Postingan</option>
                             <option class="kolom form-control" value="komentar">Komentar</option>
-                            <option class="kolom form-control" value="balasan">Balasan Komentar</option>
+                            <option class="kolom form-control" value="balasan">Balasan</option>
                         </select>
                     </div>
                 </div>
@@ -169,8 +169,8 @@
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}">Hapus Laporan Asli</button>
-                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}">Hapus Laporan Palsu</button>
+                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id }}">Hapus Laporan Asli</button>
+                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id }}">Hapus Laporan Palsu</button>
             </div>
         </div>
     </div>
@@ -192,7 +192,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus laporan palsu ini ?
             </div>
-            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id_post . '-' . $row->id_comment . '-' . $row->id_reply]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
@@ -208,7 +208,7 @@
 
 <!-- MODAL DELETE LAPORAN ASLI -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="deletelaporanasli{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletelaporanasli{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -220,7 +220,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus {{ $row->type }} ini?
             </div>
-            <form action="{{ route('deletelaporanasli', ['id' =>$row->id_post . '-' . $row->id_comment . '-' . $row->id_reply]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanasli', ['id' =>$row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
@@ -233,5 +233,6 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
 
 @endsection

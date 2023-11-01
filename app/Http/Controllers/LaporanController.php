@@ -36,7 +36,6 @@ class LaporanController extends Controller
         }
 
         $report = $query->paginate(10);
-        // dd($report);
         return view('partials.laporan', compact('report','daftarType','postingan'));
     }
 
@@ -48,13 +47,25 @@ class LaporanController extends Controller
         return redirect()->route('laporan')->with('success', 'Laporan Palsu berhasil dihapus.');
     }
 
-    public function deleteLaporanAsli($id, $id_post)
+    public function deleteLaporanAsli($id)
     {
         $laporan = Laporan::find($id);
-        $postingan = Laporan::find($id_post);
-        $postingan->delete();
-        $laporan->delete();
 
-        return redirect()->route('laporan')->with('success', 'Laporan Palsu berhasil dihapus.');
+        if ($laporan) {
+            if ($laporan->type == 'Postingan' && $laporan->posts) {
+                $laporan->posts->delete();
+            } elseif ($laporan->type == 'Komentar' && $laporan->comments) {
+                $laporan->comments->delete();
+            } elseif ($laporan->type == 'Balasan' && $laporan->reply) {
+                $laporan->reply->delete();
+            }
+
+            $laporan->delete();
+
+            return redirect()->route('laporan')->with('success', 'Laporan Asli berhasil dihapus.');
+        } else {
+            return redirect()->route('laporan')->with('error', 'Laporan tidak ditemukan.');
+        }
     }
+
 }
