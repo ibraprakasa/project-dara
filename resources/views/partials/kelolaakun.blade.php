@@ -89,7 +89,7 @@
         <tbody class="waduh">
             @if(count($data) == 0)
             <tr>
-                <td style="font-weight:bold"colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+                <td style="font-weight:bold" colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
             </tr>
             @else
             @foreach($data as $key => $row)
@@ -395,8 +395,12 @@
                 </button>
             </div>
             <div class="modal-body">
+                <label class="profile-title" for="judulberita">Profil</label>
+                <div class="form-group" style="text-align: center;">
+                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="150" height="140" style="border-radius: 50%;">
+                </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Nomor</label>
                             <input class="kolom form-control" name="kode_pendonor" type="text" id="nomor" placeholder="{{ $row->kode_pendonor }}" readonly>
@@ -409,6 +413,8 @@
                             <label for="nomor">Tanggal Lahir</label>
                             <input class="kolom form-control" name="tanggal_lahir" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}" readonly>
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Jenis Kelamin</label>
                             <input class="kolom form-control" name="jenis_kelamin" type="text" id="nomor" placeholder="{{ $row->jenis_kelamin }}" readonly>
@@ -417,12 +423,12 @@
                             <label for="nomor">Golongan Darah</label>
                             <input class="kolom form-control" name="goldar" type="text" id="nomor" placeholder="{{ $row->golongandarah->nama }}" readonly>
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Berat Badan</label>
                             <input class="kolom form-control" name="berat_badan" type="text" id="nomor" placeholder="{{ $row->berat_badan }} KG" readonly>
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Kontak</label>
                             <input class="kolom form-control" name="kontak_pendonor" type="text" id="nomor" placeholder="{{ $row->kontak_pendonor }}" readonly>
@@ -432,14 +438,14 @@
                             <input class="kolom form-control" name="email" type="text" id="nomor" placeholder="{{ $row->email }}" readonly>
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Alamat</label>
-                            <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
+                            <label for="nomor">UPDATED_AT</label>
+                            <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
                         </div>
                     </div>
-                </div>
+                </div>  
                 <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">UPDATED_AT</label>
-                    <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
+                    <label for="nomor">Alamat</label>
+                    <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
                 </div>
             </div>
             <div class="modal-footer">

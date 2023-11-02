@@ -150,19 +150,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Kode</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}">
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}"readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Nama</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}">
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Tanggal</label>
-                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}">
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}"readonly>
                         </div>
                     </div>
                 </div>
