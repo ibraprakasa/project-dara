@@ -6,10 +6,12 @@ use App\Http\Controllers\CommentControllerAPI;
 use App\Http\Controllers\DataPendonorControllerAPI;
 use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
+use App\Http\Controllers\LaporanControllerAPI;
 use App\Http\Controllers\LupaPasswordControllerAPI;
 use App\Http\Controllers\PostControllerAPI;
 use App\Http\Controllers\PostFavoriteControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
+use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -69,3 +71,5 @@ Route::get('/post-favorite', [PostFavoriteControllerAPI::class, 'show']);
 Route::get('/post-favorite/check/{id}', [PostFavoriteControllerAPI::class, 'status']);
 Route::post('/post-favorite/add/{id}', [PostFavoriteControllerAPI::class, 'add']);
 Route::delete('/post-favorite/delete/{id}', [PostFavoriteControllerAPI::class, 'delete']);
+//laporan
+Route::post('/laporan', [LaporanControllerAPI::class, 'add']);
