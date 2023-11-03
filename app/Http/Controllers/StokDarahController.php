@@ -17,7 +17,10 @@ class StokDarahController extends Controller
 
     public function index()
     {
-        $data = StokDarah::all();
+        $data = StokDarah::join('golongandarah', 'stokdarah.gol_darah', '=', 'golongandarah.id')
+        ->select('golongandarah.nama', 'stokdarah.jumlah', 'stokdarah.updated_at')
+        ->orderBy('golongandarah.nama')
+        ->get();
         $kode_pendonor = Pendonor::all();
         $lokasi = JadwalDonor::all();
         

@@ -60,7 +60,7 @@
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
-                <td>{{ $row->golongandarah->nama }}</td>
+                <td>{{ $row->nama }}</td>
                 <td>{{ $row->jumlah }}</td>
                 <td>{{ $row->updated_at->diffForHumans() }}</td>
             </tr>

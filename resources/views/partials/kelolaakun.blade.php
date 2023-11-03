@@ -10,7 +10,7 @@
 </head>
 
 <div class="row text-center">
-    <div class="" style="width:820px;margin-top:85px; margin-bottom:-90px; margin-left:60px">
+    <div class="" style="width:820px;margin-top:100px; margin-bottom:-90px; margin-left:60px">
         <div class="row" style="font-weight: bold">
             <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
                 Pendonor

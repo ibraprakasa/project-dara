@@ -9,11 +9,20 @@
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="filter btn-group">
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="#" id="postinganLink">Postingan</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarLink">Komentar</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Balasan</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="filte btn-group">
     @foreach($balas as $row)
     <form action="{{ route('forum-balasan', ['id_comment' => $row->id]) }}" method="GET" style="display: flex;">
     @endforeach
-        <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
         <input class="btn" type="search" name="search" placeholder="Cari Balasan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
@@ -21,15 +30,15 @@
     </form>
 </div>
 
-<div class="filter btn-group wow">
-    @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
-            {{ session('error') }}
-        </div>
-    </div>
-    @elseif(session('success'))
+<div class="filte btn-group">
+    <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterbalasan">
+        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+        <span style="font-size: 12px; color: white;">Filter</span>
+    </button>
+</div>
+
+<div class="filte btn-group wow">
+    @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
         <div>
@@ -37,13 +46,6 @@
         </div>
     </div>
     @endif
-</div>
-
-<div class="filter btn-group" style="margin-left:-4px">
-    <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterbalasan">
-        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-        <span style="font-size: 12px; color: white;">Filter</span>
-    </button>
 </div>
 
 <div class="content" style="margin-top: 20px;">

@@ -30,6 +30,8 @@ class JadwalDonorController extends Controller
                 $query->orderBy('tanggal_donor')->orderBy('jam_mulai');
             } elseif ($sort === 'tanggal_desc') {
                 $query->orderByDesc('tanggal_donor')->orderBy('jam_mulai');
+            } elseif ($sort === 'abjad'){
+                $query->orderBy('lokasi');
             }
         } else {
             // Default sorting (you can change this to your preferred default sorting)

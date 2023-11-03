@@ -25,7 +25,7 @@
     <!-- End Sidebar -->
     <div class="main-panel" style="background-color:white">
       <!-- Navbar -->
-      <nav class="navbar" style="margin-bottom:-80px">
+      <nav class="nav-title" style="margin-bottom:-80px">
         <div class="title">
           <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
             <span id="pageTitle">Title</span>
@@ -124,6 +124,30 @@
 
       // Tampilkan judul
       titleElement.style.visibility = 'visible';
+    });
+  </script>
+  <script>
+    document.getElementById("komentarLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
+        window.history.back(); // Kembali ke halaman sebelumnya
+    });
+  </script>
+  <script>
+    document.getElementById("postinganLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
+        window.history.go(-2); // Kembali ke halaman sebelumnya
+    });
+  </script>
+  <script>
+    document.getElementById("komentarToPostinganLink").addEventListener("click", function(event) {
+        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
+        window.history.back(); // Kembali ke halaman sebelumnya
+    });
+  </script>
+  <script>
+    document.getElementById("infoToJadwal").addEventListener("click", function(event) {
+        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
+        window.history.back(); // Kembali ke halaman sebelumnya
     });
   </script>
 

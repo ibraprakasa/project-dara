@@ -51,7 +51,7 @@ class RiwayatDonorController extends Controller
             $query1->whereBetween('tanggal_ambil', [$tanggalawal, $tanggalakhir]);
         }
 
-        $query->join('pendonor', 'riwayatdonor.pendonor_id', '=', 'pendonor.id')
+        $query->join('pendonor','riwayatdonor.pendonor_id', '=', 'pendonor.id')
         ->orderBy('pendonor.nama');
 
         

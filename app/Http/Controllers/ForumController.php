@@ -85,8 +85,8 @@ class ForumController extends Controller
         }
 
         $balas = $query->paginate(10);
-
-        return view('partials.forum-balasan', compact('balas'));
+        $post = Post::all();
+        return view('partials.forum-balasan', compact('balas','post'));
     }
 
     public function deletepostingan($id)

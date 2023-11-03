@@ -9,7 +9,17 @@
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="filter btn-group">
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
+            <li class="breadcrumb-item">Komentar</li>
+            <li class="breadcrumb-item">Balasan</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="filte btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
         <input class="btn" type="search" name="search" placeholder="Cari Postingan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
@@ -18,15 +28,14 @@
     </form>
 </div>
 
-<div class="filter btn-group">
+<div class="filte btn-group">
     <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterpostingan">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
     </button>
 </div>
 
-
-<div class="filter1 btn-group wow">
+<div class="filte btn-group wow">
     @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
@@ -150,7 +159,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Kode</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}"readonly>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -162,7 +171,7 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Tanggal</label>
-                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}"readonly>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}" readonly>
                         </div>
                     </div>
                 </div>

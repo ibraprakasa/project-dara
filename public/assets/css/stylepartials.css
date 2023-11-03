@@ -18,6 +18,11 @@
     font-size: 22px;
 }
 
+.filte{
+    margin-top:9px;
+    margin-left:27px;
+}
+
 .filter{
     margin-top:100px; 
     margin-left:27px;
@@ -26,6 +31,11 @@
 .filter1{
     margin-top:100px; 
     margin-left:40px;
+}
+
+.filter2{
+    margin-top: -45px;
+    margin-left: -30px;
 }
 
 .wow{
@@ -387,4 +397,29 @@ table td {
 .truncate-text-report{
     max-width: 300px;
 }
+
+.breadcrumb-container{
+    display:flex;
+    justify-content: flex-end;
+    margin-top:40px;
+    margin-right:20px;
+    margin-bottom: -10px;
+}
+
+.breadcrumb {
+    background-color: white;
+    /* Ganti warna latar belakang sesuai keinginan Anda */
+}
+
+
+
+.breadcrumb-item a {
+    color: #3B4B65;
+    font-weight: bold;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+    transform: scale(1.1); /* Mengubah ukuran tautan saat dihover */
+  }
 

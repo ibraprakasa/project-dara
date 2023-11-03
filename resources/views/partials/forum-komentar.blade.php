@@ -9,11 +9,20 @@
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="filter btn-group">
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarToPostinganLink">Postingan</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Komentar</a></li>
+            <li class="breadcrumb-item">Balasan</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="filte btn-group">
     @foreach($komentar as $row)
     <form action="{{ route('forum-komentar', ['id_post' => $row->id]) }}" method="GET" style="display: flex;">
     @endforeach
-        <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
         <input class="btn" type="search" name="search" placeholder="Cari Komentar..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
@@ -21,22 +30,15 @@
     </form>
 </div>
 
-<div class="filter btn-group">
+<div class="filte btn-group">
     <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterkomentar">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
     </button>
 </div>
 
-<div class="filter btn-group wow">
-    @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
-            {{ session('error') }}
-        </div>
-    </div>
-    @elseif(session('success'))
+<div class="filte btn-group wow">
+    @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
         <div>
@@ -60,11 +62,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($komentar) == 0)
-        <tr>
-            <td style="font-weight:bold" colspan="7" style="text-align:center;">Komentar belum ada</td>
-        </tr>
-        @else
+            @if(count($komentar) == 0)
+            <tr>
+                <td style="font-weight:bold" colspan="7" style="text-align:center;">Komentar belum ada</td>
+            </tr>
+            @else
             @foreach($komentar as $nomor => $komen)
             <tr>
                 <td>{{ $nomor+1 }}</td>
@@ -72,8 +74,8 @@
                 <td>{{ $komen->pendonor->nama }}</td>
                 <td>{{ $komen->text }}</td>
                 <td>{{ $komen->reply->count() }}
-                <form action="{{ route('forum-balasan', ['id_comment' => $komen->id]) }}" method="GET" style="display: inline-block;">
-                    <input type="hidden" name="id" value="{{ $komen->id }}">
+                    <form action="{{ route('forum-balasan', ['id_comment' => $komen->id]) }}" method="GET" style="display: inline-block;">
+                        <input type="hidden" name="id" value="{{ $komen->id }}">
                         <button class="custom-button" type="submit">
                             <svg style="fill:#1B77A0" xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 640 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                                 <path d="M192 256c61.9 0 112-50.1 112-112S253.9 32 192 32 80 82.1 80 144s50.1 112 112 112zm76.8 32h-8.3c-20.8 10-43.9 16-68.5 16s-47.6-6-68.5-16h-8.3C51.6 288 0 339.6 0 403.2V432c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48v-28.8c0-63.6-51.6-115.2-115.2-115.2zM480 256c53 0 96-43 96-96s-43-96-96-96-96 43-96 96 43 96 96 96zm48 32h-3.8c-13.9 4.8-28.6 8-44.2 8s-30.3-3.2-44.2-8H432c-20.4 0-39.2 5.9-55.7 15.4 24.4 26.3 39.7 61.2 39.7 99.8v38.4c0 2.2-.5 4.3-.6 6.4H592c26.5 0 48-21.5 48-48 0-61.9-50.1-112-112-112z" />
@@ -82,7 +84,8 @@
                     </form>
                 </td>
                 <td>{{ $komen->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
-                    {{ $komen->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB</td>
+                    {{ $komen->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
+                </td>
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletekomentar{{ $komen->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -108,8 +111,8 @@
             </div>
             @foreach($komentar as $row)
             <form action="{{ route('forum-komentar', ['id_post' => $row->id]) }}" method="GET">
-            @endforeach
-            <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
+                @endforeach
+                <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
