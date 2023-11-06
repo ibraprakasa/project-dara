@@ -226,7 +226,7 @@
                     <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
                 </div>
 
-                <label style="color:black;font-weight:bold">Deskripsi</label>
+                <label style="color:#3B4B65;font-weight:bold;">Deskripsi</label>
                 <div class="form-group" style="color:black;background-color: white;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->deskripsi }}</textarea>
                 </div>

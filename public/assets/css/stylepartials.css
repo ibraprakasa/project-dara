@@ -86,7 +86,6 @@
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 180px; /* Tinggi minimum awal textarea */
     color: black;
-    font-weight: bold; 
   }
   
 
@@ -378,6 +377,7 @@ table td {
     font-size:20px;
     font-weight:bold;
     text-align: center;
+    font-style: italic;
 }
 
 .profile-title{

@@ -87,7 +87,9 @@
                         </button>
                     </form>
                 </td>
-                <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }} WIB</td>
+                <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
+                    {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
+                </td>                
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletepostingan{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>

@@ -17,7 +17,7 @@ class BeritaController extends Controller
             $query->where('judul', 'LIKE', '%' . $search . '%');
         }
 
-        $data = $query->paginate(3);
+        $data = $query->paginate(5);
 
         return view('partials.berita', compact('data'));
     }

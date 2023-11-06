@@ -43,7 +43,6 @@ class ForumController extends Controller
 
         $query = Comment::where('id_post', $id_post);
 
-
         if ($search) {
             $query->where('text', 'LIKE', '%' . $search . '%')
                 ->orWhereHas('pendonor', function ($q) use ($search) {
@@ -55,11 +54,8 @@ class ForumController extends Controller
         if ($tanggalawal && $tanggalakhir) {
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
-        
         $komentar = $query->paginate(10);
-
-        return view('partials.forum-komentar', compact('komentar'));
-        
+        return view('partials.forum-komentar', compact('komentar'));   
     }
 
     public function getBalasan($id_comment)
@@ -127,11 +123,12 @@ class ForumController extends Controller
 
             $komentar->delete();
 
-            return redirect()->route('forum-komentar', ['id_post' => request('post_id')])->with('success', 'Komentar berhasil dihapus.');
+            return redirect()->route('forum-komentar', ['id_post' => request('id_post')])->with('success', 'Komentar berhasil dihapus.');
         }
 
-        return redirect()->route('forum-komentar', ['id_post' => request('post_id')])->with('error', 'Komentar tidak dapat ditemukan atau terjadi kesalahan.');
+        return redirect()->route('forum-komentar', ['id_post' => request('id_post')])->with('error', 'Komentar tidak dapat ditemukan atau terjadi kesalahan.');
     }
+
 
     public function deletebalasan($id)
     {

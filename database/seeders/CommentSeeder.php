@@ -12,7 +12,7 @@ class CommentSeeder extends Seeder
     {
         DB::table('comments')->insertGetId(array(
             'id_pendonor' => '10',
-            'id_post' => '6',
+            'id_post' => '5',
             'text' => 'Waduh kok status lu gabener dah?',
             'created_at' =>now(),
             'updated_at' =>now(),
@@ -20,7 +20,7 @@ class CommentSeeder extends Seeder
 
         DB::table('comments')->insertGetId(array(
             'id_pendonor' => '5',
-            'id_post' => '6',
+            'id_post' => '5',
             'text' => 'Broo lu keren banget!',
             'created_at' =>now(),
             'updated_at' =>now(),

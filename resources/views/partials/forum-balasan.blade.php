@@ -12,7 +12,7 @@
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="#" id="postinganLink">Postingan</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
             <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarLink">Komentar</a></li>
             <li class="breadcrumb-item" aria-current="page"><a href="#">Balasan</a></li>
         </ol>
@@ -21,7 +21,8 @@
 
 <div class="filte btn-group">
     @foreach($balas as $row)
-    <form action="{{ route('forum-balasan', ['id_comment' => $row->id]) }}" method="GET" style="display: flex;">
+    <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET" style="display: flex;">
+    <input type="hidden" name="id" value="{{ $row->id }}">
     @endforeach
         <input class="btn" type="search" name="search" placeholder="Cari Balasan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
@@ -105,6 +106,7 @@
             <form action="{{ route('deletebalasan', ['id' => $row->id, 'comment_id' => request('id')]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
+                <input type="hidden" name="id" value="{{ $row->id }}">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
@@ -127,9 +129,9 @@
                 </button>
             </div>
             @foreach($balas as $row)
-            <form action="{{ route('forum-balasan', ['id_comment' => $row->id]) }}" method="GET">
+            <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET">
+            <input type="hidden" name="id" value="{{ $row->id }}">
             @endforeach
-            <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">

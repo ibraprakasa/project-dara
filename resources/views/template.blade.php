@@ -118,10 +118,6 @@
         $(".active").css("background-color", "#1B77A0");
       }
 
-
-
-
-
       // Tampilkan judul
       titleElement.style.visibility = 'visible';
     });
@@ -132,26 +128,6 @@
         window.history.back(); // Kembali ke halaman sebelumnya
     });
   </script>
-  <script>
-    document.getElementById("postinganLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
-        window.history.go(-2); // Kembali ke halaman sebelumnya
-    });
-  </script>
-  <script>
-    document.getElementById("komentarToPostinganLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
-        window.history.back(); // Kembali ke halaman sebelumnya
-    });
-  </script>
-  <script>
-    document.getElementById("infoToJadwal").addEventListener("click", function(event) {
-        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
-        window.history.back(); // Kembali ke halaman sebelumnya
-    });
-  </script>
-
-
 
 </body>
 

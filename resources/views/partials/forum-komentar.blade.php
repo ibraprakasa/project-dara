@@ -12,7 +12,7 @@
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarToPostinganLink">Postingan</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
             <li class="breadcrumb-item" aria-current="page"><a href="#">Komentar</a></li>
             <li class="breadcrumb-item">Balasan</li>
         </ol>
@@ -21,7 +21,8 @@
 
 <div class="filte btn-group">
     @foreach($komentar as $row)
-    <form action="{{ route('forum-komentar', ['id_post' => $row->id]) }}" method="GET" style="display: flex;">
+    <form action="{{ route('forum-komentar', ['id_post' => $row->id_post]) }}" method="GET" style="display: flex;">
+    <input type="hidden" name="id" value="{{ $row->id }}">
     @endforeach
         <input class="btn" type="search" name="search" placeholder="Cari Komentar..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
@@ -110,8 +111,8 @@
                 </button>
             </div>
             @foreach($komentar as $row)
-            <form action="{{ route('forum-komentar', ['id_post' => $row->id]) }}" method="GET">
-                @endforeach
+            <form action="{{ route('forum-komentar', ['id_post' => $row->id_post]) }}" method="GET">
+            @endforeach
                 <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
                 <div class="modal-body">
                     <div class="row">
@@ -150,12 +151,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus komentar di baris {{ $key+$komentar->firstItem() }}?
+                Apakah Anda yakin untuk menghapus komentar di baris {{ $key + $komentar->firstItem() }}?
             </div>
-            <form action="{{ route('deletekomentar', ['id' => $row->id, 'post_id' => request('id')]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletekomentar', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
-                <input type="hidden" name="id" value="{{ request('id') }}">
+                <input type="hidden" name="id_post" value="{{ request('id_post') }}">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
@@ -165,6 +166,7 @@
     </div>
 </div>
 @endforeach
+
 <!-- END MODAL -->
 
 @endsection

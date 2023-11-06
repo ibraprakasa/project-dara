@@ -397,7 +397,11 @@
             <div class="modal-body">
                 <label class="profile-title" for="judulberita">Profil</label>
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="150" height="140" style="border-radius: 50%;">
+                    @if ($row->gambar)
+                    <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 50%;">
+                    @else
+                    <img src="{{ asset('assets/img/user.png') }}" alt="" width="150" height="140" style="border-radius: 50%;">
+                    @endif
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -442,7 +446,7 @@
                             <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
                         </div>
                     </div>
-                </div>  
+                </div>
                 <div class="form-group" style="color:black; font-weight:bold">
                     <label for="nomor">Alamat</label>
                     <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>

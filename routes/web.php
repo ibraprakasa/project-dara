@@ -65,10 +65,6 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');
     //END JADWAL DONOR
 
-    
-
-    
-    
     //INFO PENDAFTAR
     Route::get('/infopendaftar', 'App\Http\Controllers\JadwalDonorController@infopendaftar')->name('infopendaftar');
     Route::delete('deletejadwalpendonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwalpendonor')->name('deletejadwalpendonor');
