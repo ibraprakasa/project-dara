@@ -11,6 +11,7 @@ use App\Http\Controllers\LupaPasswordControllerAPI;
 use App\Http\Controllers\PostControllerAPI;
 use App\Http\Controllers\PostFavoriteControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
+use App\Http\Controllers\TokenFcmControllerAPI;
 use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -73,3 +74,8 @@ Route::post('/post-favorite/add/{id}', [PostFavoriteControllerAPI::class, 'add']
 Route::delete('/post-favorite/delete/{id}', [PostFavoriteControllerAPI::class, 'delete']);
 //laporan
 Route::post('/laporan', [LaporanControllerAPI::class, 'add']);
+
+//notif
+Route::post('/token-fcm', [TokenFcmControllerAPI::class, 'addToken']);
+Route::delete('/token-fcm/delete', [TokenFcmControllerAPI::class, 'deleteToken']);
+

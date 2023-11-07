@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use AccountActivated;
 use App\Models\BalasComment;
 use App\Models\Comment;
 use App\Models\Pendonor;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+
+use Kreait\Firebase\Messaging\CloudMessage;
+use Kreait\Firebase\Messaging\Notification;
+use Kreait\Laravel\Firebase\Facades\Firebase;
 
 class CommentControllerAPI extends Controller
 {
@@ -25,7 +30,7 @@ class CommentControllerAPI extends Controller
 
             foreach ($comments as $comment) {
                 $pendonor = Pendonor::find($comment->id_pendonor);
-                $balas_comment = BalasComment::where('id_comment',$comment->id)->count();
+                $balas_comment = BalasComment::where('id_comment', $comment->id)->count();
 
                 // Pastikan pendonor ditemukan sebelum mencoba mengakses propertinya
                 if ($pendonor) {
@@ -34,15 +39,15 @@ class CommentControllerAPI extends Controller
                     $diff = str_replace('dari sekarang', 'yang lalu', $diff);
                     $responseData[] = [
                         'id_post' => $id,
-                            "id_comment" => $comment->id,
-                            "id_pendonor" => $comment->id_pendonor,
-                            'nama' => $pendonor->nama,
-                            "gambar" => $pendonor->gambar,
-                            "id_post" => $comment->id_post,
-                            "text" => $comment->text,
-                            "created_at" => $comment->created_at,
-                            "updated_at" => $diff,
-                            "jumlah_balasan" => $balas_comment
+                        "id_comment" => $comment->id,
+                        "id_pendonor" => $comment->id_pendonor,
+                        'nama' => $pendonor->nama,
+                        "gambar" => $pendonor->gambar,
+                        "id_post" => $comment->id_post,
+                        "text" => $comment->text,
+                        "created_at" => $comment->created_at,
+                        "updated_at" => $diff,
+                        "jumlah_balasan" => $balas_comment
                     ];
                 }
             }
@@ -85,6 +90,15 @@ class CommentControllerAPI extends Controller
             'id_post' => $request->id_post,
             'text' => $request->text
         ]);
+
+        $messaging = app('firebase.messaging');
+
+        $message = CloudMessage::new()
+            ->withNotification(Notification::create('Judul Notifikasi', 'Isi pesan notifikasi'))
+            ->withData(['key' => 'value']);
+        
+        $messaging->send($message);
+
         return response()->json([
             'status' => true,
             'message' => 'Success'
