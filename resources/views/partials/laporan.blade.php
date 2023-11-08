@@ -42,6 +42,17 @@
             {{ session('success') }}
         </div>
     </div>
+    @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
+        </div>
     @endif
 </div>
 
@@ -120,9 +131,9 @@
                         <label style="color:black;font-weight:bold" for="type">Tipe</label>
                         <select class="kolom form-control" name="type">
                             <option class="kolom form-control" value="">-</option>
-                            <option class="kolom form-control" value="postingan">Postingan</option>
-                            <option class="kolom form-control" value="komentar">Komentar</option>
-                            <option class="kolom form-control" value="balasan">Balasan</option>
+                            <option class="kolom form-control" value="Postingan">Postingan</option>
+                            <option class="kolom form-control" value="Komentar">Komentar</option>
+                            <option class="kolom form-control" value="Balasan">Balasan</option>
                         </select>
                     </div>
                 </div>

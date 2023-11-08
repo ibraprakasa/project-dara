@@ -44,16 +44,16 @@
         </div>
     </div>
     @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($sortMessage)
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-        @elseif($search)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-        @endif
-        <div>
-            {{ $successMessage }}
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
         </div>
-    </div>
     @endif
 </div>
 

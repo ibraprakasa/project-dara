@@ -14,6 +14,7 @@ class ForumController extends Controller
         $search = request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $successMessage = null; 
 
         $query = Post::query();
         
@@ -29,8 +30,14 @@ class ForumController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
         $postingan = $query->paginate(10);
-        return view('partials.forum-postingan', compact('postingan'));
+        return view('partials.forum-postingan', compact('postingan','search','successMessage'));
     }
 
     public function getKomentar($id_post)
@@ -40,6 +47,7 @@ class ForumController extends Controller
         $search = request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $successMessage = null;
 
         $query = Comment::where('id_post', $id_post);
 
@@ -54,8 +62,15 @@ class ForumController extends Controller
         if ($tanggalawal && $tanggalakhir) {
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
+
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
         $komentar = $query->paginate(10);
-        return view('partials.forum-komentar', compact('komentar'));   
+        return view('partials.forum-komentar', compact('komentar','search','successMessage'));   
     }
 
     public function getBalasan($id_comment)
@@ -65,6 +80,7 @@ class ForumController extends Controller
         $search = request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $successMessage = null;
 
         $query = BalasComment::where('id_comment', $id_comment);
 
@@ -80,9 +96,15 @@ class ForumController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
         $balas = $query->paginate(10);
         $post = Post::all();
-        return view('partials.forum-balasan', compact('balas','post'));
+        return view('partials.forum-balasan', compact('balas','post','search','successMessage'));
     }
 
     public function deletepostingan($id)
