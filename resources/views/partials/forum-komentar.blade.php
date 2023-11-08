@@ -22,8 +22,8 @@
 <div class="filte btn-group">
     @foreach($komentar as $row)
     <form action="{{ route('forum-komentar', ['id_post' => $row->id_post]) }}" method="GET" style="display: flex;">
-    <input type="hidden" name="id" value="{{ $row->id }}">
-    @endforeach
+        <input type="hidden" name="id" value="{{ $row->id }}">
+        @endforeach
         <input class="btn" type="search" name="search" placeholder="Cari Komentar..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
@@ -47,16 +47,16 @@
         </div>
     </div>
     @elseif(isset($successMessage))
-        <div class="alert-container12 success">
-            @if($search)
-            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-            @else
-            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-            @endif
-            <div>
-                {{ $successMessage }}
-            </div>
+    <div class="alert-container12 success">
+        @if($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @else
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @endif
+        <div>
+            {{ $successMessage }}
         </div>
+    </div>
     @endif
 </div>
 
@@ -123,7 +123,7 @@
             </div>
             @foreach($komentar as $row)
             <form action="{{ route('forum-komentar', ['id_post' => $row->id_post]) }}" method="GET">
-            @endforeach
+                @endforeach
                 <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
                 <div class="modal-body">
                     <div class="row">

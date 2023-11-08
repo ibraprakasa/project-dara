@@ -64,7 +64,11 @@ class RiwayatDonorController extends Controller
         }elseif(($tanggalawal && $tanggalakhir) && $goldar){
             $successMessage = 'Filter Berdasarkan Golongan Darah dan Tanggal Terkait';
         }elseif($goldar && $lokasi){
-            $successMessage = 'Filter Berdasarkan Lokasi dan Golongan Darah Terkait';
+            $golonganDarah = GolonganDarah::find($goldar);
+            if ($golonganDarah) {
+                $successMessage = 'Filter Berdasarkan Golongan Darah "' . $golonganDarah->nama . '"';
+            }
+            $successMessage = 'Filter Berdasarkan Lokasi di "' . $lokasi . '" dan Golongan Darah "' .$golonganDarah->nama . '"';
         }elseif ($lokasi) {
             $successMessage = 'Filter Berdasarkan Lokasi di "' . $lokasi . '"';
         } elseif ($goldar) {
