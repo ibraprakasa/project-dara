@@ -22,6 +22,7 @@ class RiwayatDonorController extends Controller
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
         $search = request()->input('search');
+        $successMessage = null;
 
         $query = RiwayatDonor::query();
         $query1 = RiwayatAmbil::query();
@@ -54,13 +55,34 @@ class RiwayatDonorController extends Controller
         $query->join('pendonor','riwayatdonor.pendonor_id', '=', 'pendonor.id')
         ->orderBy('pendonor.nama');
 
+        if ($search) {
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif(($tanggalawal && $tanggalakhir) && $lokasi && $goldar){
+            $successMessage = 'Filter Berdasarkan Lokasi, Goldar, dan Tanggal Terkait';
+        }elseif(($tanggalawal && $tanggalakhir) && $lokasi){
+            $successMessage = 'Filter Berdasarkan Lokasi dan Tanggal Terkait';
+        }elseif(($tanggalawal && $tanggalakhir) && $goldar){
+            $successMessage = 'Filter Berdasarkan Golongan Darah dan Tanggal Terkait';
+        }elseif($goldar && $lokasi){
+            $successMessage = 'Filter Berdasarkan Lokasi dan Golongan Darah Terkait';
+        }elseif ($lokasi) {
+            $successMessage = 'Filter Berdasarkan Lokasi di "' . $lokasi . '"';
+        } elseif ($goldar) {
+            $golonganDarah = GolonganDarah::find($goldar);
+            if ($golonganDarah) {
+                $successMessage = 'Filter Berdasarkan Golongan Darah "' . $golonganDarah->nama . '"';
+            }
+        }
+        elseif ($tanggalawal && $tanggalakhir) {
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
         
         
         $riwayat_donor =  $query->paginate(10);
         $riwayat_ambil =  $query1->paginate(10);
         
         
-        return view('partials.riwayatdonor', compact('riwayat_donor','riwayat_ambil','lokasiDaftar','goldarDaftar'));
+        return view('partials.riwayatdonor', compact('riwayat_donor','riwayat_ambil','lokasiDaftar','goldarDaftar','successMessage','search'));
     }
     
 }

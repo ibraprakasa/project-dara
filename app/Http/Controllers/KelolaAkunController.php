@@ -20,6 +20,8 @@ class KelolaAkunController extends Controller
         $sort = request()->input('sortuser');
         $golonganDarah = request()->input('id_golongan_darah');
         $jenisKelamin = request()->input('jenis_kelamin');
+        $successMessage = null;
+        $successMessageUser = null;
 
         $query = Pendonor::query();
         $query1 = User::query();
@@ -55,12 +57,30 @@ class KelolaAkunController extends Controller
             $query->where('jenis_kelamin', $jenisKelamin);
         }
 
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($sort){
+            $successMessageUser = 'Filter Berdasarkan Role "' . $sort . '"';
+        }elseif($jenisKelamin && $golonganDarah){
+            $goldarah = GolonganDarah::find($golonganDarah);
+            if ($goldarah && $jenisKelamin) {
+                $successMessage = 'Filter Berdasarkan Jenis Kelamin "' . $jenisKelamin . '"' . ' dan Golongan Darah "' .$goldarah->nama . '"';
+            }
+        }elseif($jenisKelamin){
+            $successMessage = 'Filter Berdasarkan Jenis Kelamin "' . $jenisKelamin . '"';
+        }elseif($golonganDarah){
+            $goldarah = GolonganDarah::find($golonganDarah);
+            if ($goldarah) {
+                $successMessage = 'Filter Berdasarkan Golongan Darah "' . $goldarah->nama . '"';
+            }
+        }
+
         $query->orderBy('kode_pendonor');
 
         $data = $query->paginate(5);
         $data1 = $query1->paginate(5);
 
-        return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar'));
+        return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar','successMessage','search','sort','jenisKelamin','golonganDarah','successMessageUser'));
     }
 
     public function insertpendonorsuper(Request $request)

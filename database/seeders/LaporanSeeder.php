@@ -16,10 +16,21 @@ class LaporanSeeder extends Seeder
         DB::table('reports')->insertGetId(array(
             'id_pendonor' => '10',
             'id_post' =>  null,
-            'id_comment' =>  28,
+            'id_comment' =>  32,
             'id_reply' =>  null,
             'text' => 'tes',
             'type' => 'Komentar',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ));
+
+        DB::table('reports')->insertGetId(array(
+            'id_pendonor' => '12',
+            'id_post' =>  null,
+            'id_comment' =>  null,
+            'id_reply' =>  26,
+            'text' => 'Ini balas komentar',
+            'type' => 'Balasan',
             'created_at' =>now(),
             'updated_at' =>now(),
         ));

@@ -41,11 +41,15 @@
 .wow{
     width: auto;
 }
-
-.filter .dropdown-item:hover {
-    background-color: #3B4B65;
-  }
   
+.dropdown-menu.dropdown-menu-right .dropdown-item:hover,
+.dropdown-menu.dropdown-menu-right .dropdown-item:active {
+    background-color: #3B4B65; /* Ganti warna latar belakang saat hover atau saat tombol dalam keadaan aktif menjadi warna biru */
+    color: white; /* Ganti warna teks saat hover atau saat tombol dalam keadaan aktif menjadi putih */
+}
+
+
+
 .btn-primary:hover {
     background-color: white;
     color: #3B4B65; /* Anda juga mungkin perlu mengatur warna teks saat hover sesuai kebutuhan Anda */
@@ -168,6 +172,18 @@
     padding: 10px 20px;
     background-color: #EB1F3E; /* Warna merah */
     color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.alert-container12 {
+    display: flex;
+    width:100%;
+    align-items: center;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 5px;

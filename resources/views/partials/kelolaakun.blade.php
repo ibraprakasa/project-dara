@@ -55,7 +55,7 @@
         </div>
 
         <div class="filter btn-group wow">
-            @if(session('error'))
+        @if(session('error'))
             <div class="alert-container">
                 <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                 <div>
@@ -69,8 +69,20 @@
                     {{ session('success') }}
                 </div>
             </div>
-            @endif
+            @elseif(isset($successMessage))
+            <div class="alert-container12 success">
+                @if($search)
+                <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
+                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                @endif
+                <div>
+                    {{ $successMessage }}
+                </div>
+            </div>
+        @endif
         </div>
+
     </div>
     <table id="tabelpendonor" class="table table-bordered">
         <thead class="thead">
@@ -177,6 +189,15 @@
                 <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                 <div>
                     {{ session('success') }}
+                </div>
+            </div>
+            @elseif(isset($sort))
+            <div class="alert-container12 success">
+                @if($sort)
+                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                @endif
+                <div>
+                    {{ $successMessageUser }}
                 </div>
             </div>
             @endif
@@ -398,9 +419,9 @@
                 <label class="profile-title" for="judulberita">Profil</label>
                 <div class="form-group" style="text-align: center;">
                     @if ($row->gambar)
-                    <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 50%;">
+                    <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
                     @else
-                    <img src="{{ asset('assets/img/user.png') }}" alt="" width="150" height="140" style="border-radius: 50%;">
+                    <img src="{{ asset('assets/img/userblue.png') }}" alt="" width="150" height="140" style="border-radius: 25%; border: 2px solid black;">
                     @endif
                 </div>
                 <div class="row">

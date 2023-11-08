@@ -41,7 +41,22 @@ use Carbon\Carbon;
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
-    
+
+    <div style="display: flex; margin-left:15px;">
+        @if(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
+        </div>
+        @endif
+    </div>
+
 </div>
 
 <div class="content">

@@ -152,19 +152,79 @@
                 <div class="form-group" style="text-align: center;">
                     <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
-                <label style="color:red;font-weight:bold">Status yang dilaporkan</label>
+                <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->posts->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->posts->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal Posting</label>
+                            <input class="kolom form-control" placeholder="{{ $row->posts->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
                 </div>
                 @elseif ($row->comments && $row->comments->text)
                 <label style="color:red;font-weight:bold">Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->comments->text }}</textarea>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->comments->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->comments->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal Komentar</label>
+                            <input class="kolom form-control" placeholder="{{ $row->comments->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
                 @elseif ($row->reply && $row->reply->text)
                 <label style="color:red;font-weight:bold">Balasan Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->reply->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->reply->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->reply->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal Balasan</label>
+                            <input class="kolom form-control" placeholder="{{ $row->reply->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
                 </div>
                 @endif
             </div>

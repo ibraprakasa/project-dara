@@ -46,7 +46,6 @@
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
                 <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="abjad">Abjad</button>
-                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="default">Waktu data dibuat</button>
                 <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
                 <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
             </div>
@@ -67,6 +66,17 @@
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
         <div>
             {{ session('success') }}
+        </div>
+    </div>
+    @elseif(isset($successMessage))
+    <div class="alert-container12 success">
+        @if($sortMessage)
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @elseif($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @endif
+        <div>
+            {{ $successMessage }}
         </div>
     </div>
     @endif

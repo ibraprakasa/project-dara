@@ -10,16 +10,20 @@ class BeritaController extends Controller
     public function index()
     {
         $search = request()->input('search');
-
+        $successMessage = null;
         $query = Berita::query();
 
         if ($search) {
             $query->where('judul', 'LIKE', '%' . $search . '%');
         }
 
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }
+
         $data = $query->paginate(5);
 
-        return view('partials.berita', compact('data'));
+        return view('partials.berita', compact('data','successMessage'));
     }
 
     public function insertberita(Request $request){

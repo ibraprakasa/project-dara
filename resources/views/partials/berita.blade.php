@@ -47,6 +47,15 @@
             {{ session('success') }}
         </div>
     </div>
+    @elseif(isset($successMessage))
+    <div class="alert-container12 success">
+        @if($successMessage)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @endif
+        <div>
+            {{ $successMessage }}
+        </div>
+    </div>
     @endif
 </div>
 
