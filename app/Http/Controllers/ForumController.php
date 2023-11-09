@@ -11,7 +11,7 @@ class ForumController extends Controller
 {
     public function getPostingan()
     {
-        $search = request()->input('search');
+        $search = Request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
         $successMessage = null; 
