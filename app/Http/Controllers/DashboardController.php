@@ -42,6 +42,8 @@ class DashboardController extends Controller
         foreach ($bulan as $bln) {
             $acaraPerBulan = JadwalDonor::whereRaw("DATE_FORMAT(tanggal_donor, '%b') = ?", [$bln])->count();
             $jumlahAcaraDonor[] = $acaraPerBulan;
+            $stokPerBulan = '';
+            $jumlahStokDarah[] = '';
         }
 
 
@@ -56,6 +58,7 @@ class DashboardController extends Controller
             'golonganDarahCounts',
             'bulan',
             'jumlahAcaraDonor',
+            'jumlahStokDarah'
         ));
     }   
 
