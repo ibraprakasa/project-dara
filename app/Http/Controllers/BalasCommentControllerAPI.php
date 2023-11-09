@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BalasComment;
 use App\Models\Comment;
+use App\Models\Notifikasi;
 use App\Models\Pendonor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -76,6 +77,13 @@ class BalasCommentControllerAPI extends Controller
             'id_comment' => $request->id_comment,
             'id_pendonor' => $user->id,
             'text' => $request->text
+        ]);
+
+        $post = Comment::where('id',$request->id_comment)->first();
+        $addNotif = Notifikasi::create([
+            'id_post' => $post->id_post,
+            'id_comment' => $request->id_comment,
+            'id_balas_comment' => $addComment->id
         ]);
         return response()->json([
             'status' => true,

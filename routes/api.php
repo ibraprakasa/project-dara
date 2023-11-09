@@ -7,6 +7,7 @@ use App\Http\Controllers\DataPendonorControllerAPI;
 use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
 use App\Http\Controllers\LupaPasswordControllerAPI;
+use App\Http\Controllers\NotifikasiControllerAPI;
 use App\Http\Controllers\PostControllerAPI;
 use App\Http\Controllers\PostFavoriteControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
@@ -64,8 +65,11 @@ Route::post('/comment/add', [CommentControllerAPI::class, 'addComment']);
 //balas comentar
 Route::get('/balas-comment/{id}', [BalasCommentControllerAPI::class, 'show']);
 Route::post('/balas-comment/add', [BalasCommentControllerAPI::class, 'addBalasComment']);
-//post favorite
+//postingan favorite
 Route::get('/post-favorite', [PostFavoriteControllerAPI::class, 'show']);
 Route::get('/post-favorite/check/{id}', [PostFavoriteControllerAPI::class, 'status']);
 Route::post('/post-favorite/add/{id}', [PostFavoriteControllerAPI::class, 'add']);
 Route::delete('/post-favorite/delete/{id}', [PostFavoriteControllerAPI::class, 'delete']);
+//notifikasi
+Route::get('/notifikasi', [NotifikasiControllerAPI::class, 'show']);
+Route::get('/notifikasi/{id}', [NotifikasiControllerAPI::class, 'updateStatusRead']);

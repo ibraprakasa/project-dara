@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BalasComment;
 use App\Models\Comment;
+use App\Models\Notifikasi;
 use App\Models\Pendonor;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -84,6 +85,11 @@ class CommentControllerAPI extends Controller
             'id_pendonor' => $user->id,
             'id_post' => $request->id_post,
             'text' => $request->text
+        ]);
+
+        $addNotif = Notifikasi::create([
+            'id_post' => $request->id_post,
+            'id_comment' => $addComment->id
         ]);
         return response()->json([
             'status' => true,
