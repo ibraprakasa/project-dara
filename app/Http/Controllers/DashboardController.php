@@ -90,9 +90,6 @@ class DashboardController extends Controller
             ];
         }
 
-        // Kemudian, gunakan $grafikSeries dalam script JavaScript Anda
-
-
 
         return view('partials.dashboard', compact(
             'stokDarah',
