@@ -133,7 +133,7 @@
         </div>
         <div class="card-footer">
           <div class="stats">
-            <i class="fa fa-history"></i> Baru saja 
+            <i class="fa fa-history"></i> Baru saja
           </div>
         </div>
       </div>
@@ -145,7 +145,7 @@
         </div>
         <div class="card-footer">
           <div class="stats">
-            <i class="fa fa-history"></i> Baru saja 
+            <i class="fa fa-history"></i> Baru saja
           </div>
         </div>
       </div>
@@ -156,11 +156,13 @@
 <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
 <script>
-  
   var options = {
     series: [{
       name: "Jumlah Acara Donor",
-      data: @json($jumlahAcaraDonor)
+      data: 
+      <?php
+      echo json_encode($jumlahAcaraDonor)
+      ?>
     }],
     chart: {
       height: 350,
@@ -190,7 +192,10 @@
       },
     },
     xaxis: {
-      categories: @json($bulan)
+      categories: 
+      <?php 
+      echo json_encode($bulan)
+      ?>
     }
   };
 
@@ -199,92 +204,78 @@
 </script>
 
 <script>
-var options = {
-          series: [{
-            name: "A",
-            data: [45, 52, 38, 24, 33, 26, 21, 20, 6, 8, 15, 10]
-          },
-          {
-            name: "AB",
-            data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35]
-          },
-          {
-            name: 'B',
-            data: [87, 57, 74, 99, 75, 38, 62, 47, 82, 56, 45, 47]
-          },
-          {
-            name: 'O',
-            data: [23, 24, 56, 26, 52, 17, 87, 83, 29, 28, 43, 89]
-          }
-        ],
-          chart: {
-          height: 350,
-          type: 'line',
-          zoom: {
-            enabled: false
-          },
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          width: [2, 2, 2, 2],
-          curve: 'straight',
-          dashArray: [0, 0, 0, 0]
-        },
-        title: {
-          text: 'Stok Darah Masuk',
-          align: 'left'
-        },
-        subtitle: {
-          text: 'Dalam 1 tahun',
-          align: 'left'
-        },
-        legend: {
-          tooltipHoverFormatter: function(val, opts) {
-            return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
-          }
-        },
-        markers: {
-          size: 0,
-          hover: {
-            sizeOffset: 6
-          }
-        },
-        xaxis: {
-          categories: @json($bulan)
-        },
-        tooltip: {
-          y: [
-            {
-              title: {
-                formatter: function (val) {
-                  return val;
-                }
-              }
-            },
-            {
-              title: {
-                formatter: function (val) {
-                  return val;
-                }
-              }
-            },
-            {
-              title: {
-                formatter: function (val) {
-                  return val;
-                }
-              }
+  var options = {
+    series: <?php echo json_encode($grafikSeries); ?>,
+    chart: {
+      height: 350,
+      type: 'line',
+      zoom: {
+        enabled: false
+      },
+    },
+    dataLabels: {
+      enabled: false
+    },
+    stroke: {
+      width: [2, 2, 2, 2],
+      curve: 'straight',
+      dashArray: [0, 0, 0, 0]
+    },
+    title: {
+      text: 'Stok Darah Masuk',
+      align: 'left'
+    },
+    subtitle: {
+      text: 'Dalam 1 tahun',
+      align: 'left'
+    },
+    legend: {
+      tooltipHoverFormatter: function(val, opts) {
+        return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+      }
+    },
+    markers: {
+      size: 0,
+      hover: {
+        sizeOffset: 6
+      }
+    },
+    xaxis: {
+      categories:
+      <?php 
+      echo json_encode($bulan)
+      ?>
+    },
+    tooltip: {
+      y: [{
+          title: {
+            formatter: function(val) {
+              return val;
             }
-          ]
+          }
         },
-        grid: {
-          borderColor: '#f1f1f1',
+        {
+          title: {
+            formatter: function(val) {
+              return val;
+            }
+          }
+        },
+        {
+          title: {
+            formatter: function(val) {
+              return val;
+            }
+          }
         }
-        };
+      ]
+    },
+    grid: {
+      borderColor: '#f1f1f1',
+    }
+  };
 
-        var chart = new ApexCharts(document.querySelector("#chartGoldar"), options);
-        chart.render();
+  var chart = new ApexCharts(document.querySelector("#chartGoldar"), options);
+  chart.render();
 </script>
 @endsection

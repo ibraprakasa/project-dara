@@ -416,7 +416,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <label class="profile-title" for="judulberita">Profil</label>
                 <div class="form-group" style="text-align: center;">
                     @if ($row->gambar)
                     <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
