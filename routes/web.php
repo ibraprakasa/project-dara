@@ -32,7 +32,6 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 // END
 
 // LANDING PAGE
-Route::get('landing-page','App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 
 // END
 
