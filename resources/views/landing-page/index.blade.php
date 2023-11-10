@@ -8,13 +8,13 @@
   <title>
     DARA Apps
   </title>
-  <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon" />
-  <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
-  <link rel="stylesheet" href="assets/css/animate.css" />
-  <link rel="stylesheet" href="assets/css/tailwind.css" />
+  <link rel="shortcut icon" href="../assets/assets-landing-page/images/favicon.png" type="image/x-icon" />
+  <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
+  <link rel="stylesheet" href="../assets/assets-landing-page/tailwind.css" />
 
   <!-- ==== WOW JS ==== -->
-  <script src="assets/js/wow.min.js"></script>
+  <script src="../assets/assets-landing-page/js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
@@ -27,7 +27,7 @@
       <div class="relative -mx-4 flex items-center justify-between">
         <div class="w-60 max-w-full px-4">
           <a href="index.html" class="navbar-logo block w-full py-5">
-            <img src="assets/images/logo/logo-white.svg" alt="logo" class="header-logo w-full" />
+            <img src="{{ asset('assets/assets-landing-page/images/logo/logo-white.svg') }}" alt="logo" class="header-logo w-full" />
           </a>
         </div>
         <div class="flex w-full items-center justify-between px-4">
@@ -176,7 +176,7 @@
               </li>
             </ul>
             <div class="wow fadeInUp text-center" data-wow-delay=".3s">
-              <img src="assets/images/hero/brand.svg" alt="image"
+              <img src="{{ asset('assets/assets-landing-page/images/hero/brand.svg') }}" alt="image" 
                 class="mx-auto w-full max-w-[250px] opacity-50 transition duration-300 ease-in-out hover:opacity-100" />
             </div>
           </div>
@@ -185,7 +185,7 @@
         <div class="w-full px-4">
           <div class="wow fadeInUp relative z-10 mx-auto max-w-[845px]" data-wow-delay=".25s">
             <div class="mt-16">
-              <img src="assets/images/hero/hero-image.jpg" alt="hero"
+              <img src="{{ asset('assets/assets-landing-page/images/hero/hero-image.jpg') }}" alt="hero"
                 class="mx-auto max-w-full rounded-t-xl rounded-tr-xl" />
             </div>
             <div class="absolute bottom-0 -left-9 z-[-1]">
@@ -544,14 +544,14 @@
             <div class="flex flex-wrap -mx-2 sm:-mx-4 lg:-mx-2 xl:-mx-4">
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                 <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px]">
-                  <img src="./assets/images/about/about-image-01.jpg" alt="about image"
+                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-01.jpg') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
               </div>
 
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                 <div class="mb-4 sm:mb-8 sm:h-[220px] md:h-[346px] lg:mb-4 lg:h-[225px] xl:mb-8 xl:h-[310px]">
-                  <img src="./assets/images/about/about-image-02.jpg" alt="about image"
+                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-02.jpg') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
 
@@ -829,11 +829,11 @@
             <div class="swiper-slide">
               <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
                 <div class="flex items-center gap-[2px] mb-[18px]">
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                 </div>
 
                 <p class="text-body-color text-base mb-6">
@@ -843,7 +843,7 @@
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="./assets/images/testimonials/author-01.jpg" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-01.jpg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
@@ -860,11 +860,11 @@
             <div class="swiper-slide">
               <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
                 <div class="flex items-center gap-[2px] mb-[18px]">
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                 </div>
 
                 <p class="text-body-color text-base mb-6">
@@ -874,7 +874,7 @@
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="./assets/images/testimonials/author-02.jpg" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-02.jpg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
@@ -891,11 +891,11 @@
             <div class="swiper-slide">
               <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
                 <div class="flex items-center gap-[2px] mb-[18px]">
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                 </div>
 
                 <p class="text-body-color text-base mb-6">
@@ -905,7 +905,7 @@
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="./assets/images/testimonials/author-03.jpg" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-03.jpg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
@@ -922,11 +922,11 @@
             <div class="swiper-slide">
               <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
                 <div class="flex items-center gap-[2px] mb-[18px]">
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                 </div>
 
                 <p class="text-body-color text-base mb-6">
@@ -936,7 +936,7 @@
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="./assets/images/testimonials/author-01.jpg" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-01.jpg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
@@ -953,11 +953,11 @@
             <div class="swiper-slide">
               <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
                 <div class="flex items-center gap-[2px] mb-[18px]">
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                 </div>
 
                 <p class="text-body-color text-base mb-6">
@@ -967,7 +967,7 @@
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="./assets/images/testimonials/author-02.jpg" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-02.jpg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
@@ -984,11 +984,11 @@
             <div class="swiper-slide">
               <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
                 <div class="flex items-center gap-[2px] mb-[18px]">
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
-                  <img src="./assets/images/testimonials/icon-star.svg" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                 </div>
 
                 <p class="text-body-color text-base mb-6">
@@ -998,7 +998,7 @@
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="./assets/images/testimonials/author-03.jpg" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-03.jpg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
@@ -1274,7 +1274,7 @@
         <div class="w-full px-4 sm:w-1/2 lg:w-1/4 xl:w-1/4">
           <div class="group shadow-testimonial mb-8 rounded-xl bg-white px-5 pt-12 pb-10">
             <div class="relative z-10 mx-auto mb-5 h-[120px] w-[120px]">
-              <img src="./assets/images/team/team-01.png" alt="team image" class="h-[120px] w-[120px] rounded-full" />
+              <img src="{{ asset('assets/assets-landing-page/images/team/team-01.png') }}" alt="team image" class="h-[120px] w-[120px] rounded-full" />
               <span
                 class="bg-secondary absolute bottom-0 left-0 -z-10 h-10 w-10 rounded-full opacity-0 transition-all group-hover:opacity-100"></span>
               <span class="absolute top-0 right-0 -z-10 opacity-0 transition-all group-hover:opacity-100">
@@ -1773,7 +1773,7 @@
           <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
             <div class="mb-8 overflow-hidden rounded-[5px]">
               <a href="blog-details.html" class="block">
-                <img src="./assets/images/blog/blog-01.jpg" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                <img src="{{ asset('assets/assets-landing-page/images/blog/blog-01.jpg') }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
                </a>
             </div>
             <div>
@@ -1798,7 +1798,7 @@
           <div class="wow fadeInUp group mb-10" data-wow-delay=".15s">
             <div class="mb-8 overflow-hidden rounded-[5px]">
               <a href="blog-details.html" class="block">
-                <img src="./assets/images/blog/blog-02.jpg" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                <img src="{{ asset('assets/assets-landing-page/images/blog/blog-02.jpg') }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
               </a>
             </div>
             <div>
@@ -1823,7 +1823,7 @@
           <div class="wow fadeInUp group mb-10" data-wow-delay=".2s">
             <div class="mb-8 overflow-hidden rounded-[5px]">
               <a href="blog-details.html" class="block">
-                <img src="./assets/images/blog/blog-03.jpg" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+                <img src="{{ asset('assets/assets-landing-page/images/blog/blog-03.jpg') }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
               </a>
             </div>
             <div>
@@ -1947,19 +1947,19 @@
     <div class="container px-4">
       <div class="-mx-4 flex flex-wrap items-center justify-center gap-8 xl:gap-11">
         <a href="https://graygrids.com/">
-          <img src="./assets/images/brands/graygrids.svg" alt="graygrids">
+          <img src="{{ asset('assets/assets-landing-page/images/brands/graygrids.svg') }}" alt="graygrids">
         </a>
         <a href="https://lineicons.com/">
-          <img src="./assets/images/brands/lineicons.svg" alt="lineicons">
+          <img src="{{ asset('assets/assets-landing-page/images/brands/lineicons.svg') }}" alt="lineicons">
         </a>
         <a href="https://uideck.com/">
-          <img src="./assets/images/brands/uideck.svg" alt="uideck">
+          <img src="{{ asset('assets/assets-landing-page/images/brands/uideck.svg') }}" alt="uideck">
         </a>
         <a href="https://ayroui.com/">
-          <img src="./assets/images/brands/ayroui.svg" alt="ayroui">
+          <img src="{{ asset('assets/assets-landing-page/images/brands/ayroui.svg') }}" alt="ayroui">
         </a>
         <a href="https://tailgrids.com/">
-          <img src="./assets/images/brands/tailgrids.svg" alt="tailgrids">
+          <img src="{{ asset('assets/assets-landing-page/images/brands/tailgrids.svg') }}" alt="tailgrids">
         </a>
       </div>
     </div>
@@ -1973,7 +1973,7 @@
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12">
           <div class="mb-10 w-full">
             <a href="javascript:void(0)" class="mb-6 inline-block max-w-[160px]">
-              <img src="assets/images/logo/logo-white.svg" alt="logo" class="max-w-full" />
+              <img src="{{ asset('assets/assets-landing-page/images/logo/logo-white.svg') }}" alt="logo" class="max-w-full" />
             </a>
             <p class="mb-8 max-w-[270px] text-base text-gray-7">
               We create digital experiences for brands and companies by using
@@ -2104,7 +2104,7 @@
             <div class="flex flex-col gap-8">
               <a href="blog-details.html" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
-                  <img src="./assets/images/blog/blog-footer-01.jpg" alt="blog">
+                  <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-01.jpg') }}" alt="blog">
                 </div>
                 <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
                   I think really important to design with...
@@ -2112,7 +2112,7 @@
               </a>
               <a href="blog-details.html" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
-                  <img src="./assets/images/blog/blog-footer-02.jpg" alt="blog">
+                  <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-02.jpg') }}" alt="blog">
                 </div>
                 <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
                   Recognizing the need is the primary...
@@ -2159,11 +2159,11 @@
 
     <div>
       <span class="absolute left-0 top-0 z-[-1]">
-        <img src="assets/images/footer/shape-1.svg" alt="" />
+        <img src="{{ asset('assets/assets-landing-page/images/footer/shape-1.svg') }}" alt="" />
       </span>
 
       <span class="absolute bottom-0 right-0 z-[-1]">
-        <img src="assets/images/footer/shape-3.svg" alt="" />
+        <img src="{{ asset('assets/assets-landing-page/images/footer/shape-3.svg') }}" alt="" />
       </span>
 
       <span class="absolute top-0 right-0 z-[-1]">
@@ -2336,15 +2336,15 @@
     </span>
     <span class="w-px h-4 block bg-stroke"></span>
     <span class="block max-w-[88px] w-full">
-      <img src="./assets/images/brands/tailgrids.svg" alt="tailgrids">
+      <img src="{{ asset('assets/assets-landing-page/images/brands/tailgrids.svg') }}" alt="tailgrids">
     </span>
   </a>
   <!-- ====== Made With Button End -->
 
   <!-- ====== All Scripts -->
 
-  <script src="assets/js/swiper-bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="../assets/assets-landing-page/js/swiper-bundle.min.js"></script>
+  <script src="../assets/assets-landing-page/js/main.js"></script>
   <script>
     // ==== for menu scroll
     const pageLink = document.querySelectorAll(".ud-menu-scroll");
