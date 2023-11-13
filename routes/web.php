@@ -30,9 +30,8 @@ Route::get('lupapassword3', 'App\Http\Controllers\LupaPasswordController@getPass
 Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPasswordReset')->name('lupapassword3.post');
 
 // END
-
+Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 // LANDING PAGE
-Route::get('landing-page','App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 
 // END
 

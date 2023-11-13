@@ -301,8 +301,8 @@
                         <label for="jekel">Jenis Kelamin</label>
                         <select class="kolom form-control" id="jekel" name="jenis_kelamin">
                             <option class="kolom form-control" value="-" selected>-</option>
-                            <option class="kolom form-control" value="laki-laki">Laki-Laki</option>
-                            <option class="kolom form-control" value="perempuan">Perempuan</option>
+                            <option class="kolom form-control" value="Laki-Laki">Laki-Laki</option>
+                            <option class="kolom form-control" value="Perempuan">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -416,7 +416,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <label class="profile-title" for="judulberita">Profil</label>
                 <div class="form-group" style="text-align: center;">
                     @if ($row->gambar)
                     <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">

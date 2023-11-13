@@ -52,8 +52,8 @@ class RiwayatDonorController extends Controller
             $query1->whereBetween('tanggal_ambil', [$tanggalawal, $tanggalakhir]);
         }
 
-        $query->join('pendonor','riwayatdonor.pendonor_id', '=', 'pendonor.id')
-        ->orderBy('pendonor.nama');
+        $query->orderBy('tanggal_donor');
+        $query1->orderBy('tanggal_ambil');
 
         if ($search) {
             $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
@@ -64,7 +64,11 @@ class RiwayatDonorController extends Controller
         }elseif(($tanggalawal && $tanggalakhir) && $goldar){
             $successMessage = 'Filter Berdasarkan Golongan Darah dan Tanggal Terkait';
         }elseif($goldar && $lokasi){
-            $successMessage = 'Filter Berdasarkan Lokasi dan Golongan Darah Terkait';
+            $golonganDarah = GolonganDarah::find($goldar);
+            if ($golonganDarah) {
+                $successMessage = 'Filter Berdasarkan Golongan Darah "' . $golonganDarah->nama . '"';
+            }
+            $successMessage = 'Filter Berdasarkan Lokasi di "' . $lokasi . '" dan Golongan Darah "' .$golonganDarah->nama . '"';
         }elseif ($lokasi) {
             $successMessage = 'Filter Berdasarkan Lokasi di "' . $lokasi . '"';
         } elseif ($goldar) {

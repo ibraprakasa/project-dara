@@ -16,6 +16,7 @@ class LaporanController extends Controller
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
         $type = request()->input('type');
+        $successMessage = null;
 
         $query = Laporan::query();
         
@@ -35,8 +36,18 @@ class LaporanController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($type && ($tanggalawal && $tanggalakhir)){
+            $successMessage = 'Filter Berdasarkan "'. $type .'" saja' . ' dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"';
+        }elseif($type){
+            $successMessage = 'Filter Berdasarkan Laporan dengan Tipe "'. $type . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
         $report = $query->paginate(10);
-        return view('partials.laporan', compact('report','daftarType','postingan'));
+        return view('partials.laporan', compact('report','daftarType','postingan','successMessage','search'));
     }
 
     public function deleteLaporanPalsu($id)

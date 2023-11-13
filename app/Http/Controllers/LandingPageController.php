@@ -8,7 +8,7 @@ class LandingPageController extends Controller
 {
     public function getIndex()
     {
-        return view('landing-page.index');
+        return view('landing-page.details.index');
     }
     
 
