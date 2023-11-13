@@ -118,7 +118,7 @@ use Carbon\Carbon;
 </div>
 
 <!-- MODAL FILTER RIWAYAT -->
-@foreach($riwayat_donor as $row)
+<!-- @foreach($riwayat_donor as $row) -->
 <div class="modal fade filterriwayat" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -170,7 +170,7 @@ use Carbon\Carbon;
         </div>
     </div>
 </div>
-@endforeach
+<!-- @endforeach -->
 <!--  END MODAL  -->
 
 <script>

@@ -6,11 +6,14 @@ use App\Http\Controllers\CommentControllerAPI;
 use App\Http\Controllers\DataPendonorControllerAPI;
 use App\Http\Controllers\JadwalDonorControllerAPI;
 use App\Http\Controllers\JadwalPendonorControllerAPI;
+use App\Http\Controllers\LaporanControllerAPI;
 use App\Http\Controllers\LupaPasswordControllerAPI;
 use App\Http\Controllers\NotifikasiControllerAPI;
 use App\Http\Controllers\PostControllerAPI;
 use App\Http\Controllers\PostFavoriteControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
+use App\Http\Controllers\TokenFcmControllerAPI;
+use App\Models\Laporan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -74,3 +77,5 @@ Route::delete('/post-favorite/delete/{id}', [PostFavoriteControllerAPI::class, '
 Route::get('/notifikasi', [NotifikasiControllerAPI::class, 'show']);
 Route::get('/notifikasi/{id}', [NotifikasiControllerAPI::class, 'updateStatusRead']);
 Route::get('/total-notif', [NotifikasiControllerAPI::class, 'totalNotif']);
+//laporan
+Route::post('/laporan', [LaporanControllerAPI::class, 'add']);

@@ -19,7 +19,9 @@ class Comment extends Authenticatable implements JWTSubject
     protected $fillable = [
        'id_pendonor',
        'id_post',
-       'text'
+       'text',
+       'created_at',
+       'updated_at'
     ];
 
     public function getJWTIdentifier()
@@ -35,5 +37,25 @@ class Comment extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public function post()
+    {
+        return $this->belongsTo(Post::class, 'id_post'); // Sesuaikan dengan nama kolom yang digunakan di tabel comments
+    }
+
+    public function reply()
+    {
+        return $this->hasMany(BalasComment::class, 'id_comment'); // Sesuaikan dengan nama kolom yang digunakan di tabel comments
+    }
+
+    public function pendonor()
+    {
+        return $this->belongsTo(Pendonor::class, 'id_pendonor');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Laporan::class, 'id_pendonor');
     }
 }

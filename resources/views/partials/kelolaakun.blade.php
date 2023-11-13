@@ -89,7 +89,7 @@
         <tbody class="waduh">
             @if(count($data) == 0)
             <tr>
-                <td colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+                <td style="font-weight:bold"colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
             </tr>
             @else
             @foreach($data as $key => $row)
@@ -367,7 +367,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data di baris {{ $key+1 }}?
+                Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deletependonorsuper', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -433,7 +433,7 @@
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Alamat</label>
-                            <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
+                            <textarea class="kolom form-control resizable" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
                         </div>
                     </div>
                 </div>
@@ -596,7 +596,7 @@
 <!-- END MODAL -->
 
 <!-- MODAL DELETE USER -->
-@foreach($data1 as $row)
+@foreach($data1 as $key => $row)
 <div class="modal fade" id="deleteuser{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -607,7 +607,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data ini?
+                Apakah Anda yakin untuk menghapus data user {{ $key+$data1->firstItem() }}?
             </div>
             <form action="{{ route('deleteuser', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf

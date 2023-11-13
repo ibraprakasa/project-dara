@@ -51,6 +51,20 @@ class Pendonor extends Authenticatable implements JWTSubject
         return $this->hasMany(Post::class, 'id_pendonor', 'id');
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'id_pendonor');
+    }
+
+    public function reply()
+    {
+        return $this->hasMany(BalasComment::class, 'id_pendonor');
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Laporan::class, 'id_pendonor');
+    }
      /**
      * The attributes that should be hidden for serialization.
      *

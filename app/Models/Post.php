@@ -20,7 +20,9 @@ class Post extends Authenticatable implements JWTSubject
        'id_pendonor',
        'text',
        'gambar',
-       'jumlah_komentar'
+       'jumlah_komentar',
+       'created_at',
+       'updated_at'
     ];
 
     public function getJWTIdentifier()
@@ -40,5 +42,15 @@ class Post extends Authenticatable implements JWTSubject
 
     public function pendonor(){
         return $this->belongsTo(Pendonor::class, 'id_pendonor','id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'id_post'); // Sesuaikan dengan nama kolom yang digunakan di tabel comments
+    }
+
+    public function reports()
+    {
+        return $this->hasMany(Laporan::class, 'id_pendonor');
     }
 }
