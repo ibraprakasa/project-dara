@@ -73,3 +73,4 @@ Route::delete('/post-favorite/delete/{id}', [PostFavoriteControllerAPI::class, '
 //notifikasi
 Route::get('/notifikasi', [NotifikasiControllerAPI::class, 'show']);
 Route::get('/notifikasi/{id}', [NotifikasiControllerAPI::class, 'updateStatusRead']);
+Route::get('/total-notif', [NotifikasiControllerAPI::class, 'totalNotif']);
