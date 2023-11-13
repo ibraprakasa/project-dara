@@ -7,12 +7,10 @@
               FAQ
             </span>
             <h2 class="text-dark mb-3 text-3xl leading-[1.2] font-bold sm:text-4xl md:text-[40px]">
-              Any Questions? Look Here
+              Tanya Jawab
             </h2>
             <p class="mx-auto max-w-[485px] text-base text-body-color">
-              There are many variations of passages of Lorem Ipsum available
-              but the majority have suffered alteration in some form.
-            </p>
+            "Temukan jawaban Anda di sini. Informasi aplikasi dan situs web donor darah kami telah diperbarui sesuai kebutuhan."            </p>
           </div>
         </div>
       </div>
