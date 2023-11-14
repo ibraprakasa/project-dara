@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/tailwind.css" />
+  
 
   <!-- ==== WOW JS ==== -->
   <script src="../assets/assets-landing-page/js/wow.min.js"></script>
