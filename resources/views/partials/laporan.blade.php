@@ -159,14 +159,18 @@
                 </button>
             </div>
             <div class="modal-body">
-                @if ($row->posts && $row->posts->gambar != null)
+            @if($row->posts)
+                @if ($row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
+                    <img src="assets/post/{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
+                @endif
+                @if ($row->posts->text != null)
                 <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
                 </div>
+                @endif
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
@@ -187,7 +191,8 @@
                         </div>
                     </div>
                 </div>
-                @elseif ($row->comments && $row->comments->text)
+            @endif
+                @if ($row->comments && $row->comments->text != null)
                 <label style="color:red;font-weight:bold">Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->comments->text }}</textarea>
@@ -212,7 +217,8 @@
                         </div>
                     </div>
                 </div>
-                @elseif ($row->reply && $row->reply->text)
+                @endif
+                @if ($row->reply && $row->reply->text != null)
                 <label style="color:red;font-weight:bold">Balasan Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->reply->text }}</textarea>
