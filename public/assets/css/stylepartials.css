@@ -218,6 +218,10 @@
     margin-right: 10px;
 }
 
+.pagination1, .pagination2 {
+    margin-top: 20px;
+}
+
 .waduh tr:nth-child(odd) {
     background-color: #f2f2f2;
 }
@@ -438,4 +442,5 @@ table td {
     text-decoration: underline;
     transform: scale(1.1); /* Mengubah ukuran tautan saat dihover */
   }
+
 

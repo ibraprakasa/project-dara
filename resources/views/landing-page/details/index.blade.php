@@ -6,12 +6,13 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    DARA Apps
+    DARA Apps 
   </title>
-  <link rel="shortcut icon" href="../assets/assets-landing-page/images/favicon.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/assets-landing-page/images/logo/daraicononly.png" type="image/x-icon" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/tailwind.css" />
+  
 
   <!-- ==== WOW JS ==== -->
   <script src="../assets/assets-landing-page/js/wow.min.js"></script>

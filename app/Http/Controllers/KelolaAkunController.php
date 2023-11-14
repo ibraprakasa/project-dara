@@ -77,8 +77,8 @@ class KelolaAkunController extends Controller
 
         $query->orderBy('kode_pendonor');
 
-        $data = $query->paginate(5);
-        $data1 = $query1->paginate(5);
+        $data = $query->paginate(10);
+        $data1 = $query1->paginate(10);
 
         return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar','successMessage','search','sort','jenisKelamin','golonganDarah','successMessageUser'));
     }
@@ -87,7 +87,7 @@ class KelolaAkunController extends Controller
     {
         $request['kode_pendonor'] = 'dara' . rand(10000, 99999);
         $request->validate([
-            'jenis_kelamin' => 'required|in:laki-laki,perempuan',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
         ]);
 
         Pendonor::create($request->all());
