@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('testimonial', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pendonor')->nullable(false);
-            $table->text('text');
+            $table->text('text')->nullable();
             $table->enum('star', ['1','2','3','4','5'])->nullable(false);
             $table->timestamps();
             $table->foreign('id_pendonor')->references('id')->on('pendonor');

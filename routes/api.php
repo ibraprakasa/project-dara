@@ -12,6 +12,7 @@ use App\Http\Controllers\NotifikasiControllerAPI;
 use App\Http\Controllers\PostControllerAPI;
 use App\Http\Controllers\PostFavoriteControllerAPI;
 use App\Http\Controllers\RiwayatDonorControllerAPI;
+use App\Http\Controllers\TestimonialControllerAPI;
 use App\Http\Controllers\TokenFcmControllerAPI;
 use App\Models\Laporan;
 use Illuminate\Http\Request;
@@ -79,3 +80,5 @@ Route::get('/notifikasi/{id}', [NotifikasiControllerAPI::class, 'updateStatusRea
 Route::get('/total-notif', [NotifikasiControllerAPI::class, 'totalNotif']);
 //laporan
 Route::post('/laporan', [LaporanControllerAPI::class, 'add']);
+//testimoni
+Route::post('/testimonial', [TestimonialControllerAPI::class, 'add']);
