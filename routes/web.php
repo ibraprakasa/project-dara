@@ -33,7 +33,6 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 // LANDING PAGE
 
-// END
 
 
 Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {

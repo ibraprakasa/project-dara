@@ -85,7 +85,7 @@
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
                 <td>
-                    <img src="{{ $row->gambar }}" alt="" style="width:100px; height:100px;">
+                    <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
                 </td>
                 <td>
                     {{ $row->comments->count() }}

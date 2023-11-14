@@ -161,7 +161,7 @@
             <div class="modal-body">
                 @if ($row->posts && $row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
+                    <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar" style="width:100px; height:100px;">
                 </div>
                 <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
