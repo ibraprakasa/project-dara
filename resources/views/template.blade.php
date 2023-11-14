@@ -96,7 +96,8 @@
         'akun': 'AKUN',
         'infopendaftar': 'INFO PENDAFTAR',
         'forum-postingan': 'FORUM DONOR',
-        'laporan' : 'LAPORAN'
+        'laporan' : 'LAPORAN',
+        'feedback' : 'FEEDBACK'
         // Tambahkan halaman lain dan judulnya di sini
       };
 
