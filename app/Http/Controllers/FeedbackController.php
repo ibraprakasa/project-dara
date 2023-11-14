@@ -6,5 +6,7 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    //
+    public function getTestimoni(){
+        return view('partials.feeback');
+    }
 }
