@@ -110,8 +110,12 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::get('laporan','App\Http\Controllers\LaporanController@getLaporan')->name('laporan');
     Route::delete('deletelaporanasli/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanAsli')->name('deletelaporanasli');
     Route::delete('deletelaporanpalsu/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanPalsu')->name('deletelaporanpalsu');
-
     // END LAPORAN
+
+    // FEEDBACK
+    Route::get('feedback','App\Http\Controllers\FeedbackController@getTestimoni')->name('feedback');
+    // END FEEDBACK
+
 });
 
 //untuk admin
