@@ -14,11 +14,10 @@ use function PHPUnit\Framework\isNull;
 class JadwalDonorController extends Controller
 {
     public function index()
-
     {
         $search = request()->input('search');
         $sort = request()->input('sort');
-
+        $sortMessage = null;
         $query = JadwalDonor::query();
 
         if ($search) {
@@ -28,12 +27,25 @@ class JadwalDonorController extends Controller
         if ($sort) {
             if ($sort === 'tanggal_asc') {
                 $query->orderBy('tanggal_donor')->orderBy('jam_mulai');
+                $sortMessage = 'Tanggal Terbaru';
             } elseif ($sort === 'tanggal_desc') {
                 $query->orderByDesc('tanggal_donor')->orderBy('jam_mulai');
+                $sortMessage = 'Tanggal Terlama';
+            } elseif ($sort === 'abjad') {
+                $query->orderBy('lokasi');
+                $sortMessage = 'Lokasi Abjad A-Z';
             }
         } else {
             // Default sorting (you can change this to your preferred default sorting)
             $query->orderBy('created_at');
+        }
+
+        $successMessage = null;
+
+        if ($search) {
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        } elseif ($sortMessage) {
+            $successMessage = 'Filter Berdasarkan ' . $sortMessage;
         }
 
         $data = $query->paginate(10);
@@ -43,14 +55,16 @@ class JadwalDonorController extends Controller
             $jadwalDonor->jumlah_pendonor = $jumlahPendonor;
         }
 
-        return view('partials.jadwaldonor', compact('data'));
+        return view('partials.jadwaldonor', compact('data', 'successMessage','sortMessage','search'));
     }
+
 
 
     public function infopendaftar(Request $request)
     {
         $id = $request->input('id');
         $search = $request->input('search');
+        $successMessage = null;
 
         $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $id)->get();
         $pendaftar = [];
@@ -60,6 +74,10 @@ class JadwalDonorController extends Controller
                 ->whereHas('pendonor', function ($query) use ($search) {
                     $query->where('nama', 'LIKE', '%' . $search . '%');
                 })->get();
+        }
+
+        if ($search) {
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
         }
 
         foreach ($jadwalPendonor as $pendonor) {
@@ -76,7 +94,7 @@ class JadwalDonorController extends Controller
             // Menambahkan data pendonor ke dalam array pendaftar
             $pendaftar[] = $Pendonor;
         }
-        return view('partials.infopendaftar', compact('pendaftar'));
+        return view('partials.infopendaftar', compact('pendaftar','successMessage'));
     }
 
     public function deletejadwalpendonor($id, Request $request)

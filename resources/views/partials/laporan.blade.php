@@ -29,7 +29,7 @@
 
 <div class="filter btn-group wow">
     @if(session('error'))
-    <div class="alert-container">
+    <div class="alert-container11">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
         <div>
             {{ session('error') }}
@@ -42,6 +42,17 @@
             {{ session('success') }}
         </div>
     </div>
+    @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
+        </div>
     @endif
 </div>
 
@@ -77,7 +88,7 @@
                 </td>
                 <td>{{ $laporan->type }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}">
+                <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}-{{ $laporan->id_comment }}-{{ $laporan->id_reply }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -117,12 +128,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label style="color:black;font-weight:bold" for="type">Jenis Laporan</label>
+                        <label style="color:black;font-weight:bold" for="type">Tipe</label>
                         <select class="kolom form-control" name="type">
                             <option class="kolom form-control" value="">-</option>
-                            <option class="kolom form-control" value="postingan">Postingan</option>
-                            <option class="kolom form-control" value="komentar">Komentar</option>
-                            <option class="kolom form-control" value="balasan">Balasan Komentar</option>
+                            <option class="kolom form-control" value="Postingan">Postingan</option>
+                            <option class="kolom form-control" value="Komentar">Komentar</option>
+                            <option class="kolom form-control" value="Balasan">Balasan</option>
                         </select>
                     </div>
                 </div>
@@ -138,7 +149,7 @@
 
 <!-- MODAL DETAIL LAPORAN -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="infolaporan{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="infolaporan{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -148,18 +159,89 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if ($row->posts && $row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
                     <img src="{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
                 </div>
-
-                <label style="color:black;font-weight:bold">Status</label>
+                <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
                 </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->posts->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->posts->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal Posting</label>
+                            <input class="kolom form-control" placeholder="{{ $row->posts->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                @elseif ($row->comments && $row->comments->text)
+                <label style="color:red;font-weight:bold">Komentar yang dilaporkan</label>
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->comments->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->comments->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->comments->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal Komentar</label>
+                            <input class="kolom form-control" placeholder="{{ $row->comments->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                @elseif ($row->reply && $row->reply->text)
+                <label style="color:red;font-weight:bold">Balasan Komentar yang dilaporkan</label>
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->reply->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->reply->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->reply->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal Balasan</label>
+                            <input class="kolom form-control" placeholder="{{ $row->reply->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id_post }}">Hapus Laporan Asli</button>
-                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id_post }}">Hapus Laporan Palsu</button>
+                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id }}">Hapus Laporan Asli</button>
+                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id }}">Hapus Laporan Palsu</button>
             </div>
         </div>
     </div>
@@ -167,9 +249,9 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL DELETE LAPORAN ASLI -->
+<!-- MODAL DELETE LAPORAN PALSU -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="deletelaporanpalsu{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletelaporanpalsu{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -181,7 +263,7 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus laporan palsu ini ?
             </div>
-            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanpalsu', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
@@ -197,7 +279,7 @@
 
 <!-- MODAL DELETE LAPORAN ASLI -->
 @foreach($report as $key => $row)
-<div class="modal fade" id="deletelaporanasli{{ $row->id_post }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="deletelaporanasli{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -207,9 +289,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus laporan asli beserta {{ $row->type }}nya?
+                Apakah Anda yakin untuk menghapus {{ $row->type }} ini?
             </div>
-            <form action="{{ route('deletelaporanasli', ['id' => $row->id_post]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletelaporanasli', ['id' =>$row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
@@ -222,5 +304,6 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
 
 @endsection

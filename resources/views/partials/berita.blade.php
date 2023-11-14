@@ -47,6 +47,15 @@
             {{ session('success') }}
         </div>
     </div>
+    @elseif(isset($successMessage))
+    <div class="alert-container12 success">
+        @if($successMessage)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @endif
+        <div>
+            {{ $successMessage }}
+        </div>
+    </div>
     @endif
 </div>
 
@@ -65,7 +74,7 @@
         <tbody class="waduh">
         @if(count($data) == 0)
         <tr>
-            <td colspan="7" style="text-align:center;">Berita belum ada</td>
+            <td colspan="7" style="font-weight:bold;text-align:center;">Berita belum ada</td>
         </tr>
         @else
             @foreach($data as $key => $row)
@@ -226,7 +235,7 @@
                     <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
                 </div>
 
-                <label style="color:black;font-weight:bold">Deskripsi</label>
+                <label style="color:#3B4B65;font-weight:bold;">Deskripsi</label>
                 <div class="form-group" style="color:black;background-color: white;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->deskripsi }}</textarea>
                 </div>

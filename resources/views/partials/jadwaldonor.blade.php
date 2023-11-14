@@ -10,7 +10,16 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 </head>
 
-<div class="filter btn-group">
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('jadwaldonor') }}">Jadwal</a></li>
+            <li class="breadcrumb-item">Info Pendaftar Lokasi</li>
+        </ol>
+    </nav>
+</div>
+
+<div class="filte btn-group">
     <form action="/jadwaldonor" method="GET" style="display: flex;">
         <input class="btn" type="search" name="search" placeholder="Cari Lokasi..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
@@ -19,7 +28,7 @@
     </form>
 </div>
 
-<div class="filter btn-group">
+<div class="filte btn-group">
     <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahjadwaldonor" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
@@ -29,14 +38,14 @@
     </button>
 </div>
 
-<div class="filter btn-group">
+<div class="filte btn-group">
     <form action="/jadwaldonor" method="GET" style="display: flex;">
         <div class="dropdown">
             <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
                 Filter berdasarkan
             </button>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="default">Waktu dibuat</button>
+                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="abjad">Abjad</button>
                 <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
                 <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
             </div>
@@ -44,25 +53,34 @@
     </form>
 </div>
 
-<div class="filter btn-group wow">
+<div class="filte btn-group wow">
     @if(session('error'))
-  <div class="alert-container">
-    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-    <div>
-      {{ session('error') }}
+    <div class="alert-container">
+        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+        <div>
+            {{ session('error') }}
+        </div>
     </div>
-  </div>
-  @elseif(session('success'))
-  <div class="alert-container1 success">
-    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-    <div>
-      {{ session('success') }}
+    @elseif(session('success'))
+    <div class="alert-container1 success">
+        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+        <div>
+            {{ session('success') }}
+        </div>
     </div>
-  </div>
-  @endif
-  </div>
-
-
+    @elseif(isset($successMessage))
+    <div class="alert-container12 success">
+        @if($sortMessage)
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @elseif($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @endif
+        <div>
+            {{ $successMessage }}
+        </div>
+    </div>
+    @endif
+</div>
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
@@ -81,11 +99,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($data) == 0)
-        <tr>
-            <td colspan="11" style="text-align:center;">Jadwal donor belum ada</td>
-        </tr>
-        @else
+            @if(count($data) == 0)
+            <tr>
+                <td colspan="11" style="font-weight: bold;text-align:center;">Jadwal donor belum ada</td>
+            </tr>
+            @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
@@ -107,12 +125,12 @@
                     </button>
                 </td>
                 <td>
-                <form action="/infopendaftar" method="GET" style="display: flex;">
-                    <input class="btn" type="text" value="{{  $row->id }}" name="id" hidden/>
-                    <button class="custom-button" type="submit">
-                        <i class="bi bi-info-square" style="color:black;"></i>
-                    </button>
-                </form>
+                    <form action="/infopendaftar" method="GET" style="display: flex;">
+                        <input class="btn" type="text" value="{{  $row->id }}" name="id" hidden />
+                        <button class="custom-button" type="submit">
+                            <i class="bi bi-info-square" style="color:black;"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach
@@ -162,21 +180,21 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="longitude">Longitude</label>
-                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any"  placeholder="ex : xx.xxx" required>
+                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="latitude">Latitude</label>
-                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any"  placeholder="ex : xx.xxx" required>
+                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required>
                     </div>
                     <div id="map" style="height: 400px;"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
-                    </div>
-                </form>
             </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
+            </div>
+            </form>
         </div>
     </div>
+</div>
 </div>
 <!-- END MODAL -->
 
@@ -205,7 +223,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="tanggal">Tanggal</label>
-                        <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" value="{{ $row->tanggal_donor }}"> 
+                        <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" value="{{ $row->tanggal_donor }}">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jammulai">Jam Mulai</label>
@@ -257,7 +275,7 @@
                 </button>
             </div>
             <div class="modal-body">
-            Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
+                Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deletejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -274,47 +292,48 @@
 <!-- END MODAL -->
 
 <script>
-// Menambahkan variabel untuk menyimpan referensi ke elemen input latitude dan longitude
-const editLatitudeInput = document.getElementById("latitude");
-const editLongitudeInput = document.getElementById("longitude");
+    // Menambahkan variabel untuk menyimpan referensi ke elemen input latitude dan longitude
+    const editLatitudeInput = document.getElementById("latitude");
+    const editLongitudeInput = document.getElementById("longitude");
 
     function initMap() {
-  const myLatlng = { lat: -6.272945237180217, lng: 106.73903083681019 };
-  const map = new google.maps.Map(document.getElementById("map"), {
-    zoom: 15,
-    center: myLatlng,
-  });
-  // Create a marker variable to hold the marker
-  let marker = new google.maps.Marker({
-    position: myLatlng,
-    map: map,
-    draggable: true, // Allow the marker to be dragged
-  });
+        const myLatlng = {
+            lat: -6.272945237180217,
+            lng: 106.73903083681019
+        };
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 15,
+            center: myLatlng,
+        });
+        // Create a marker variable to hold the marker
+        let marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            draggable: true, // Allow the marker to be dragged
+        });
 
-  // Create an info window for the marker
-  let infoWindow = new google.maps.InfoWindow({
-    content: "Klik map untuk mendapatkan lokasi (Lat/Long)",
-    position: myLatlng,
-  });
+        // Create an info window for the marker
+        let infoWindow = new google.maps.InfoWindow({
+            content: "Klik map untuk mendapatkan lokasi (Lat/Long)",
+            position: myLatlng,
+        });
 
-  infoWindow.open(map);
+        infoWindow.open(map);
 
-  map.addListener("click", (mapsMouseEvent) => {
-    // Update the marker's position based on the click event
-    marker.setPosition(mapsMouseEvent.latLng);
+        map.addListener("click", (mapsMouseEvent) => {
+            // Update the marker's position based on the click event
+            marker.setPosition(mapsMouseEvent.latLng);
 
-    // Get the latitude and longitude of the clicked location
-    const latitude = mapsMouseEvent.latLng.lat();
-    const longitude = mapsMouseEvent.latLng.lng();
+            // Get the latitude and longitude of the clicked location
+            const latitude = mapsMouseEvent.latLng.lat();
+            const longitude = mapsMouseEvent.latLng.lng();
 
-    // Update the latitude and longitude input fields
-    editLatitudeInput.value = latitude;
-    editLongitudeInput.value = longitude;
-  });
-}
-window.initMap = initMap;
+            // Update the latitude and longitude input fields
+            editLatitudeInput.value = latitude;
+            editLongitudeInput.value = longitude;
+        });
+    }
+    window.initMap = initMap;
 </script>
-<script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer
-    ></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>
 @endsection

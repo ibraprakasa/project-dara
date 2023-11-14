@@ -9,11 +9,21 @@
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="filter btn-group">
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarLink">Komentar</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Balasan</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="filte btn-group">
     @foreach($balas as $row)
-    <form action="{{ route('forum-balasan', ['id_comment' => $row->id]) }}" method="GET" style="display: flex;">
+    <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET" style="display: flex;">
+    <input type="hidden" name="id" value="{{ $row->id }}">
     @endforeach
-        <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
         <input class="btn" type="search" name="search" placeholder="Cari Balasan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
@@ -21,21 +31,32 @@
     </form>
 </div>
 
-<div class="filter btn-group wow">
-    @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
-            {{ session('error') }}
-        </div>
-    </div>
-    @elseif(session('success'))
+<div class="filte btn-group">
+    <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterbalasan">
+        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+        <span style="font-size: 12px; color: white;">Filter</span>
+    </button>
+</div>
+
+<div class="filte btn-group wow">
+    @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
         <div>
             {{ session('success') }}
         </div>
     </div>
+    @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
+        </div>
     @endif
 </div>
 
@@ -96,6 +117,7 @@
             <form action="{{ route('deletebalasan', ['id' => $row->id, 'comment_id' => request('id')]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
+                <input type="hidden" name="id" value="{{ $row->id }}">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
@@ -106,6 +128,45 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
+<!-- MODAL FILTER BALASAN -->
+<div class="modal fade" id="filterbalasan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @foreach($balas as $row)
+            <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET">
+            <input type="hidden" name="id" value="{{ $row->id }}">
+            @endforeach
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--  END MODAL  -->
 
 
 @endsection

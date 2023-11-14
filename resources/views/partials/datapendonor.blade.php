@@ -64,6 +64,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
+            @if(count($data) == 0)
+            <tr>
+                <td style="font-weight:bold"colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+            </tr>
+            @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
@@ -92,6 +97,7 @@
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 </div>

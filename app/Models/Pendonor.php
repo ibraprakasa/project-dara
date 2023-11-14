@@ -65,7 +65,7 @@ class Pendonor extends Authenticatable implements JWTSubject
     {
         return $this->hasMany(Laporan::class, 'id_pendonor');
     }
-     /**
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>

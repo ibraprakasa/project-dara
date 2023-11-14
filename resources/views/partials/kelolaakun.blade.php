@@ -10,7 +10,7 @@
 </head>
 
 <div class="row text-center">
-    <div class="" style="width:820px;margin-top:85px; margin-bottom:-90px; margin-left:60px">
+    <div class="" style="width:820px;margin-top:100px; margin-bottom:-90px; margin-left:60px">
         <div class="row" style="font-weight: bold">
             <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
                 Pendonor
@@ -55,7 +55,7 @@
         </div>
 
         <div class="filter btn-group wow">
-            @if(session('error'))
+        @if(session('error'))
             <div class="alert-container">
                 <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                 <div>
@@ -69,8 +69,20 @@
                     {{ session('success') }}
                 </div>
             </div>
-            @endif
+            @elseif(isset($successMessage))
+            <div class="alert-container12 success">
+                @if($search)
+                <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
+                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                @endif
+                <div>
+                    {{ $successMessage }}
+                </div>
+            </div>
+        @endif
         </div>
+
     </div>
     <table id="tabelpendonor" class="table table-bordered">
         <thead class="thead">
@@ -89,7 +101,7 @@
         <tbody class="waduh">
             @if(count($data) == 0)
             <tr>
-                <td style="font-weight:bold"colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
+                <td style="font-weight:bold" colspan="11" style="text-align:center;">Data Pendonor belum ada</td>
             </tr>
             @else
             @foreach($data as $key => $row)
@@ -179,6 +191,15 @@
                     {{ session('success') }}
                 </div>
             </div>
+            @elseif(isset($sort))
+            <div class="alert-container12 success">
+                @if($sort)
+                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                @endif
+                <div>
+                    {{ $successMessageUser }}
+                </div>
+            </div>
             @endif
         </div>
     </div>
@@ -197,7 +218,7 @@
         <tbody class="waduh">
             @if(count($data1) == 0)
             <tr>
-                <td colspan="8" style="text-align:center;">Datanya belum ada</td>
+                <td colspan="8" style="font-weight: bold;text-align:center;">User belum ada</td>
             </tr>
             @else
             @foreach($data1 as $key => $row)
@@ -280,8 +301,8 @@
                         <label for="jekel">Jenis Kelamin</label>
                         <select class="kolom form-control" id="jekel" name="jenis_kelamin">
                             <option class="kolom form-control" value="-" selected>-</option>
-                            <option class="kolom form-control" value="laki-laki">Laki-Laki</option>
-                            <option class="kolom form-control" value="perempuan">Perempuan</option>
+                            <option class="kolom form-control" value="Laki-Laki">Laki-Laki</option>
+                            <option class="kolom form-control" value="Perempuan">Perempuan</option>
                         </select>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
@@ -395,8 +416,15 @@
                 </button>
             </div>
             <div class="modal-body">
+                <div class="form-group" style="text-align: center;">
+                    @if ($row->gambar)
+                    <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
+                    @else
+                    <img src="{{ asset('assets/img/userblue.png') }}" alt="" width="150" height="140" style="border-radius: 25%; border: 2px solid black;">
+                    @endif
+                </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Nomor</label>
                             <input class="kolom form-control" name="kode_pendonor" type="text" id="nomor" placeholder="{{ $row->kode_pendonor }}" readonly>
@@ -409,6 +437,8 @@
                             <label for="nomor">Tanggal Lahir</label>
                             <input class="kolom form-control" name="tanggal_lahir" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->tanggal_lahir)->format('d-m-Y') }}" readonly>
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Jenis Kelamin</label>
                             <input class="kolom form-control" name="jenis_kelamin" type="text" id="nomor" placeholder="{{ $row->jenis_kelamin }}" readonly>
@@ -417,12 +447,12 @@
                             <label for="nomor">Golongan Darah</label>
                             <input class="kolom form-control" name="goldar" type="text" id="nomor" placeholder="{{ $row->golongandarah->nama }}" readonly>
                         </div>
-                    </div>
-                    <div class="col-md-6">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Berat Badan</label>
                             <input class="kolom form-control" name="berat_badan" type="text" id="nomor" placeholder="{{ $row->berat_badan }} KG" readonly>
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group" style="color:black; font-weight:bold">
                             <label for="nomor">Kontak</label>
                             <input class="kolom form-control" name="kontak_pendonor" type="text" id="nomor" placeholder="{{ $row->kontak_pendonor }}" readonly>
@@ -432,14 +462,14 @@
                             <input class="kolom form-control" name="email" type="text" id="nomor" placeholder="{{ $row->email }}" readonly>
                         </div>
                         <div class="form-group" style="color:black; font-weight:bold">
-                            <label for="nomor">Alamat</label>
-                            <textarea class="kolom form-control resizable" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
+                            <label for="nomor">UPDATED_AT</label>
+                            <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
                         </div>
                     </div>
                 </div>
                 <div class="form-group" style="color:black; font-weight:bold">
-                    <label for="nomor">UPDATED_AT</label>
-                    <input class="kolom form-control" name="updated_at" type="text" id="nomor" placeholder="{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}" readonly>
+                    <label for="nomor">Alamat</label>
+                    <textarea class="kolom form-control resizablealamat" name="alamat_pendonor" id="alamat" rows="6" style="height: 200px;" readonly>{{ $row->alamat_pendonor }}</textarea>
                 </div>
             </div>
             <div class="modal-footer">

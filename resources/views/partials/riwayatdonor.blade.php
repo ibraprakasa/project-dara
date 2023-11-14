@@ -41,6 +41,22 @@ use Carbon\Carbon;
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
+
+    <div style="display: flex; margin-left:15px;">
+        @if(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
+        </div>
+        @endif
+    </div>
+
 </div>
 
 <div class="content">
@@ -49,7 +65,7 @@ use Carbon\Carbon;
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
-                <th scope="col">Jumlah Donor</th>
+                <th scope="col">Jumlah Kantong</th>
                 <th scope="col">Tanggal</th>
                 <th scope="col">Gol. Darah</th>
                 <th scope="col">Lokasi</th>
@@ -58,7 +74,7 @@ use Carbon\Carbon;
         <tbody class="waduh">
             @if(count($riwayat_donor) == 0)
             <tr>
-                <td colspan="6" style="text-align:center;">Riwayat donor belum ada</td>
+                <td colspan="6" style="font-weight: bold;text-align:center;">Riwayat donor belum ada</td>
             </tr>
             @else
             @foreach($riwayat_donor as $key => $rd)
@@ -93,7 +109,7 @@ use Carbon\Carbon;
         <tbody class="waduh">
             @if(count($riwayat_ambil) == 0)
             <tr>
-                <td colspan="7" style="text-align:center;">Riwayat ambil belum ada</td>
+                <td colspan="7" style="  font-weight: bold;text-align:center;">Riwayat ambil belum ada</td>
             </tr>
             @else
             @foreach($riwayat_ambil as $key => $rd)

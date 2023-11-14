@@ -9,7 +9,17 @@
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="filter btn-group">
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
+            <li class="breadcrumb-item">Komentar</li>
+            <li class="breadcrumb-item">Balasan</a></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="filte btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
         <input class="btn" type="search" name="search" placeholder="Cari Postingan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
         <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
@@ -18,15 +28,14 @@
     </form>
 </div>
 
-<div class="filter btn-group">
+<div class="filte btn-group">
     <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterpostingan">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
     </button>
 </div>
 
-
-<div class="filter1 btn-group wow">
+<div class="filte btn-group wow">
     @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
@@ -34,6 +43,17 @@
             {{ session('success') }}
         </div>
     </div>
+    @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div>
+                {{ $successMessage }}
+            </div>
+        </div>
     @endif
 </div>
 
@@ -55,7 +75,7 @@
         <tbody class="waduh">
             @if(count($postingan) == 0)
             <tr>
-                <td colspan="9" style="text-align:center;">Postingan tidak ada</td>
+                <td colspan="9" style="font-weight: bold;text-align:center;">Postingan tidak ada</td>
             </tr>
             @else
             @foreach($postingan as $key => $row)
@@ -82,7 +102,9 @@
                         </button>
                     </form>
                 </td>
-                <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }} WIB</td>
+                <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
+                    {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
+                </td>                
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletepostingan{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -154,19 +176,19 @@
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Kode</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}">
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Nama</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}">
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Tanggal</label>
-                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}">
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}" readonly>
                         </div>
                     </div>
                 </div>

@@ -18,6 +18,11 @@
     font-size: 22px;
 }
 
+.filte{
+    margin-top:9px;
+    margin-left:27px;
+}
+
 .filter{
     margin-top:100px; 
     margin-left:27px;
@@ -28,14 +33,23 @@
     margin-left:40px;
 }
 
+.filter2{
+    margin-top: -45px;
+    margin-left: -30px;
+}
+
 .wow{
     width: auto;
 }
-
-.filter .dropdown-item:hover {
-    background-color: #3B4B65;
-  }
   
+.dropdown-menu.dropdown-menu-right .dropdown-item:hover,
+.dropdown-menu.dropdown-menu-right .dropdown-item:active {
+    background-color: #3B4B65; /* Ganti warna latar belakang saat hover atau saat tombol dalam keadaan aktif menjadi warna biru */
+    color: white; /* Ganti warna teks saat hover atau saat tombol dalam keadaan aktif menjadi putih */
+}
+
+
+
 .btn-primary:hover {
     background-color: white;
     color: #3B4B65; /* Anda juga mungkin perlu mengatur warna teks saat hover sesuai kebutuhan Anda */
@@ -68,13 +82,14 @@
   .resizablealamat {
     resize: both; /* Memungkinkan pengguna untuk menarik textarea */
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 120px; /* Tinggi minimum awal textarea */
+    min-height: 85px; /* Tinggi minimum awal textarea */
   }
 
   .resizablestatus {
     resize: both; /* Memungkinkan pengguna untuk menarik textarea */
     overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 180px; /* Tinggi minimum awal textarea */
+    color: black;
   }
   
 
@@ -150,13 +165,25 @@
       
   }
   
-.alert-container {
+.alert-container11 {
     display: flex;
-    width:50%;
+    width:100%;
     align-items: center;
     padding: 10px 20px;
     background-color: #EB1F3E; /* Warna merah */
     color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 5px;
+}
+
+.alert-container12 {
+    display: flex;
+    width:100%;
+    align-items: center;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 5px;
@@ -292,6 +319,13 @@ table td {
     margin-top: 45px; 
 }
 
+.gambar1 {
+    width: 260px; 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 150px; 
+}
+
 .dropdown-menu .dropdown-item {
     border-bottom: 1px solid black;
   }
@@ -359,6 +393,14 @@ table td {
     font-size:20px;
     font-weight:bold;
     text-align: center;
+    font-style: italic;
+}
+
+.profile-title{
+    display: block;
+    font-size:20px;
+    font-weight:bold;
+    text-align: center;
 }
 
 .image-background {
@@ -371,3 +413,29 @@ table td {
 .truncate-text-report{
     max-width: 300px;
 }
+
+.breadcrumb-container{
+    display:flex;
+    justify-content: flex-end;
+    margin-top:40px;
+    margin-right:20px;
+    margin-bottom: -10px;
+}
+
+.breadcrumb {
+    background-color: white;
+    /* Ganti warna latar belakang sesuai keinginan Anda */
+}
+
+
+
+.breadcrumb-item a {
+    color: #3B4B65;
+    font-weight: bold;
+}
+
+.breadcrumb-item a:hover {
+    text-decoration: underline;
+    transform: scale(1.1); /* Mengubah ukuran tautan saat dihover */
+  }
+

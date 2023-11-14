@@ -11,9 +11,10 @@ class ForumController extends Controller
 {
     public function getPostingan()
     {
-        $search = request()->input('search');
+        $search = Request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $successMessage = null; 
 
         $query = Post::query();
         
@@ -29,8 +30,14 @@ class ForumController extends Controller
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
 
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
         $postingan = $query->paginate(10);
-        return view('partials.forum-postingan', compact('postingan'));
+        return view('partials.forum-postingan', compact('postingan','search','successMessage'));
     }
 
     public function getKomentar($id_post)
@@ -40,9 +47,9 @@ class ForumController extends Controller
         $search = request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
         $tanggalakhir = request()->input('tanggal_sampai');
+        $successMessage = null;
 
         $query = Comment::where('id_post', $id_post);
-
 
         if ($search) {
             $query->where('text', 'LIKE', '%' . $search . '%')
@@ -55,11 +62,15 @@ class ForumController extends Controller
         if ($tanggalawal && $tanggalakhir) {
             $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
         }
-        
-        $komentar = $query->paginate(10);
 
-        return view('partials.forum-komentar', compact('komentar'));
-        
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
+        $komentar = $query->paginate(10);
+        return view('partials.forum-komentar', compact('komentar','search','successMessage'));   
     }
 
     public function getBalasan($id_comment)
@@ -67,6 +78,9 @@ class ForumController extends Controller
         $comment = Comment::find($id_comment);
 
         $search = request()->input('search');
+        $tanggalawal = request()->input('tanggal_dari');
+        $tanggalakhir = request()->input('tanggal_sampai');
+        $successMessage = null;
 
         $query = BalasComment::where('id_comment', $id_comment);
 
@@ -78,9 +92,19 @@ class ForumController extends Controller
                 });
         }
 
-        $balas = $query->paginate(10);
+        if ($tanggalawal && $tanggalakhir) {
+            $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
+        }
 
-        return view('partials.forum-balasan', compact('balas'));
+        if($search){
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif($tanggalawal && $tanggalakhir){
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }
+
+        $balas = $query->paginate(10);
+        $post = Post::all();
+        return view('partials.forum-balasan', compact('balas','post','search','successMessage'));
     }
 
     public function deletepostingan($id)
@@ -121,11 +145,12 @@ class ForumController extends Controller
 
             $komentar->delete();
 
-            return redirect()->route('forum-komentar', ['id_post' => request('post_id')])->with('success', 'Komentar berhasil dihapus.');
+            return redirect()->route('forum-komentar', ['id_post' => request('id_post')])->with('success', 'Komentar berhasil dihapus.');
         }
 
-        return redirect()->route('forum-komentar', ['id_post' => request('post_id')])->with('error', 'Komentar tidak dapat ditemukan atau terjadi kesalahan.');
+        return redirect()->route('forum-komentar', ['id_post' => request('id_post')])->with('error', 'Komentar tidak dapat ditemukan atau terjadi kesalahan.');
     }
+
 
     public function deletebalasan($id)
     {
