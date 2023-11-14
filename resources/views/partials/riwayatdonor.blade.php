@@ -15,7 +15,7 @@ use Carbon\Carbon;
 
 <div class="row text-center">
     <div class="col" style="margin-top:100px; margin-bottom:-70px; margin-left:40px">
-        <div class="row" style="width:145%;font-weight: bold">
+        <div class="row" style="width:125%;font-weight: bold">
             <a href="#" id="tombol1" style="text-decoration: none; margin-right: 10px" class="col">
                 Riwayat Donor Darah
             </a>

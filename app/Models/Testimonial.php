@@ -17,10 +17,12 @@ class Testimonial extends Model
         'id_pendonor',
         'text',
         'star',
+        'created_at',
+        'updated_at'
     ];
 
     public function pendonor()
     {
-         return $this->hasMany(Pendonor::class, 'id_pendonor', 'id');
+         return $this->belongsTo(Pendonor::class, 'id_pendonor', 'id');
     }
 }
