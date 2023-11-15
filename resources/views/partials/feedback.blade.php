@@ -601,6 +601,7 @@ use Carbon\Carbon;
     window.onload = function() {
         // Ambil status dari localStorage jika ada
         const status = localStorage.getItem('tabelStatus');
+
         if (status === 'tabelpesan') {
             tampilkanTabel("tabelpesan");
         } else {
@@ -608,7 +609,6 @@ use Carbon\Carbon;
         }
     };
 </script>
-
 
 
 @endsection
