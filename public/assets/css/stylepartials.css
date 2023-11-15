@@ -400,6 +400,14 @@ table td {
     font-style: italic;
 }
 
+.rating-title{
+    display: block;
+    font-size:20px;
+    font-weight:bold;
+    text-align: center;
+    color:black;
+}
+
 .profile-title{
     display: block;
     font-size:20px;

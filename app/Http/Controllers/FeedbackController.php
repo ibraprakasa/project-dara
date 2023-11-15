@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inquiries;
+use App\Models\JadwalDonor;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
@@ -43,12 +44,26 @@ class FeedbackController extends Controller
         }
 
         if($search){
-            
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        }elseif ($tanggalawal && $tanggalakhir  && $ratingdara) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }elseif ($tanggalawal && $tanggalakhir) {
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }elseif ($ratingdara) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'"' ;
         }
 
         $data  = $query->paginate(10);
         $data1 = $query1->paginate(10);
 
-        return view('partials.feedback',compact('data','data1'));
+        return view('partials.feedback',compact('data','data1','successMessage','search','tanggalawal','tanggalakhir','ratingdara'));
+    }
+
+    public function deleteTestimoni($id){
+        $data = Testimonial::find($id);
+
+        $data->delete();
+
+        return redirect()->route('feedback')->with('success','Testimoni berhasil dihapus.');    
     }
 }

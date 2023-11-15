@@ -45,11 +45,25 @@ use Carbon\Carbon;
             </div>
 
             <div style="display: flex; margin-left:15px;">
-                @if(isset($successMessage))
+                @if(session('error'))
+                <div class="alert-container">
+                    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                    <div>
+                        {{ session('error') }}
+                    </div>
+                </div>
+                @elseif(session('success'))
+                <div class="alert-container1 success">
+                    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                    <div>
+                        {{ session('success') }}
+                    </div>
+                </div>
+                @elseif(isset($successMessage))
                 <div class="alert-container12 success">
                     @if($search)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @else
+                    @elseif($tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir || $ratingdara )
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
                     <div>
@@ -68,7 +82,7 @@ use Carbon\Carbon;
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
-                <th scope="col">Tanggapan</th>
+                <th scope="col">Deskripsi</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Tanggal Rating</th>
                 <th colspan="2" scope="col">Action</th>
@@ -93,22 +107,22 @@ use Carbon\Carbon;
                 </td>
                 @elseif($row->star == 4)
                 <td>
-                    @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill" style="color:#F29F05">></i>
+                    @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
                         @endfor
                 </td>
                 @elseif($row->star == 3)
                 <td>
-                    @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill" style="color:#F29F05">></i>
+                    @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
                         @endfor
                 </td>
                 @elseif($row->star == 2)
                 <td>
-                    @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill" style="color:#F29F05">></i>
+                    @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
                         @endfor
                 </td>
                 @elseif($row->star == 1)
                 <td>
-                    @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill" style="color:#F29F05">></i>
+                    @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
                         @endfor
                 </td>
                 @else
@@ -126,7 +140,7 @@ use Carbon\Carbon;
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infotestimoni">
+                    <button class="custom-button" data-toggle="modal" data-target="#infotestimoni{{ $row->id }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -223,7 +237,7 @@ use Carbon\Carbon;
 
 </div>
 
-<!-- MODAL FILTER -->
+<!-- MODAL FILTER TESTIMONI-->
 <div class="modal fade filtertestimoni" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -260,6 +274,150 @@ use Carbon\Carbon;
                             <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</i></option>
 
                         </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--  END MODAL  -->
+
+<!-- MODAL DELETE TESTIMONI -->
+@foreach($data as $key => $row)
+<div class="modal fade" id="deletetestimoni{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Peringatan!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin untuk menghapus testimoni di baris {{ $key+$data->firstItem() }}?
+            </div>
+            <form action="{{ route('deletetestimoni', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('DELETE')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL DETAIL BERITA -->
+@foreach($data as $key => $row)
+<div class="modal fade" id="infotestimoni{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Testimoni</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <label class="rating-title" for="rating">Rating</label>
+                <div class="form-group" style="text-align: center;">
+                    @if($row->star == 5)
+                    <td>
+                        @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05;font-size: 50px;"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 4)
+                    <td>
+                        @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 3)
+                    <td>
+                        @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 2)
+                    <td>
+                        @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 1)
+                    <td>
+                        @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @else
+                    <td>
+                        No stars
+                    </td>
+                    @endif
+                </div>
+                <label style="color:black;font-weight:bold;">Deskripsi</label>
+                <div class="form-group" style="color:black;background-color: white;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal</label>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j-m-Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL FILTER PESAN-->
+<div class="modal fade filterpesan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Filter Berdasarkan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="/feedback" method="GET">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
