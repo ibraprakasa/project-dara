@@ -2,7 +2,6 @@
 use Carbon\Carbon;
 @endphp
 
->>>>>>> 74fa803882cc596ac89dd1ad5182e06175bf6730
 @extends('template')
 @extends('sidebar')
 @section('content')

@@ -98,10 +98,7 @@
         'forum-postingan': 'FORUM DONOR',
         'laporan' : 'LAPORAN',
         'feedback' : 'FEEDBACK'
-<<<<<<< HEAD
-        // Tambahkan halaman lain dan judulnya di sini
-=======
->>>>>>> 74fa803882cc596ac89dd1ad5182e06175bf6730
+
       };
 
       var currentPage = currentPath.split('/').pop();

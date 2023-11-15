@@ -14,7 +14,7 @@ class TestimonialSeeder extends Seeder
     public function run(): void
     {
         DB::table('testimonial')->insertGetId(array(
-            'id_pendonor' => 13,
+            'id_pendonor' => 1,
             'text' => 'DARA merupakan aplikasi yang sangat menolong saya yg awam terkait seputar donor darah. Terima kasih DARA!',
             'star' => 5,
             'created_at' => now(),
