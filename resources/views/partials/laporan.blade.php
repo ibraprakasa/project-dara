@@ -162,11 +162,7 @@
             @if($row->posts)
                 @if ($row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
-<<<<<<< HEAD
-                    <img src="assets/post/{{ $row->posts->gambar }}" alt="Gambar" width="500" height="250">
-=======
                     <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar" style="width:100px; height:100px;">
->>>>>>> df665885cbcf3aff38921c6e48706dd12a2a4e9e
                 </div>
                 @endif
                 @if ($row->posts->text != null)
@@ -195,37 +191,8 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
             @endif
                 @if ($row->comments && $row->comments->text != null)
-=======
-                @elseif($row->posts && $row->posts->gambar == null)
-                <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
-                <div class="form-group" style="color:black;">
-                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->posts->text }}</textarea>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold">Kode</label>
-                            <input class="kolom form-control" placeholder="{{ $row->posts->pendonor->kode_pendonor }}" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold">Nama</label>
-                            <input class="kolom form-control" placeholder="{{ $row->posts->pendonor->nama }}" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold">Tanggal Posting</label>
-                            <input class="kolom form-control" placeholder="{{ $row->posts->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
-                        </div>
-                    </div>
-                </div>
-                @elseif ($row->comments && $row->comments->text)
->>>>>>> df665885cbcf3aff38921c6e48706dd12a2a4e9e
                 <label style="color:red;font-weight:bold">Komentar yang dilaporkan</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->comments->text }}</textarea>

@@ -85,15 +85,11 @@
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
                 <td>
-<<<<<<< HEAD
                     @if($row->gambar == null)
                         <img src="assets/img/daraicon.png"" alt="" style="width:100px; height:100px;">
                     @else
                         <img src="assets/post/{{ $row->gambar }}" alt="" style="width:100px; height:100px;">
                     @endif
-=======
-                    <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
->>>>>>> df665885cbcf3aff38921c6e48706dd12a2a4e9e
                 </td>
                 <td>
                     {{ $row->comments->count() }}
