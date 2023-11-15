@@ -98,6 +98,7 @@
         'forum-postingan': 'FORUM DONOR',
         'laporan' : 'LAPORAN',
         'feedback' : 'FEEDBACK'
+
       };
 
       var currentPage = currentPath.split('/').pop();
@@ -124,6 +125,7 @@
         window.history.back(); 
     });
   </script>
+  
 
 </body>
 

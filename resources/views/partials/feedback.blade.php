@@ -156,7 +156,7 @@ use Carbon\Carbon;
     <div class="tes2" id="filterpesan" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="search" placeholder="Cari Pesan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+                <input class="btn" type="search" name="searchpesan" placeholder="Cari Pesan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
                 <button type="submit" class="btn btn-primary" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -170,15 +170,29 @@ use Carbon\Carbon;
             </div>
 
             <div style="display: flex; margin-left:15px;">
-                @if(isset($successMessage))
+                @if(session('error'))
+                <div class="alert-container">
+                    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                    <div>
+                        {{ session('error') }}
+                    </div>
+                </div>
+                @elseif(session('success'))
+                <div class="alert-container1 success">
+                    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                    <div>
+                        {{ session('success') }}
+                    </div>
+                </div>
+                @elseif(isset($successMessagePesan))
                 <div class="alert-container12 success">
-                    @if($search)
+                    @if($searchPesan)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @else
+                    @elseif($tanggalawalpesan && $tanggalakhirpesan)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
                     <div>
-                        {{ $successMessage }}
+                        {{ $successMessagePesan }}
                     </div>
                 </div>
                 @endif
@@ -211,7 +225,7 @@ use Carbon\Carbon;
                 <td>{{ $row->name }}</td>
                 <td>{{ $row->email }}</td>
                 <td>{{ $row->phone }}</td>
-                <td>{{ $row->message }}</td>
+                <td class="truncate-text">{{ $row->message }}</td>
                 <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
@@ -221,7 +235,7 @@ use Carbon\Carbon;
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infopesan">
+                    <button class="custom-button" data-toggle="modal" data-target="#infopesan{{ $row->id }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -313,7 +327,7 @@ use Carbon\Carbon;
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL DETAIL BERITA -->
+<!-- MODAL DETAIL TESTIMONI -->
 @foreach($data as $key => $row)
 <div class="modal fade" id="infotestimoni{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-lg" role="document">
@@ -329,27 +343,27 @@ use Carbon\Carbon;
                 <div class="form-group" style="text-align: center;">
                     @if($row->star == 5)
                     <td>
-                        @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05;font-size: 50px;"></i>
+                        @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill font-star"></i>
                             @endfor
                     </td>
                     @elseif($row->star == 4)
                     <td>
-                        @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                        @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill font-star" style="color:#F29F05"></i>
                             @endfor
                     </td>
                     @elseif($row->star == 3)
                     <td>
-                        @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                        @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill font-star" style="color:#F29F05"></i>
                             @endfor
                     </td>
                     @elseif($row->star == 2)
                     <td>
-                        @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                        @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill font-star" style="color:#F29F05"></i>
                             @endfor
                     </td>
                     @elseif($row->star == 1)
                     <td>
-                        @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                        @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill font-star" style="color:#F29F05"></i>
                             @endfor
                     </td>
                     @else
@@ -358,30 +372,57 @@ use Carbon\Carbon;
                     </td>
                     @endif
                 </div>
+                @if($row->text != null)
                 <label style="color:black;font-weight:bold;">Deskripsi</label>
                 <div class="form-group" style="color:black;background-color: white;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Kode</label>
                             <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Nama</label>
                             <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                </div>
+                <div class="row">
+                    <div class="col">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Tanggal</label>
-                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j-m-Y') }}" readonly>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y (H:i') }} WIB)" readonly>
                         </div>
                     </div>
                 </div>
+                @elseif($row->text == null)
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal</label>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y (H:i') }} WIB)" readonly>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
@@ -409,13 +450,13 @@ use Carbon\Carbon;
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                                <input type="date" class="kolom form-control" name="tanggal_dari_pesan" id="tanggal_dari">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                                <input type="date" class="kolom form-control" name="tanggal_sampai_pesan" id="tanggal_sampai">
                             </div>
                         </div>
                     </div>
@@ -428,6 +469,136 @@ use Carbon\Carbon;
     </div>
 </div>
 <!--  END MODAL  -->
+
+<!-- MODAL DELETE PESAN -->
+@foreach($data1 as $key => $row)
+<div class="modal fade" id="deletepesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Peringatan!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Apakah Anda yakin untuk menghapus pesan di baris {{ $key+$data->firstItem() }}?
+            </div>
+            <form action="{{ route('deletepesan', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('DELETE')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL DETAIL PESAN -->
+@foreach($data1 as $key => $row)
+<div class="modal fade detail-modal" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Pesan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->name }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal</label>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Email</label>
+                            <input class="kolom form-control" placeholder="{{ $row->email }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kontak</label>
+                            <input class="kolom form-control" placeholder="{{ $row->phone }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold;">Pesan</label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Balas</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+<!-- END MODAL -->
+
+<!-- MODAL BALAS PESAN -->
+@foreach($data1 as $key => $row)
+<div class="modal fade reply-modal" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Email</label>
+                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold;">Balasan</label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control resizablestatus" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
 
 <script>
     function tampilkanTabel(idTabel) {
@@ -478,6 +649,7 @@ use Carbon\Carbon;
     window.onload = function() {
         // Ambil status dari localStorage jika ada
         const status = localStorage.getItem('tabelStatus');
+
         if (status === 'tabelpesan') {
             tampilkanTabel("tabelpesan");
         } else {
