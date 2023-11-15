@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GolonganDarah;
-use App\Models\JadwalPendonor;
+use App\Models\jadwalPendonor;
 use App\Models\Pendonor;
 use App\Models\Role;
 use App\Models\User;
@@ -87,7 +87,7 @@ class KelolaAkunController extends Controller
     {
         $request['kode_pendonor'] = 'dara' . rand(10000, 99999);
         $request->validate([
-            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
         ]);
 
         Pendonor::create($request->all());
@@ -137,7 +137,7 @@ class KelolaAkunController extends Controller
 
     public function deletependonorsuper($id){
         $pendonor = Pendonor::find($id);
-        $jadwalDonor = JadwalPendonor::where('id_pendonor',$pendonor->id);
+        $jadwalDonor = jadwalPendonor::where('id_pendonor',$pendonor->id);
         if($jadwalDonor){
             $jadwalDonor->delete();
         }

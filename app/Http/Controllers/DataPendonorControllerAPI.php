@@ -59,7 +59,7 @@ class DataPendonorControllerAPI extends Controller
         if(!$goldar){
             $goldar = null;
         }
-        $jadwal = jadwalPendonor::where('id_pendonor',$user->id)->get();
+        $jadwal = JadwalPendonor::where('id_pendonor',$user->id)->get();
         $jadwal_me = null;
         $jadwal_pendonor = [];
         // Jadwal yang akan disimpan
