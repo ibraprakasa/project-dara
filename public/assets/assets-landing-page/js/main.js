@@ -17,10 +17,10 @@
       // === logo change
       if (ud_header.classList.contains("sticky")) {
         document.querySelector(".header-logo").src =
-          "assets/images/logo/logo.svg"
+          "assets/assets-landing-page/images/logo/dara.png"
       } else {
         document.querySelector(".header-logo").src =
-          "assets/images/logo/logo-white.svg"
+          "assets/assets-landing-page/images/logo/dara-white.png"
       }
     }
 

@@ -96,17 +96,14 @@
         'akun': 'AKUN',
         'infopendaftar': 'INFO PENDAFTAR',
         'forum-postingan': 'FORUM DONOR',
-        'laporan' : 'LAPORAN'
-        // Tambahkan halaman lain dan judulnya di sini
+        'laporan' : 'LAPORAN',
+        'feedback' : 'FEEDBACK'
       };
 
-      // Mendapatkan nama halaman dari path URL saat ini
       var currentPage = currentPath.split('/').pop();
 
-      // Simpan judul asli sebelumnya
       var originalTitle = pageTitleMap[currentPage] || '';
 
-      // Jika ada parameter pencarian, tambahkan "Hasil Pencarian: [searchParam]" ke judul
       if (idParam) {
         titleElement.innerHTML = 'FORUM DONOR';
         $(".active").css("background-color", "#1B77A0");
@@ -118,14 +115,13 @@
         $(".active").css("background-color", "#1B77A0");
       }
 
-      // Tampilkan judul
       titleElement.style.visibility = 'visible';
     });
   </script>
   <script>
     document.getElementById("komentarLink").addEventListener("click", function(event) {
-        event.preventDefault(); // Mencegah pergi ke tautan "#" yang kosong
-        window.history.back(); // Kembali ke halaman sebelumnya
+        event.preventDefault(); 
+        window.history.back(); 
     });
   </script>
 

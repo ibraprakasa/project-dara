@@ -69,6 +69,13 @@
             </li>
             <hr class="jaraksidebar">
             @endif
+            <li class="{{ request()->routeIs('feedback') ? 'active' : '' }}">
+                <a href="{{ route('feedback') }}" style="color: white; font-weight:bold;">
+                    <i class="nc-icon nc-tile-56" style="color: white; font-weight:bold;"></i>
+                    <p>Feedback</p>
+                </a>
+            </li>
+            <hr class="jaraksidebar">
             @if(auth()->user()->role_id == '1')
             <li class="{{ request()->routeIs('forum-postingan', 'forum-komentar','forum-balasan') ? 'active' : '' }}">
                 <a href="{{ route('forum-postingan') }}" style="color: white; font-weight:bold;">

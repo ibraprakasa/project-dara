@@ -33,7 +33,6 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 // LANDING PAGE
 
-// END
 
 
 Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
@@ -110,8 +109,14 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::get('laporan','App\Http\Controllers\LaporanController@getLaporan')->name('laporan');
     Route::delete('deletelaporanasli/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanAsli')->name('deletelaporanasli');
     Route::delete('deletelaporanpalsu/{id}', 'App\Http\Controllers\LaporanController@deleteLaporanPalsu')->name('deletelaporanpalsu');
-
     // END LAPORAN
+
+    // FEEDBACK
+    Route::get('feedback','App\Http\Controllers\FeedbackController@getTestimoni')->name('feedback');
+
+    Route::delete('deletetestimoni/{id}','App\Http\Controllers\FeedbackController@deleteTestimoni')->name('deletetestimoni');
+    // END FEEDBACK
+
 });
 
 //untuk admin
