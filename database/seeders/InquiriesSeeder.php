@@ -14,7 +14,7 @@ class InquiriesSeeder extends Seeder
     public function run(): void
     {
         DB::table('inquiries')->insertGetId(array(
-            'name' => 'Abdul Raffi Naufal',
+            'name' => 'Abdul Rdadaaffi Naufal',
             'email' => 'abdulraffi8@gmail.com',
             'phone' => '086832940234',
             'message' => 'Saya ingin mengajukan kerjasama dengan DARA, apakah bisa ?',
