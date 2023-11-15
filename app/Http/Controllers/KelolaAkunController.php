@@ -87,7 +87,7 @@ class KelolaAkunController extends Controller
     {
         $request['kode_pendonor'] = 'dara' . rand(10000, 99999);
         $request->validate([
-            'jenis_kelamin' => 'required|in:laki-laki,perempuan',
+            'jenis_kelamin' => 'required|in:Laki-laki,Perempuan',
         ]);
 
         Pendonor::create($request->all());
