@@ -66,6 +66,8 @@ class FeedbackController extends Controller
             $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'"' ;
         }
 
+        $query->orderByDesc('star');
+
         $data  = $query->paginate(10);
         $data1 = $query1->paginate(10);
 

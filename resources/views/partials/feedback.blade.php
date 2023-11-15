@@ -500,8 +500,8 @@ use Carbon\Carbon;
 
 <!-- MODAL DETAIL PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-lg" role="document">
+<div class="modal fade detail-modal" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Pesan</h5>
@@ -511,34 +511,30 @@ use Carbon\Carbon;
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col">
+                    <div class="col md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Nama</label>
                             <input class="kolom form-control" placeholder="{{ $row->name }}" readonly>
                         </div>
                     </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal</label>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}" readonly>
+                        </div>
+                    </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Email</label>
                             <input class="kolom form-control" placeholder="{{ $row->email }}" readonly>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
+                    <div class="col md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Kontak</label>
                             <input class="kolom form-control" placeholder="{{ $row->phone }}" readonly>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold">Tanggal</label>
-                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y (H:i') }} WIB)" readonly>
                         </div>
                     </div>
                 </div>
@@ -555,10 +551,51 @@ use Carbon\Carbon;
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Balas</button>
             </div>
         </div>
     </div>
 </div>
+@endforeach
+
+<!-- END MODAL -->
+
+<!-- MODAL BALAS PESAN -->
+@foreach($data1 as $key => $row)
+<div class="modal fade reply-modal" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Email</label>
+                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold;">Balasan</label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control resizablestatus" rows="6"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+            </div>
+        </div>
+    </div>
 </div>
 @endforeach
 <!-- END MODAL -->
@@ -620,6 +657,7 @@ use Carbon\Carbon;
         }
     };
 </script>
+
 
 
 @endsection
