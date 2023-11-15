@@ -225,7 +225,7 @@ use Carbon\Carbon;
                 <td>{{ $row->name }}</td>
                 <td>{{ $row->email }}</td>
                 <td>{{ $row->phone }}</td>
-                <td>{{ $row->message }}</td>
+                <td class="truncate-text">{{ $row->message }}</td>
                 <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
@@ -235,7 +235,7 @@ use Carbon\Carbon;
                     </button>
                 </td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infopesan">
+                    <button class="custom-button" data-toggle="modal" data-target="#infopesan{{ $row->id }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -504,31 +504,33 @@ use Carbon\Carbon;
     <div class="modal-dialog modal-dialog-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Testimoni</h5>
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Pesan</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <label class="rating-title" for="rating">Rating</label>
-                <div class="form-group" style="text-align: center;">
-                    
-                </div>
-                <label style="color:black;font-weight:bold;">Deskripsi</label>
-                <div class="form-group" style="color:black;background-color: white;">
-                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
-                </div>
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold">Kode</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Nama</label>
-                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
+                            <input class="kolom form-control" placeholder="{{ $row->name }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Email</label>
+                            <input class="kolom form-control" placeholder="{{ $row->email }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kontak</label>
+                            <input class="kolom form-control" placeholder="{{ $row->phone }}" readonly>
                         </div>
                     </div>
                 </div>
@@ -540,7 +542,16 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 </div>
-               
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold;">Pesan</label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
