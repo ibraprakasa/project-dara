@@ -30,15 +30,22 @@
 </div>
 
 <div class="filter1 btn-group wow">
-  @if(session('success'))
-  <div class="alert-container1 success">
-<div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-    <div>
-      {{ session('success') }}
+    @if(session('error'))
+    <div class="alert-container">
+        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+        <div>
+            {{ session('error') }}
+        </div>
     </div>
-  </div>
-  @endif
-  </div>
+    @elseif(session('success'))
+    <div class="alert-container1 success">
+        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+        <div>
+            {{ session('success') }}
+        </div>
+    </div>
+    @endif
+</div>
 
 
 <div class="content" style="margin-top: 20px;">
@@ -52,11 +59,11 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($data) == 0)
-        <tr>
-            <td style="font-weight: bold;"colspan="4" style="text-align:center;">Stok Darah belum ada</td>
-        </tr>
-        @else
+            @if(count($data) == 0)
+            <tr>
+                <td style="font-weight: bold;" colspan="4" style="text-align:center;">Stok Darah belum ada</td>
+            </tr>
+            @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>

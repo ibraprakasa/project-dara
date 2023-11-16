@@ -150,7 +150,7 @@
 <!-- MODAL DETAIL LAPORAN -->
 @foreach($report as $key => $row)
 <div class="modal fade" id="infolaporan{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Informasi Detail Laporan</h5>
@@ -161,7 +161,7 @@
             <div class="modal-body">
                 @if ($row->posts && $row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar" style="width:100px; height:100px;">
+                    <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar"  width="500" height="250"">
                 </div>
                 <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
                 <div class="form-group" style="color:black;">

@@ -151,7 +151,7 @@
 <!-- MODAL INFO POSTINGAN -->
 @foreach($postingan as $key => $row)
 <div class="modal fade" id="infopostingan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Postingan</h5>
@@ -160,10 +160,10 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if($row->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ $row->gambar }}" alt="Gambar" width="500" height="250">
+                    <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="Gambar" width="500" height="250">
                 </div>
-
                 <label style="color:black;font-weight:bold">Status</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
@@ -188,13 +188,37 @@
                         </div>
                     </div>
                 </div>
+                @elseif($row->gambar == null)
+                <label style="color:black;font-weight:bold">Status</label>
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal</label>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}" readonly>
+                        </div>
+                    </div>
+                @endif
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
-</div>
 </div>
 @endforeach
 <!-- END MODAL -->
