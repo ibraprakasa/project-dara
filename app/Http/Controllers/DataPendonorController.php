@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\JadwalDonor;
-use App\Models\jadwalPendonor;
+use App\Models\JadwalPendonor;
 use App\Models\GolonganDarah;
 use App\Models\Pendonor;
 use Illuminate\Http\Request;
@@ -63,7 +63,7 @@ class DataPendonorController extends Controller
                 unlink(public_path('images/' . $imageFilename));
             }
 
-            $jadwalDonor = jadwalPendonor::where('id_pendonor', $pendonor->id);
+            $jadwalDonor = JadwalPendonor::where('id_pendonor', $pendonor->id);
             if ($jadwalDonor) {
                 $jadwalDonor->delete();
             }

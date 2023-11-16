@@ -99,7 +99,7 @@ class JadwalDonorController extends Controller
 
     public function deletejadwalpendonor($id, Request $request)
     {
-        $pendaftar = jadwalPendonor::where('id_pendonor', $id)->where('id_jadwal_donor_darah', $request->input('id_jadwal'))->first();
+        $pendaftar = JadwalPendonor::where('id_pendonor', $id)->where('id_jadwal_donor_darah', $request->input('id_jadwal'))->first();
         $jumlahPendaftar = JadwalDonor::where('id', $request->input('id_jadwal'))->first();
         $jumlahPendaftar->jumlah_pendonor = $jumlahPendaftar->jumlah_pendonor -  1;
         $pendaftar->delete();
