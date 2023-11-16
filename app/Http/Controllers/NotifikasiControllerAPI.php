@@ -75,6 +75,7 @@ class NotifikasiControllerAPI extends Controller
             }
         }
         $this->resDataNotif = $responseData;
+        $responseData = array_reverse($responseData);
         return response()->json($responseData);
     }
 
