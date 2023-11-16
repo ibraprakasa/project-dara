@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Notifikasi;
 use App\Models\Pendonor;
 use App\Models\Post;
 use Illuminate\Http\Request;
@@ -145,6 +146,8 @@ class PostControllerAPI extends Controller
                 unlink($gambarPath);
             }
            }
+           $notif = Notifikasi::where('id_post',$post->id)->get();
+           $notif->delete();
             $post->delete();
             return response()->json([
                 'success' => true,
