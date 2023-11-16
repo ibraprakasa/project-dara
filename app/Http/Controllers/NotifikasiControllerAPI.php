@@ -34,10 +34,11 @@ class NotifikasiControllerAPI extends Controller
         foreach ($notifikasi as $notif) {
             $post = Post::where('id', $notif->id_post)->first(); // Dapatkan instance model Post
             if ($post) {
-                $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post
-                if ($postMe) {
+                // $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post
+                if ($post->id_pendonor == $user->id) {
                     $comment = Comment::where('id', $notif->id_comment)->first(); // Dapatkan instance model Comment
-                    if ($comment && $comment->id_pendonor != $user->id) {
+                    $balasComment = BalasComment::where('id', $comment->id_comment)->first();
+                    if ($comment->id_pendonor != $user->id && ($balasComment->id_pendonor != $user->id || !$balasComment)) {
                         $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
                         $diff = $notif->updated_at->diffForHumans();
                         $diff = str_replace('dari sekarang', 'yang lalu', $diff);
