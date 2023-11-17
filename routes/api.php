@@ -48,6 +48,7 @@ Route::post('/jadwal-donor-pendonor', [JadwalPendonorControllerAPI::class, 'daft
 Route::get('/jadwal-donor-pendonor/{id}', [JadwalPendonorControllerAPI::class, 'find']);
 
 Route::get('/profile', [DataPendonorControllerAPI::class, 'showProfile']);
+Route::get('/profile/{id}', [DataPendonorControllerAPI::class, 'showProfileOtherDonor']);
 Route::post('/profile-edit-gambar', [DataPendonorControllerAPI::class, 'updateGambar']);
 Route::post('/profile-edit-data', [DataPendonorControllerAPI::class, 'updateData']);
 Route::post('/profile-edit-password', [DataPendonorControllerAPI::class, 'editPassword']);
@@ -60,6 +61,7 @@ Route::post('/otp/reset-password', [LupaPasswordControllerAPI::class, 'resetPass
 //postingan
 Route::get('/post', [PostControllerAPI::class, 'show']);
 Route::get('/post/me', [PostControllerAPI::class, 'postMe']);
+Route::get('/post/other-donor/{id}', [PostControllerAPI::class, 'postOtherDonor']);
 Route::post('/post/add', [PostControllerAPI::class, 'addPost']);
 Route::get('/post/{id}', [PostControllerAPI::class, 'findPost']);
 Route::delete('/post/delete/{id}', [PostControllerAPI::class, 'delete']);
