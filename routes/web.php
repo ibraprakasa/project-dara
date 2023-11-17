@@ -29,10 +29,15 @@ Route::post('lupapassword2', 'App\Http\Controllers\LupaPasswordController@postOT
 Route::get('lupapassword3', 'App\Http\Controllers\LupaPasswordController@getPasswordResetForm')->name('lupapassword3');
 Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPasswordReset')->name('lupapassword3.post');
 
-// END
-Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
+// END LUPA PASSWORD
+
+
 // LANDING PAGE
 
+Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
+Route::post('landing-page','App\Http\Controllers\LandingPageController@postInquiries')->name('landing-page.inquiries');
+
+// END LANDING PAGE
 
 
 Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {

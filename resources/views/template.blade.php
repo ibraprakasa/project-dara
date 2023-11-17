@@ -97,7 +97,7 @@
         'infopendaftar': 'INFO PENDAFTAR',
         'forum-postingan': 'FORUM DONOR',
         'laporan' : 'LAPORAN',
-        'feedback' : 'FEEDBACK'
+        'feedback' : 'TANGGAPAN'
 
       };
 

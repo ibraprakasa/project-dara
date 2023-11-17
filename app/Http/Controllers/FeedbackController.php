@@ -80,7 +80,7 @@ class FeedbackController extends Controller
 
         $data->delete();
 
-        return redirect()->route('feedback')->with('success','Testimoni berhasil dihapus.');    
+        return redirect()->route('feedback')->with('successTestimoni','Testimoni berhasil dihapus.');    
     }
 
     public function deletePesan($id){
@@ -88,6 +88,6 @@ class FeedbackController extends Controller
 
         $data->delete();
 
-        return redirect()->route('feedback')->with('success','Pesan berhasil dihapus.');    
+        return redirect()->route('feedback')->with('successPesan','Pesan berhasil dihapus.');    
     }
 }

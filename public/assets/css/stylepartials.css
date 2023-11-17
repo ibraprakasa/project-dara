@@ -55,10 +55,6 @@
     color: #3B4B65; /* Anda juga mungkin perlu mengatur warna teks saat hover sesuai kebutuhan Anda */
   }
 
-.kolom{
-    background-color:#D9D9D9
-}
-
 .custom-button{
     margin: 0;
     padding: 0;
@@ -74,22 +70,39 @@
 }
 
 .resizable {
-    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
-    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 280px; /* Tinggi minimum awal textarea */
+    resize: both !important; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 280px !important; /* Tinggi minimum awal textarea */
+    text-align: justify;
   }
 
   .resizablealamat {
-    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
-    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 85px; /* Tinggi minimum awal textarea */
+    resize: both !important; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 85px !important;
+    text-align: justify;
   }
 
   .resizablestatus {
-    resize: both; /* Memungkinkan pengguna untuk menarik textarea */
-    overflow: auto; /* Menampilkan scroll jika konten melebihi ukuran textarea */
-    min-height: 180px; /* Tinggi minimum awal textarea */
-    color: black;
+    resize: both !important; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 200px !important; /* Tinggi minimum awal textarea */
+    color: black !important;
+    font-weight: bold !important;
+    text-align: justify;
+  }
+
+  .kolom{
+    background-color:#D9D9D9 !important;
+}
+
+  .pesan {
+    resize: both !important; /* Memungkinkan pengguna untuk menarik textarea */
+    overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 180px !important; /* Tinggi minimum awal textarea */
+    background-color: #D9D9D9 !important;
+    color:black !important;
+    font-weight: bold ;
   }
   
 
@@ -455,4 +468,20 @@ table td {
     color:#F29F05;font-size: 50px;
 }
 
+.judulpesan{
+    color: black;
+    font-weight:bold;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
 
+.judulbalasan{
+    color: black;
+    font-weight:bold;
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 10px;
+}

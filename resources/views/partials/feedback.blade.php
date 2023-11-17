@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 <head>
     <title>
-        DARA || Feedback
+        DARA || Tanggapan
     </title>
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
@@ -45,18 +45,18 @@ use Carbon\Carbon;
             </div>
 
             <div style="display: flex; margin-left:15px;">
-                @if(session('error'))
+                @if(session('errorTestimoni'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                     <div>
-                        {{ session('error') }}
+                        {{ session('errorTestimoni') }}
                     </div>
                 </div>
-                @elseif(session('success'))
+                @elseif(session('successTestimoni'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div>
-                        {{ session('success') }}
+                        {{ session('successTestimoni') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
@@ -170,18 +170,18 @@ use Carbon\Carbon;
             </div>
 
             <div style="display: flex; margin-left:15px;">
-                @if(session('error'))
+                @if(session('errorPesan'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                     <div>
-                        {{ session('error') }}
+                        {{ session('errorPesan') }}
                     </div>
                 </div>
-                @elseif(session('success'))
+                @elseif(session('successPesan'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div>
-                        {{ session('success') }}
+                        {{ session('successPesan') }}
                     </div>
                 </div>
                 @elseif(isset($successMessagePesan))
@@ -500,7 +500,7 @@ use Carbon\Carbon;
 
 <!-- MODAL DETAIL PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade detail-modal" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -510,6 +510,16 @@ use Carbon\Carbon;
                 </button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="judulpesan">PESAN</label>
+                            <div class="form-group">
+                                <textarea class="form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col md-6">
                         <div class="form-group">
@@ -524,7 +534,7 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-bottom: 10px;">
                     <div class="col md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Email</label>
@@ -535,16 +545,6 @@ use Carbon\Carbon;
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Kontak</label>
                             <input class="kolom form-control" placeholder="{{ $row->phone }}" readonly>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold;">Pesan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -562,8 +562,8 @@ use Carbon\Carbon;
 
 <!-- MODAL BALAS PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade reply-modal" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
@@ -575,18 +575,26 @@ use Carbon\Carbon;
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label style="color:black;font-weight:bold">Email</label>
-                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                            <label class="judulpesan">Pesan</label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="judulbalasan">Balasan</label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="form-control resizablestatus" rows="6"></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label style="color:black;font-weight:bold;">Balasan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6"></textarea>
-                            </div>
+                            <label style="color:red !important;font-weight:bold">Email</label>
+                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
                         </div>
                     </div>
                 </div>
@@ -657,7 +665,5 @@ use Carbon\Carbon;
         }
     };
 </script>
-
-
 
 @endsection

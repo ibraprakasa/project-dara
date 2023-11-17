@@ -72,7 +72,7 @@
             <li class="{{ request()->routeIs('feedback') ? 'active' : '' }}">
                 <a href="{{ route('feedback') }}" style="color: white; font-weight:bold;">
                     <i class="bi bi-star-fill" style="color: white; font-weight:bold;"></i>
-                    <p>Feedback</p>
+                    <p>Tanggapan</p>
                 </a>
             </li>
             <hr class="jaraksidebar">
