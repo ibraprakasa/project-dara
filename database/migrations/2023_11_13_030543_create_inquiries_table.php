@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('phone', 100)->nullable(false);
             $table->text('message')->nullable(false);
             $table->text('reply')->nullable(false);
+            $table->enum('status',['1','2'])->nullable(false);
             $table->timestamps();
         });
     }

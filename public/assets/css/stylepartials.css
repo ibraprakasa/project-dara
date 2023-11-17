@@ -96,24 +96,66 @@
     background-color:#D9D9D9 !important;
 }
 
+    .pesan2 {
+        overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+        min-height: 180px !important; /* Tinggi minimum awal textarea */
+        background-color: whitesmoke !important;
+        color: #333333 !important;
+        font-weight: normal;
+        font-style: italic;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s ease !important;
+        border: 1px solid #CCCCCC !important;
+  }
+
   .pesan {
     overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 360px !important; /* Tinggi minimum awal textarea */
-    background-color: #D9D9D9 !important;
-    color:black !important;
-    font-weight: bold ;
+    background-color: whitesmoke !important;
+    color: #333333 !important;
+    font-weight: normal;
+    font-style: italic;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease !important;
+    border: 1px solid #CCCCCC !important;
   }
 
   .balasan {
     overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
     min-height: 360px !important; /* Tinggi minimum awal textarea */
     background-color: white !important;
-    color:black !important;
+    color:#444444 !important;
     font-weight: bold ;
     text-align: justify;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease !important;
+    border: 1px solid #E1E1E1 !important;
   }
-  
 
+  .sudahadabalasan {
+    overflow: auto !important; /* Menampilkan scroll jika konten melebihi ukuran textarea */
+    min-height: 360px !important; /* Tinggi minimum awal textarea */
+    background-color: white !important;
+    color:#444444 !important;
+    font-weight: bold ;
+    text-align: justify;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease !important;
+    border: 1px solid #E1E1E1 !important;
+  }
+
+  .pesan:hover, .balasan:hover, .sudahadabalasan:hover {
+    background-color: #D9D9D9 !important;
+}
+
+.balasan:focus {
+    background-color: white !important;
+}
+
+.pesan:focus, .sudahadabalasan:focus {
+    background-color: #D9D9D9 !important;
+}
+  
 
   #gambar {
     background-color: #000000; /* Warna latar belakang */

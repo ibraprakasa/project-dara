@@ -6,8 +6,8 @@
     <title>Balasan DARA untuk Anda</title>
 </head>
 <body>
+    <b>Hai {{ $name }},</b>
     <p>{{ $replying }}</p>
-    <br>
-    <p>Regards, DARA.</p>
+    <i>Regards, DARA.</i>
 </body>
 </html>

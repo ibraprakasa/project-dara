@@ -14,13 +14,14 @@ class SendMessageToGuest extends Mailable
     use Queueable, SerializesModels;
 
     public $replying;
-
+    public $name;
     /**
      * Create a new message instance.
      */
-    public function __construct($replying)
+    public function __construct($replying,$name)
     {
         $this->replying = $replying;
+        $this->name = $name;
     }
 
     /**
