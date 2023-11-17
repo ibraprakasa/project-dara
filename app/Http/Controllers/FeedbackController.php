@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMessageToGuest;
 use App\Models\Inquiries;
-use App\Models\JadwalDonor;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
-
-use function Laravel\Prompts\search;
+use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
@@ -67,6 +66,7 @@ class FeedbackController extends Controller
         }
 
         $query->orderByDesc('star');
+        $query1->orderBy('name');
 
         $data  = $query->paginate(10);
         $data1 = $query1->paginate(10);
@@ -74,6 +74,28 @@ class FeedbackController extends Controller
         return view('partials.feedback',compact(
             'data','data1','successMessage','successMessagePesan','search','searchPesan','tanggalawal','tanggalakhir','ratingdara','tanggalawalpesan','tanggalakhirpesan'));
     }
+
+    public function postReply(Request $request)
+    {
+        $replying = $request->input('message');
+
+        $request->validate([
+            'email' => 'required|email',
+        ]);
+
+        $guest = Inquiries::where('email', $request->email)->first();
+
+        if ($guest) {
+            Inquiries::where('id', $guest->id)->update(['reply' => $replying]);
+
+            Mail::to($request->email)->send(new SendMessageToGuest($replying));
+
+            return redirect()->route('feedback')->with('successPesan','Balasan berhasil dikirim.');
+        } else {
+            return back()->with('errorPesan', 'Email tidak ditemukan.');
+        }
+    }
+
 
     public function deleteTestimoni($id){
         $data = Testimonial::find($id);

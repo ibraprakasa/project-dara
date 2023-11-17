@@ -17,6 +17,7 @@ class Inquiries extends Model
         'name',
         'email',
         'phone',
-        'message'
+        'message',
+        'reply'
     ];
 }

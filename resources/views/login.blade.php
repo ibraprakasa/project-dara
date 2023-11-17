@@ -59,7 +59,7 @@
                     Lupa Password?
                 </a>
             </p>
-            <button type="submit" class="btn btn-block">Masuk</button>
+            <button type="submit" class="btn btn-block btn-danger">Masuk</button>
 
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">

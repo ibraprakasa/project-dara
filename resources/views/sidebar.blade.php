@@ -69,13 +69,6 @@
             </li>
             <hr class="jaraksidebar">
             @endif
-            <li class="{{ request()->routeIs('feedback') ? 'active' : '' }}">
-                <a href="{{ route('feedback') }}" style="color: white; font-weight:bold;">
-                    <i class="bi bi-star-fill" style="color: white; font-weight:bold;"></i>
-                    <p>Tanggapan</p>
-                </a>
-            </li>
-            <hr class="jaraksidebar">
             @if(auth()->user()->role_id == '1')
             <li class="{{ request()->routeIs('forum-postingan', 'forum-komentar','forum-balasan') ? 'active' : '' }}">
                 <a href="{{ route('forum-postingan') }}" style="color: white; font-weight:bold;">
@@ -88,6 +81,13 @@
                 <a href="{{ route('laporan') }}" style="color: white; font-weight:bold;">
                     <i class="bi bi-file-earmark-text-fill" style="color: white; font-weight:bold;"></i>
                     <p>Laporan</p>
+                </a>
+            </li>
+            <hr class="jaraksidebar">
+            <li class="{{ request()->routeIs('feedback') ? 'active' : '' }}">
+                <a href="{{ route('feedback') }}" style="color: white; font-weight:bold;">
+                    <i class="bi bi-star-fill" style="color: white; font-weight:bold;"></i>
+                    <p>Tanggapan</p>
                 </a>
             </li>
             <hr class="jaraksidebar">

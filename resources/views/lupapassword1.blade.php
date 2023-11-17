@@ -30,16 +30,16 @@
         <div style="clear: both;"></div>
         <hr class="line">
 
-        @if (session('email'))
+        @if (session('error'))
         <div class="alert alert-danger">
-            <b>Opps!</b> {{ session('email') }}
+            <b>Opps!</b> {{ session('error') }}
         </div>
         @endif
 
         <form action="{{ route('lupapassword1.post') }}" method="POST">
             @csrf
 
-            <p style="text-align:center; font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif">
+            <p class="lupapassword-title">
                 Kode OTP akan segera dikirimkan ke alamat email yang terdaftar di akun Anda. Silakan cek kotak masuk email Anda dalam beberapa saat.
             </p>
 
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-md-1">
                     <div class="form-group button-container">
-                        <button type="submit" class="btn"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
+                        <button type="submit" class="btn btn-danger"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
                     </div>
                 </div>
             </div>

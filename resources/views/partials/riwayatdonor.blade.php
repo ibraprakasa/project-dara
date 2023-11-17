@@ -127,7 +127,7 @@ use Carbon\Carbon;
         </tbody>
     </table>
     <div class="pagination2">
-        {{ $riwayat_donor->links() }}
+        {{ $riwayat_ambil->links() }}
     </div>
 
 

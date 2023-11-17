@@ -9,7 +9,7 @@
               Hubungi Kami
             </span>
             <h2 class="max-w-[260px] text-[35px] leading-[1.14] font-semibold">
-              Mari atasi masalah Anda
+              Mari atasi masalah Anda.
             </h2>
           </div>
           <div class="mb-12 flex flex-wrap justify-between lg:mb-0">

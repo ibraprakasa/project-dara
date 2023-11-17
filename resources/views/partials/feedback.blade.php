@@ -515,7 +515,7 @@ use Carbon\Carbon;
                         <div class="form-group">
                             <label class="judulpesan">PESAN</label>
                             <div class="form-group">
-                                <textarea class="form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                                <textarea class="form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
                             </div>
                         </div>
                     </div>
@@ -571,37 +571,40 @@ use Carbon\Carbon;
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label class="judulpesan">Pesan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
+                <form action="{{ route('feedback.reply') }}" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col md-6">
+                                <div class="form-group">
+                                    <label class="judulpesan">Pesan</label>
+                                    <div class="form-group" style="color:black;background-color: white;">
+                                        <textarea class="kolom form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col md-6">
+                                <div class="form-group">
+                                    <label class="judulbalasan">Balasan</label>
+                                    <div class="form-group" style="color:black;background-color: white;">
+                                        <textarea class="form-control balasan" rows="6" name="message" placeholder="Masukkan balasan Anda disini..."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label style="color:#E70000 !important;font-weight:bold">Email</label>
+                                    <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label class="judulbalasan">Balasan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="form-control resizablestatus" rows="6"></textarea>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label style="color:red !important;font-weight:bold">Email</label>
-                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
-            </div>
+                </form>
         </div>
     </div>
 </div>
