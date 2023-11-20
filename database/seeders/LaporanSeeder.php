@@ -37,7 +37,7 @@ class LaporanSeeder extends Seeder
 
         DB::table('reports')->insertGetId(array(
             'id_pendonor' => '10',
-            'id_post' =>  16,
+            'id_post' =>  5,
             'id_comment' =>  null,
             'id_reply' =>  null,
             'text' => 'Ini postingan',
