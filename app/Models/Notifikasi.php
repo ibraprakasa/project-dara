@@ -6,28 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Sanctum\HasApiTokens;
-use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;;
+use PHPOpenSourceSaver\JWTAuth\Contracts\JWTSubject;
 
-class Testimonial extends Authenticatable implements JWTSubject
+class Notifikasi extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $table = 'testimonial';
+    protected $table = 'notifikasis';
     protected $primaryKey = 'id';
     protected $guarded = [];
 
     protected $fillable = [
-        'id_pendonor',
-        'text',
-        'star',
-        'created_at',
-        'updated_at'
+        'id_post',
+        'id_comment',
+        'id_balas_comment',
+        'status_read'
     ];
-
-    public function pendonor()
-    {
-         return $this->belongsTo(Pendonor::class, 'id_pendonor', 'id');
-    }
 
     public function getJWTIdentifier()
     {

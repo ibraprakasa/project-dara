@@ -11,13 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testimonial', function (Blueprint $table) {
+        Schema::create('token_fcms', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_pendonor')->nullable(false);
-            $table->text('text')->nullable();
-            $table->enum('star', ['1','2','3','4','5'])->nullable(false);
+            $table->text('token')->nullable(false);
             $table->timestamps();
-            $table->foreign('id_pendonor')->references('id')->on('pendonor');
         });
     }
 
@@ -26,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('testimonial');
+        Schema::dropIfExists('token_fcm');
     }
 };
