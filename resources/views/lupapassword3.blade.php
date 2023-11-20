@@ -62,7 +62,7 @@
                 </div>
                 <div class="col">
                     <div class="form-group button-container">
-                        <button type="submit" class="btn"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
+                        <button type="submit" class="btn btn-danger"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="search" placeholder="Cari Pendonor..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+                <input class="btn" type="search" name="searchpendonor" placeholder="Cari Pendonor..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
                 <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -55,23 +55,23 @@
         </div>
 
         <div class="filter btn-group wow">
-        @if(session('error'))
+        @if(session('errorPendonor'))
             <div class="alert-container">
-                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                <div class="alert-icon">&#9888;</div> 
                 <div>
-                    {{ session('error') }}
+                    {{ session('errorPendonor') }}
                 </div>
             </div>
-            @elseif(session('success'))
+            @elseif(session('successPendonor'))
             <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div class="alert-icon">&#10004;</div> 
                 <div>
-                    {{ session('success') }}
+                    {{ session('successPendonor') }}
                 </div>
             </div>
             @elseif(isset($successMessage))
             <div class="alert-container12 success">
-                @if($search)
+                @if($searchPendonor)
                 <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                 @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
                 <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
@@ -114,7 +114,6 @@
                 <td>{{ $row->golongandarah->nama }}</td>
                 <td>{{ $row->kontak_pendonor }}</td>
                 <td>{{ $row->email }}</td>
-                <!-- <td>{{ $row->created_at->diffForHumans() }}</td> -->
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#editpendonor{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
@@ -142,7 +141,7 @@
     <div class="tes2" id="filteruser" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="search" placeholder="Cari User..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+                <input class="btn" type="search" name="searchuser" placeholder="Cari User..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
                 <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -177,23 +176,25 @@
 
 
         <div class="filter btn-group wow">
-            @if(session('error'))
+            @if(session('errorUser'))
             <div class="alert-container">
-                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                <div class="alert-icon">&#9888;</div>
                 <div>
-                    {{ session('error') }}
+                    {{ session('errorUser') }}
                 </div>
             </div>
-            @elseif(session('success'))
+            @elseif(session('successUser'))
             <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div class="alert-icon">&#10004;</div>
                 <div>
-                    {{ session('success') }}
+                    {{ session('successUser') }}
                 </div>
             </div>
-            @elseif(isset($sort))
+            @elseif(isset($successMessageUser))
             <div class="alert-container12 success">
-                @if($sort)
+                @if($searchUser)
+                <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                @elseif($sort)
                 <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                 @endif
                 <div>

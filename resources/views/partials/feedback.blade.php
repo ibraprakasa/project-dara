@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 <head>
     <title>
-        DARA || Feedback
+        DARA || Tanggapan
     </title>
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
@@ -45,18 +45,18 @@ use Carbon\Carbon;
             </div>
 
             <div style="display: flex; margin-left:15px;">
-                @if(session('error'))
+                @if(session('errorTestimoni'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                     <div>
-                        {{ session('error') }}
+                        {{ session('errorTestimoni') }}
                     </div>
                 </div>
-                @elseif(session('success'))
+                @elseif(session('successTestimoni'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div>
-                        {{ session('success') }}
+                        {{ session('successTestimoni') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
@@ -170,25 +170,25 @@ use Carbon\Carbon;
             </div>
 
             <div style="display: flex; margin-left:15px;">
-                @if(session('error'))
+                @if(session('errorPesan'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                     <div>
-                        {{ session('error') }}
+                        {{ session('errorPesan') }}
                     </div>
                 </div>
-                @elseif(session('success'))
+                @elseif(session('successPesan'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div>
-                        {{ session('success') }}
+                        {{ session('successPesan') }}
                     </div>
                 </div>
                 @elseif(isset($successMessagePesan))
                 <div class="alert-container12 success">
                     @if($searchPesan)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @elseif($tanggalawalpesan && $tanggalakhirpesan)
+                    @elseif($tanggalawalpesan || $tanggalakhirpesan || $status)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
                     <div>
@@ -210,6 +210,7 @@ use Carbon\Carbon;
                 <th scope="col">Kontak</th>
                 <th scope="col">Pesan</th>
                 <th scope="col">Tanggal Pesan</th>
+                <th scope="col">Status</th>
                 <th colspan="2" scope="col">Action</th>
             </tr>
         </thead>
@@ -229,6 +230,11 @@ use Carbon\Carbon;
                 <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
+                @if($row->status == 1)
+                <td>-</td>
+                @elseif($row->status == 2)
+                <td>Dibalas</td>
+                @endif
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletepesan{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -460,6 +466,18 @@ use Carbon\Carbon;
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="status">Status</label>
+                                <select class="kolom form-control" name="status" id="status">
+                                    <option value="">-</option>
+                                    <option value="1">Belum Dibalas</option>
+                                    <option value="2">Sudah Dibalas</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
@@ -500,8 +518,8 @@ use Carbon\Carbon;
 
 <!-- MODAL DETAIL PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade detail-modal" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div class="modal fade" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Pesan</h5>
@@ -510,6 +528,16 @@ use Carbon\Carbon;
                 </button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="judulpesan">PESAN</label>
+                            <div class="form-group">
+                                <textarea class="form-control pesan2" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col md-6">
                         <div class="form-group">
@@ -524,7 +552,7 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-bottom: 10px;">
                     <div class="col md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Email</label>
@@ -538,20 +566,14 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold;">Pesan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                @if($row->reply == null)
                 <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Balas</button>
+                @elseif($row->reply != null)
+                <button type="submit" data-dismiss="modal" data-target="#sudahreplypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Lihat Balasan</button>
+                @endif
             </div>
         </div>
     </div>
@@ -560,10 +582,70 @@ use Carbon\Carbon;
 
 <!-- END MODAL -->
 
+
 <!-- MODAL BALAS PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade reply-modal" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('feedback.reply') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col md-6">
+                            <div class="form-group">
+                                <label class="judulpesan"><u>Pesan dari Guest</u></label>
+                                <div class="form-group" style="color:black;background-color: white;">
+                                    <textarea class="form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col md-6">
+                            <div class="form-group">
+                                <label class="judulbalasan"><u>Balasan dari DARA</u></label>
+                                <div class="form-group" style="color:black;background-color: white;">
+                                    <textarea class="form-control balasan" rows="6" name="message" placeholder="Masukkan balasan Anda disini..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label style="color:#E70000 !important;font-weight:bold">Nama</label>
+                                <input class="kolom form-control" name="name" value="{{ $row->name }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label style="color:#E70000 !important;font-weight:bold">Email</label>
+                                <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL SUDAH BALAS PESAN -->
+@foreach($data1 as $key => $row)
+<div class="modal fade" id="sudahreplypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
@@ -573,26 +655,42 @@ use Carbon\Carbon;
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col">
+                    <div class="col md-6">
                         <div class="form-group">
-                            <label style="color:black;font-weight:bold">Email</label>
-                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                            <label class="judulpesan"><u>Pesan dari Guest</u></label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label class="judulbalasan"><u>Balasan dari DARA</u></label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="form-control sudahadabalasan" rows="6" name="message" readonly>{{ $row->reply }}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label style="color:black;font-weight:bold;">Balasan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6"></textarea>
-                            </div>
+                            <label style="color:#E70000 !important;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" name="name" value="{{ $row->name }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:#E70000 !important;font-weight:bold">Email</label>
+                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -657,7 +755,5 @@ use Carbon\Carbon;
         }
     };
 </script>
-
-
 
 @endsection

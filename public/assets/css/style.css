@@ -90,6 +90,11 @@ body{
     margin-right: 10px;
 }
 
+.lupapassword-title{
+  text-align:center; 
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
 @media screen and (max-width: 768px) {
     .login-form {
       width: 70%;

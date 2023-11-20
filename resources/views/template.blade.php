@@ -16,6 +16,7 @@
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -62,8 +63,6 @@
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  </script>
-
   <script>
     $(document).ready(function() {
       // Mendapatkan path URL saat ini
@@ -96,8 +95,8 @@
         'akun': 'AKUN',
         'infopendaftar': 'INFO PENDAFTAR',
         'forum-postingan': 'FORUM DONOR',
-        'laporan' : 'LAPORAN',
-        'feedback' : 'FEEDBACK'
+        'laporan': 'LAPORAN',
+        'feedback': 'TANGGAPAN'
 
       };
 
@@ -121,11 +120,11 @@
   </script>
   <script>
     document.getElementById("komentarLink").addEventListener("click", function(event) {
-        event.preventDefault(); 
-        window.history.back(); 
+      event.preventDefault();
+      window.history.back();
     });
   </script>
-  
+
 
 </body>
 

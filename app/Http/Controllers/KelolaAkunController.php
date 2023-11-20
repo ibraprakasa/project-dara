@@ -16,7 +16,8 @@ class KelolaAkunController extends Controller
     {
         $roles = Role::all(); // Mengambil semua peran dari model Role
         $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
-        $search = request()->input('search'); 
+        $searchPendonor = request()->input('searchpendonor'); 
+        $searchUser = request()->input('searchuser'); 
         $sort = request()->input('sortuser');
         $golonganDarah = request()->input('id_golongan_darah');
         $jenisKelamin = request()->input('jenis_kelamin');
@@ -26,14 +27,17 @@ class KelolaAkunController extends Controller
         $query = Pendonor::query();
         $query1 = User::query();
 
-        if ($search) {
-            $query  ->Where('nama', 'LIKE', '%' . $search . '%')
-                    ->orWhere('kode_pendonor', 'LIKE', '%' . $search . '%')
-                    ->orWhere('email', 'LIKE', '%' . $search . '%')
-                    ->orWhere('kontak_pendonor', 'LIKE', '%' . $search . '%')
-                    ->orWhere('tanggal_lahir', 'LIKE', '%' . $search . '%');
+        if ($searchPendonor) {
+            $query  ->Where('nama', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('kode_pendonor', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('kontak_pendonor', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('tanggal_lahir', 'LIKE', '%' . $searchPendonor . '%');
 
-            $query1 ->where('name', 'LIKE', '%' . $search . '%');
+        }
+
+        if($searchUser){
+            $query1 ->where('name', 'LIKE', '%' . $searchUser . '%');
         }
 
         if ($sort) {
@@ -57,8 +61,10 @@ class KelolaAkunController extends Controller
             $query->where('jenis_kelamin', $jenisKelamin);
         }
 
-        if($search){
-            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        if($searchPendonor){
+            $successMessage = 'Hasil Pencarian untuk "' . $searchPendonor . '"';
+        }elseif($searchUser){
+            $successMessageUser = 'Hasil Pencarian untuk "' . $searchUser . '"';
         }elseif($sort){
             $successMessageUser = 'Filter Berdasarkan Role "' . $sort . '"';
         }elseif($jenisKelamin && $golonganDarah){
@@ -80,7 +86,7 @@ class KelolaAkunController extends Controller
         $data = $query->paginate(10);
         $data1 = $query1->paginate(10);
 
-        return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar','successMessage','search','sort','jenisKelamin','golonganDarah','successMessageUser'));
+        return view('partials.kelolaakun', compact('data', 'data1', 'roles','goldar','successMessage','searchPendonor','searchUser','sort','jenisKelamin','golonganDarah','successMessageUser'));
     }
 
     public function insertpendonorsuper(Request $request)
@@ -91,7 +97,7 @@ class KelolaAkunController extends Controller
         ]);
 
         Pendonor::create($request->all());
-        return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil ditambahkan.');    
+        return redirect()->route('kelolaakun')->with('successPendonor','Data Pendonor berhasil ditambahkan.');    
     }
 
     public function insertuser(Request $request)
@@ -107,7 +113,7 @@ class KelolaAkunController extends Controller
             'created_at' => now(),
             'updated_at' => now()
         ]);
-        return redirect()->route('kelolaakun')->with('success','User berhasil ditambahkan.');    
+        return redirect()->route('kelolaakun')->with('successUser','User berhasil ditambahkan.');    
     }
 
     public function updatependonorsuper(Request $request, $id)
@@ -117,9 +123,9 @@ class KelolaAkunController extends Controller
 
         // Memperbarui data dengan nilai dari $request->all()
         if($pendonor->update($request->all())){
-            return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil diperbarui.');    
+            return redirect()->route('kelolaakun')->with('successPendonor','Data Pendonor berhasil diperbarui.');    
         }else{
-            return redirect()->route('kelolaakun')->with('error','Data Pendonor gagal diperbarui. Silahkan cek');    
+            return redirect()->route('kelolaakun')->with('errorPendonor','Data Pendonor gagal diperbarui. Silahkan cek');    
         }
     }
 
@@ -132,7 +138,7 @@ class KelolaAkunController extends Controller
         // Memperbarui data dengan nilai dari $request->all()
         $user->update($request->all());
 
-        return redirect()->route('kelolaakun')->with('success','Data User berhasil diperbarui.');    
+        return redirect()->route('kelolaakun')->with('successUser','Data User berhasil diperbarui.');    
     }
 
     public function deletependonorsuper($id){
@@ -143,7 +149,7 @@ class KelolaAkunController extends Controller
         }
         $pendonor->delete();
 
-        return redirect()->route('kelolaakun')->with('success','Data Pendonor berhasil dihapus.');    
+        return redirect()->route('kelolaakun')->with('successPendonor','Data Pendonor berhasil dihapus.');    
     }
 
     public function deleteuser($id){
@@ -151,7 +157,7 @@ class KelolaAkunController extends Controller
 
         $user ->delete();
 
-        return redirect()->route('kelolaakun')->with('success','User berhasil dihapus.');    
+        return redirect()->route('kelolaakun')->with('successUser','User berhasil dihapus.');    
     }
 
     public function updatepassworduser(Request $request, $id) {
@@ -159,19 +165,19 @@ class KelolaAkunController extends Controller
         $user = User::find($id);
     
         if (!$user) {
-            return redirect()->route('kelolaakun')->with('error', 'Pengguna tidak ditemukan.');
+            return redirect()->route('kelolaakun')->with('errorUser', 'Pengguna tidak ditemukan.');
         }
     
         $cek = Hash::check($request->passwordlama, $user->password);
         
         if (!$cek) {
-            return redirect()->route('kelolaakun')->with('error', 'Kata Sandi Lama Anda tidak cocok dengan yang diinputkan.');
+            return redirect()->route('kelolaakun')->with('errorUser', 'Kata Sandi Lama Anda tidak cocok dengan yang diinputkan.');
         }
         
         $cek2 = $request->passwordbaru == $request->passwordkonfirmasi;
     
         if (!$cek2) {
-            return redirect()->route('kelolaakun')->with('error', 'Kata Sandi Baru dan Konfirmasinya tidak sama.');
+            return redirect()->route('kelolaakun')->with('errorUser', 'Kata Sandi Baru dan Konfirmasinya tidak sama.');
         }
     
         // Sekarang Anda dapat memperbarui kata sandi pengguna
@@ -179,7 +185,7 @@ class KelolaAkunController extends Controller
             'password' => Hash::make($request->passwordbaru)
         ]);
     
-        return redirect()->route('kelolaakun')->with('success', 'Kata Sandi Anda berhasil diperbarui.');
+        return redirect()->route('kelolaakun')->with('successUser', 'Kata Sandi Anda berhasil diperbarui.');
     }
     
 }
