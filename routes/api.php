@@ -59,6 +59,7 @@ Route::post('/otp/reset-password', [LupaPasswordControllerAPI::class, 'resetPass
 
 //===forum===//
 //postingan
+Route::get('/post-all', [PostControllerAPI::class, 'showAll']);
 Route::get('/post', [PostControllerAPI::class, 'show']);
 Route::get('/post/me', [PostControllerAPI::class, 'postMe']);
 Route::get('/post/other-donor/{id}', [PostControllerAPI::class, 'postOtherDonor']);

@@ -15,7 +15,7 @@ class PostControllerAPI extends Controller
         $this->middleware('auth:api', ['except' => []]);
     }
 
-    public function show()
+    public function showAll()
     {
         $posts = Post::orderBy('id', 'desc')->get();
         $responseData = [];
@@ -48,6 +48,45 @@ class PostControllerAPI extends Controller
             return response()->json(['message' => 'Tidak ada data post yang ditemukan'], 404);
         }
     }
+
+    public function show()
+{
+    $perPage = 7; // Jumlah data per halaman
+    $posts = Post::orderBy('id', 'desc')->paginate($perPage);
+
+    $responseData = $posts->map(function ($post) {
+        $pendonor = Pendonor::find($post->id_pendonor);
+        $jumlah_comment = Comment::where('id_post', $post->id)->count();
+
+        // Pastikan pendonor ditemukan sebelum mencoba mengakses propertinya
+        if ($pendonor) {
+            $diff = $post->updated_at->diffForHumans();
+            $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+
+            return [
+                'id' => $post->id,
+                'id_pendonor' => $pendonor->id,
+                'gambar_profile' => $pendonor->gambar,
+                'nama' => $pendonor->nama,
+                'text' => $post->text,
+                'gambar' => $post->gambar,
+                'jumlah_comment' => $jumlah_comment,
+                'updated_at' => $diff
+            ];
+        }
+
+        return null; // Tidak ada data jika pendonor tidak ditemukan
+    })->filter(); // Filter data nol (null)
+
+    // $totalPages = $posts->lastPage(); // Mendapatkan jumlah total halaman
+
+    if ($responseData->isNotEmpty()) {
+        return response()->json($responseData
+        );
+    } else {
+        return response()->json(['message' => 'Tidak ada data post yang ditemukan'], 403);
+    }
+}
 
 
     public function addPost(Request $request)
