@@ -123,7 +123,13 @@ class ForumController extends Controller
                 // Hapus semua komentar yang terkait
                 $komentar->each->delete();
             }
-    
+
+            $gambarPath = public_path('assets/post/' . $postingan->gambar);
+
+            if (file_exists($gambarPath)) {
+                unlink($gambarPath);
+            }
+
             $postingan->delete();
     
             return redirect()->route('forum-postingan')->with('success', 'Postingan berhasil dihapus.');

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inquiries;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
     public function getIndex()
     {
-        return view('landing-page.details.index');
+        $testi=Testimonial::all();
+
+        return view('landing-page.details.index',compact('testi'));
     }
 
     public function postInquiries()

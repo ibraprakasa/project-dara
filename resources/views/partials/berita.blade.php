@@ -72,16 +72,18 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($data) == 0)
-        <tr>
-            <td colspan="7" style="font-weight:bold;text-align:center;">Berita belum ada</td>
-        </tr>
-        @else
+            @if(count($data) == 0)
+            <tr>
+                <td colspan="7" style="font-weight:bold;text-align:center;">Berita belum ada</td>
+            </tr>
+            @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>
-                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
+                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->judul }}">
+                        <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="100px" height="100px">
+                    </a>                    
                 </td>
                 <td class="truncate-text1">{{ $row->judul }}</td>
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
@@ -232,9 +234,10 @@
             <div class="modal-body">
                 <label class="berita-title" for="judulberita">{{ $row->judul }}</label><br>
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
+                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->judul }}">
+                        <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
+                    </a>
                 </div>
-
                 <label style="color:#3B4B65;font-weight:bold;">Deskripsi</label>
                 <div class="form-group" style="color:black;background-color: white;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->deskripsi }}</textarea>

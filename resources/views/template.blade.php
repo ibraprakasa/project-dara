@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <link rel="dara-touch-icon" sizes="120x120" href="../assets/img/daraicon.png">
   <link rel="icon" type="image/png" href="../assets/img/daraicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -62,6 +63,7 @@
     });
   </script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
   <script>
     $(document).ready(function() {
@@ -123,6 +125,12 @@
       event.preventDefault();
       window.history.back();
     });
+  </script>
+
+  <script>
+      $(document).ready(function() {
+          $("[data-fancybox]").fancybox();
+      });
   </script>
 
 

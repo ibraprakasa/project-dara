@@ -44,16 +44,16 @@
         </div>
     </div>
     @elseif(isset($successMessage))
-        <div class="alert-container12 success">
-            @if($search)
-            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-            @else
-            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-            @endif
-            <div>
-                {{ $successMessage }}
-            </div>
+    <div class="alert-container12 success">
+        @if($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @else
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @endif
+        <div>
+            {{ $successMessage }}
         </div>
+    </div>
     @endif
 </div>
 
@@ -85,7 +85,9 @@
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
                 <td>
-                    <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
+                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
+                        <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
+                    </a>
                 </td>
                 <td>
                     {{ $row->comments->count() }}
@@ -100,7 +102,7 @@
                 </td>
                 <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
-                </td>                
+                </td>
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletepostingan{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -162,7 +164,9 @@
             <div class="modal-body">
                 @if($row->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="Gambar" width="500" height="250">
+                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
+                        <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="Gambar" width="500" height="250">
+                    </a>
                 </div>
                 <label style="color:black;font-weight:bold">Status</label>
                 <div class="form-group" style="color:black;">
@@ -212,52 +216,52 @@
                             <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}" readonly>
                         </div>
                     </div>
-                @endif
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-@endforeach
-<!-- END MODAL -->
+    @endforeach
+    <!-- END MODAL -->
 
-<!-- MODAL FILTER POSTINGAN -->
-<div class="modal fade" id="filterpostingan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('forum-postingan') }}" method="GET">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+    <!-- MODAL FILTER POSTINGAN -->
+    <div class="modal fade" id="filterpostingan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('forum-postingan') }}" method="GET">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                    <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                    <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!--  END MODAL  -->
+    <!--  END MODAL  -->
 
 
-@endsection
+    @endsection

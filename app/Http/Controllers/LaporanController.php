@@ -64,8 +64,14 @@ class LaporanController extends Controller
 
         if ($laporan) {
             if ($laporan->type == 'Postingan' && $laporan->posts) {
-                $laporan->posts->delete();
-            } elseif ($laporan->type == 'Komentar' && $laporan->comments) {
+                $gambarPath = public_path('assets/post/' . $laporan->posts->gambar);
+
+                if (file_exists($gambarPath)) {
+                    unlink($gambarPath);
+                }
+                $laporan->posts->delete();  
+            }
+            elseif ($laporan->type == 'Komentar' && $laporan->comments) {
                 $laporan->comments->delete();
             } elseif ($laporan->type == 'Balasan' && $laporan->reply) {
                 $laporan->reply->delete();
@@ -73,7 +79,7 @@ class LaporanController extends Controller
 
             $laporan->delete();
 
-            return redirect()->route('laporan')->with('success', 'Laporan Asli berhasil dihapus.');
+            return redirect()->route('laporan')->with('success', 'Laporan dan Postingan berhasil dihapus.');
         } else {
             return redirect()->route('laporan')->with('error', 'Laporan tidak ditemukan.');
         }

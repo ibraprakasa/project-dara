@@ -1,7 +1,7 @@
 @extends('template')
 @extends('sidebar')
 @section('content')
- 
+
 <head>
     <title>
         DARA || Laporan
@@ -43,16 +43,16 @@
         </div>
     </div>
     @elseif(isset($successMessage))
-        <div class="alert-container12 success">
-            @if($search)
-            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-            @else
-            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-            @endif
-            <div>
-                {{ $successMessage }}
-            </div>
+    <div class="alert-container12 success">
+        @if($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @else
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @endif
+        <div>
+            {{ $successMessage }}
         </div>
+    </div>
     @endif
 </div>
 
@@ -88,7 +88,7 @@
                 </td>
                 <td>{{ $laporan->type }}</td>
                 <td>
-                <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}-{{ $laporan->id_comment }}-{{ $laporan->id_reply }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}-{{ $laporan->id_comment }}-{{ $laporan->id_reply }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -161,7 +161,9 @@
             <div class="modal-body">
                 @if ($row->posts && $row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar"  width="500" height="250"">
+                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->posts->gambar) }}" data-caption="Laporan : {{ $row->text }}">
+                        <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar" width="500" height="250">
+                    </a>
                 </div>
                 <label style="color:red;font-weight:bold">Postingan yang dilaporkan</label>
                 <div class="form-group" style="color:black;">

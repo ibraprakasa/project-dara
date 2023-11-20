@@ -55,16 +55,16 @@
         </div>
 
         <div class="filter btn-group wow">
-        @if(session('errorPendonor'))
+            @if(session('errorPendonor'))
             <div class="alert-container">
-                <div class="alert-icon">&#9888;</div> 
+                <div class="alert-icon">&#9888;</div>
                 <div>
                     {{ session('errorPendonor') }}
                 </div>
             </div>
             @elseif(session('successPendonor'))
             <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div> 
+                <div class="alert-icon">&#10004;</div>
                 <div>
                     {{ session('successPendonor') }}
                 </div>
@@ -80,7 +80,7 @@
                     {{ $successMessage }}
                 </div>
             </div>
-        @endif
+            @endif
         </div>
 
     </div>
@@ -419,7 +419,9 @@
             <div class="modal-body">
                 <div class="form-group" style="text-align: center;">
                     @if ($row->gambar)
-                    <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
+                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->nama }}">
+                        <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
+                    </a>
                     @else
                     <img src="{{ asset('assets/img/userblue.png') }}" alt="" width="150" height="140" style="border-radius: 25%; border: 2px solid black;">
                     @endif

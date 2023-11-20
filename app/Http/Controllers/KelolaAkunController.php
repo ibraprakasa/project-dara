@@ -147,6 +147,13 @@ class KelolaAkunController extends Controller
         if($jadwalDonor){
             $jadwalDonor->delete();
         }
+
+        $gambarPath = public_path('assets/img/' . $pendonor->gambar);
+
+            if (file_exists($gambarPath)) {
+                unlink($gambarPath);
+            }
+
         $pendonor->delete();
 
         return redirect()->route('kelolaakun')->with('successPendonor','Data Pendonor berhasil dihapus.');    
