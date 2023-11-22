@@ -9,13 +9,16 @@ class BeritaControllerAPI extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => []]);
+        $this->middleware('auth:api', ['except' => ['show']]);
     }
 
     public function show(){
-        $berita = Berita::all();
-        return response()->json(
-            $berita
-        );
+        $berita = Berita::orderBy("id","desc")->paginate(7);
+
+        if ($berita->isNotEmpty()) {
+            return response()->json($berita->items());
+        } else {
+            return response()->json(['message' => 'Tidak ada berita yang ditemukan'], 403);
+        }
     }
 }
