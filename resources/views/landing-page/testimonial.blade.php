@@ -10,8 +10,8 @@
               What our Clients Say
             </h2>
             <p class="text-base text-body-color">
-              There are many variations of passages of Lorem Ipsum available
-              but the majority have suffered alteration in some form.
+            "Bagikan pengalamanmu dengan DARA! Ceritakan kontribusimu sebagai pendonor darah dan inspirasi positifmu.
+              Terima kasih atas partisipasinya!"
             </p>
           </div>
         </div>
@@ -31,19 +31,18 @@
                 </div>
 
                 <p class="text-body-color text-base mb-6">
-                  “Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a
-                  community.’’
+                  “ Sangat terkesan dengan kepraktisan fitur-fitur DARA yang memudahkan kontribusi saya sebagai pendonor darah.’’
                 </p>
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-01.jpg') }}" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/putri leonor.jpeg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
                   <div>
                     <h3 class="font-semibold text-sm text-dark">
-                      Sabo Masties
+                      Putri Leonor
                     </h3>
                     <p class="text-xs text-body-secondary">Founder @ Rolex</p>
                   </div>
@@ -62,19 +61,18 @@
                 </div>
 
                 <p class="text-body-color text-base mb-6">
-                  “Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a
-                  community.’’
+                  “ Saya merasa puas menjadi bagian dari inisiatif positif ini dan merasakan dampak positif dari setiap donasi saya. Bravo, DARA!"’’
                 </p>
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-02.jpg') }}" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/afif.png') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
                   <div>
                     <h3 class="font-semibold text-sm text-dark">
-                      Musharof Chowdhury
+                      Afif Permana
                     </h3>
                     <p class="text-xs text-body-secondary">Founder @ Ayro UI</p>
                   </div>
@@ -89,23 +87,22 @@
                   <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                   <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
                   <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
-                  <img src="{{ asset('assets/assets-landing-page/images/testimonials/icon-star.svg') }}" alt="star icon" />
+                  
                 </div>
 
                 <p class="text-body-color text-base mb-6">
-                  “Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a
-                  community.’’
+                  “Aplikasi ini memudahkan menemukan lokasi donor dan memberikan informasi terkini, serta membangun komunitas pendonor yang solid.’’
                 </p>
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-03.jpg') }}" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/nadya.jpeg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
                   <div>
                     <h3 class="font-semibold text-sm text-dark">
-                      William Smith
+                      Nadya Pebriani
                     </h3>
                     <p class="text-xs text-body-secondary">Founder @ Trorex</p>
                   </div>
@@ -124,19 +121,18 @@
                 </div>
 
                 <p class="text-body-color text-base mb-6">
-                  “Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a
-                  community.’’
+                  “Aplikasi DARA membuat pengalaman pendonoran darah saya lebih menyenangkan dan bermanfaat. Terima kasih, DARA!’’
                 </p>
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-01.jpg') }}" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/oktaviani.jpeg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
                   <div>
                     <h3 class="font-semibold text-sm text-dark">
-                      Sabo Masties
+                      Oktaviani
                     </h3>
                     <p class="text-xs text-body-secondary">Founder @ Rolex</p>
                   </div>
@@ -155,19 +151,18 @@
                 </div>
 
                 <p class="text-body-color text-base mb-6">
-                  “Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a
-                  community.’’
+                  “Terima kasih DARA, membantu saya temukan lokasi donor dan berikan info terkini dengan mudah.’’
                 </p>
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-02.jpg') }}" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/ibra.png') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
                   <div>
                     <h3 class="font-semibold text-sm text-dark">
-                      Musharof Chowdhury
+                      Ibra Prakasa
                     </h3>
                     <p class="text-xs text-body-secondary">Founder @ Ayro UI</p>
                   </div>
@@ -186,19 +181,18 @@
                 </div>
 
                 <p class="text-body-color text-base mb-6">
-                  “Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a
-                  community.’’
+                  “DARA luar biasa! Mempermudah mencari lokasi donor dan memberikan informasi terkini dengan efisien. Terima kasih, DARA!.’’
                 </p>
 
                 <a href="#" class="flex items-center gap-4">
                   <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/author-03.jpg') }}" alt="author"
+                    <img src="{{ asset('assets/assets-landing-page/images/testimonials/marisa.jpeg') }}" alt="author"
                       class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                   </div>
 
                   <div>
                     <h3 class="font-semibold text-sm text-dark">
-                      William Smith
+                      Marisa Enjel
                     </h3>
                     <p class="text-xs text-body-secondary">Founder @ Trorex</p>
                   </div>
