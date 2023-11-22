@@ -19,6 +19,7 @@
       <div class="swiper testimonial-carousel common-carousel p-5">
         <div class="swiper-wrapper">
           @foreach($testi as $row)
+          @if($row->status)
           <div class="swiper-slide">
             <div class="shadow-testimonial bg-white rounded-xl py-[30px] px-4 sm:px-[30px]">
               <div class="flex items-center gap-[2px] mb-[18px]">
@@ -61,8 +62,10 @@
               </a>
             </div>
           </div>
+          @endif
           @endforeach
         </div>
+
 
         <div class="flex items-center justify-center mt-[60px] gap-1">
           <div class="swiper-button-prev">
@@ -81,4 +84,3 @@
     </div>
   </div>
 </section>
-

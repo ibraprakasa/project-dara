@@ -27,8 +27,8 @@
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="searchpendonor" placeholder="Cari Pendonor..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                <input class="btn search-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+                <button type="submit" class="btn btn-dark searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
             </form>
@@ -138,70 +138,72 @@
         {{ $data->links() }}
     </div>
 
-    <div class="tes2" id="filteruser" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filter btn-group">
-            <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="searchuser" placeholder="Cari User..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                    <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-                </button>
-            </form>
-        </div>
-
-        <div class="filter btn-group">
-
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahuser" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
-            </button>
-
-            <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahuser" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
-                Tambah
-            </button>
-
-        </div>
-
-        <div class="filter btn-group">
-            <form action="/kelolaakun" method="GET" style="display: flex;">
-                <div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
-                        Filter berdasarkan
+    <div class="filtering" id="filteruser">
+        <div class="tes2" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
+            <div class="filter btn-group">
+                <form action="/kelolaakun" method="GET" style="display: flex;">
+                    <input class="btn search-style" type="search" name="searchuser" placeholder="Cari User...">
+                    <button type="submit" class="btn btn-dark searchicon-style">
+                        <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                        <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
-                        <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="admin">Admin saja</button>
+                </form>
+            </div>
+
+            <div class="filter btn-group">
+
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahuser" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                    <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+                </button>
+
+                <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahuser" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+                    Tambah
+                </button>
+
+            </div>
+
+            <div class="filter btn-group">
+                <form action="/kelolaakun" method="GET" style="display: flex;">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
+                            Filter berdasarkan
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
+                            <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
+                            <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="admin">Admin saja</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="filter btn-group wow">
+                @if(session('errorUser'))
+                <div class="alert-container">
+                    <div class="alert-icon">&#9888;</div>
+                    <div>
+                        {{ session('errorUser') }}
                     </div>
                 </div>
-            </form>
-        </div>
-
-
-        <div class="filter btn-group wow">
-            @if(session('errorUser'))
-            <div class="alert-container">
-                <div class="alert-icon">&#9888;</div>
-                <div>
-                    {{ session('errorUser') }}
+                @elseif(session('successUser'))
+                <div class="alert-container1 success">
+                    <div class="alert-icon">&#10004;</div>
+                    <div>
+                        {{ session('successUser') }}
+                    </div>
                 </div>
-            </div>
-            @elseif(session('successUser'))
-            <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div>
-                <div>
-                    {{ session('successUser') }}
+                @elseif(isset($successMessageUser))
+                <div class="alert-container12 success">
+                    @if($searchUser)
+                    <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                    @elseif($sort)
+                    <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                    @endif
+                    <div>
+                        {{ $successMessageUser }}
+                    </div>
                 </div>
-            </div>
-            @elseif(isset($successMessageUser))
-            <div class="alert-container12 success">
-                @if($searchUser)
-                <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                @elseif($sort)
-                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                 @endif
-                <div>
-                    {{ $successMessageUser }}
-                </div>
             </div>
-            @endif
         </div>
     </div>
     <table id="tabeluser" class="table table-bordered" style="text-align:center">

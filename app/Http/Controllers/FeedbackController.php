@@ -18,7 +18,8 @@ class FeedbackController extends Controller
         $tanggalawalpesan = request()->input('tanggal_dari_pesan');
         $tanggalakhirpesan = request()->input('tanggal_sampai_pesan');
         $ratingdara = request()->input('star');
-        $status = request()->input('status');
+        $statusPesan = request()->input('statuspesan');
+        $filterStatus = request()->input('filter_status');
         $successMessage = null;
         $successMessagePesan = null;
 
@@ -48,8 +49,16 @@ class FeedbackController extends Controller
             $query1->whereBetween('created_at', [$tanggalawal, $tanggalakhir]);
         }
 
-        if($status){
-            $query1->where('status',$status);
+        if($statusPesan){
+            $query1->where('status',$statusPesan);
+        }
+        
+        if ($filterStatus === 'ditampilkan') {
+            $query->where('status', true);
+            $successMessage = 'Filter Berdasarkan Testimoni yang ditampilkan di Website';
+        } elseif ($filterStatus === 'tidak-ditampilkan') {
+            $query->where('status', false);
+            $successMessage = 'Filter Berdasarkan Testimoni yang tidak ditampilkan di Website';
         }
 
         if ($ratingdara){
@@ -60,16 +69,22 @@ class FeedbackController extends Controller
             $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
         }elseif($searchPesan){
             $successMessagePesan = 'Hasil Pencarian untuk "' . $searchPesan . '"';
-        }elseif($status == 1){
+        }elseif($statusPesan == 1){
             $successMessagePesan = 'Filter Berdasarkan Pesan yang Belum Dibalas';
-        }elseif($status == 2){
+        }elseif($statusPesan == 2){
             $successMessagePesan = 'Filter Berdasarkan Pesan yang Sudah Dibalas';
+        }elseif ($tanggalawal && $tanggalakhir  && $ratingdara && $filterStatus) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'" (' .$filterStatus . ')' ;
         }elseif ($tanggalawal && $tanggalakhir  && $ratingdara) {
             $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        }elseif ($tanggalawal && $tanggalakhir  && $filterStatus) {
+            $successMessage = 'Filter Berdasarkan Testimoni yang "' . $filterStatus . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }elseif ($tanggalawal && $tanggalakhir) {
             $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }elseif ($tanggalawalpesan && $tanggalakhirpesan) {
             $successMessagePesan = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawalpesan . '" sampai dengan "' .$tanggalakhirpesan .'"' ;
+        }elseif ($ratingdara && $filterStatus) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'" dan Testimoni yang ' . $filterStatus . ' pada Website' ;
         }elseif ($ratingdara) {
             $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'"' ;
         }
@@ -85,7 +100,8 @@ class FeedbackController extends Controller
             'successMessage','successMessagePesan',
             'search','searchPesan',
             'tanggalawal','tanggalakhir',
-            'ratingdara','status',
+            'ratingdara',
+            'statusPesan','filterStatus',
             'tanggalawalpesan','tanggalakhirpesan'));
     }
 
@@ -117,9 +133,16 @@ class FeedbackController extends Controller
         }
     }
 
-    public function postTestimoniToLandingPage(Request $request)
+    public function postTestimoni($id)
     {
-        dd($request->all());
+        $data = Testimonial::find($id);
+        if ($data) {
+            $data->status = true;
+            $data->save();
+            return redirect()->route('feedback')->with('successTestimoni', 'Testimoni berhasil dikirim.');
+        } else {
+            return redirect()->route('feedback')->with('errorTestimoni', 'Testimoni gagal dikirim.');
+        }
     }
 
 

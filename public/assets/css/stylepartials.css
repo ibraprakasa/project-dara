@@ -13,6 +13,12 @@
     /* Atur lebar maksimum yang Anda inginkan */
 }
 
+.dropdown-menu.dropdown-menu-right .dropdown-item:hover,
+.dropdown-menu.dropdown-menu-right .dropdown-item:active {
+    background-color: #3B4B65;
+    color: white; 
+}
+
 .bi {
     font-weight: bold;
     font-size: 22px;
@@ -25,6 +31,16 @@
 
 .filter{
     margin-top:100px; 
+    margin-left:27px;
+}
+
+.filter{
+    margin-top:100px; 
+    margin-left:27px;
+}
+
+.filterfeedback{
+    margin-top:90px; 
     margin-left:27px;
 }
 
@@ -188,6 +204,11 @@
     color: white !important;
 }
 
+.tabel-aktif:hover, .tabel-mati:hover{
+    background-color: #3B4B65 ;
+    color: white;
+}
+
 
 .tabel-mati {
     background-color: rgba(217, 217, 217, 1);
@@ -281,6 +302,7 @@
 }
 
 .pagination1, .pagination2 {
+    display: none;
     margin-top: 20px;
 }
 
@@ -420,21 +442,6 @@ table td {
         background-color: #3B4B65;
     }
 
-.insert-icon{
-    border-radius:0 0 15px 0;
-    width: 22px; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-     background-color: #3B4B65;
-}
-
-.search-icon{
-    height:42px;
-    background-color: #d9d9d9; 
-    color:black;
-    border-radius:15px 0 0 0;
-}
 
 .submenu {
     display: none;
@@ -496,6 +503,7 @@ table td {
     margin-bottom: -10px;
 }
 
+
 .breadcrumb {
     background-color: white;
     /* Ganti warna latar belakang sesuai keinginan Anda */
@@ -540,8 +548,37 @@ table td {
     justify-content: flex-end; 
 } 
 
-.gaya-tampilkan{
+/* .gaya-tampilkan{
     background-color:#03A13B;
     border-radius:15px; 
+} */
+
+.filtering{
+    display: none;
 }
 
+.inidia{
+    background-color: #3B4B65 !important;
+    color: white !important;
+}
+
+.search-filter-group{
+    display: flex; 
+    margin-left:20px;
+}
+
+.search-style{
+    height:42px;
+    background-color: #d9d9d9; 
+    color:black;
+    border-radius:15px 0 0 0;
+}
+
+.searchicon-style{
+    border-radius:0 0 15px 0;
+    width: 22px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    background-color: #3B4B65;
+}

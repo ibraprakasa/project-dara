@@ -76,6 +76,7 @@ class ForumController extends Controller
     public function getBalasan($id_comment)
     {
         $comment = Comment::find($id_comment);
+        $postingan = Post::all();
 
         $search = request()->input('search');
         $tanggalawal = request()->input('tanggal_dari');
@@ -104,7 +105,7 @@ class ForumController extends Controller
 
         $balas = $query->paginate(10);
         $post = Post::all();
-        return view('partials.forum-balasan', compact('balas','post','search','successMessage'));
+        return view('partials.forum-balasan', compact('balas','post','search','successMessage','postingan'));
     }
 
     public function deletepostingan($id)
