@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\Inquiries;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -11,8 +12,10 @@ class LandingPageController extends Controller
     public function getIndex()
     {
         $testi=Testimonial::all();
+        $news = Berita::latest('created_at')->take(3)->get();
+        $newsAll=Berita::all();
 
-        return view('landing-page.details.index',compact('testi'));
+        return view('landing-page.details.index',compact('testi','news','newsAll'));
     }
 
     public function postInquiries()

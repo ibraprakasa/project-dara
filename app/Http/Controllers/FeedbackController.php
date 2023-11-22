@@ -109,12 +109,17 @@ class FeedbackController extends Controller
                 ]
             );
 
-            Mail::to($request->email)->send(new SendMessageToGuest($replying,$name));
+            Mail::to($request->email)->send(new SendMessageToGuest($replying, $name));
 
-            return redirect()->route('feedback')->with('successPesan','Balasan berhasil dikirim.');
+            return redirect()->route('feedback')->with('successPesan', 'Balasan berhasil dikirim.');
         } else {
             return back()->with('errorPesan', 'Email tidak ditemukan.');
         }
+    }
+
+    public function postTestimoniToLandingPage(Request $request)
+    {
+        dd($request->all());
     }
 
 

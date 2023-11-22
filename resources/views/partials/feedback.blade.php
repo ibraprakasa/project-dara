@@ -73,85 +73,99 @@ use Carbon\Carbon;
                 @endif
             </div>
 
+
+
         </div>
     </div>
 
-    <table class="table table-bordered" id="tabeltestimoni" style="display:none">
-        <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Kode Pendonor</th>
-                <th scope="col">Nama Pendonor</th>
-                <th scope="col">Deskripsi</th>
-                <th scope="col">Rating</th>
-                <th scope="col">Tanggal Rating</th>
-                <th colspan="2" scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody class="waduh">
-            @if(count($data) == 0)
-            <tr>
-                <td colspan="8" style="font-weight: bold;text-align:center;">Testimoni belum ada</td>
-            </tr>
-            @else
-            @foreach($data as $key => $row)
-            <tr>
-                <th scope="row">{{ $key+$data->firstItem() }}</th>
-                <td>{{ $row->pendonor->kode_pendonor }}</td>
-                <td>{{ $row->pendonor->nama }}</td>
-                <td class="truncate-text">{{ $row->text }}</td>
-                @if($row->star == 5)
-                <td>
-                    @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
-                        @endfor
-                </td>
-                @elseif($row->star == 4)
-                <td>
-                    @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
-                        @endfor
-                </td>
-                @elseif($row->star == 3)
-                <td>
-                    @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
-                        @endfor
-                </td>
-                @elseif($row->star == 2)
-                <td>
-                    @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
-                        @endfor
-                </td>
-                @elseif($row->star == 1)
-                <td>
-                    @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
-                        @endfor
-                </td>
+    <form action="{{ route('feedback.sendtestimonies') }}" method="POST">
+    @csrf
+        <table class="table table-bordered" id="tabeltestimoni" style="display:none">
+            <thead class="thead" style="background-color:#3B4B65; color:white;">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Kode Pendonor</th>
+                    <th scope="col">Nama Pendonor</th>
+                    <th scope="col">Deskripsi</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Tanggal Rating</th>
+                    <th colspan="3" scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody class="waduh">
+                @if(count($data) == 0)
+                <tr>
+                    <td colspan="8" style="font-weight: bold;text-align:center;">Testimoni belum ada</td>
+                </tr>
                 @else
-                <td>
-                    No stars
-                </td>
+                @foreach($data as $key => $row)
+                <tr>
+                    <th scope="row">{{ $key+$data->firstItem() }}</th>
+                    <td>{{ $row->pendonor->kode_pendonor }}</td>
+                    <td>{{ $row->pendonor->nama }}</td>
+                    <td class="truncate-text">{{ $row->text }}</td>
+                    @if($row->star == 5)
+                    <td>
+                        @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 4)
+                    <td>
+                        @for ($i = 0; $i < 4; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 3)
+                    <td>
+                        @for ($i = 0; $i < 3; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 2)
+                    <td>
+                        @for ($i = 0; $i < 2; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @elseif($row->star == 1)
+                    <td>
+                        @for ($i = 0; $i < 1; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
+                            @endfor
+                    </td>
+                    @else
+                    <td>
+                        No stars
+                    </td>
+                    @endif
+                    <td>
+                        {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
+                        {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
+                    </td>
+                    <td>
+                        <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
+                            <i class="bi bi-trash3" style="color:#E70000;"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <button class="custom-button" data-toggle="modal" data-target="#infotestimoni{{ $row->id }}">
+                            <i class="bi bi-info-square" style="color:black;"></i>
+                        </button>
+                    </td>
+                    <td>
+                        <input class="custom-button ukuran-checkbox" type="checkbox" name="ceklis[]" value="{{ $row->id }}">
+                    </td>
+                </tr>
+                @endforeach
                 @endif
-                <td>
-                    {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
-                    {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
-                </td>
-                <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
-                        <i class="bi bi-trash3" style="color:#E70000;"></i>
-                    </button>
-                </td>
-                <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infotestimoni{{ $row->id }}">
-                        <i class="bi bi-info-square" style="color:black;"></i>
-                    </button>
-                </td>
-            </tr>
-            @endforeach
-            @endif
-        </tbody>
-    </table>
-    <div class="pagination1">
-        {{ $data->links() }}
-    </div>
+            </tbody>
+        </table>
+        <div class="pagination1">
+            {{ $data->links() }}
+        </div>
+        <div class="tomboltampilkan" id="tomboltampilkan">
+            <button class="btn btn-success gaya-tampilkan">
+                Kirim
+            </button>
+        </div>
+    </form>
+
 
     <div class="tes2" id="filterpesan" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
@@ -706,12 +720,14 @@ use Carbon\Carbon;
         const filterpesan = document.getElementById("filterpesan");
         const pagination1 = document.querySelector(".pagination1");
         const pagination2 = document.querySelector(".pagination2");
+        const tomboltampilkan = document.querySelector(".tomboltampilkan")
 
         if (idTabel === "tabeltestimoni") {
             tabeltestimoni.style.display = "table";
             tabelpesan.style.display = "none";
             filtertestimoni.style.display = "block"; // 
             filterpesan.style.display = "none"; // 
+            tomboltampilkan.style.display = "flex";
             document.getElementById("tomboltestimoni").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.add("tabel-aktif");
             document.getElementById("tombolpesan").classList.remove("tabel-aktif");
@@ -723,6 +739,7 @@ use Carbon\Carbon;
             tabelpesan.style.display = "table";
             filtertestimoni.style.display = "none"; // 
             filterpesan.style.display = "block"; // 
+            tomboltampilkan.style.display = "none";
             document.getElementById("tombolpesan").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.remove("tabel-aktif");
             document.getElementById("tombolpesan").classList.add("tabel-aktif");
@@ -755,5 +772,6 @@ use Carbon\Carbon;
         }
     };
 </script>
+
 
 @endsection
