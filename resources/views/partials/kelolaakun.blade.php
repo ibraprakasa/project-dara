@@ -15,7 +15,7 @@
             <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
                 Pendonor
             </a>
-            <a href="#" id="tomboluser" style="text-decoration: none" class="col">
+            <a href="#" id="tomboluser" style="text-decoration: none;" class="col">
                 User
             </a>
         </div>
@@ -261,7 +261,7 @@
 
 <!-- MODAL INSERT PENDONOR -->
 <div class="modal fade tambahpendonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Pendonor</h5>
@@ -269,48 +269,74 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data">
+            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data" id="myForm" novalidate>
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="nama">Nama</label>
-                        <input class="kolom form-control" name="nama" type="text" id="nama" placeholder="ex : Ibra Prakasa">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="nama">Nama</label>
+                                <input class="kolom form-control" name="nama" type="text" id="nama" placeholder="ex : Ibra Prakasa" required>
+                                <div class="invalid-feedback" id="customError">Silakan isi kolom ini.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggallahir">Tanggal Lahir</label>
+                                <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="password" id="password">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="password">Password</label>
+                                <input class="kolom form-control" name="password" type="password" id="password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="beratbadan">Berat Badan</label>
+                                <input class="kolom form-control" name="berat_badan" type="number" id="beratbadan" placeholder="ex : 75 Kg" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Golongan Darah</label>
-                        <select class="kolom form-control" name="id_golongan_darah" id="goldar">
-                            @foreach($goldar as $darah)
-                            <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="goldar">Golongan Darah</label>
+                                <select class="kolom form-control" name="id_golongan_darah" id="select">
+                                    <option disabled selected value="">Pilih Golongan Darah</option>
+                                    @foreach($goldar as $darah)
+                                    <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="jekel">Jenis Kelamin</label>
+                                <select class="kolom form-control" id="select" name="jenis_kelamin">
+                                    <option disabled selected value="">Pilih Jenis Kelamin</option>
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Email</label>
-                        <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggallahir">Tanggal Lahir</label>
-                        <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jekel">Jenis Kelamin</label>
-                        <select class="kolom form-control" id="jekel" name="jenis_kelamin">
-                            <option class="kolom form-control" value="-" selected>-</option>
-                            <option class="kolom form-control" value="Laki-Laki">Laki-Laki</option>
-                            <option class="kolom form-control" value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="beratbadan">Berat Badan</label>
-                        <input class="kolom form-control" name="berat_badan" type="text" id="beratbadan" placeholder="ex : 75 Kg" required>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Email</label>
+                                <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
@@ -759,6 +785,37 @@
     };
 </script>
 
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var nama = document.getElementById('nama').value;
 
+        if (!nama) {
+            // Menampilkan pesan kesalahan kustom jika input kosong
+            document.getElementById('customError').innerHTML = 'Nama harus diisi.';
+            document.getElementById('customError').style.display = 'block';
+
+            document.getElementById('nama').focus();
+
+            event.preventDefault(); // Mencegah pengiriman formulir jika ada kesalahan
+        }
+    });
+
+    // Menyembunyikan pesan kesalahan saat pengguna mulai mengetik
+    document.getElementById('nama').addEventListener('input', function() {
+        document.getElementById('customError').style.display = 'none';
+    });
+</script>
+
+<script>
+    function handleSelectChange() {
+    var select = document.getElementById('select');
+    var selectedValue = select.options[select.selectedIndex].value;
+
+    // Jika pengguna memilih opsi, sembunyikan opsi pertama
+    if (selectedValue !== "") {
+        select.options[0].style.display = 'none';
+    }
+}
+</script>
 
 @endsection

@@ -179,8 +179,8 @@ use Carbon\Carbon;
         <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
             <div class="filterfeedback btn-group">
                 <form action="/feedback" method="GET" style="display: flex;">
-                    <input class="btn" type="search" name="searchpesan" placeholder="Cari Pesan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                    <button type="submit" class="btn btn-primary" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                    <input class="btn search-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
+                    <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
                 </form>

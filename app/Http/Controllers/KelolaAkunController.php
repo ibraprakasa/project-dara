@@ -93,7 +93,8 @@ class KelolaAkunController extends Controller
     {
         $request['kode_pendonor'] = 'dara' . rand(10000, 99999);
         $request->validate([
-            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'nama' => 'required',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan'
         ]);
 
         Pendonor::create($request->all());
@@ -150,9 +151,9 @@ class KelolaAkunController extends Controller
 
         $gambarPath = public_path('assets/img/' . $pendonor->gambar);
 
-            if (file_exists($gambarPath)) {
-                unlink($gambarPath);
-            }
+        if ($pendonor->gambar && file_exists($gambarPath)) {
+            unlink($gambarPath);
+        }
 
         $pendonor->delete();
 

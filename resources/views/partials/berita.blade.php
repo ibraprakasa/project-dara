@@ -2,6 +2,7 @@
 @extends('sidebar')
 @section('content')
 
+
 <head>
     <title>
         DARA || Berita
@@ -252,6 +253,7 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
 <script>
     // Mendapatkan elemen input file
     var inputGambar = document.getElementById('gambar');

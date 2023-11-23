@@ -143,7 +143,7 @@
 
 <!-- MODAL INSERT JADWAL DONOR -->
 <div class="modal fade tambahjadwaldonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Jadwal Donor</h5>
@@ -154,47 +154,82 @@
             <div class="modal-body">
                 <form action="/insertjadwaldonor" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="namalokasi">Nama Lokasi</label>
-                        <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" placeholder="ex: Politeknik Negeri Padang">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="namalokasi">Nama Lokasi</label>
+                                <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" placeholder="ex: Politeknik Negeri Padang">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggal">Tanggal</label>
+                                <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jammulai">Jam Mulai</label>
+                                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jamselesai">Jam Selesai</label>
+                                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggal">Tanggal</label>
-                        <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal">
+                    <div class="row mb-3">
+                        <div class="col mt-2">
+                            <div id="map" style="height: 262px;"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col mt-1">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="alamat">Alamat</label>
+                                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="latitude">Latitude</label>
+                                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="longitude">Longitude</label>
+                                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jammulai">Jam Mulai</label>
-                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jamselesai">Jam Selesai</label>
-                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="longitude">Longitude</label>
-                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="latitude">Latitude</label>
-                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required>
-                    </div>
-                    <div id="map" style="height: 400px;"></div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
-            </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 <!-- END MODAL -->
 
@@ -245,13 +280,6 @@
                         <label for="latitude">Latitude</label>
                         <input class="kolom form-control" type="double" id="editlatitude" name="latitude" value="{{ $row->latitude }}" required>
                     </div>
-                    <!-- <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="status">Status</label>
-                        <select class="kolom form-control" id="status" ">
-                            <option class="kolom form-control" value="default">Belum Selesai</option>
-                            <option class="kolom form-control" value="selesai">Selesai</option>
-                        </select>
-                    </div> -->
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
                     </div>
