@@ -39,7 +39,7 @@ use Carbon\Carbon;
     <div class="tes1" id="filtertestimoni" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
         <div class="filterfeedback btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn search-style" type="search" name="search" placeholder="Cari Testimoni...">
+                <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
                 <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>

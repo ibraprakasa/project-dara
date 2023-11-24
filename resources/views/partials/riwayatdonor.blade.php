@@ -29,7 +29,7 @@ use Carbon\Carbon;
 
 <div class="waw btn-group" style="margin-top:75px; margin-bottom:-83px">
     <form action="/riwayatdonor" method="GET" style="display: flex;">
-        <input class="btn search-style" type="search" name="search" placeholder="Cari Riwayat...">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

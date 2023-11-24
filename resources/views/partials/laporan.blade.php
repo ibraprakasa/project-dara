@@ -12,7 +12,7 @@
 
 <div class="filter btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
-        <input class="btn search-style" type="search" name="search" placeholder="Cari Laporan...">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
         <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

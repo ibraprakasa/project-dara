@@ -10,11 +10,11 @@
 </head>
 
 <div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahstokdarah" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+    <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahstokdarah">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahstokdarah" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
         Tambah
     </button>
 </div>

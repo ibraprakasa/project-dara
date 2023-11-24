@@ -572,12 +572,36 @@ table td {
     color: white !important;
 }
 
+#select option[value=""][selected] {
+    display: none;
+}
+
+.invalid-feedback {
+    font-size: 12px;
+}
+
 .search-filter-group {
     display: flex;
     margin-left: 20px;
 }
 
-.search-style {
+.insertbar-style{
+    border-radius:15px 0 0 15px;
+    width: 22px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #3B4B65;
+    font-family: 'Poppins', sans-serif;
+}
+
+.inserticon-style{
+    background-color: #d9d9d9; 
+    color:black;
+    border-radius:0 0 0 0;
+}
+
+.searchbar-style {
     font-family: 'Poppins', sans-serif;
     height: 42px;
     background-color: #d9d9d9;
@@ -595,11 +619,5 @@ table td {
     background-color: #3B4B65;
 }
 
-.invalid-feedback {
-    font-size: 12px;
-}
 
-#select option[value=""][selected] {
-    display: none;
-}
 

@@ -21,7 +21,7 @@
 
 <div class="filte btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
-        <input class="btn search-style" type="search" name="search" placeholder="Cari Postingan...">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Postingan...">
         <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

@@ -24,7 +24,7 @@
     <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET" style="display: flex;">
     <input type="hidden" name="id" value="{{ $row->id }}">
     @endforeach
-        <input class="btn search-style" type="search" name="search" placeholder="Cari Balasan...">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Balasan...">
         <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

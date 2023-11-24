@@ -27,7 +27,7 @@
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn search-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+                <input class="btn searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
                 <button type="submit" class="btn btn-dark searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -36,11 +36,11 @@
 
         <div class="filter btn-group">
 
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahpendonor" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+            <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahpendonor">
                 <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
             </button>
 
-            <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahpendonor" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+            <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
                 Tambah
             </button>
 
