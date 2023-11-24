@@ -41,13 +41,13 @@
 <div class="filte btn-group">
     <form action="/jadwaldonor" method="GET" style="display: flex;">
         <div class="dropdown">
-            <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filter berdasarkan
             </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="abjad">Abjad</button>
-                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
-                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
+                <button class="dropdown-item" type="submit" name="sort" value="abjad">Abjad</button>
+                <button class="dropdown-item" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
+                <button class="dropdown-item" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
             </div>
         </div>
     </form>
