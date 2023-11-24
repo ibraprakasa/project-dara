@@ -30,22 +30,14 @@ class NotifikasiControllerAPI extends Controller
             ], 404);
         }
 
-        // Menghapus notifikasi yang lebih tua dari 3 bulan
-        $tigaBulanYangLalu = now()->subMonths(3);
-
         $responseData = [];
+        $test = [];
         foreach ($notifikasi as $notif) {
-            // Cek apakah notifikasi dibuat lebih dari 3 bulan yang lalu
-            if ($notif->created_at < $tigaBulanYangLalu) {
-                // Jika ya, hapus notifikasi
-                $notif->delete();
-            }
-
             $post = Post::where('id', $notif->id_post)->first(); // Dapatkan instance model Post
             if ($post) {
                 // $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post
                 if ($post->id_pendonor == $user->id) {
-                    $comment = Comment::find($notif->id_comment)->first(); // Dapatkan instance model Comment
+                    $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
                     $balasComment = BalasComment::where('id_comment', $comment->id_comment)->first();
                     if ($comment->id_pendonor != $user->id && $balasComment == null) {
                         $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();

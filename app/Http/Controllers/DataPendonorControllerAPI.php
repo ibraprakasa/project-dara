@@ -166,7 +166,8 @@ class DataPendonorControllerAPI extends Controller
                 'alamat_pendonor' => $user->alamat_pendonor,
                 'tanggal_lahir' => $user->tanggal_lahir,
                 'kontak_pendonor' => $user->kontak_pendonor,
-                'jenis_kelamin' => $user->jenis_kelamin
+                'jenis_kelamin' => $user->jenis_kelamin,
+                'total_donor_darah' => $user->total_donor_darah
                 ]
         ]);
     }
