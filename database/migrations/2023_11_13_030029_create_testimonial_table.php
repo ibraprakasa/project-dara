@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_pendonor')->nullable(false);
             $table->text('text')->nullable();
             $table->enum('star', ['1','2','3','4','5'])->nullable(false);
+            $table->boolean('status');
             $table->timestamps();
             $table->foreign('id_pendonor')->references('id')->on('pendonor');
         });

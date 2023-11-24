@@ -1,7 +1,7 @@
 @extends('template')
 @extends('sidebar')
 @section('content')
- 
+
 <head>
     <title>
         DARA || Laporan
@@ -12,8 +12,8 @@
 
 <div class="filter btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
-        <input class="btn" type="search" name="search" placeholder="Cari Laporan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-        <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
+        <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -43,16 +43,16 @@
         </div>
     </div>
     @elseif(isset($successMessage))
-        <div class="alert-container12 success">
-            @if($search)
-            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-            @else
-            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-            @endif
-            <div>
-                {{ $successMessage }}
-            </div>
+    <div class="alert-container12 success">
+        @if($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @else
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @endif
+        <div>
+            {{ $successMessage }}
         </div>
+    </div>
     @endif
 </div>
 
@@ -88,7 +88,7 @@
                 </td>
                 <td>{{ $laporan->type }}</td>
                 <td>
-                <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}-{{ $laporan->id_comment }}-{{ $laporan->id_reply }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#infolaporan{{ $laporan->id_post }}-{{ $laporan->id_comment }}-{{ $laporan->id_reply }}">
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
@@ -150,7 +150,7 @@
 <!-- MODAL DETAIL LAPORAN -->
 @foreach($report as $key => $row)
 <div class="modal fade" id="infolaporan{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Informasi Detail Laporan</h5>
@@ -162,7 +162,9 @@
             @if($row->posts)
                 @if ($row->posts->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar" style="width:100px; height:100px;">
+                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->posts->gambar) }}" data-caption="Laporan : {{ $row->text }}">
+                        <img src="{{ asset('assets/post/'.$row->posts->gambar) }}" alt="Gambar" width="500" height="250">
+                    </a>
                 </div>
                 @endif
                 @if ($row->posts->text != null)

@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DARA</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/bootstrap-icons-1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="dara-touch-icon" sizes="120x120" href="../assets/img/daraicon.png">
@@ -51,7 +52,7 @@
                 </div>
                 <div class="col-md-1">
                     <div class="form-group button-container">
-                        <button type="submit" class="btn"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
+                        <button type="submit" class="btn btn-danger"><i style="font-size: 15px;" class="bi bi-arrow-right-square"></i></button>
                     </div>
                 </div>
             </div>

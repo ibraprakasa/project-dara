@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>DARA</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/bootstrap-icons-1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="dara-touch-icon" sizes="120x120" href="../assets/img/daraicon.png">
@@ -59,7 +60,7 @@
                     Lupa Password?
                 </a>
             </p>
-            <button type="submit" class="btn btn-block">Masuk</button>
+            <button type="submit" class="btn btn-block btn-danger">Masuk</button>
 
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">

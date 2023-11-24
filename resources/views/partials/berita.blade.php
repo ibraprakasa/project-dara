@@ -2,6 +2,7 @@
 @extends('sidebar')
 @section('content')
 
+
 <head>
     <title>
         DARA || Berita
@@ -12,8 +13,8 @@
 <div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
-        <input class="btn search-icon" type="search" name="search" placeholder="Cari Judul...">
-        <button type="submit" class="btn btn-dark insert-icon">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Judul...">
+        <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -22,11 +23,11 @@
 
 <div class="filter btn-group">
 
-    <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-dark" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+    <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-dark insertbar-style">
         <i class="bi bi-file-plus " style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahberita" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahberita" type="button">
         Tambah
     </button>
 
@@ -72,16 +73,18 @@
             </tr>
         </thead>
         <tbody class="waduh">
-        @if(count($data) == 0)
-        <tr>
-            <td colspan="7" style="font-weight:bold;text-align:center;">Berita belum ada</td>
-        </tr>
-        @else
+            @if(count($data) == 0)
+            <tr>
+                <td colspan="7" style="font-weight:bold;text-align:center;">Berita belum ada</td>
+            </tr>
+            @else
             @foreach($data as $key => $row)
             <tr>
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>
-                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
+                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->judul }}">
+                        <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="100px" height="100px">
+                    </a>                    
                 </td>
                 <td class="truncate-text1">{{ $row->judul }}</td>
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
@@ -232,9 +235,10 @@
             <div class="modal-body">
                 <label class="berita-title" for="judulberita">{{ $row->judul }}</label><br>
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
+                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->judul }}">
+                        <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="500" height="250">
+                    </a>
                 </div>
-
                 <label style="color:#3B4B65;font-weight:bold;">Deskripsi</label>
                 <div class="form-group" style="color:black;background-color: white;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->deskripsi }}</textarea>
@@ -249,6 +253,7 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
 <script>
     // Mendapatkan elemen input file
     var inputGambar = document.getElementById('gambar');

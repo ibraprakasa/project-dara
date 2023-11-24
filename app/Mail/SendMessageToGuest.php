@@ -9,19 +9,19 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SendOtpMail extends Mailable
+class SendMessageToGuest extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $replying;
+    public $name;
     /**
      * Create a new message instance.
      */
-
-    public $otp;
-
-    public function __construct($otp)
+    public function __construct($replying,$name)
     {
-        $this->otp = $otp;
+        $this->replying = $replying;
+        $this->name = $name;
     }
 
     /**
@@ -30,7 +30,7 @@ class SendOtpMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'OTP Reset Password',
+            subject: 'Balasan dari DARA',
         );
     }
 
@@ -40,7 +40,7 @@ class SendOtpMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'email-otp',
+            view: 'reply-inquiries',
         );
     }
 

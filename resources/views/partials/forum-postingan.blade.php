@@ -21,8 +21,8 @@
 
 <div class="filte btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
-        <input class="btn" type="search" name="search" placeholder="Cari Postingan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-        <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Postingan...">
+        <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -44,16 +44,16 @@
         </div>
     </div>
     @elseif(isset($successMessage))
-        <div class="alert-container12 success">
-            @if($search)
-            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-            @else
-            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-            @endif
-            <div>
-                {{ $successMessage }}
-            </div>
+    <div class="alert-container12 success">
+        @if($search)
+        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+        @else
+        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @endif
+        <div>
+            {{ $successMessage }}
         </div>
+    </div>
     @endif
 </div>
 
@@ -88,7 +88,9 @@
                     @if($row->gambar == null)
                         <img src="assets/img/daraicon.png"" alt="" style="width:100px; height:100px;">
                     @else
-                        <img src="assets/post/{{ $row->gambar }}" alt="" style="width:100px; height:100px;">
+                        <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
+                        <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
+                    </a>
                     @endif
                 </td>
                 <td>
@@ -104,7 +106,7 @@
                 </td>
                 <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
-                </td>                
+                </td>
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletepostingan{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -155,7 +157,7 @@
 <!-- MODAL INFO POSTINGAN -->
 @foreach($postingan as $key => $row)
 <div class="modal fade" id="infopostingan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Postingan</h5>
@@ -164,10 +166,12 @@
                 </button>
             </div>
             <div class="modal-body">
+                @if($row->gambar != null)
                 <div class="form-group" style="text-align: center;">
-                    <img src="{{ $row->gambar }}" alt="Gambar" width="500" height="250">
+                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
+                        <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="Gambar" width="500" height="250">
+                    </a>
                 </div>
-
                 <label style="color:black;font-weight:bold">Status</label>
                 <div class="form-group" style="color:black;">
                     <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
@@ -192,52 +196,76 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                @elseif($row->gambar == null)
+                <label style="color:black;font-weight:bold">Status</label>
+                <div class="form-group" style="color:black;">
+                    <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->text }}</textarea>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Kode</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->kode_pendonor }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" placeholder="{{ $row->pendonor->nama }}" readonly>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label style="color:black;font-weight:bold">Tanggal</label>
+                            <input class="kolom form-control" placeholder="{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y H:i') }}" readonly>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-</div>
-@endforeach
-<!-- END MODAL -->
+    @endforeach
+    <!-- END MODAL -->
 
-<!-- MODAL FILTER POSTINGAN -->
-<div class="modal fade" id="filterpostingan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('forum-postingan') }}" method="GET">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+    <!-- MODAL FILTER POSTINGAN -->
+    <div class="modal fade" id="filterpostingan" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{ route('forum-postingan') }}" method="GET">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                    <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                    <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
-<!--  END MODAL  -->
+    <!--  END MODAL  -->
 
 
-@endsection
+    @endsection

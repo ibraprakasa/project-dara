@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ini OTP Kamu</title>
-    <!-- Tambahan metadata, stylesheet, dan script lainnya -->
+    <title>Balasan DARA untuk Anda</title>
 </head>
 <body>
-    OTP kamu adalah : {{ $otp }}
+    <b>Hai {{ $name }},</b>
+    <p>{{ $replying }}</p>
+    <i>Regards, DARA.</i>
 </body>
 </html>

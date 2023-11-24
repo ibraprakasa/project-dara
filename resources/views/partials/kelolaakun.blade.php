@@ -15,7 +15,7 @@
             <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
                 Pendonor
             </a>
-            <a href="#" id="tomboluser" style="text-decoration: none" class="col">
+            <a href="#" id="tomboluser" style="text-decoration: none;" class="col">
                 User
             </a>
         </div>
@@ -27,8 +27,8 @@
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="search" placeholder="Cari Pendonor..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                <input class="btn searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+                <button type="submit" class="btn btn-dark searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
             </form>
@@ -36,11 +36,11 @@
 
         <div class="filter btn-group">
 
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahpendonor" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+            <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahpendonor">
                 <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
             </button>
 
-            <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahpendonor" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+            <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
                 Tambah
             </button>
 
@@ -55,23 +55,23 @@
         </div>
 
         <div class="filter btn-group wow">
-        @if(session('error'))
+            @if(session('errorPendonor'))
             <div class="alert-container">
-                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                <div class="alert-icon">&#9888;</div>
                 <div>
-                    {{ session('error') }}
+                    {{ session('errorPendonor') }}
                 </div>
             </div>
-            @elseif(session('success'))
+            @elseif(session('successPendonor'))
             <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div class="alert-icon">&#10004;</div>
                 <div>
-                    {{ session('success') }}
+                    {{ session('successPendonor') }}
                 </div>
             </div>
             @elseif(isset($successMessage))
             <div class="alert-container12 success">
-                @if($search)
+                @if($searchPendonor)
                 <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                 @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
                 <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
@@ -80,7 +80,7 @@
                     {{ $successMessage }}
                 </div>
             </div>
-        @endif
+            @endif
         </div>
 
     </div>
@@ -114,7 +114,6 @@
                 <td>{{ $row->golongandarah->nama }}</td>
                 <td>{{ $row->kontak_pendonor }}</td>
                 <td>{{ $row->email }}</td>
-                <!-- <td>{{ $row->created_at->diffForHumans() }}</td> -->
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#editpendonor{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
@@ -139,68 +138,72 @@
         {{ $data->links() }}
     </div>
 
-    <div class="tes2" id="filteruser" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filter btn-group">
-            <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="search" placeholder="Cari User..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                    <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-                </button>
-            </form>
-        </div>
-
-        <div class="filter btn-group">
-
-            <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahuser" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
-            </button>
-
-            <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahuser" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
-                Tambah
-            </button>
-
-        </div>
-
-        <div class="filter btn-group">
-            <form action="/kelolaakun" method="GET" style="display: flex;">
-                <div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
-                        Filter berdasarkan
+    <div class="filtering" id="filteruser">
+        <div class="tes2" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
+            <div class="filter btn-group">
+                <form action="/kelolaakun" method="GET" style="display: flex;">
+                    <input class="btn search-style" type="search" name="searchuser" placeholder="Cari User...">
+                    <button type="submit" class="btn btn-dark searchicon-style">
+                        <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                        <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
-                        <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="admin">Admin saja</button>
+                </form>
+            </div>
+
+            <div class="filter btn-group">
+
+                <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahuser" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                    <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+                </button>
+
+                <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahuser" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+                    Tambah
+                </button>
+
+            </div>
+
+            <div class="filter btn-group">
+                <form action="/kelolaakun" method="GET" style="display: flex;">
+                    <div class="dropdown">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
+                            Filter berdasarkan
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
+                            <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
+                            <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="admin">Admin saja</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="filter btn-group wow">
+                @if(session('errorUser'))
+                <div class="alert-container">
+                    <div class="alert-icon">&#9888;</div>
+                    <div>
+                        {{ session('errorUser') }}
                     </div>
                 </div>
-            </form>
-        </div>
-
-
-        <div class="filter btn-group wow">
-            @if(session('error'))
-            <div class="alert-container">
-                <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-                <div>
-                    {{ session('error') }}
+                @elseif(session('successUser'))
+                <div class="alert-container1 success">
+                    <div class="alert-icon">&#10004;</div>
+                    <div>
+                        {{ session('successUser') }}
+                    </div>
                 </div>
-            </div>
-            @elseif(session('success'))
-            <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-                <div>
-                    {{ session('success') }}
+                @elseif(isset($successMessageUser))
+                <div class="alert-container12 success">
+                    @if($searchUser)
+                    <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                    @elseif($sort)
+                    <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                    @endif
+                    <div>
+                        {{ $successMessageUser }}
+                    </div>
                 </div>
-            </div>
-            @elseif(isset($sort))
-            <div class="alert-container12 success">
-                @if($sort)
-                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                 @endif
-                <div>
-                    {{ $successMessageUser }}
-                </div>
             </div>
-            @endif
         </div>
     </div>
     <table id="tabeluser" class="table table-bordered" style="text-align:center">
@@ -258,7 +261,7 @@
 
 <!-- MODAL INSERT PENDONOR -->
 <div class="modal fade tambahpendonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Pendonor</h5>
@@ -266,48 +269,74 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data">
+            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data" id="myForm" novalidate>
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="nama">Nama</label>
-                        <input class="kolom form-control" name="nama" type="text" id="nama" placeholder="ex : Ibra Prakasa">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="nama">Nama</label>
+                                <input class="kolom form-control" name="nama" type="text" id="nama" placeholder="ex : Ibra Prakasa" required>
+                                <div class="invalid-feedback" id="customError">Silakan isi kolom ini.</div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggallahir">Tanggal Lahir</label>
+                                <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="password" id="password">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="password">Password</label>
+                                <input class="kolom form-control" name="password" type="password" id="password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="beratbadan">Berat Badan</label>
+                                <input class="kolom form-control" name="berat_badan" type="number" id="beratbadan" placeholder="ex : 75 Kg" required>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Golongan Darah</label>
-                        <select class="kolom form-control" name="id_golongan_darah" id="goldar">
-                            @foreach($goldar as $darah)
-                            <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="goldar">Golongan Darah</label>
+                                <select class="kolom form-control" name="id_golongan_darah" id="select">
+                                    <option disabled selected value="">Pilih Golongan Darah</option>
+                                    @foreach($goldar as $darah)
+                                    <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="jekel">Jenis Kelamin</label>
+                                <select class="kolom form-control" id="select" name="jenis_kelamin">
+                                    <option disabled selected value="">Pilih Jenis Kelamin</option>
+                                    <option value="Laki-Laki">Laki-Laki</option>
+                                    <option value="Perempuan">Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Email</label>
-                        <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggallahir">Tanggal Lahir</label>
-                        <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jekel">Jenis Kelamin</label>
-                        <select class="kolom form-control" id="jekel" name="jenis_kelamin">
-                            <option class="kolom form-control" value="-" selected>-</option>
-                            <option class="kolom form-control" value="Laki-Laki">Laki-Laki</option>
-                            <option class="kolom form-control" value="Perempuan">Perempuan</option>
-                        </select>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="beratbadan">Berat Badan</label>
-                        <input class="kolom form-control" name="berat_badan" type="text" id="beratbadan" placeholder="ex : 75 Kg" required>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Email</label>
+                                <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
@@ -418,7 +447,9 @@
             <div class="modal-body">
                 <div class="form-group" style="text-align: center;">
                     @if ($row->gambar)
-                    <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
+                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->nama }}">
+                        <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
+                    </a>
                     @else
                     <img src="{{ asset('assets/img/userblue.png') }}" alt="" width="150" height="140" style="border-radius: 25%; border: 2px solid black;">
                     @endif
@@ -754,6 +785,37 @@
     };
 </script>
 
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        var nama = document.getElementById('nama').value;
 
+        if (!nama) {
+            // Menampilkan pesan kesalahan kustom jika input kosong
+            document.getElementById('customError').innerHTML = 'Nama harus diisi.';
+            document.getElementById('customError').style.display = 'block';
+
+            document.getElementById('nama').focus();
+
+            event.preventDefault(); // Mencegah pengiriman formulir jika ada kesalahan
+        }
+    });
+
+    // Menyembunyikan pesan kesalahan saat pengguna mulai mengetik
+    document.getElementById('nama').addEventListener('input', function() {
+        document.getElementById('customError').style.display = 'none';
+    });
+</script>
+
+<script>
+    function handleSelectChange() {
+    var select = document.getElementById('select');
+    var selectedValue = select.options[select.selectedIndex].value;
+
+    // Jika pengguna memilih opsi, sembunyikan opsi pertama
+    if (selectedValue !== "") {
+        select.options[0].style.display = 'none';
+    }
+}
+</script>
 
 @endsection

@@ -39,7 +39,7 @@ class LupaPasswordController extends Controller
 
             return redirect()->route('lupapassword2');
         } else {
-            return back()->with('email', 'Email tidak ditemukan.');
+            return back()->with('error', 'Email tidak ditemukan.');
         }
     }
 

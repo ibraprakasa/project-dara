@@ -8,18 +8,26 @@ use Carbon\Carbon;
 
 <head>
     <title>
-        DARA || Feedback
+        DARA || Tanggapan
     </title>
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
+<div class="breadcrumb-container">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('landing-page') }}">Pergi ke Halaman Website DARA Apps</a></li>
+        </ol>
+    </nav>
+</div>
+
 <div class="row text-center">
-    <div class="col" style="margin-top:100px; margin-bottom:-70px; margin-left:40px">
+    <div class="col" style="margin-top:9px; margin-bottom:-70px; margin-left:45px">
         <div class="row" style="width:125%;font-weight: bold">
-            <a href="#" id="tomboltestimoni" style="text-decoration: none; margin-right: 10px" class="col">
+            <a href="#" id="tomboltestimoni" style="text-decoration:none;margin-right: 20px" class="col">
                 Testimoni
             </a>
-            <a href="#" id="tombolpesan" style="text-decoration: none" class="col">
+            <a href="#" id="tombolpesan" style="text-decoration:none" class="col">
                 Pesan
             </a>
         </div>
@@ -29,41 +37,41 @@ use Carbon\Carbon;
 
 <div class="content">
     <div class="tes1" id="filtertestimoni" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filter btn-group">
+        <div class="filterfeedback btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="search" placeholder="Cari Testimoni..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                <button type="submit" class="btn btn-primary" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
+                <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
             </form>
 
-            <div style="display: flex; margin-left:15px;">
+            <div class="search-filter-group">
                 <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filtertestimoni">
                     <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
                     <span style="font-size: 12px; color: white;">Filter</span>
                 </button>
             </div>
 
-            <div style="display: flex; margin-left:15px;">
-                @if(session('error'))
+            <div class="search-filter-group">
+                @if(session('errorTestimoni'))
                 <div class="alert-container">
-                    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                    <div class="alert-icon">&#9888;</div>
                     <div>
-                        {{ session('error') }}
+                        {{ session('errorTestimoni') }}
                     </div>
                 </div>
-                @elseif(session('success'))
+                @elseif(session('successTestimoni'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div>
-                        {{ session('success') }}
+                        {{ session('successTestimoni') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
                 <div class="alert-container12 success">
                     @if($search)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @elseif($tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir || $ratingdara )
+                    @elseif($tanggalawal && $tanggalakhir && $ratingdara && $filterStatus|| $tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir && $filterStatus || $ratingdara && $filterStatus || $ratingdara || $filterStatus)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
                     <div>
@@ -72,10 +80,8 @@ use Carbon\Carbon;
                 </div>
                 @endif
             </div>
-
         </div>
     </div>
-
     <table class="table table-bordered" id="tabeltestimoni" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
@@ -85,7 +91,8 @@ use Carbon\Carbon;
                 <th scope="col">Deskripsi</th>
                 <th scope="col">Rating</th>
                 <th scope="col">Tanggal Rating</th>
-                <th colspan="2" scope="col">Action</th>
+                <th scope="col">Status</th>
+                <th colspan="3" scope="col">Action</th>
             </tr>
         </thead>
         <tbody class="waduh">
@@ -134,6 +141,11 @@ use Carbon\Carbon;
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
+                @if($row->status)
+                <td>Ditampilkan</td>
+                @elseif($row->status === 0)
+                <td>-</td>
+                @endif
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -144,6 +156,11 @@ use Carbon\Carbon;
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
+                <td>
+                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}">
+                        <i class="bi bi-arrow-right-circle-fill" style="color: #3B4B65;"></i>
+                    </button>
+                </td>
             </tr>
             @endforeach
             @endif
@@ -152,43 +169,49 @@ use Carbon\Carbon;
     <div class="pagination1">
         {{ $data->links() }}
     </div>
+    <!-- <div class="tomboltampilkan" id="tomboltampilkan">
+            <button class="btn btn-success gaya-tampilkan">
+                Kirim
+            </button>
+        </div> -->
 
-    <div class="tes2" id="filterpesan" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filter btn-group">
-            <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn" type="search" name="searchpesan" placeholder="Cari Pesan..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-                <button type="submit" class="btn btn-primary" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
-                    <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-                </button>
-            </form>
+    <div class="filtering" id="filterpesan">
+        <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
+            <div class="filterfeedback btn-group">
+                <form action="/feedback" method="GET" style="display: flex;">
+                    <input class="btn search-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
+                    <button type="submit" class="btn btn-primary searchicon-style">
+                        <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+                    </button>
+                </form>
 
-            <div style="display: flex; margin-left:15px;">
-                <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
+                <div class="search-filter-group"">
+                    <button type=" submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
                     <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
                     <span style="font-size: 12px; color: white;">Filter</span>
-                </button>
-            </div>
+                    </button>
+                </div>
 
-            <div style="display: flex; margin-left:15px;">
-                @if(session('error'))
-                <div class="alert-container">
+                <div class="search-filter-group"">
+                    @if(session('errorPesan'))
+                    <div class=" alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                     <div>
-                        {{ session('error') }}
+                        {{ session('errorPesan') }}
                     </div>
                 </div>
-                @elseif(session('success'))
+                @elseif(session('successPesan'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div>
-                        {{ session('success') }}
+                        {{ session('successPesan') }}
                     </div>
                 </div>
                 @elseif(isset($successMessagePesan))
                 <div class="alert-container12 success">
                     @if($searchPesan)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @elseif($tanggalawalpesan && $tanggalakhirpesan)
+                    @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
                     <div>
@@ -197,56 +220,62 @@ use Carbon\Carbon;
                 </div>
                 @endif
             </div>
-
         </div>
     </div>
+</div>
 
-    <table class="table table-bordered" id="tabelpesan">
-        <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Email</th>
-                <th scope="col">Kontak</th>
-                <th scope="col">Pesan</th>
-                <th scope="col">Tanggal Pesan</th>
-                <th colspan="2" scope="col">Action</th>
-            </tr>
-        </thead>
-        <tbody class="waduh">
-            @if(count($data1) == 0)
-            <tr>
-                <td colspan="8" style="  font-weight: bold;text-align:center;">Pesan belum ada</td>
-            </tr>
-            @else
-            @foreach($data1 as $key => $row)
-            <tr>
-                <th scope="row">{{ $key+1 }}</th>
-                <td>{{ $row->name }}</td>
-                <td>{{ $row->email }}</td>
-                <td>{{ $row->phone }}</td>
-                <td class="truncate-text">{{ $row->message }}</td>
-                <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
-                    {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
-                </td>
-                <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#deletepesan{{ $row->id }}">
-                        <i class="bi bi-trash3" style="color:#E70000;"></i>
-                    </button>
-                </td>
-                <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#infopesan{{ $row->id }}">
-                        <i class="bi bi-info-square" style="color:black;"></i>
-                    </button>
-                </td>
-            </tr>
-            @endforeach
+<table class="table table-bordered" id="tabelpesan">
+    <thead class="thead" style="background-color:#3B4B65; color:white;">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nama</th>
+            <th scope="col">Email</th>
+            <th scope="col">Kontak</th>
+            <th scope="col">Pesan</th>
+            <th scope="col">Tanggal Pesan</th>
+            <th scope="col">Status</th>
+            <th colspan="2" scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody class="waduh">
+        @if(count($data1) == 0)
+        <tr>
+            <td colspan="8" style="  font-weight: bold;text-align:center;">Pesan belum ada</td>
+        </tr>
+        @else
+        @foreach($data1 as $key => $row)
+        <tr>
+            <th scope="row">{{ $key+1 }}</th>
+            <td>{{ $row->name }}</td>
+            <td>{{ $row->email }}</td>
+            <td>{{ $row->phone }}</td>
+            <td class="truncate-text">{{ $row->message }}</td>
+            <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
+                {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
+            </td>
+            @if($row->status == 1)
+            <td>-</td>
+            @elseif($row->status == 2)
+            <td>Dibalas</td>
             @endif
-        </tbody>
-    </table>
-    <div class="pagination2">
-        {{ $data1->links() }}
-    </div>
+            <td>
+                <button class="custom-button" data-toggle="modal" data-target="#deletepesan{{ $row->id }}">
+                    <i class="bi bi-trash3" style="color:#E70000;"></i>
+                </button>
+            </td>
+            <td>
+                <button class="custom-button" data-toggle="modal" data-target="#infopesan{{ $row->id }}">
+                    <i class="bi bi-info-square" style="color:black;"></i>
+                </button>
+            </td>
+        </tr>
+        @endforeach
+        @endif
+    </tbody>
+</table>
+<div class="pagination2">
+    {{ $data1->links() }}
+</div>
 
 
 </div>
@@ -286,7 +315,14 @@ use Carbon\Carbon;
                             <option value="3">&#9733;&#9733;&#9733;</i></option>
                             <option value="4">&#9733;&#9733;&#9733;&#9733;</i></option>
                             <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</i></option>
-
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label style="color:black;font-weight:bold" for="filter_status">Filter Status</label>
+                        <select class="kolom form-control" name="filter_status">
+                            <option value="">-</option>
+                            <option value="ditampilkan">Ditampilkan</option>
+                            <option value="tidak-ditampilkan">Tidak Ditampilkan</option>
                         </select>
                     </div>
                 </div>
@@ -319,6 +355,34 @@ use Carbon\Carbon;
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL KIRIM TESTIMONI -->
+@foreach($data as $key => $row)
+<div class="modal fade" id="kirimtestimoni{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Kirim Testimoni</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tampilkan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
+            </div>
+            <form action="{{ route('kirimtestimoni', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">KIRIM</button>
                 </div>
             </form>
         </div>
@@ -460,6 +524,18 @@ use Carbon\Carbon;
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="status">Status</label>
+                                <select class="kolom form-control" name="statuspesan" id="status">
+                                    <option value="">-</option>
+                                    <option value="1">Belum Dibalas</option>
+                                    <option value="2">Sudah Dibalas</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
@@ -500,8 +576,8 @@ use Carbon\Carbon;
 
 <!-- MODAL DETAIL PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade detail-modal" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+<div class="modal fade" id="infopesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Detail Pesan</h5>
@@ -510,6 +586,16 @@ use Carbon\Carbon;
                 </button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="judulpesan">PESAN</label>
+                            <div class="form-group">
+                                <textarea class="form-control pesan2" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col md-6">
                         <div class="form-group">
@@ -524,7 +610,7 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" style="margin-bottom: 10px;">
                     <div class="col md-6">
                         <div class="form-group">
                             <label style="color:black;font-weight:bold">Email</label>
@@ -538,20 +624,14 @@ use Carbon\Carbon;
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label style="color:black;font-weight:bold;">Pesan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6" readonly>{{ $row->message }}</textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                @if($row->reply == null)
                 <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Balas</button>
+                @elseif($row->reply != null)
+                <button type="submit" data-dismiss="modal" data-target="#sudahreplypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Lihat Balasan</button>
+                @endif
             </div>
         </div>
     </div>
@@ -560,10 +640,70 @@ use Carbon\Carbon;
 
 <!-- END MODAL -->
 
+
 <!-- MODAL BALAS PESAN -->
 @foreach($data1 as $key => $row)
-<div class="modal fade reply-modal" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal fade" id="replypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('kirimbalasanpesan') }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col md-6">
+                            <div class="form-group">
+                                <label class="judulpesan"><u>Pesan dari Guest</u></label>
+                                <div class="form-group" style="color:black;background-color: white;">
+                                    <textarea class="form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col md-6">
+                            <div class="form-group">
+                                <label class="judulbalasan"><u>Balasan dari DARA</u></label>
+                                <div class="form-group" style="color:black;background-color: white;">
+                                    <textarea class="form-control balasan" rows="6" name="message" placeholder="Masukkan balasan Anda disini..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label style="color:#E70000 !important;font-weight:bold">Nama</label>
+                                <input class="kolom form-control" name="name" value="{{ $row->name }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label style="color:#E70000 !important;font-weight:bold">Email</label>
+                                <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL SUDAH BALAS PESAN -->
+@foreach($data1 as $key => $row)
+<div class="modal fade" id="sudahreplypesan{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Balas Pesan</h5>
@@ -573,26 +713,42 @@ use Carbon\Carbon;
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col">
+                    <div class="col md-6">
                         <div class="form-group">
-                            <label style="color:black;font-weight:bold">Email</label>
-                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
+                            <label class="judulpesan"><u>Pesan dari Guest</u></label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="kolom form-control pesan" rows="6" readonly>{{ $row->message }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col md-6">
+                        <div class="form-group">
+                            <label class="judulbalasan"><u>Balasan dari DARA</u></label>
+                            <div class="form-group" style="color:black;background-color: white;">
+                                <textarea class="form-control sudahadabalasan" rows="6" name="message" readonly>{{ $row->reply }}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <div class="form-group">
-                            <label style="color:black;font-weight:bold;">Balasan</label>
-                            <div class="form-group" style="color:black;background-color: white;">
-                                <textarea class="kolom form-control resizablestatus" rows="6"></textarea>
-                            </div>
+                            <label style="color:#E70000 !important;font-weight:bold">Nama</label>
+                            <input class="kolom form-control" name="name" value="{{ $row->name }}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label style="color:#E70000 !important;font-weight:bold">Email</label>
+                            <input class="kolom form-control" name="email" value="{{ $row->email }}" readonly>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -608,12 +764,14 @@ use Carbon\Carbon;
         const filterpesan = document.getElementById("filterpesan");
         const pagination1 = document.querySelector(".pagination1");
         const pagination2 = document.querySelector(".pagination2");
+        const tomboltampilkan = document.querySelector(".tomboltampilkan")
 
         if (idTabel === "tabeltestimoni") {
             tabeltestimoni.style.display = "table";
             tabelpesan.style.display = "none";
             filtertestimoni.style.display = "block"; // 
             filterpesan.style.display = "none"; // 
+            // tomboltampilkan.style.display = "flex";
             document.getElementById("tomboltestimoni").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.add("tabel-aktif");
             document.getElementById("tombolpesan").classList.remove("tabel-aktif");
@@ -625,6 +783,7 @@ use Carbon\Carbon;
             tabelpesan.style.display = "table";
             filtertestimoni.style.display = "none"; // 
             filterpesan.style.display = "block"; // 
+            // tomboltampilkan.style.display = "none";
             document.getElementById("tombolpesan").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.remove("tabel-aktif");
             document.getElementById("tombolpesan").classList.add("tabel-aktif");
@@ -657,7 +816,6 @@ use Carbon\Carbon;
         }
     };
 </script>
-
 
 
 @endsection
