@@ -142,7 +142,7 @@
         <div class="tes2" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
             <div class="filter btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
-                    <input class="btn search-style" type="search" name="searchuser" placeholder="Cari User...">
+                    <input class="btn searchbar-style" type="search" name="searchuser" placeholder="Cari User...">
                     <button type="submit" class="btn btn-dark searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
@@ -164,12 +164,12 @@
             <div class="filter btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
                     <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
+                        <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Filter berdasarkan
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                            <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
-                            <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sortuser" value="admin">Admin saja</button>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
+                            <button class="dropdown-item" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
+                            <button class="dropdown-item" type="submit" name="sortuser" value="admin">Admin saja</button>
                         </div>
                     </div>
                 </form>

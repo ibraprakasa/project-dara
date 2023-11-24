@@ -429,6 +429,18 @@ table td {
     margin-top: 150px;
 }
 
+.dropdown-toggle, .dropdown-item{
+    font-family: 'Poppins', sans-serif;
+}
+
+.dropdown-toggle{
+    height:42px;
+    background-color: #3B4B65; 
+    color:white;
+    border-radius:0 0 15px 0;  
+    width: 200px; 
+}
+
 .dropdown-menu .dropdown-item {
     border-bottom: 1px solid black;
 }
@@ -439,19 +451,15 @@ table td {
 
 .dropdown-menu {
     min-width: 100%;
+    background-color: #d9d9d9; 
+    color:black;
+    border-radius:0 0 0 0;
+    padding:0;
 }
 
 .dropdown-item {
     width: 100%;
-}
-
-
-.filter-icon {
-    border-radius: 0 15px 15px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #3B4B65;
+    font-weight:bold;
 }
 
 .submenu {
@@ -613,6 +621,14 @@ table td {
     font-family: 'Poppins', sans-serif;
     border-radius: 0 0 15px 0;
     width: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #3B4B65;
+}
+
+.filter-icon {
+    border-radius: 0 15px 15px 0;
     display: flex;
     justify-content: center;
     align-items: center;
