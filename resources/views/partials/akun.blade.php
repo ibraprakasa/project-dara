@@ -54,7 +54,7 @@
     <label for="role">Role</label>
     <input class="form-control input" name="role" type="text" id="role" placeholder="{{ Auth::user()->role->role_name }}" readonly>
   </div>
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target=".editakun" style="margin-top:10px;border-radius:10px; background-color:#03A13B">Edit</button>
+  <button type="button" class="btn btn-success modalbuttonsuccess-style" data-toggle="modal" data-target=".editakun" style="margin-top:20px;">Edit</button>
 
   <!-- MODAL -->
   <div class="modal fade editakun" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -88,7 +88,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+            <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
           </div>
         </form>
         <!-- END MODAL -->
@@ -124,7 +124,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+            <button type="submit" class="btn btn-success modalbuttonsuccess-style">Ubah</button>
           </div>
         </form>
         <!-- END MODAL -->

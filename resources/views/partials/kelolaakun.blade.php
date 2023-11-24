@@ -36,11 +36,11 @@
 
         <div class="filter btn-group">
 
-            <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahpendonor">
+            <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
                 <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
             </button>
 
-            <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
+            <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
                 Tambah
             </button>
 
@@ -151,11 +151,11 @@
 
             <div class="filter btn-group">
 
-                <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahuser" style="display:none;border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+                <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahuser">
                     <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
                 </button>
 
-                <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahuser" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+                <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahuser" type="button">
                     Tambah
                 </button>
 
@@ -344,7 +344,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Tambah</button>
                 </div>
             </form>
         </div>
@@ -396,7 +396,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
         </div>
@@ -423,8 +423,8 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -504,7 +504,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -544,7 +544,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>
@@ -555,7 +555,7 @@
 
 <!-- MODAL INSERT USER -->
 <div class="modal fade tambahuser" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah User</h5>
@@ -588,7 +588,8 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="role">Role</label>
-                        <select class="kolom form-control" name="role_id" id="kontak">
+                        <select class="kolom form-control" name="role_id" id="select">
+                            <option disabled selected value="">Pilih Role</option>
                             @foreach($roles as $role)
                             <option class="kolom form-control" value="{{ $role->id }}">{{ $role->role_name }}</option>
                             @endforeach
@@ -596,7 +597,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Tambah</button>
                 </div>
             </form>
         </div>
@@ -607,7 +608,7 @@
 <!-- MODAL EDIT USER -->
 @foreach($data1 as $row)
 <div class="modal fade" id="edituser{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit User</h5>
@@ -636,18 +637,16 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Role</label>
-                        <select class="kolom form-control" name="role_id" id="kontak">
+                        <select class="kolom form-control" name="role_id" id="select">
+                            <option disabled selected value="{{ $row->role->id }}">{{ $row->role->role_name }}</option>
                             @foreach($roles as $role)
                             <option class="kolom form-control" value="{{ $role->id }}">{{ $role->role_name }}</option>
                             @endforeach
                         </select>
                     </div>
-
-
-
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
         </div>
@@ -674,8 +673,8 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -716,7 +715,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
             <!-- END MODAL -->

@@ -180,7 +180,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>

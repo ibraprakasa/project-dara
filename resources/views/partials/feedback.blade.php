@@ -327,7 +327,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>
@@ -353,8 +353,8 @@ use Carbon\Carbon;
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style"v>>Hapus</button>
                 </div>
             </form>
         </div>
@@ -381,8 +381,8 @@ use Carbon\Carbon;
                 @csrf
                 @method('POST')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">KIRIM</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Kirim</button>
                 </div>
             </form>
         </div>
@@ -489,7 +489,7 @@ use Carbon\Carbon;
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -538,7 +538,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>
@@ -564,8 +564,8 @@ use Carbon\Carbon;
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -626,20 +626,18 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
                 @if($row->reply == null)
-                <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Balas</button>
+                <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary modalbuttonlaporanpalsu">Balas</button>
                 @elseif($row->reply != null)
-                <button type="submit" data-dismiss="modal" data-target="#sudahreplypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Lihat Balasan</button>
+                <button type="submit" data-dismiss="modal" data-target="#sudahreplypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary modalbuttonlaporanpalsu">Lihat Balasan</button>
                 @endif
             </div>
         </div>
     </div>
 </div>
 @endforeach
-
 <!-- END MODAL -->
-
 
 <!-- MODAL BALAS PESAN -->
 @foreach($data1 as $key => $row)
@@ -691,7 +689,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Kirim</button>
                 </div>
             </form>
         </div>
@@ -748,7 +746,7 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

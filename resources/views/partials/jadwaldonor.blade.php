@@ -29,11 +29,11 @@
 </div>
 
 <div class="filte btn-group">
-    <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahjadwaldonor">
+    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahjadwaldonor">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary inserticon-style" type="button" data-toggle="modal" data-target=".tambahjadwaldonor" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary insertbar-style" type="button" data-toggle="modal" data-target=".tambahjadwaldonor">
         Tambah
     </button>
 </div>
@@ -224,7 +224,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
+                        <button type="submit" class="btn btn-success modalbuttonsuccess-style">Tambah</button>
                     </div>
                 </form>
             </div>
@@ -236,7 +236,7 @@
 <!-- MODAL EDIT JADWAL DONOR -->
 @foreach($data as $row)
 <div class="modal fade" id="editjadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Jadwal Donor</h5>
@@ -247,41 +247,77 @@
             <div class="modal-body">
                 <form action="{{ route('updatejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="namalokasi">Nama Lokasi</label>
-                        <input class="kolom form-control" name="lokasi" type="text" id="namalokasi" value="{{ $row->lokasi }}">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="namalokasi">Nama Lokasi</label>
+                                <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" value="{{ $row->lokasi }}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak" type="number" id="kontak" value="{{ $row->kontak }}">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3">{{ $row->alamat }}
-                        </textarea>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggal">Tanggal</label>
+                                <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" value="{{ $row->tanggal_donor }}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jammulai">Jam Mulai</label>
+                                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai" value="{{ $row->jam_mulai }}">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jamselesai">Jam Selesai</label>
+                                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" value="{{ $row->jam_selesai }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggal">Tanggal</label>
-                        <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" value="{{ $row->tanggal_donor }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jammulai">Jam Mulai</label>
-                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai" value="{{ $row->jam_mulai }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jamselesai">Jam Selesai</label>
-                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" value="{{ $row->jam_selesai }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak" type="number" id="kontak" value="{{ $row->kontak }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="longitude">Longitude</label>
-                        <input class="kolom form-control" type="double" id="editlongitude" name="longitude" value="{{ $row->longitude }}" required>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="latitude">Latitude</label>
-                        <input class="kolom form-control" type="double" id="editlatitude" name="latitude" value="{{ $row->latitude }}" required>
+                    <div class="row mb-3">
+                        <div class="col mt-2">
+                            <div id="map{{ $row->id }}" style="height: 262px;"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col mt-1">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="alamat">Alamat</label>
+                                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3">{{ $row->alamat }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="latitude">Latitude</label>
+                                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" value="{{ $row->latitude }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="longitude">Longitude</label>
+                                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" value="{{ $row->longitude }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                        <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                     </div>
                 </form>
             </div>
@@ -309,8 +345,8 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>

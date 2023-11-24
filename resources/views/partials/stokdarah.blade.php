@@ -10,21 +10,21 @@
 </head>
 
 <div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahstokdarah">
+    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahstokdarah">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
+    <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
         Tambah
     </button>
 </div>
 
 <div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".ambilstokdarah" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+    <button type="button" class="btn btn-dark ambilicon-style" data-toggle="modal" data-target=".ambilstokdarah">
         <i class="bi bi-file-minus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" data-toggle="modal" data-target=".ambilstokdarah" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary ambilbar-style" data-toggle="modal" data-target=".ambilstokdarah" type="button" >
         Ambil
     </button>
 </div>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Tambah</button>
                 </div>
             </form>
         </div>
@@ -156,7 +156,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
         </div>

@@ -111,7 +111,6 @@ body {
     overflow: auto !important;
     min-height: 200px !important;
     color: black !important;
-    font-weight: bold !important;
     text-align: justify;
 }
 
@@ -482,9 +481,8 @@ table td {
 .berita-title {
     display: block;
     font-size: 20px;
-    font-weight: bold;
     text-align: center;
-    font-style: italic;
+    color:navy;
 }
 
 .rating-title {
@@ -593,7 +591,7 @@ table td {
     margin-left: 20px;
 }
 
-.insertbar-style{
+.inserticon-style{
     border-radius:15px 0 0 15px;
     width: 22px; 
     display: flex; 
@@ -603,10 +601,24 @@ table td {
     font-family: 'Poppins', sans-serif;
 }
 
-.inserticon-style{
+.insertbar-style{
     background-color: #d9d9d9; 
     color:black;
     border-radius:0 0 0 0;
+}
+
+.ambilicon-style{
+    border-radius:15px 0 0 15px;
+    width: 22px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #3B4B65;
+}
+
+.ambilbar-style{
+    background-color: #d9d9d9; 
+    color:black;
 }
 
 .searchbar-style {
@@ -634,6 +646,32 @@ table td {
     align-items: center;
     background-color: #3B4B65;
 }
+
+.filter-icon, .insertbar-style, .ambilbar-style{
+    font-family: 'Poppins', sans-serif;
+}
+
+.modalbuttonsuccess-style{
+    background-color: #03A13B; 
+}
+
+.modalbuttondanger-style{
+    background-color: #E70000; 
+}
+
+.modalbuttonclose-style{
+    background-color: black;
+}
+
+.modalbuttonlaporanpalsu{
+    background-color: #3B4B65;
+}
+
+.modalbuttonsuccess-style, .modalbuttondanger-style, .modalbuttonclose-style,.modalbuttonlaporanpalsu{
+    font-family: 'Poppins', sans-serif;
+    border-radius:10px
+}
+
 
 
 
