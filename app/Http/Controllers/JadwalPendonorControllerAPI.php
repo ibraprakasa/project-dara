@@ -22,7 +22,7 @@ class JadwalPendonorControllerAPI extends Controller
         $pendonor = JadwalPendonor::where('id_pendonor', $id)->first();
 
         if (!$pendonor) {
-            return response()->json(['message' => 'Pendonor not found']);
+            return response()->json(['message' => 'Pendonor not found'],400);
         }
 
         $pendonors = JadwalPendonor::where('id_pendonor', $id)->get();
@@ -52,12 +52,10 @@ class JadwalPendonorControllerAPI extends Controller
         }
 
         if(!empty($jadwalTerdekat)){
-            $jadwal = $jadwalTerdekat;
+            return response()->json($jadwalTerdekat);
         }else{
-            $jadwal = null;
+            return response()->json($jadwalTerdekat,400);
         }
-
-        return response()->json($jadwal);
     }
 
     public function check($id, $idl){

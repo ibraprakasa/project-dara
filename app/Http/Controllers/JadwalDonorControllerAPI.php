@@ -49,12 +49,15 @@ class JadwalDonorControllerAPI extends Controller
     }
     if (!empty($jadwalTerdekat)) {
         $jadwal_donor_darah = $jadwalTerdekat;
+        return response()->json(
+            $jadwal_donor_darah
+        );
     } else {
         $jadwal_donor_darah = null;
+        return response()->json(
+            $jadwal_donor_darah,400
+        );
     }
-    return response()->json(
-        $jadwal_donor_darah
-    );
 }
 
 }
