@@ -20,6 +20,7 @@ class Testimonial extends Authenticatable implements JWTSubject
         'id_pendonor',
         'text',
         'star',
+        'status',
         'created_at',
         'updated_at'
     ];
