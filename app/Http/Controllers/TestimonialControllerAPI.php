@@ -17,6 +17,7 @@ class TestimonialControllerAPI extends Controller
         $user = auth()->guard('api')->user();
         $validasi = Validator::make($request->all(), [
             'star' => 'required',
+            'status' => 'required'
         ]);
 
         if ($validasi->fails()) {
@@ -29,7 +30,8 @@ class TestimonialControllerAPI extends Controller
         $rating = Testimonial::create([
             'id_pendonor' => $user->id,
             'text' => $request->text,
-            'star' => $request->star
+            'star' => $request->star,
+            'status' => $request->status
         ]);
 
         return response()->json([
