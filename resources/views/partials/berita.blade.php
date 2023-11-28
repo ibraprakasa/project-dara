@@ -82,7 +82,7 @@
                 <td>
                     <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->judul }}">
                         <img src="{{ asset('assets/img/'.$row->gambar) }}" alt="" width="100px" height="100px">
-                    </a>                    
+                    </a>
                 </td>
                 <td class="truncate-text1">{{ $row->judul }}</td>
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
@@ -113,7 +113,7 @@
 
 <!-- MODAL INSERT BERITA -->
 <div class="modal fade tambahberita" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Berita</h5>
@@ -125,19 +125,23 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="gambar" class="btn btn-primary" style="background-color: #3B4B65;">
-                            <i class="col pl-1 bi bi-image"></i> Pilih Gambar
-                        </label>
-                        <input class="kolom form-control" name="gambar" type="file" id="gambar" style="display: none;">
-                        <span id="keterangan-gambar" style="color: black; font-weight:bold">Tidak ada gambar yang dipilih</span>
+                        <div class="d-flex align-items-center">
+                            <label for="gambar" class="btn btn-primary" style="background-color: #3B4B65;">
+                                <i class="col pl-1 bi bi-image"></i> Pilih Gambar
+                            </label>
+                            <div class="col">
+                                <input class="kolom form-control" name="gambar" type="file" id="gambar" required accept=".jpg, .jpeg, .png, .svg" oninvalid="this.setCustomValidity('Masukkan Gambar terlebih dahulu.')" oninput="this.setCustomValidity('')">
+                                <span id="keterangan-gambar" style="color: black; font-weight:bold">Tidak ada gambar yang dipilih</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="judulberita">Judul Berita</label>
-                        <textarea class="kolom form-control" name="judul" type="text" id="judulberita" placeholder="ex: Ketersediaan Darah"></textarea>
+                        <textarea class="kolom form-control" name="judul" type="text" id="judulberita" placeholder="ex: Ketersediaan Darah" required oninvalid="this.setCustomValidity('Judul Berita harus diisi.')" oninput="this.setCustomValidity('')"></textarea>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Deskripsi</label>
-                        <textarea class="kolom form-control resizable" name="deskripsi" id="deskripsi" rows="5" cols="5" placeholder="......."></textarea>
+                        <textarea class="kolom form-control resizable" name="deskripsi" id="deskripsi" rows="5" cols="5" placeholder="......." required oninvalid="this.setCustomValidity('Deskripsi Berita harus diisi.')" oninput="this.setCustomValidity('')"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -152,7 +156,7 @@
 <!-- MODAL EDIT BERITA -->
 @foreach($data as $row)
 <div class="modal fade" id="editberita{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Berita</h5>
@@ -164,12 +168,16 @@
                 @csrf
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="gambar{{ $row->id }}" class="btn btn-primary" style="background-color: #3B4B65;">
-                            <i class="col pl-1 bi bi-image"></i>
-                            <span style="color: white;" class="pilih-text">Pilih Gambar</span>
-                        </label>
-                        <input class="kolom form-control" name="gambar" type="file" id="gambar{{ $row->id }}" style="display: none;">
-                        <span id="keterangan-gambar{{ $row->id }}" style="color: black;">{{ $row->gambar }}</span>
+                        <div class="d-flex align-items-center">
+                            <label for="gambar{{ $row->id }}" class="btn btn-primary" style="background-color: #3B4B65;">
+                                <i class="col pl-1 bi bi-image"></i>
+                                <span style="color: white;" class="pilih-text">Pilih Gambar</span>
+                            </label>
+                            <div class="col">
+                                <input class="kolom form-control" name="gambar" type="file" id="gambar{{ $row->id }}" style="display: none;">
+                                <span id="keterangan-gambar{{ $row->id }}" style="color: black;">Gambar yang dipilih : {{ $row->gambar }}</span>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="judulberita">Judul Berita</label>
@@ -203,7 +211,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
+                Apakah Anda yakin untuk menghapus berita di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deleteberita', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -262,12 +270,51 @@
     inputGambar.addEventListener('change', function() {
         if (inputGambar.files.length > 0) {
             // Jika ada file yang dipilih, update teks keterangan
-            keteranganGambar.textContent = 'Gambar telah dipilih: ' + inputGambar.files[0].name;
+            keteranganGambar.textContent = 'Gambar telah dipilih : ' + inputGambar.files[0].name;
         } else {
             // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
             keteranganGambar.textContent = 'Tidak ada gambar yang dipilih';
         }
     });
 </script>
+
+<?php foreach ($data as $row) : ?>
+    <script>
+        var inputGambar<?php echo $row->id; ?> = document.getElementById('gambar<?php echo $row->id; ?>');
+        var keteranganGambar<?php echo $row->id; ?> = document.getElementById('keterangan-gambar<?php echo $row->id; ?>');
+
+        // Menambahkan event listener untuk memantau pemilihan file
+        inputGambar<?php echo $row->id; ?>.addEventListener('change', function() {
+            if (inputGambar<?php echo $row->id; ?>.files.length > 0) {
+                // Jika ada file yang dipilih, update teks keterangan
+                keteranganGambar<?php echo $row->id; ?>.textContent = 'Gambar telah diganti : ' + inputGambar<?php echo $row->id; ?>.files[0].name;
+            } else {
+                // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
+                keteranganGambar<?php echo $row->id; ?>.textContent = 'Tidak ada gambar yang dipilih';
+            }
+        });
+    </script>
+<?php endforeach; ?>
+
+<!-- @foreach($data as $row)
+<script>
+    var inputGambar{{ $row->id }} = document.getElementById('gambar{{ $row->id }}');
+    var keteranganGambar{{ $row->id }} = document.getElementById('keterangan-gambar{{ $row->id }}');
+
+    // Menambahkan event listener untuk memantau pemilihan file
+    inputGambar{{ $row->id }}.addEventListener('change', function() {
+        if (inputGambar{{ $row->id }}.files.length > 0) {
+            // Jika ada file yang dipilih, update teks keterangan
+            keteranganGambar{{ $row->id }}.textContent = 'Gambar telah dipilih: ' + inputGambar{{ $row->id }}.files[0].name;
+        } else {
+            // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
+            keteranganGambar{{ $row->id }}.textContent = 'Tidak ada gambar yang dipilih';
+        }
+    });
+</script>
+@endforeach -->
+
+
+
 
 @endsection

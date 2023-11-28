@@ -158,13 +158,13 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="namalokasi">Nama Lokasi</label>
-                                <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" placeholder="ex: Politeknik Negeri Padang">
+                                <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" placeholder="ex: Politeknik Negeri Padang" required oninvalid="this.setCustomValidity('Lokasi Donor harus diisi.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="kontak">Kontak</label>
-                                <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
+                                <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771" required oninvalid="this.setCustomValidity('Kontak Lokasi harus diisi.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="tanggal">Tanggal</label>
-                                <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal">
+                                <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" required oninvalid="this.setCustomValidity('Lengkapi Tanggal Donor terlebih dahulu.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col">
@@ -180,13 +180,13 @@
                                 <div class="col">
                                     <div class="form-group" style="color:black; font-weight:bold">
                                         <label for="jammulai">Jam Mulai</label>
-                                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai">
+                                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai" required oninvalid="this.setCustomValidity('Format Jam Mulai tidak valid.')" oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="form-group" style="color:black; font-weight:bold">
                                         <label for="jamselesai">Jam Selesai</label>
-                                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai">
+                                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" required oninvalid="this.setCustomValidity('Format Jam Selesai tidak valid.')" oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                                 <div class="col mt-1">
                                     <div class="form-group" style="color:black; font-weight:bold">
                                         <label for="alamat">Alamat</label>
-                                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b" required oninvalid="this.setCustomValidity('Alamat Lokasi Donor harus diisi.')" oninput="this.setCustomValidity('')"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -209,7 +209,7 @@
                                 <div class="col">
                                     <div class="form-group" style="color:black; font-weight:bold">
                                         <label for="latitude">Latitude</label>
-                                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required>
+                                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required oninvalid="this.setCustomValidity('Latitude harus diisi.')" oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                 <div class="col">
                                     <div class="form-group" style="color:black; font-weight:bold">
                                         <label for="longitude">Longitude</label>
-                                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required>
+                                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required oninvalid="this.setCustomValidity('Longitude harus diisi.')" oninput="this.setCustomValidity('')">
                                     </div>
                                 </div>
                             </div>

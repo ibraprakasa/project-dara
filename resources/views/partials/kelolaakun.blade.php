@@ -164,7 +164,7 @@
             <div class="filter btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
                     <div class="dropdown">
-                        <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Filter berdasarkan
                         </button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
@@ -266,24 +266,23 @@
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Pendonor</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
-              <span aria-hidden=" true">&times;</span>
+                <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data" id="myForm" novalidate>
+            <form action="/insertpendonorsuper" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="nama">Nama</label>
-                                <input class="kolom form-control" name="nama" type="text" id="nama" placeholder="ex : Ibra Prakasa" required>
-                                <div class="invalid-feedback" id="customError">Silakan isi kolom ini.</div>
+                                <input class="kolom form-control" name="nama" type="text" id="nama" placeholder="ex : Ibra Prakasa" required oninvalid="this.setCustomValidity('Nama Pendonor harus diisi.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="tanggallahir">Tanggal Lahir</label>
-                                <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir">
+                                <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggalLahir" required oninvalid="this.setCustomValidity('Lengkapi Tanggal Lahir terlebih dahulu.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -291,13 +290,13 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="password">Password</label>
-                                <input class="kolom form-control" name="password" type="password" id="password">
+                                <input class="kolom form-control" name="password" type="password" id="password" required oninvalid="this.setCustomValidity('Password minimal 8 karakter.')" oninput="this.setCustomValidity('')" minlength="8">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="beratbadan">Berat Badan</label>
-                                <input class="kolom form-control" name="berat_badan" type="number" id="beratbadan" placeholder="ex : 75 Kg" required>
+                                <input class="kolom form-control" name="berat_badan" type="number" id="beratBadan" placeholder="ex : 75 Kg" required oninvalid="this.setCustomValidity('Berat Badan harus diisi.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -305,7 +304,7 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="goldar">Golongan Darah</label>
-                                <select class="kolom form-control" name="id_golongan_darah" id="select">
+                                <select class="kolom form-control" name="id_golongan_darah" id="select"  required oninvalid="this.setCustomValidity('Pilih Goldar Terlebih dahulu.')" oninput="this.setCustomValidity('')">
                                     <option disabled selected value="">Pilih Golongan Darah</option>
                                     @foreach($goldar as $darah)
                                     <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
@@ -316,7 +315,7 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="jekel">Jenis Kelamin</label>
-                                <select class="kolom form-control" id="select" name="jenis_kelamin">
+                                <select class="kolom form-control" id="select" name="jenis_kelamin" required oninvalid="this.setCustomValidity('Pilih Jenis Kelamin Terlebih dahulu.')" oninput="this.setCustomValidity('')">
                                     <option disabled selected value="">Pilih Jenis Kelamin</option>
                                     <option value="Laki-Laki">Laki-Laki</option>
                                     <option value="Perempuan">Perempuan</option>
@@ -328,19 +327,19 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="kontak">Kontak</label>
-                                <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771">
+                                <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" placeholder="ex : 082235221771" required oninvalid="this.setCustomValidity('Kontak Pendonor harus diisi.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="kontak">Email</label>
-                                <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
+                                <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com" required oninvalid="this.setCustomValidity('Format Email tidak valid.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat_pendonor" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                        <textarea class="kolom form-control" name="alamat_pendonor" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b" required oninvalid="this.setCustomValidity('Alamat Pendonor harus diisi.')" oninput="this.setCustomValidity('')"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -355,7 +354,7 @@
 <!-- MODAL EDIT PENDONOR -->
 @foreach($data as $row)
 <div class="modal fade" id="editpendonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Pendonor</h5>
@@ -366,29 +365,70 @@
             <form action="{{ route('updatependonorsuper', ['id' => $row->id]) }}" method="POST">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="nama">Nama</label>
-                        <input class="kolom form-control" name="nama" type="text" id="nama" value="{{ $row->nama }}">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="nama">Nama</label>
+                                <input class="kolom form-control" name="nama" type="text" id="nama" value="{{ $row->nama }}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggallahir">Tanggal Lahir</label>
+                                <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir" value="{{ $row->tanggal_lahir }}">
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="text" id="password">
-                    </div> -->
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" value="{{ $row->kontak_pendonor }}">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="password">Password</label>
+                                <input class="kolom form-control" name="password" type="password" id="password">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="beratbadan">Berat Badan</label>
+                                <input class="kolom form-control" name="berat_badan" type="number" id="beratbadan" value="{{ $row->berat_badan }}">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="email">Email</label>
-                        <input class="kolom form-control" name="email" type="email" id="email" value="{{ $row->email }}">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="goldar">Golongan Darah</label>
+                                <select class="kolom form-control" name="id_golongan_darah" id="select">
+                                    @foreach($goldar as $darah)
+                                    <option class="kolom form-control" value="{{ $darah->id }}" @if($darah->id == $row->golongandarah->id) selected @endif>
+                                        {{ $darah->nama }}
+                                    </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="jekel">Jenis Kelamin</label>
+                                <select class="kolom form-control" name="jenis_kelamin">
+                                    <option value="Laki-laki" @if($row->jenis_kelamin == 'Laki-laki') selected @endif>Laki-laki</option>
+                                    <option value="Perempuan" @if($row->jenis_kelamin == 'Perempuan') selected @endif>Perempuan</option>
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggallahir">Tanggal Lahir</label>
-                        <input class="kolom form-control" name="tanggal_lahir" type="date" id="tanggallahir" value="{{ $row->tanggal_lahir }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="beratbadan">Berat Badan</label>
-                        <input class="kolom form-control" name="berat_badan" type="text" id="beratbadan" value="{{ $row->berat_badan }}" required>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak_pendonor" type="number" id="kontak" value="{{ $row->kontak_pendonor }}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Email</label>
+                                <input class="kolom form-control" name="email" type="email" id="email" value="{{ $row->email }}">
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
@@ -417,7 +457,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data di baris {{ $key+$data->firstItem() }}?
+                Apakah Anda yakin untuk menghapus pendonor di baris {{ $key+$data->firstItem() }}?
             </div>
             <form action="{{ route('deletependonorsuper', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -568,27 +608,27 @@
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="nama">Nama</label>
-                        <input class="kolom form-control" name="name" type="text" id="nama" placeholder="ex : Ibra Prakasa">
+                        <input class="kolom form-control" name="name" type="text" id="nama" placeholder="ex : Ibra Prakasa" required oninvalid="this.setCustomValidity('Nama User harus diisi.')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="password">Password</label>
-                        <input class="kolom form-control" name="password" type="password" id="password">
+                        <input class="kolom form-control" name="password" type="password" id="password" required oninvalid="this.setCustomValidity('Password minimal 8 karakter.')" oninput="this.setCustomValidity('')" minlength="8">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b" required oninvalid="this.setCustomValidity('Alamat User harus diisi.')" oninput="this.setCustomValidity('')"></textarea>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Email</label>
-                        <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com">
+                        <input class="kolom form-control" name="email" type="email" id="email" placeholder="ex : ibraprakasa5@gmail.com" required oninvalid="this.setCustomValidity('Format Email tidak valid.')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="nohp" type="number" id="kontak" placeholder="ex : 082235221771">
+                        <input class="kolom form-control" name="nohp" type="number" id="kontak" placeholder="ex : 082235221771" required oninvalid="this.setCustomValidity('Kontak User harus diisi.')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="role">Role</label>
-                        <select class="kolom form-control" name="role_id" id="select">
+                        <select class="kolom form-control" name="role_id" id="select" required oninvalid="this.setCustomValidity('Pilih Role Terlebih dahulu.')" oninput="this.setCustomValidity('')">
                             <option disabled selected value="">Pilih Role</option>
                             @foreach($roles as $role)
                             <option class="kolom form-control" value="{{ $role->id }}">{{ $role->role_name }}</option>
@@ -638,9 +678,10 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="kontak">Role</label>
                         <select class="kolom form-control" name="role_id" id="select">
-                            <option disabled selected value="{{ $row->role->id }}">{{ $row->role->role_name }}</option>
                             @foreach($roles as $role)
-                            <option class="kolom form-control" value="{{ $role->id }}">{{ $role->role_name }}</option>
+                            <option class="kolom form-control" value="{{ $role->id }}" @if($role->id == $row->role->id) selected @endif>
+                                {{ $role->role_name }}
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -667,7 +708,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                Apakah Anda yakin untuk menghapus data user {{ $key+$data1->firstItem() }}?
+                Apakah Anda yakin untuk menghapus user di baris {{ $key+$data1->firstItem() }}?
             </div>
             <form action="{{ route('deleteuser', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -785,36 +826,28 @@
 </script>
 
 <script>
-    document.getElementById('myForm').addEventListener('submit', function(event) {
-        var nama = document.getElementById('nama').value;
+    function handleSelectChange() {
+        var select = document.getElementById('select');
+        var selectedValue = select.options[select.selectedIndex].value;
 
-        if (!nama) {
-            // Menampilkan pesan kesalahan kustom jika input kosong
-            document.getElementById('customError').innerHTML = 'Nama harus diisi.';
-            document.getElementById('customError').style.display = 'block';
-
-            document.getElementById('nama').focus();
-
-            event.preventDefault(); // Mencegah pengiriman formulir jika ada kesalahan
+        // Jika pengguna memilih opsi, sembunyikan opsi pertama
+        if (selectedValue !== "") {
+            select.options[0].style.display = 'none';
         }
-    });
-
-    // Menyembunyikan pesan kesalahan saat pengguna mulai mengetik
-    document.getElementById('nama').addEventListener('input', function() {
-        document.getElementById('customError').style.display = 'none';
-    });
+    }
 </script>
 
 <script>
-    function handleSelectChange() {
-    var select = document.getElementById('select');
-    var selectedValue = select.options[select.selectedIndex].value;
+    function checkPasswordLength() {
+        var passwordInput = document.getElementById("password");
+        var errorMessage = "Password minimal 8 karakter.";
 
-    // Jika pengguna memilih opsi, sembunyikan opsi pertama
-    if (selectedValue !== "") {
-        select.options[0].style.display = 'none';
+        if (passwordInput.value.length < 8) {
+            passwordInput.setCustomValidity(errorMessage);
+        } else {
+            passwordInput.setCustomValidity('');
+        }
     }
-}
 </script>
 
 @endsection

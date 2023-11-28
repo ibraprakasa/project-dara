@@ -2,6 +2,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.thead-style{
+    background-color:#3B4B65; 
+    color:white;
+}
+
 .truncate-text {
     white-space: nowrap;
     overflow: hidden;
@@ -120,6 +125,7 @@ body {
 }
 
 .kolom:focus {
+    border: 1px solid #3B4B65;
     background-color: white !important;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     outline: none;
