@@ -169,9 +169,9 @@
 <!-- END MODAL -->
 
 <script>
-    $(document).ready(function(){
-        $("selectPendonor").select2({
-            placeholder : 'Pilih Pendonor'
+    $(document).ready(function() {
+        $('#selectPendonor').select2({
+            minimumInputLength: 1, // Jumlah karakter minimum sebelum pencarian dimulai
         });
     });
 </script>
