@@ -24,34 +24,21 @@
             </div>
           </div>
 
-          <div class="w-full px-4 lg:w-1/2">
+          <div class="w-full px-4 lg:w-1/2 ">
             <div class="flex flex-wrap -mx-2 sm:-mx-4 lg:-mx-2 xl:-mx-4">
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
-                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-01.jpg') }}" alt="about image"
+                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[700px]">
+                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 7.png') }}" alt="about image"
+                    class="object-cover object-center w-full h-full" />
+                </div>
+              </div>
+              <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
+                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[700px]">
+                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 5.png') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
               </div>
 
-              <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
-                <div class="mb-4 sm:mb-8 sm:h-[220px] md:h-[346px] lg:mb-4 lg:h-[225px] xl:mb-8 xl:h-[310px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-02.jpg') }}" alt="about image"
-                    class="object-cover object-center w-full h-full" />
-                </div>
-
-                <div
-                  class="bg-primary relative z-10 mb-4 flex items-center justify-center overflow-hidden py-12 px-6 sm:mb-8 sm:h-[160px] sm:p-5 lg:mb-4 xl:mb-8">
-                  <div>
-                    <span class="block text-5xl font-extrabold text-white">
-                      09
-                    </span>
-                    <span class="block text-base font-semibold text-white">
-                      We have
-                    </span>
-                    <span class="block text-base font-medium text-white text-opacity-70">
-                      Years of experience
-                    </span>
-                  </div>
                   <div>
                     <span class="absolute top-0 left-0 -z-10">
                       <svg width="106" height="144" viewBox="0 0 106 144" fill="none"
