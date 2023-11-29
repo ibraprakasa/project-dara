@@ -7,6 +7,7 @@ use App\Models\Comment;
 use App\Models\Notifikasi;
 use App\Models\Pendonor;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use function PHPUnit\Framework\isEmpty;
@@ -33,6 +34,12 @@ class NotifikasiControllerAPI extends Controller
         $responseData = [];
         $test = [];
         foreach ($notifikasi as $notif) {
+            $expiredDate = Carbon::parse($notif->updated_at)->addMonths(2);
+            if (Carbon::now()->gt($expiredDate)) {
+                $notif->delete(); // Hapus notifikasi yang sudah lewat dari 2 bulan
+                continue; // Lewati notifikasi yang sudah dihapus
+            }
+
             $post = Post::where('id', $notif->id_post)->first(); // Dapatkan instance model Post
             if ($post) {
                 // $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post

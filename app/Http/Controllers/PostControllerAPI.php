@@ -134,44 +134,45 @@ class PostControllerAPI extends Controller
     }
 
     public function postMe()
-    {
-        $user = auth()->guard('api')->user();
-        $posts = Post::orderBy('id', 'desc')->where('id_pendonor', $user->id)->get();
-        $responseData = [];
+{
+    $user = auth()->guard('api')->user();
+    $posts = Post::orderBy('id', 'desc')->where('id_pendonor', $user->id)->paginate(7); 
+    $responseData = [];
 
-        foreach ($posts as $post) {
-            $pendonor = Pendonor::find($post->id_pendonor);
-            $jumlah_comment = Comment::where('id_post', $post->id)->count();
+    foreach ($posts as $post) {
+        $pendonor = Pendonor::find($post->id_pendonor);
+        $jumlah_comment = Comment::where('id_post', $post->id)->count();
 
-            // Pastikan pendonor ditemukan sebelum mencoba mengakses propertinya
-            if ($pendonor) {
-                $diff = $post->updated_at->diffForHumans();
-                $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+        // Pastikan pendonor ditemukan sebelum mencoba mengakses propertinya
+        if ($pendonor) {
+            $diff = $post->updated_at->diffForHumans();
+            $diff = str_replace('dari sekarang', 'yang lalu', $diff);
 
-                $responseData[] = [
-                    'id' => $post->id,
-                    'id_pendonor' => $pendonor->id,
-                    'gambar_profile' => $pendonor->gambar,
-                    'nama' => $pendonor->nama,
-                    'text' => $post->text,
-                    'gambar' => $post->gambar,
-                    'jumlah_comment' => $jumlah_comment,
-                    'updated_at' => $diff
-                ];
-            }
-        }
-
-        if (count($responseData) > 0) {
-            return response()->json($responseData);
-        } else {
-            return response()->json(['message' => 'Tidak ada data post yang ditemukan'], 404);
+            $responseData[] = [
+                'id' => $post->id,
+                'id_pendonor' => $pendonor->id,
+                'gambar_profile' => $pendonor->gambar,
+                'nama' => $pendonor->nama,
+                'text' => $post->text,
+                'gambar' => $post->gambar,
+                'jumlah_comment' => $jumlah_comment,
+                'updated_at' => $diff
+            ];
         }
     }
+
+    if (count($responseData) > 0) {
+        return response()->json($responseData);
+    } else {
+        return response()->json(['message' => 'Tidak ada data post yang ditemukan'], 403);
+    }
+}
+
 
     public function postOtherDonor($id)
     {
         $user = Pendonor::where('id',$id)->first();
-        $posts = Post::orderBy('id', 'desc')->where('id_pendonor', $user->id)->get();
+        $posts = Post::orderBy('id', 'desc')->where('id_pendonor', $user->id)->paginate(7);
         $responseData = [];
 
         foreach ($posts as $post) {
@@ -199,7 +200,7 @@ class PostControllerAPI extends Controller
         if (count($responseData) > 0) {
             return response()->json($responseData);
         } else {
-            return response()->json(['message' => 'Tidak ada data post yang ditemukan'], 404);
+            return response()->json(['message' => 'Tidak ada data post yang ditemukan'], 403);
         }
     }
 
