@@ -2,11 +2,11 @@
     <div class="container">
       <div class="-mx-4 flex flex-wrap items-center">
         <div class="w-full px-4">
-          <div class="hero-content wow fadeInUp mx-auto max-w-[780px] text-center" data-wow-delay=".2s">
-            <h1
-              class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]">
-              Open-Source Web Template for SaaS, Startup, Apps, and More
+          <div class="hero-content wow fadeInUp max-w-[780px] text-center" data-wow-delay=".2s">
+            <h1 class="mb-5 text-3xl font-bold text-white sm:text-[40px] sm:leading-[1.2]">
+              BLOOD DONOR DAY
             </h1>
+
             <p class="mx-auto mb-9 max-w-[600px] font-medium text-base text-white sm:text-lg sm:leading-[1.44]">
               Multidisciplinary Web Template Built with Your Favourite
               Technology - HTML Bootstrap, Tailwind and React NextJS.
