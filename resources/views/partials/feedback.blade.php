@@ -4,14 +4,8 @@ use Carbon\Carbon;
 
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Tanggapan')
 @section('content')
-
-<head>
-    <title>
-        DARA || Tanggapan
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
