@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
-    public function getTestimoni(){
+    public function getTestimoni()
+    {
         $search = request()->input('search');
         $searchPesan = request()->input('searchpesan');
         $tanggalawal = request()->input('tanggal_dari');
@@ -44,15 +45,15 @@ class FeedbackController extends Controller
         if ($tanggalawal && $tanggalakhir) {
             $query->whereBetween('created_at', [$tanggalawal, $tanggalakhir]);
         }
-        
+
         if ($tanggalawalpesan && $tanggalakhirpesan) {
             $query1->whereBetween('created_at', [$tanggalawal, $tanggalakhir]);
         }
 
-        if($statusPesan){
-            $query1->where('status',$statusPesan);
+        if ($statusPesan) {
+            $query1->where('status', $statusPesan);
         }
-        
+
         if ($filterStatus === 'ditampilkan') {
             $query->where('status', true);
             $successMessage = 'Filter Berdasarkan Testimoni yang ditampilkan di Website';
@@ -61,49 +62,56 @@ class FeedbackController extends Controller
             $successMessage = 'Filter Berdasarkan Testimoni yang tidak ditampilkan di Website';
         }
 
-        if ($ratingdara){
+        if ($ratingdara) {
             $query->where('star', $ratingdara);
         }
 
-        if($search){
+        if ($search) {
             $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
-        }elseif($searchPesan){
+        } elseif ($searchPesan) {
             $successMessagePesan = 'Hasil Pencarian untuk "' . $searchPesan . '"';
-        }elseif($statusPesan == 1){
+        } elseif ($statusPesan == 1) {
             $successMessagePesan = 'Filter Berdasarkan Pesan yang Belum Dibalas';
-        }elseif($statusPesan == 2){
+        } elseif ($statusPesan == 2) {
             $successMessagePesan = 'Filter Berdasarkan Pesan yang Sudah Dibalas';
-        }elseif ($tanggalawal && $tanggalakhir  && $ratingdara && $filterStatus) {
-            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'" (' .$filterStatus . ')' ;
-        }elseif ($tanggalawal && $tanggalakhir  && $ratingdara) {
-            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
-        }elseif ($tanggalawal && $tanggalakhir  && $filterStatus) {
-            $successMessage = 'Filter Berdasarkan Testimoni yang "' . $filterStatus . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
-        }elseif ($tanggalawal && $tanggalakhir) {
-            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
-        }elseif ($tanggalawalpesan && $tanggalakhirpesan) {
-            $successMessagePesan = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawalpesan . '" sampai dengan "' .$tanggalakhirpesan .'"' ;
-        }elseif ($ratingdara && $filterStatus) {
-            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'" dan Testimoni yang ' . $filterStatus . ' pada Website' ;
-        }elseif ($ratingdara) {
-            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'"' ;
+        } elseif ($tanggalawal && $tanggalakhir  && $ratingdara && $filterStatus) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' . $tanggalakhir . '" (' . $filterStatus . ')';
+        } elseif ($tanggalawal && $tanggalakhir  && $ratingdara) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' . $tanggalakhir . '"';
+        } elseif ($tanggalawal && $tanggalakhir  && $filterStatus) {
+            $successMessage = 'Filter Berdasarkan Testimoni yang "' . $filterStatus . '" dan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' . $tanggalakhir . '"';
+        } elseif ($tanggalawal && $tanggalakhir) {
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' . $tanggalakhir . '"';
+        } elseif ($tanggalawalpesan && $tanggalakhirpesan) {
+            $successMessagePesan = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawalpesan . '" sampai dengan "' . $tanggalakhirpesan . '"';
+        } elseif ($ratingdara && $filterStatus) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '" dan Testimoni yang ' . $filterStatus . ' pada Website';
+        } elseif ($ratingdara) {
+            $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '"';
         }
 
         $query->join('pendonor', 'testimonial.id_pendonor', '=', 'pendonor.id')
-        ->orderBy('kode_pendonor');
+            ->orderBy('kode_pendonor');
         $query1->orderBy('name');
 
         $data  = $query->paginate(10);
         $data1 = $query1->paginate(10);
 
-        return view('partials.feedback',compact(
-            'data','data1',
-            'successMessage','successMessagePesan',
-            'search','searchPesan',
-            'tanggalawal','tanggalakhir',
+        return view('partials.feedback', compact(
+            'data',
+            'data1',
+            'successMessage',
+            'successMessagePesan',
+            'search',
+            'searchPesan',
+            'tanggalawal',
+            'tanggalakhir',
             'ratingdara',
-            'statusPesan','filterStatus',
-            'tanggalawalpesan','tanggalakhirpesan'));
+            'statusPesan',
+            'filterStatus',
+            'tanggalawalpesan',
+            'tanggalakhirpesan'
+        ));
     }
 
     public function postReply(Request $request)
@@ -134,10 +142,10 @@ class FeedbackController extends Controller
         }
     }
 
+
     public function postTestimoni($id)
     {
         $data = Testimonial::find($id);
-        dd($data);
         if ($data) {
             $data->status = true;
             $data->save();
@@ -148,19 +156,22 @@ class FeedbackController extends Controller
     }
 
 
-    public function deleteTestimoni($id){
+
+    public function deleteTestimoni($id)
+    {
         $data = Testimonial::find($id);
 
         $data->delete();
 
-        return redirect()->route('feedback')->with('successTestimoni','Testimoni berhasil dihapus.');    
+        return redirect()->route('feedback')->with('successTestimoni', 'Testimoni berhasil dihapus.');
     }
 
-    public function deletePesan($id){
+    public function deletePesan($id)
+    {
         $data = Inquiries::find($id);
 
         $data->delete();
 
-        return redirect()->route('feedback')->with('successPesan','Pesan berhasil dihapus.');    
+        return redirect()->route('feedback')->with('successPesan', 'Pesan berhasil dihapus.');
     }
 }

@@ -76,7 +76,7 @@ use Carbon\Carbon;
             </div>
         </div>
     </div>
-    <table class="table table-bordered" id="tabeltestimoni" style="display:none">
+    <<table class="table table-bordered" id="tabeltestimoni" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
                 <th scope="col">#</th>
@@ -159,63 +159,63 @@ use Carbon\Carbon;
             @endforeach
             @endif
         </tbody>
-    </table>
-    <div class="pagination1">
-        {{ $data->links() }}
-    </div>
-    <!-- <div class="tomboltampilkan" id="tomboltampilkan">
+        </table>
+        <div class="pagination1">
+            {{ $data->links() }}
+        </div>
+        <!-- <div class="tomboltampilkan" id="tomboltampilkan">
             <button class="btn btn-success gaya-tampilkan">
                 Kirim
             </button>
         </div> -->
 
-    <div class="filtering" id="filterpesan">
-        <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
-            <div class="filterfeedback btn-group">
-                <form action="/feedback" method="GET" style="display: flex;">
-                    <input class="btn searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
-                    <button type="submit" class="btn btn-primary searchicon-style">
-                        <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-                    </button>
-                </form>
+        <div class="filtering" id="filterpesan">
+            <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
+                <div class="filterfeedback btn-group">
+                    <form action="/feedback" method="GET" style="display: flex;">
+                        <input class="btn searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
+                        <button type="submit" class="btn btn-primary searchicon-style">
+                            <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+                        </button>
+                    </form>
 
-                <div class="search-filter-group"">
+                    <div class="search-filter-group"">
                     <button type=" submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
-                    <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-                    <span style="font-size: 12px; color: white;">Filter</span>
-                    </button>
-                </div>
+                        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+                        <span style="font-size: 12px; color: white;">Filter</span>
+                        </button>
+                    </div>
 
-                <div class="search-filter-group"">
+                    <div class="search-filter-group"">
                     @if(session('errorPesan'))
                     <div class=" alert-container">
-                    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-                    <div>
-                        {{ session('errorPesan') }}
+                        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                        <div>
+                            {{ session('errorPesan') }}
+                        </div>
                     </div>
-                </div>
-                @elseif(session('successPesan'))
-                <div class="alert-container1 success">
-                    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-                    <div>
-                        {{ session('successPesan') }}
+                    @elseif(session('successPesan'))
+                    <div class="alert-container1 success">
+                        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                        <div>
+                            {{ session('successPesan') }}
+                        </div>
                     </div>
-                </div>
-                @elseif(isset($successMessagePesan))
-                <div class="alert-container12 success">
-                    @if($searchPesan)
-                    <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)
-                    <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                    @elseif(isset($successMessagePesan))
+                    <div class="alert-container12 success">
+                        @if($searchPesan)
+                        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                        @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)
+                        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                        @endif
+                        <div>
+                            {{ $successMessagePesan }}
+                        </div>
+                    </div>
                     @endif
-                    <div>
-                        {{ $successMessagePesan }}
-                    </div>
                 </div>
-                @endif
             </div>
         </div>
-    </div>
 </div>
 
 <table class="table table-bordered" id="tabelpesan">
