@@ -1,14 +1,10 @@
 @extends('template')
 @extends('sidebar')
+
+@section('judul_halaman', 'Berita')
+
 @section('content')
 
-
-<head>
-    <title>
-        DARA || Berita
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">

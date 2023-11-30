@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Akun')
 @section('content')
-
-<head>
-  <title>
-    DARA || Akun
-  </title>
-  <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="content">
   @if(session('error'))

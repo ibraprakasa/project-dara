@@ -14,8 +14,8 @@ class KelolaAkunController extends Controller
 {
     public function index(Request $request)
     {
-        $roles = Role::all(); // Mengambil semua peran dari model Role
-        $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
+        $roles = Role::orderBy('role_name')->get(); 
+        $goldar = GolonganDarah::orderBy('nama')->get(); 
         $searchPendonor = request()->input('searchpendonor'); 
         $searchUser = request()->input('searchuser'); 
         $sort = request()->input('sortuser');

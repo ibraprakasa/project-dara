@@ -1,13 +1,8 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Kelola Akun')
 @section('content')
 
-<head>
-    <title>
-        DARA || Kelola Akun
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="row text-center">
     <div class="" style="width:820px;margin-top:100px; margin-bottom:-90px; margin-left:60px">

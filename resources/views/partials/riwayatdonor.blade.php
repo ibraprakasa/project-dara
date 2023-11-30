@@ -4,14 +4,10 @@ use Carbon\Carbon;
 
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Riwayat')
+
 @section('content')
 
-<head>
-    <title>
-        DARA || Riwayat Donor
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="row text-center">
     <div class="col" style="margin-top:100px; margin-bottom:-62px; margin-left:45px">
@@ -64,11 +60,12 @@ use Carbon\Carbon;
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jumlah Kantong</th>
-                <th scope="col">Tanggal</th>
+                <th scope="col">Kode Pendonor</th>
+                <th scope="col">Nama Pendonor</th>
                 <th scope="col">Gol. Darah</th>
                 <th scope="col">Lokasi</th>
+                <th scope="col">Jumlah Kantong</th>
+                <th scope="col">Tanggal</th>
             </tr>
         </thead>
         <tbody class="waduh">
@@ -80,11 +77,12 @@ use Carbon\Carbon;
             @foreach($riwayat_donor as $key => $rd)
             <tr>
                 <th scope="row">{{ $key+$riwayat_donor->firstItem() }}</th>
+                <td>{{ $rd->pendonor->kode_pendonor }}</td>
                 <td>{{ $rd->pendonor->nama }}</td>
-                <td>{{ $rd->jumlah_donor }}</td>
-                <td>{{ Carbon::parse($rd->tanggal_donor)->translatedFormat('l, j F Y') }}</td>
                 <td>{{ $rd->pendonor->golongandarah->nama }}</td>
                 <td>{{ $rd->lokasi_donor }}</td>
+                <td>{{ $rd->jumlah_donor }}</td>
+                <td>{{ Carbon::parse($rd->tanggal_donor)->translatedFormat('l, j F Y') }}</td>
             </tr>
             @endforeach
             @endif
@@ -98,12 +96,13 @@ use Carbon\Carbon;
         <thead class="thead" style="background-color:#3B4B65; color:white;">
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nama</th>
-                <th scope="col">Jumlah Ambil</th>
-                <th scope="col">Tanggal</th>
+                <th scope="col">Kode Pendonor</th>
+                <th scope="col">Nama Pendonor</th>
                 <th scope="col">Gol. Darah</th>
                 <th scope="col">Penerima</th>
                 <th scope="col">Kontak Penerima</th>
+                <th scope="col">Jumlah Ambil</th>
+                <th scope="col">Tanggal Ambil</th>
             </tr>
         </thead>
         <tbody class="waduh">
@@ -115,12 +114,13 @@ use Carbon\Carbon;
             @foreach($riwayat_ambil as $key => $rd)
             <tr>
                 <th scope="row">{{ $key+1 }}</th>
+                <td>{{ $rd->pendonor->kode_pendonor }}</td>
                 <td>{{ $rd->pendonor->nama }}</td>
-                <td>{{ $rd->jumlah_ambil }}</td>
-                <td>{{ Carbon::parse($rd->tanggal_ambil)->translatedFormat('l, j F Y') }}</td>
                 <td>{{ $rd->pendonor->golongandarah->nama }}</td>
                 <td>{{ $rd->penerima }}</td>
                 <td>{{ $rd->kontak_penerima }}</td>
+                <td>{{ $rd->jumlah_ambil }}</td>
+                <td>{{ Carbon::parse($rd->tanggal_ambil)->translatedFormat('l, j F Y') }}</td>
             </tr>
             @endforeach
             @endif

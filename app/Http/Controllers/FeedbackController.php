@@ -89,7 +89,8 @@ class FeedbackController extends Controller
             $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara .'"' ;
         }
 
-        $query->orderByDesc('star');
+        $query->join('pendonor', 'testimonial.id_pendonor', '=', 'pendonor.id')
+        ->orderBy('kode_pendonor');
         $query1->orderBy('name');
 
         $data  = $query->paginate(10);

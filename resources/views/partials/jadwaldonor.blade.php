@@ -1,14 +1,8 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Jadwal Donor')
 @section('content')
 
-<head>
-    <title>
-        DARA || Jadwal Donor
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">

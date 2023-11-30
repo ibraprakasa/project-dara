@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Pendonor')
 @section('content')
-
-<head>
-    <title>
-        DARA || Pendonor
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="filter btn-group">
     <form action="#" method="GET">

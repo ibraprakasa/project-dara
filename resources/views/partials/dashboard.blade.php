@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Dashboard')
 @section('content')
-
-<head>
-  <title>
-    DARA || Dashboard
-  </title>
-  <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="content">
 

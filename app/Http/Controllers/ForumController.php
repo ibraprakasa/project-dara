@@ -32,12 +32,14 @@ class ForumController extends Controller
 
         if($search){
             $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
-        }elseif($tanggalawal && $tanggalakhir){
-            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
+        } elseif ($tanggalawal && $tanggalakhir) {
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' . $tanggalakhir . '"';
         }
+        $query->join('pendonor', 'posts.id_pendonor', '=', 'pendonor.id')
+        ->orderBy('kode_pendonor');
 
         $postingan = $query->paginate(10);
-        return view('partials.forum-postingan', compact('postingan','search','successMessage'));
+        return view('partials.forum-postingan', compact('postingan', 'search', 'successMessage'));
     }
 
     public function getKomentar($id_post)
@@ -68,6 +70,10 @@ class ForumController extends Controller
         }elseif($tanggalawal && $tanggalakhir){
             $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }
+
+        $query->join('pendonor', 'comments.id_pendonor', '=', 'pendonor.id')
+        ->orderBy('kode_pendonor');
+
 
         $komentar = $query->paginate(10);
         return view('partials.forum-komentar', compact('komentar','search','successMessage'));   
@@ -102,6 +108,10 @@ class ForumController extends Controller
         }elseif($tanggalawal && $tanggalakhir){
             $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }
+
+        $query->join('pendonor', 'balas_comments.id_pendonor', '=', 'pendonor.id')
+        ->orderBy('kode_pendonor');
+
 
         $balas = $query->paginate(10);
         $post = Post::all();
