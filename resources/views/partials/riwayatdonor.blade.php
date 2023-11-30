@@ -14,9 +14,9 @@ use Carbon\Carbon;
 </head>
 
 <div class="row text-center">
-    <div class="col" style="margin-top:100px; margin-bottom:-70px; margin-left:40px">
+    <div class="col" style="margin-top:100px; margin-bottom:-62px; margin-left:45px">
         <div class="row" style="width:125%;font-weight: bold">
-            <a href="#" id="tombol1" style="text-decoration: none; margin-right: 10px" class="col">
+            <a href="#" id="tombol1" style="text-decoration: none; margin-right: 20px" class="col">
                 Riwayat Donor Darah
             </a>
             <a href="#" id="tombol2" style="text-decoration: none" class="col">
@@ -27,22 +27,22 @@ use Carbon\Carbon;
     <div class="col"></div>
 </div>
 
-<div class="waw btn-group" style="margin-top:75px; margin-bottom:-90px">
+<div class="waw btn-group" style="margin-top:75px; margin-bottom:-83px">
     <form action="/riwayatdonor" method="GET" style="display: flex;">
-        <input class="btn" type="search" name="search" placeholder="Cari Riwayat..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-        <button type="submit" class="btn btn-primary" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
 
-    <div style="display: flex; margin-left:15px;">
+    <div class="search-filter-group">
         <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterriwayat">
             <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
 
-    <div style="display: flex; margin-left:15px;">
+    <div class="search-filter-group">
         @if(isset($successMessage))
         <div class="alert-container12 success">
             @if($search)
@@ -180,7 +180,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>

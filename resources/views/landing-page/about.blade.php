@@ -21,14 +21,14 @@
             <div class="flex flex-wrap -mx-2 sm:-mx-4 lg:-mx-2 xl:-mx-4">
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                 <div class="mb-4 sm:mb-8 sm:h-400px] md:h-[346px] lg:h-[225px] xl:h-[310px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/Group-7.png') }}" alt="about image"
+                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-01.jpg') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
               </div>
 
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                 <div class="mb-4 sm:mb-8 sm:h-[220px] md:h-[346px] lg:mb-4 lg:h-[225px] xl:mb-8 xl:h-[310px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/Group-7.png') }}" alt="about image"
+                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-02.jpg') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
 

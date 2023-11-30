@@ -135,14 +135,13 @@
                     Apakah Anda yakin ingin keluar dari akun Anda? 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Keluar</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Keluar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-
 <!-- END MODAL -->
 
 @endsection
