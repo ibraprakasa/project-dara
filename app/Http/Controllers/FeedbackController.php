@@ -90,8 +90,7 @@ class FeedbackController extends Controller
             $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '"';
         }
 
-        $query->join('pendonor', 'testimonial.id_pendonor', '=', 'pendonor.id')
-            ->orderBy('kode_pendonor');
+        $query->orderByDesc('star');
         $query1->orderBy('name');
 
         $data  = $query->paginate(10);
@@ -142,10 +141,10 @@ class FeedbackController extends Controller
         }
     }
 
-
     public function postTestimoni($id)
     {
         $data = Testimonial::find($id);
+        // dd($data);
         if ($data) {
             $data->status = true;
             $data->save();
@@ -155,6 +154,17 @@ class FeedbackController extends Controller
         }
     }
 
+    public function postBatalTestimoni($id)
+    {
+        $data = Testimonial::find($id);
+        if ($data) {
+            $data->status = false;
+            $data->save();
+            return redirect()->route('feedback')->with('successTestimoni', 'Testimoni berhasil disembunyikan.');
+        } else {
+            return redirect()->route('feedback')->with('errorTestimoni', 'Testimoni gagal disembunyikan.');
+        }
+    }
 
 
     public function deleteTestimoni($id)
