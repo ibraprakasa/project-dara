@@ -46,10 +46,6 @@ class LaporanController extends Controller
             $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }
 
-        $query->join('pendonor', 'reports.id_pendonor', '=', 'pendonor.id')
-        ->orderBy('kode_pendonor');
-
-
         $report = $query->paginate(10);
         return view('partials.laporan', compact('report','daftarType','postingan','successMessage','search'));
     }
