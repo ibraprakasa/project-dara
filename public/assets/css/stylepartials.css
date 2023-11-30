@@ -26,10 +26,11 @@ body {
     color: white;
 }
 
-.bi {
+.bi, .fa {
     font-weight: bold;
     font-size: 22px;
 }
+
 
 .filte {
     margin-top: 9px;

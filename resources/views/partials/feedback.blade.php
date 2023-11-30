@@ -348,7 +348,7 @@ use Carbon\Carbon;
                 @method('DELETE')
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger modalbuttondanger-style"v>>Hapus</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>

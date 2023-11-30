@@ -137,6 +137,7 @@ class FeedbackController extends Controller
     public function postTestimoni($id)
     {
         $data = Testimonial::find($id);
+        dd($data);
         if ($data) {
             $data->status = true;
             $data->save();
