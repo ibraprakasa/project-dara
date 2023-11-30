@@ -12,9 +12,13 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         DB::table('posts')->insertGetId(array(
+<<<<<<< HEAD
             'id_pendonor' => '1',
+=======
+            'id_pendonor' => '10',
+>>>>>>> 76a76523381a7402caf2a24bd4a422584af6b80b
             'text' => 'Ini adalah status dari pendonor',
-            'gambar' => 'https://www.suarasurabaya.net/wp-content/uploads/2019/05/potretd33616_clip2.jpg',
+            'gambar' => '1697793546.jpeg',
             'created_at' =>now(),
             'updated_at' =>now(),
         ));

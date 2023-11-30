@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('kontak_pendonor', 20)->nullable(false);
             $table->string('alamat_pendonor', 100)->nullable(false);
             $table->string('password', 100)->nullable(false);
-            $table->integer('stok_darah_tersedia')->nullable();
+            $table->integer('total_donor_darah')->nullable();
             $table->timestamps();
         });
     }

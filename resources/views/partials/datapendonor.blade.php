@@ -11,20 +11,20 @@
 
 <div class="filter btn-group">
     <form action="#" method="GET">
-        <input class="btn" type="search" name="search" placeholder="Cari Pendonor..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">
     </form>
-    <button type="button" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+    <button type="button" class="btn searchicon-style">
         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
     </button>
 </div>
 
 <div class="filter btn-group">
 
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahpendonor" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+    <button type="button" class="btn btn-dark insertbar-style" data-toggle="modal" data-target=".tambahpendonor">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" data-toggle="modal" data-target=".tambahpendonor" type="button" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary inserticon-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
         Tambah
     </button>
 

@@ -60,6 +60,8 @@ class StokDarahController extends Controller
             'tanggal_donor' => now()
         ]);
 
+        $findPendonor->total_donor_darah += $jumlah;
+        $findPendonor->update();
         // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
         return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil ditambahkan.');
     }

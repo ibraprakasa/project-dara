@@ -21,19 +21,19 @@
 
 <div class="filte btn-group">
     <form action="/jadwaldonor" method="GET" style="display: flex;">
-        <input class="btn" type="search" name="search" placeholder="Cari Lokasi..." style="height:42px;background-color: #d9d9d9; color:black;border-radius:15px 0 0 0;">
-        <button type="submit" class="btn btn-dark" style="border-radius:0 0 15px 0;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Lokasi...">
+        <button type="submit" class="btn btn-dark searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
 </div>
 
 <div class="filte btn-group">
-    <button type="button" class="btn btn-dark" data-toggle="modal" data-target=".tambahjadwaldonor" style="border-radius:15px 0 0 15px;width: 22px; display: flex; justify-content: center; align-items: center; background-color: #3B4B65;">
+    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahjadwaldonor">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary" type="button" data-toggle="modal" data-target=".tambahjadwaldonor" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;">
+    <button class="btn btn-secondary insertbar-style" type="button" data-toggle="modal" data-target=".tambahjadwaldonor">
         Tambah
     </button>
 </div>
@@ -41,13 +41,13 @@
 <div class="filte btn-group">
     <form action="/jadwaldonor" method="GET" style="display: flex;">
         <div class="dropdown">
-            <button class="btn btn-dark dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height:42px;background-color: #3B4B65; color:white;border-radius:0 0 15px 0;">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Filter berdasarkan
             </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown" style="background-color: #d9d9d9; color:black;border-radius:0 0 0 0;padding:0;">
-                <button class="dropdown-item" style="font-weight:bold; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="abjad">Abjad</button>
-                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
-                <button class="dropdown-item" style="font-weight:bold;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
+                <button class="dropdown-item" type="submit" name="sort" value="abjad">Abjad</button>
+                <button class="dropdown-item" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
+                <button class="dropdown-item" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
             </div>
         </div>
     </form>
@@ -115,7 +115,7 @@
                 <td>{{ $row->kontak }}</td>
                 <td>{{ $row->jumlah_pendonor }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#editjadwaldonor{{ $row->id }}">
+                    <button class="custom-button" data-toggle="modal" id="" data-target="#editjadwaldonor{{ $row->id }}"  >
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
                     </button>
                 </td>
@@ -143,7 +143,7 @@
 
 <!-- MODAL INSERT JADWAL DONOR -->
 <div class="modal fade tambahjadwaldonor" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Jadwal Donor</h5>
@@ -154,54 +154,89 @@
             <div class="modal-body">
                 <form action="/insertjadwaldonor" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="namalokasi">Nama Lokasi</label>
-                        <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" placeholder="ex: Politeknik Negeri Padang">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="namalokasi">Nama Lokasi</label>
+                                <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" placeholder="ex: Politeknik Negeri Padang" required oninvalid="this.setCustomValidity('Lokasi Donor harus diisi.')" oninput="this.setCustomValidity('')">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771" required oninvalid="this.setCustomValidity('Kontak Lokasi harus diisi.')" oninput="this.setCustomValidity('')">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b"></textarea>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggal">Tanggal</label>
+                                <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" required oninvalid="this.setCustomValidity('Lengkapi Tanggal Donor terlebih dahulu.')" oninput="this.setCustomValidity('')">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jammulai">Jam Mulai</label>
+                                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai" required oninvalid="this.setCustomValidity('Format Jam Mulai tidak valid.')" oninput="this.setCustomValidity('')">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jamselesai">Jam Selesai</label>
+                                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" required oninvalid="this.setCustomValidity('Format Jam Selesai tidak valid.')" oninput="this.setCustomValidity('')">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggal">Tanggal</label>
-                        <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal">
+                    <div class="row mb-3">
+                        <div class="col mt-2">
+                            <div id="map" style="height: 262px;"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col mt-1">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="alamat">Alamat</label>
+                                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3" placeholder="Jalan Tarandam III No 27b" required oninvalid="this.setCustomValidity('Alamat Lokasi Donor harus diisi.')" oninput="this.setCustomValidity('')"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="latitude">Latitude</label>
+                                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required oninvalid="this.setCustomValidity('Latitude harus diisi.')" oninput="this.setCustomValidity('')">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="longitude">Longitude</label>
+                                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required oninvalid="this.setCustomValidity('Longitude harus diisi.')" oninput="this.setCustomValidity('')">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jammulai">Jam Mulai</label>
-                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai">
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success modalbuttonsuccess-style">Tambah</button>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jamselesai">Jam Selesai</label>
-                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 082235221771">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="longitude">Longitude</label>
-                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" placeholder="ex : xx.xxx" required>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="latitude">Latitude</label>
-                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" placeholder="ex : xx.xxx" required>
-                    </div>
-                    <div id="map" style="height: 400px;"></div>
+                </form>
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Tambah</button>
-            </div>
-            </form>
         </div>
     </div>
-</div>
 </div>
 <!-- END MODAL -->
 
 <!-- MODAL EDIT JADWAL DONOR -->
 @foreach($data as $row)
 <div class="modal fade" id="editjadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Jadwal Donor</h5>
@@ -212,54 +247,88 @@
             <div class="modal-body">
                 <form action="{{ route('updatejadwaldonor', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="namalokasi">Nama Lokasi</label>
-                        <input class="kolom form-control" name="lokasi" type="text" id="namalokasi" value="{{ $row->lokasi }}">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="namalokasi">Nama Lokasi</label>
+                                 <input class="kolom form-control" type="text" name="lokasi" id="namalokasi" value="{{ $row->lokasi }}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="kontak">Kontak</label>
+                                <input class="kolom form-control" name="kontak" type="number" id="kontak" value="{{ $row->kontak }}">
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="alamat">Alamat</label>
-                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3">{{ $row->alamat }}
-                        </textarea>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" style="color:black; font-weight:bold">
+                                <label for="tanggal">Tanggal</label>
+                                <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" value="{{ $row->tanggal_donor }}">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jammulai">Jam Mulai</label>
+                                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai" value="{{ $row->jam_mulai }}">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="jamselesai">Jam Selesai</label>
+                                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" value="{{ $row->jam_selesai }}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="tanggal">Tanggal</label>
-                        <input class="kolom form-control" name="tanggal_donor" type="date" id="tanggal" value="{{ $row->tanggal_donor }}">
+                    <div class="row mb-3">
+                        <div class="col mt-2">
+                            <div id="map{{ $row->id }}" style="height: 262px;"></div>
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col mt-1">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="alamat">Alamat</label>
+                                        <textarea class="kolom form-control" name="alamat" id="alamat" rows="3">{{ $row->alamat }}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="latitude">Latitude</label>
+                                        <input class="kolom form-control" name="latitude" type="double" id="latitude" name="latitude" step="any" value="{{ $row->latitude }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group" style="color:black; font-weight:bold">
+                                        <label for="longitude">Longitude</label>
+                                        <input class="kolom form-control" name="longitude" type="double" id="longitude" name="longitude" step="any" value="{{ $row->longitude }}" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jammulai">Jam Mulai</label>
-                        <input class="kolom form-control" name="jam_mulai" type="time" id="jammulai" value="{{ $row->jam_mulai }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="jamselesai">Jam Selesai</label>
-                        <input class="kolom form-control" name="jam_selesai" type="time" id="jamselesai" value="{{ $row->jam_selesai }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="kontak">Kontak</label>
-                        <input class="kolom form-control" name="kontak" type="number" id="kontak" value="{{ $row->kontak }}">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="longitude">Longitude</label>
-                        <input class="kolom form-control" type="double" id="editlongitude" name="longitude" value="{{ $row->longitude }}" required>
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="latitude">Latitude</label>
-                        <input class="kolom form-control" type="double" id="editlatitude" name="latitude" value="{{ $row->latitude }}" required>
-                    </div>
-                    <!-- <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="status">Status</label>
-                        <select class="kolom form-control" id="status" ">
-                            <option class="kolom form-control" value="default">Belum Selesai</option>
-                            <option class="kolom form-control" value="selesai">Selesai</option>
-                        </select>
-                    </div> -->
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+                        <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $('#editjadwaldonor{{ $row->id }}').on('shown.bs.modal', function () {
+        initMap{{ $row->id }}();
+    });
+</script>
 @endforeach
 <!-- END MODAL -->
 
@@ -281,8 +350,8 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -335,5 +404,26 @@
     }
     window.initMap = initMap;
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>@foreach($data as $row)
+<script>
+    function initMap{{ $row->id }}() {
+        // Ambil latitude dan longitude dari variabel PHP
+        var latitude = {{ $row->latitude }};
+        var longitude = {{ $row->longitude }};
+
+        // Buat objek peta dengan koordinat yang diambil
+        var map = new google.maps.Map(document.getElementById('map{{ $row->id }}'), {
+            center: { lat: latitude, lng: longitude },
+            zoom: 15, // Sesuaikan zoom sesuai kebutuhan
+        });
+
+        // Tambahkan marker di lokasi yang ditentukan
+        var marker = new google.maps.Marker({
+            position: { lat: latitude, lng: longitude },
+            map: map,
+            title: 'Lokasi Donor',
+        });
+    }
+</script>
+@endforeach
 @endsection

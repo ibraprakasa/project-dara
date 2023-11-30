@@ -119,7 +119,8 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     // FEEDBACK
     Route::get('feedback','App\Http\Controllers\FeedbackController@getTestimoni')->name('feedback');
     
-    Route::post('feedback.reply','App\Http\Controllers\FeedbackController@postReply')->name('feedback.reply');
+    Route::post('kirimbalasanpesan','App\Http\Controllers\FeedbackController@postReply')->name('kirimbalasanpesan');
+    Route::post('kirimtestimoni/{id}','App\Http\Controllers\FeedbackController@postTestimoni')->name('kirimtestimoni');
 
     Route::delete('deletetestimoni/{id}','App\Http\Controllers\FeedbackController@deleteTestimoni')->name('deletetestimoni');
     Route::delete('deletepesan/{id}','App\Http\Controllers\FeedbackController@deletePesan')->name('deletepesan');
