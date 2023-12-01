@@ -139,6 +139,4 @@
     </div>
 </div>
 <!-- END MODAL -->
-
-
 @endsection

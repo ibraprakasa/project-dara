@@ -2,10 +2,6 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-#sidebarCollapse:hover{
-    background-color: #3B4B65 !important;
-}
-
 .thead-style{
     background-color:#3B4B65; 
     color:white;
@@ -689,5 +685,15 @@ table td {
     background-color: white ;
 }
 
+ .sidebar.active {
+    width: 0; /* Lebar sidebar saat ditutup */
+ }
 
+ .main-panel {
+    transition: margin-left .5s; /* Animasi perubahan margin utama saat sidebar ditutup/buka */
+ }
+
+ .main-panel.active {
+    margin-left: 0; /* Margin utama saat sidebar ditutup */
+ }
 

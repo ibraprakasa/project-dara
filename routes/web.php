@@ -94,6 +94,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::post('insertpendonorsuper', 'App\Http\Controllers\KelolaAkunController@insertpendonorsuper')->name('insertpendonorsuper');
     Route::post('updatependonorsuper/{id}', 'App\Http\Controllers\KelolaAkunController@updatependonorsuper')->name('updatependonorsuper');
     Route::delete('deletependonorsuper/{id}', 'App\Http\Controllers\KelolaAkunController@deletependonorsuper')->name('deletependonorsuper');
+    Route::post('updatepasswordpendonor/{id}', 'App\Http\Controllers\KelolaAkunController@updatepasswordpendonor')->name('updatepasswordpendonor');
     // END PENDONOR
 
     // USER
