@@ -137,13 +137,13 @@ use Carbon\Carbon;
                 </td>
                 @if($row->status)
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#batalkirimtestimoni{{ $row->id }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#batalkirimtestimoni{{ $row->id }}" title="Tampil di Website">
                         <i class="fa fa-check-circle" style="color: #03A13B;"></i>
                     </button>
                 </td>
                 @elseif($row->status === 0 )
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}">
+                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}" title="Tidak Tampil di Website">
                         <i class="fa fa-times-circle" style="color: #E70000;"></i>
                     </button>
                 </td> @endif

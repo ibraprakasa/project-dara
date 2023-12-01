@@ -161,8 +161,8 @@ use Carbon\Carbon;
                         </div>
                     </div>
                     <div class="form-group">
-                        <label style="color:black;font-weight:bold" for="goldar">Golongan Darah</label>
-                        <select class="kolom form-control" name="id_golongan_darah">
+                        <label style="color:black;font-weight:bold" for="id_golongan_darah">Golongan Darah</label>
+                        <select class="kolom form-control" id="id_golongan_darah" name="id_golongan_darah">
                             <option value="">-</option>
                             @foreach($goldarDaftar as $darah)
                             <option class="kolom form-control" value="{{ $darah->id }}" @if(request('id_golongan_darah')==$darah->id) selected @endif>{{ $darah->nama }}</option>

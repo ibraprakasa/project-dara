@@ -24,8 +24,8 @@
   <link href="../assets/css/stylepartials.css" rel="stylesheet">
 
   <title>
-        DARA || @yield('judul_halaman', 'Judul Default')
-    </title>
+    DARA || @yield('judul_halaman', 'Judul Default')
+  </title>
 
 
 </head>
@@ -38,11 +38,11 @@
     <div class="main-panel" style="background-color:white">
       <!-- Navbar -->
       <nav class="nav-title" style="margin-bottom:-80px">
-        <div class="title">
-          <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
-            <span id="pageTitle">Title</span>
-          </a>
-        </div>
+          <div class="title">
+            <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
+              <span id="pageTitle">Title</span>
+            </a>
+          </div>
 
       </nav>
       <!-- End Navbar -->

@@ -2,6 +2,10 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+#sidebarCollapse:hover{
+    background-color: #3B4B65 !important;
+}
+
 .thead-style{
     background-color:#3B4B65; 
     color:white;
@@ -206,6 +210,7 @@ body {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
+    position: absolute;
 }
 
 .whitebold {
@@ -428,12 +433,6 @@ table td {
     margin-top: 45px;
 }
 
-.gambar1 {
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
-}
 
 .dropdown-toggle, .dropdown-item{
     font-family: 'Poppins', sans-serif;
@@ -689,4 +688,6 @@ table td {
 .select2-container--bootstrap .select2-selection--single:focus {
     background-color: white ;
 }
+
+
 
