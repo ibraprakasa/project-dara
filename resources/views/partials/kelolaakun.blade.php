@@ -567,22 +567,21 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="passwordlama">Kata Sandi Lama</label>
-                        <input class="kolom form-control" name="passwordlama" type="password" id="passwordlama" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Lama')" oninput="this.setCustomValidity('')">
+                        <input class="kolom form-control" name="passwordlama" type="password" id="passwordlama" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Lama.')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="passwordbaru">Kata Sandi Baru</label>
-                        <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru"  required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Baru')" oninput="this.setCustomValidity('')">
+                        <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru"  required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Baru.')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="passwordkonfirmasi">Konfirmasi Kata Sandi Baru</label>
-                        <input class="kolom form-control" name="passwordkonfirmasi" type="password" id="passwordkonfirmasi" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Konfirmasi Password Baru')" oninput="this.setCustomValidity('')">
+                        <input class="kolom form-control" name="passwordkonfirmasi" type="password" id="passwordkonfirmasi" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Konfirmasi Password Baru.')" oninput="this.setCustomValidity('')">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
-            <!-- END MODAL -->
         </div>
     </div>
 </div>

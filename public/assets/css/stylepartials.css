@@ -28,7 +28,7 @@ body {
 
 .bi, .fa {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 21px;
 }
 
 
@@ -519,6 +519,14 @@ table td {
     margin-top: 40px;
     margin-right: 20px;
     margin-bottom: -10px;
+}
+
+@media screen and (max-width: 768px) {
+    .breadcrumb-container {
+        visibility: hidden;
+    }
+    
+    
 }
 
 

@@ -11,20 +11,58 @@ use Illuminate\Support\Facades\Hash;
 
 class DataPendonorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
-        $search = request()->input('search');
+        $goldar = GolonganDarah::orderBy('nama')->get(); 
+        $searchPendonor = request()->input('searchpendonor'); 
+        $golonganDarah = request()->input('id_golongan_darah');
+        $jenisKelamin = request()->input('jenis_kelamin');
+        $successMessage = null;
+        $successMessageUser = null;
 
         $query = Pendonor::query();
 
-        if ($search) {
-            $query->where('nama', 'LIKE', '%' . $search . '%');
+        if ($searchPendonor) {
+            $query  ->Where('nama', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('kode_pendonor', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('email', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('kontak_pendonor', 'LIKE', '%' . $searchPendonor . '%')
+                    ->orWhere('tanggal_lahir', 'LIKE', '%' . $searchPendonor . '%');
+
+        }
+        
+
+        if ($golonganDarah) {
+            $query->whereHas('golongandarah', function ($q) use ($golonganDarah) {
+                $q->where('id', $golonganDarah);
+            });
         }
 
-        $data = $query->paginate(5);
+        if ($jenisKelamin) {
+            $query->where('jenis_kelamin', $jenisKelamin);
+        }
 
-        return view('partials.datapendonor', compact('data','goldar'));
+        if($searchPendonor){
+            $successMessage = 'Hasil Pencarian untuk "' . $searchPendonor . '"';
+        }elseif($jenisKelamin && $golonganDarah){
+            $goldarah = GolonganDarah::find($golonganDarah);
+            if ($goldarah && $jenisKelamin) {
+                $successMessage = 'Filter Berdasarkan Jenis Kelamin "' . $jenisKelamin . '"' . ' dan Golongan Darah "' .$goldarah->nama . '"';
+            }
+        }elseif($jenisKelamin){
+            $successMessage = 'Filter Berdasarkan Jenis Kelamin "' . $jenisKelamin . '"';
+        }elseif($golonganDarah){
+            $goldarah = GolonganDarah::find($golonganDarah);
+            if ($goldarah) {
+                $successMessage = 'Filter Berdasarkan Golongan Darah "' . $goldarah->nama . '"';
+            }
+        }
+
+        $query->orderBy('kode_pendonor');
+
+        $data = $query->paginate(10);
+
+        return view('partials.datapendonor', compact('data', 'goldar','successMessage','searchPendonor','jenisKelamin','golonganDarah'));
     }
 
     public function insertpendonor(Request $request)
