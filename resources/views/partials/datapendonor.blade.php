@@ -4,7 +4,7 @@
 @section('content')
 
 <div class="filter btn-group">
-    <form action="#" method="GET">
+    <form action="/datapendonor" method="GET">
         <input class="btn searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
     </form>
     <button type="button" class="btn searchicon-style">
@@ -124,7 +124,7 @@
                 <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/insertpendonor" method="POST" enctype="multipart/form-data">
+            <form action="/insertpendonor" method="POST" enctype="multipart/form-data" autocomplete="off">
                 @csrf
                 <div class="modal-body">
                     <div class="row">
@@ -459,7 +459,7 @@
               <span aria-hidden=" true">&times;</span>
                 </button>
             </div>
-            <form action="/kelolaakun" method="GET">
+            <form action="/datapendonor" method="GET">
                 <div class="modal-body">
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="goldar">Golongan Darah</label>

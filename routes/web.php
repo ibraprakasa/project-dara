@@ -143,5 +143,6 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function () {
     Route::post('insertpendonor', 'App\Http\Controllers\DataPendonorController@insertpendonor')->name('insertpendonor');
     Route::post('updatependonor/{id}', 'App\Http\Controllers\DataPendonorController@updatependonor')->name('updatependonor');
     Route::delete('deletependonor/{id}', 'App\Http\Controllers\DataPendonorController@deletependonor')->name('deletependonor');
+    Route::post('updatepasswordpendonor/{id}', 'App\Http\Controllers\DataPendonorController@updatepasswordpendonor')->name('updatepasswordpendonor');
     //END
 });

@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
+                        <input type="email" name="email" class="form-control" placeholder="Email" required autofocus oninvalid="this.setCustomValidity('Masukkan email Anda.')" oninput="this.setCustomValidity('')">
                     </div>
                 </div>
                 <div class="col-md-1">
