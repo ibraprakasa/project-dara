@@ -4,7 +4,7 @@
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12">
           <div class="mb-10 w-full">
             <a href="javascript:void(0)" class="mb-6 inline-block max-w-[160px]">
-              <img src="{{ asset('assets/assets-landing-page/images/logo/dara-white.png') }}" alt="logo" class="max-w-full" />
+              <img src="{{ asset('assets/assets-landing-page/images/logo/dara1-transformed.png') }}" alt="logo" class="max-w-full" />
             </a>
             <p class="mb-8 max-w-[270px] text-base text-gray-7">
             Setetes Darah Akan Sangat Berarti. Jangan Lewatkan Kesempatan untuk Memberi.
@@ -78,56 +78,28 @@
             <ul>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  How it works
+                  Berita
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Privacy policy
+                  Lokasi
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Terms of Service
+                  Forum
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Refund policy
+                  Riwayat
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
-          <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">
-              Our Products
-            </h4>
-            <ul>
-              <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  LineIcons
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Ecommerce HTML
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  TailAdmin
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  PlainAdmin
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
+        
         <div class="w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12">
           <div class="mb-10 w-full">
             <h4 class="mb-9 text-lg font-semibold text-white">Latest blog</h4>
@@ -178,7 +150,7 @@
                 Designed and Developed by
                 <a href="https://tailgrids.com" rel="nofollow noopner" target="_blank"
                   class="text-gray-1 hover:underline">
-                  TailGrids and UIdeck
+                  Dara
                 </a>
               </p>
             </div>

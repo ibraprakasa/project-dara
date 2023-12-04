@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Berita;
 use App\Models\Inquiries;
 use App\Models\Testimonial;
+use App\Models\Show;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -33,6 +34,12 @@ class LandingPageController extends Controller
         ]);
 
         return response()->json(['message' => 'Formulir berhasil terkirim.'], 200);
+    }
+
+    public function getShow($id)
+    {
+        $show = Berita::find($id);
+        return view('landing-page.details.blog-details', compact('show'));
     }
     
 

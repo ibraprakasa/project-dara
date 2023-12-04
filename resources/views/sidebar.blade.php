@@ -89,7 +89,7 @@
                     <i class="bi bi-star-fill" style="color: white; font-weight:bold;"></i>
                     <p>Tanggapan</p>
                 </a>
-            </li>
+            </li> 
             <hr class="jaraksidebar">
             @endif
             <li class="{{ request()->routeIs('akun') ? 'active' : '' }}">

@@ -5,16 +5,12 @@
           <div class="w-full px-4 lg:w-1/2">
             <div class="mb-12 max-w-[540px] lg:mb-0">
               <h2 class="mb-5 text-3xl font-bold leading-tight text-dark sm:text-[40px] sm:leading-[1.2]">
-                Brilliant Toolkit to Build Nextgen Website Faster.
+              DARA, Aplikasi Pendonor untuk Mewujudkan Mimpi Bersama.
               </h2>
               <p class="mb-10 text-base leading-relaxed text-body-color">
-                The main ‘thrust' is to focus on educating attendees on how to best protect highly vulnerable business
-                applications with
-                interactive panel discussions and roundtables led by subject matter experts.
+              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses pendonoran, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
                 <br> <br>
-                The main ‘thrust' is to focus on educating attendees on how to best protect highly vulnerable business
-                applications with
-                interactive panel.
+                Wujudkan Mimpi Bersama dengan Sentuhan Kebaikan. DARA tidak hanya sekadar aplikasi, tapi juga sebuah panggilan untuk berbagi kehidupan.
               </p>
 
               <a href="javascript:void(0)"

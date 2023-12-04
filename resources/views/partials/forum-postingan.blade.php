@@ -85,9 +85,14 @@
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
                 <td>
+                    @if($row->gambar == null)
+                    <img src="assets/img/daraicon.png"" alt="" style=" width:100px; height:100px;">
+                    @else
                     <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
                         <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
-                    </a>
+                    </a> @endif
+
+
                 </td>
                 <td>
                     {{ $row->comments->count() }}
@@ -262,4 +267,4 @@
     </div>
     <!--  END MODAL  -->
 
-@endsection
+    @endsection

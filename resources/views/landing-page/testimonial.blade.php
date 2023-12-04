@@ -45,7 +45,7 @@
               </div>
 
               <p class="text-body-color text-base mb-6">
-                {{ $row->text }}xjajsdjqsndasxkandanaskxkasnxk
+                {{ $row->text }} 
               </p>
 
               <a class="flex items-center gap-4">

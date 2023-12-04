@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('testimonial', function (Blueprint $table) {
+        Schema::create('notifikasis', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_pendonor')->nullable(false);
-            $table->text('text')->nullable();
-            $table->enum('star', ['1','2','3','4','5'])->nullable(false);
-            $table->boolean('status');
+            $table->unsignedBigInteger('id_post')->nullable(false);
+            $table->unsignedBigInteger('id_comment')->nullable();
+            $table->unsignedBigInteger('id_balas_comment')->nullable();
+            $table->boolean('status_read')->nullable(false)->default(false);
             $table->timestamps();
-            $table->foreign('id_pendonor')->references('id')->on('pendonor');
         });
     }
 
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('testimonial');
+        Schema::dropIfExists('notifikasis');
     }
 };

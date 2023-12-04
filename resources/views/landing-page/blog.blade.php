@@ -20,8 +20,8 @@
         <div class="w-full px-4 md:w-1/2 lg:w-1/3">
           <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
             <div class="mb-8 overflow-hidden rounded-[5px]">
-              <a href="blog-details.html" class="block">
-                <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+              <a href="{{ route('berita-show', ['id' => $row->id]) }}" class="block">
+              <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
                </a>
             </div>
             <div>
@@ -42,56 +42,5 @@
           </div>
         </div>
         @endforeach
-        <!-- <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-          <div class="wow fadeInUp group mb-10" data-wow-delay=".15s">
-            <div class="mb-8 overflow-hidden rounded-[5px]">
-              <a href="blog-details.html" class="block">
-                <img src="{{ asset('assets/assets-landing-page/images/blog/blog-02.jpg') }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
-              </a>
-            </div>
-            <div>
-              <span
-                class="inline-block px-4 py-0.5 mb-6 text-xs font-medium leading-loose text-center text-white rounded-[5px] bg-primary">
-                Mar 15, 2023
-              </span>
-              <h3>
-                <a href="javascript:void(0)"
-                  class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
-                  How to earn more money as a wellness coach
-                </a>
-              </h3>
-              <p class="max-w-[370px] text-base text-body-color">
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="w-full px-4 md:w-1/2 lg:w-1/3">
-          <div class="wow fadeInUp group mb-10" data-wow-delay=".2s">
-            <div class="mb-8 overflow-hidden rounded-[5px]">
-              <a href="blog-details.html" class="block">
-                <img src="{{ asset('assets/assets-landing-page/images/blog/blog-03.jpg') }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
-              </a>
-            </div>
-            <div>
-              <span
-                class="inline-block px-4 py-0.5 mb-6 text-xs font-medium leading-loose text-center text-white rounded-[5px] bg-primary">
-                Jan 05, 2023
-              </span>
-              <h3>
-                <a href="javascript:void(0)"
-                  class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
-                  The no-fuss guide to upselling and cross selling
-                </a>
-              </h3>
-              <p class="max-w-[370px] text-base text-body-color">
-                Lorem Ipsum is simply dummy text of the printing and
-                typesetting industry.
-              </p>
-            </div>
-          </div>
-        </div> -->
-      </div> 
     </div>
   </section>

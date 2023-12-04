@@ -144,6 +144,33 @@ class DataPendonorControllerAPI extends Controller
         ]);
     }
 
+    public function showProfileOtherDonor($id){
+        $user = Pendonor::where('id',$id)->first();
+        $goldar = GolonganDarah::find($user->id_golongan_darah)->first();
+        if(!$goldar){
+            $goldar = null;
+        }
+        return response()->json([
+            'success' => true,
+            'user' => [
+                'id' => $user->id,
+                'gambar' => $user->gambar,
+                'nama' => $user->nama,
+                'email' => $user->email,
+                'kode_pendonor'=> $user->kode_pendonor,
+                'id_golongan_darah' => [
+                    'id' => $goldar->id,
+                    'nama' => $goldar->nama
+                ],
+                'berat_badan'=> $user->berat_badan,
+                'alamat_pendonor' => $user->alamat_pendonor,
+                'tanggal_lahir' => $user->tanggal_lahir,
+                'kontak_pendonor' => $user->kontak_pendonor,
+                'jenis_kelamin' => $user->jenis_kelamin
+                ]
+        ]);
+    }
+
     public function updateGambar(Request $request) {
         // Validasi request
         $validator = Validator::make($request->all(), [

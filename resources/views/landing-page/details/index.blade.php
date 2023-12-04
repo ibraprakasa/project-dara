@@ -41,10 +41,6 @@
   @include('landing-page.cta')
   <!-- ====== CTA Section End -->
 
-  <!-- ====== Pricing Section Start -->
-  @include('landing-page.pricing')
-  <!-- ====== Pricing Section End -->
-
   <!-- ====== Testimonial Section Start -->
   @include('landing-page.testimonial')
   <!-- ====== Testimonial Section End -->
@@ -88,7 +84,7 @@
     </span>
     <span class="w-px h-4 block bg-stroke"></span>
     <span class="block max-w-[88px] w-full">
-      <img src="{{ asset('assets/assets-landing-page/images/brands/tailgrids.svg') }}" alt="tailgrids">
+      <img src="{{ asset('assets/assets-landing-page/images/brands/dara.png') }}" alt="tailgrids">
     </span>
   </a>
   <!-- ====== Made With Button End -->

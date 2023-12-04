@@ -14,6 +14,7 @@ class LaporanSeeder extends Seeder
     public function run(): void
     {
 <<<<<<< HEAD
+<<<<<<< HEAD
         DB::table('reports')->insertGetId(array(
             'id_pendonor' => '1',
             'id_post' =>  null,
@@ -33,6 +34,8 @@ class LaporanSeeder extends Seeder
             'text' => 'Ini laporan balas komentar',
             'type' => 'Balasan',
 =======
+=======
+>>>>>>> 07bd78a0f832732285adfb4e2b00d1819c73ac9c
         // DB::table('reports')->insertGetId(array(
         //     'id_pendonor' => '10',
         //     'id_post' =>  null,
@@ -62,7 +65,30 @@ class LaporanSeeder extends Seeder
             'id_reply' =>  null,
             'text' => 'Ini postingan',
             'type' => 'Postingan',
+<<<<<<< HEAD
 >>>>>>> 76a76523381a7402caf2a24bd4a422584af6b80b
+=======
+=======
+        DB::table('reports')->insertGetId(array(
+            'id_pendonor' => '1',
+            'id_post' =>  null,
+            'id_comment' =>  1,
+            'id_reply' =>  null,
+            'text' => 'Ini laporan komentar',
+            'type' => 'Komentar',
+            'created_at' =>now(),
+            'updated_at' =>now(),
+        ));
+
+        DB::table('reports')->insertGetId(array(
+            'id_pendonor' => '1',
+            'id_post' =>  null,
+            'id_comment' =>  null,
+            'id_reply' =>  1,
+            'text' => 'Ini laporan balas komentar',
+            'type' => 'Balasan',
+>>>>>>> 9a8511b2388a10af3a1dda67a9231608ea051f75
+>>>>>>> 07bd78a0f832732285adfb4e2b00d1819c73ac9c
             'created_at' =>now(),
             'updated_at' =>now(),
         ));

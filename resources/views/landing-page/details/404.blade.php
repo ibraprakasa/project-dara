@@ -51,12 +51,6 @@
                   </a>
                 </li>
                 <li class="group relative">
-                  <a href="/#pricing"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color xl:ml-10">
-                    Pricing
-                  </a>
-                </li>
-                <li class="group relative">
                   <a href="/#team"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-body-color xl:ml-10">
                     Team
