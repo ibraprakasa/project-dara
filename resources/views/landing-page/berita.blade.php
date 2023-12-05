@@ -1,4 +1,4 @@
-<section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-white">
+<section id="news" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-white">
     <div class="container mx-auto">
       <div class="flex flex-wrap justify-center -mx-4">
         <div class="w-full px-4">

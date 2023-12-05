@@ -25,49 +25,45 @@
   @include('landing-page.navbar')
   <!-- ====== Navbar Section End -->
 
-  <!-- ====== Hero Section Start -->
-  @include('landing-page.hero')
-  <!-- ====== Hero Section End -->
+  <!-- ====== Beranda Section Start -->
+  @include('landing-page.beranda')
+  <!-- ====== Beranda Section End -->
 
-  <!-- ====== Features Section Start -->
-  @include('landing-page.features')
-  <!-- ====== Features Section End -->
+  <!-- ====== Fitur Section Start -->
+  @include('landing-page.fitur')
+  <!-- ====== Fitur Section End -->
 
-  <!-- ====== About Section Start -->
+  <!-- ====== Tentang/About Section Start -->
   @include('landing-page.about')
-  <!-- ====== About Section End -->
+  <!-- ====== Tentang/About Section End -->
 
-  <!-- ====== CTA Section Start -->
-  @include('landing-page.cta')
-  <!-- ====== CTA Section End -->
+  <!-- ====== Unduh Section Start -->
+  @include('landing-page.unduh')
+  <!-- ====== Unduh Section End -->
 
-  <!-- ====== Pricing Section Start -->
-  @include('landing-page.pricing')
-  <!-- ====== Pricing Section End -->
-
-  <!-- ====== Testimonial Section Start -->
-  @include('landing-page.testimonial')
-  <!-- ====== Testimonial Section End -->
+  <!-- ====== Ulasan Section Start -->
+  @include('landing-page.ulasan')
+  <!-- ====== Ulasan Section End -->
 
   <!-- ====== FAQ Section Start -->
   @include('landing-page.faq')
   <!-- ====== FAQ Section End -->
 
-  <!-- ====== Team Section Start -->
-  @include('landing-page.team')
-  <!-- ====== Team Section End -->
+  <!-- ====== Tim Section Start -->
+  @include('landing-page.tim')
+  <!-- ====== Tim Section End -->
 
-  <!-- ====== Blog Section Start -->
-  @include('landing-page.blog')
-  <!-- ====== Blog Section End -->
+  <!-- ====== Berita Section Start -->
+  @include('landing-page.berita')
+  <!-- ====== Berita Section End -->
 
-  <!-- ====== Contact Start ====== -->
-  @include('landing-page.contact')
-  <!-- ====== Contact End ====== -->
+  <!-- ====== Kontak Start ====== -->
+  @include('landing-page.kontak')
+  <!-- ====== Kontak End ====== -->
 
-  <!-- ====== Brands Section Start -->
-  @include('landing-page.brands')
-  <!-- ====== Brands Section End -->
+  <!-- ====== partner Section Start -->
+  @include('landing-page.partner')
+  <!-- ====== partner Section End -->
 
   <!-- ====== Footer Section Start -->
   @include('landing-page.footer')

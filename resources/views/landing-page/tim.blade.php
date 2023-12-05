@@ -1,4 +1,4 @@
-<section id="team" class="bg-gray-1 overflow-hidden pt-20 pb-12 lg:pt-[120px] lg:pb-[90px]">
+<section id="team" class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]">
   <div class="container mx-auto">
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4">
@@ -6,10 +6,10 @@
           <span class="text-primary mb-2 block text-lg font-semibold">
             Tim Pengembang
           </span>
-          <h2 class="mb-3 text-3xl leading-[1.2] font-bold text-dark sm:text-4xl md:text-[40px]">
+          <h2 class="mb-3 text-3xl leading-[1.2] font-bold text-white sm:text-4xl md:text-[40px]">
             Tim Inovasi Digital
           </h2>
-          <p class="text-body-color text-base">
+          <p class="text-white text-base">
           "Dengan keahlian dan kontribusi kami, kami berkomitmen untuk mencapai tujuan bersama dan menyajikan hasil terbaik dalam proyek ini."          </p>
         </div>
       </div>
@@ -262,5 +262,21 @@
         </div>
       </div>
     </div>
+    <span class="absolute top-0 left-0">
+        <svg width="500" height="800" viewBox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+          <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+          <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white"
+            stroke-opacity="0.08" stroke-width="12" />
+        </svg>
+      </span>
+      <span class="absolute bottom-0 right-0">
+        <svg width="493" height="1100" viewBox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+          <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+          <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white"
+            stroke-opacity="0.06" stroke-width="13" />
+        </svg>
+      </span>
   </div>
 </section>

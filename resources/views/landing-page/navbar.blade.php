@@ -16,51 +16,54 @@
             </button>
             <nav id="navbarCollapse"
               class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
-              <ul class="blcok lg:flex 2xl:ml-20">
+              <ul class="block lg:flex 2xl:ml-20">
                 <li class="group relative">
                   <a href="#home"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
-                    Home
+                    Beranda
+                  </a>
+                </li>
+                <li class="group relative">
+                  <a href="#features"
+                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
+                    Fitur
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#about"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-                    About
+                    Tentang
                   </a>
                 </li>
                 <li class="group relative">
-                  <a href="#pricing"
+                  <a href="#testimonials"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-                    Pricing
+                    Ulasan
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#team"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-                    Team
+                    Tim
+                  </a>
+                </li>
+                <li class="group relative">
+                  <a href="#news"
+                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
+                    Berita
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#contact"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-                    Contact
+                    Kontak
                   </a>
                 </li>
               </ul>
             </nav>
           </div>
-          <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
-            <a href="signin.html" class="loginBtn py-2 px-[22px] text-base font-medium text-white hover:opacity-70">
-              Sign In
-            </a>
-            <a href="signup.html"
-              class="signUpBtn rounded-md bg-white bg-opacity-20 py-2 px-6 text-base font-medium text-white duration-300 ease-in-out hover:bg-opacity-100 hover:text-dark">
-              Sign Up
-            </a>
-          </div>
         </div>
       </div>
     </div>
   </div>
-
+</div>

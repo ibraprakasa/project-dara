@@ -1,4 +1,4 @@
-<section class="relative z-20 overflow-hidden bg-white pt-20 pb-8 lg:pt-[120px] lg:pb-[50px]">
+<section id="faq" class="relative z-20 overflow-hidden bg-white pt-20 pb-8 lg:pt-[120px] lg:pb-[50px]">
   <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4">

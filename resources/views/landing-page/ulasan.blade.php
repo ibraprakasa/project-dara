@@ -4,7 +4,7 @@
       <div class="w-full px-4">
         <div class="mx-auto mb-[60px] max-w-[485px] text-center">
           <span class="block mb-2 text-lg font-semibold text-primary">
-            Testimoni
+            Ulasan
           </span>
           <h2 class="text-dark mb-3 text-3xl leading-[1.2] font-bold sm:text-1xl md:text-[20px]">
             Membangun Harapan Bersama

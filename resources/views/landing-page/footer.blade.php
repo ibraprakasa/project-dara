@@ -50,23 +50,23 @@
             <h4 class="mb-9 text-lg font-semibold text-white">About Us</h4>
             <ul>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Home
+                <a href="#home" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Beranda
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Features
+                <a href="#features" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Fitur
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  About
+                <a href="#about" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Tentang
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Testimonial
+                <a href="#testimonials" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Ulasan
                 </a>
               </li>
             </ul>
@@ -142,14 +142,6 @@
                 </span>
               </a>
               @endforeach
-              <!-- <a href="blog-details.html" class="group flex items-center gap-[22px]">
-                <div class="overflow-hidden rounded">
-                  <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-02.jpg') }}" alt="blog">
-                </div>
-                <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
-                  Recognizing the need is the primary...
-                </span>
-              </a> -->
             </div>
           </div>
         </div>
