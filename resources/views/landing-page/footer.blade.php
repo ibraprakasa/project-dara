@@ -47,26 +47,26 @@
         </div>
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
           <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">About Us</h4>
+            <h4 class="mb-9 text-lg font-semibold text-white">Tentang Kami</h4>
             <ul>
               <li>
-                <a href="#home" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Beranda
                 </a>
               </li>
               <li>
-                <a href="#features" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Fitur
                 </a>
               </li>
               <li>
-                <a href="#about" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Tentang
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Ulasan
                 </a>
               </li>
               <li>
-                <a href="#testimonials" class="ud-menu-scroll mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Ulasan
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Tim
                 </a>
               </li>
             </ul>
@@ -102,27 +102,22 @@
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
           <div class="mb-10 w-full">
             <h4 class="mb-9 text-lg font-semibold text-white">
-              Our Products
+              Partner Kami
             </h4>
             <ul>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  LineIcons
+                <a href="https://www.codelabs.co.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  CodeLabs 
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Ecommerce HTML
+              <a href="https://www.instagram.com/cybertech_pnp/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Cybertech PNP
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  TailAdmin
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  PlainAdmin
+                <a href="https://www.pnp.ac.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Politeknik Negeri Padang
                 </a>
               </li>
             </ul>
@@ -132,7 +127,7 @@
           <div class="mb-10 w-full">
             <h4 class="mb-9 text-lg font-semibold text-white">Berita Terbaru</h4>
             <div class="flex flex-col gap-8">
-              @foreach($news as $row)
+              @foreach($news2 as $row)
               <a href="blog-details.html" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
                   <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="blog" width="70px" height="48px">

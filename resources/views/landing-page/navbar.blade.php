@@ -16,7 +16,7 @@
             </button>
             <nav id="navbarCollapse"
               class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
-              <ul class="block lg:flex 2xl:ml-20">
+              <ul class="blcok lg:flex 2xl:ml-20">
                 <li class="group relative">
                   <a href="#home"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
@@ -30,7 +30,7 @@
                   </a>
                 </li>
                 <li class="group relative">
-                  <a href="#about"
+                  <a href="#tentang"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
                     Tentang
                   </a>
@@ -66,4 +66,4 @@
       </div>
     </div>
   </div>
-</div>
+

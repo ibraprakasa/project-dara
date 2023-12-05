@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="flex flex-wrap -mx-4">
-        @foreach($news as $row)
+        @foreach($news3 as $row)
         <div class="w-full px-4 md:w-1/2 lg:w-1/3">
           <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
             <div class="mb-8 overflow-hidden rounded-[5px]">
