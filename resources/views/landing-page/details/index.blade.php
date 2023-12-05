@@ -25,9 +25,9 @@
   @include('landing-page.navbar')
   <!-- ====== Navbar Section End -->
 
-  <!-- ====== Beranda Section Start -->
-  @include('landing-page.beranda')
-  <!-- ====== Beranda Section End -->
+  <!-- ====== Home Section Start -->
+  @include('landing-page.home')
+  <!-- ====== Home Section End -->
 
   <!-- ====== Fitur Section Start -->
   @include('landing-page.fitur')
