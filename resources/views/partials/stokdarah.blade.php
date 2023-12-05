@@ -1,13 +1,9 @@
 @extends('template')
 @extends('sidebar')
+
+@section('judul_halaman', 'Stok Darah')
 @section('content')
 
-<head>
-    <title>
-        DARA || Stok Darah
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="filter1 btn-group">
     <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahstokdarah">
@@ -78,7 +74,7 @@
 </div>
 
 <!-- MODAL TAMBAH -->
-<div class="modal fade tambahstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade tambahstokdarah" id="modaltambahstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -90,27 +86,27 @@
             <form action="/insertstok" method="POST">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group" style="color:black; font-weight:bold" data-mdb-input-init>
-                        <label for="goldar">Pendonor</label>
+                    <div class="form-group">
+                        <label for="goldar" style="color:black; font-weight:bold">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="selectPendonor" required oninvalid="this.setCustomValidity('Pilih Pendonor terlebih dahulu.')" oninput="this.setCustomValidity('')">
-                            <option disabled selected value="" >Pilih Pendonor</option>
+                        <option disabled selected value="" >Pilih Pendonor</option>
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="lokasi" style="color:black; font-weight:bold">Lokasi</label>
+                        <select class="kolom form-control" name="lokasi" id="selectLokasi" required required oninvalid="this.setCustomValidity('Pilih Lokasi Donor terlebih dahulu.')" oninput="this.setCustomValidity('')">
+                            <option disabled selected value="" >Pilih Lokasi</option>
+                            @foreach($lokasi as $lp)
+                            <option class="kolom form-control" value="{{ $lp->lokasi }}">{{ $lp->lokasi }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Jumlah Kantong</label>
                         <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5"  required oninvalid="this.setCustomValidity('Jumlah Kantong harus diisi.')" oninput="this.setCustomValidity('')">
-                    </div>
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="lokasi">Lokasi</label>
-                        <select class="kolom form-control" name="lokasi" id="selectLokasir" required required oninvalid="this.setCustomValidity('Pilih Lokasi Donor terlebih dahulu.')" oninput="this.setCustomValidity('')">
-                            <option disabled selected value="" >Pilih Lokasi</option>
-                            @foreach($lokasi as $lp)
-                            <option class="kolom form-control" value="{{ $lp->lokasi }}">{{ $lp->lokasi }}</option>
-                            @endforeach
-                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -124,7 +120,7 @@
 
 <!-- MODAL AMBIL -->
 @foreach($data as $row)
-<div class="modal fade ambilstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade ambilstokdarah" id="modalambilstokdarah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -136,9 +132,9 @@
             <form action="/updatestok" method="POST">
                 @csrf
                 <div class="modal-body">
-                    <div class="form-group" style="color:black; font-weight:bold">
-                        <label for="goldar">Pendonor</label>
-                        <select class="kolom form-control" name="kode_pendonor" id="goldar" required oninvalid="this.setCustomValidity('Pilih Pendonor terlebih dahulu.')" oninput="this.setCustomValidity('')">
+                    <div class="form-group">
+                        <label for="goldar" style="color:black; font-weight:bold">Pendonor</label>
+                        <select class="kolom form-control" name="kode_pendonor" id="selectPendonorAmbil" required oninvalid="this.setCustomValidity('Pilih Pendonor terlebih dahulu.')" oninput="this.setCustomValidity('')">
                             <option disabled selected value="" >Pilih Pendonor</option>
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
@@ -168,10 +164,30 @@
 @endforeach
 <!-- END MODAL -->
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
 <script>
-    $(document).ready(function() {
-        $('#selectPendonor').select2({
-            minimumInputLength: 1, // Jumlah karakter minimum sebelum pencarian dimulai
+    $(document).ready(function(){
+        $("#selectPendonor").select2({
+            placeholder : 'Pilih Pendonor',
+            dropdownParent : $('#modaltambahstokdarah'),
+            width: '100%', // Atur lebar sesuai kebutuhan
+            allowClear: true,
+            theme: "bootstrap"
+        });
+        $("#selectLokasi").select2({
+            placeholder : 'Pilih Lokasi',
+            dropdownParent : $('#modaltambahstokdarah'),
+            width : '100%',
+            allowClear : true,
+            theme: "bootstrap"
+        });
+        $("#selectPendonorAmbil").select2({
+            placeholder : 'Pilih Pendonor',
+            dropdownParent : $('#modalambilstokdarah'),
+            width: '100%', // Atur lebar sesuai kebutuhan
+            allowClear: true,
+            theme: "bootstrap"
         });
     });
 </script>

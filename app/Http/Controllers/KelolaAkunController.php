@@ -14,8 +14,8 @@ class KelolaAkunController extends Controller
 {
     public function index(Request $request)
     {
-        $roles = Role::all(); // Mengambil semua peran dari model Role
-        $goldar = GolonganDarah::all(); // Mengambil semua golongan darah
+        $roles = Role::orderBy('role_name')->get(); 
+        $goldar = GolonganDarah::orderBy('nama')->get(); 
         $searchPendonor = request()->input('searchpendonor'); 
         $searchUser = request()->input('searchuser'); 
         $sort = request()->input('sortuser');
@@ -166,6 +166,34 @@ class KelolaAkunController extends Controller
         $user ->delete();
 
         return redirect()->route('kelolaakun')->with('successUser','User berhasil dihapus.');    
+    }
+
+    public function updatepasswordpendonor(Request $request, $id) {
+        // Cari pengguna berdasarkan ID yang diberikan
+        $pendonor = Pendonor::find($id);
+    
+        if (!$pendonor) {
+            return redirect()->route('kelolaakun')->with('errorPendonor', 'Pengguna tidak ditemukan.');
+        }
+    
+        $cek = Hash::check($request->passwordlama, $pendonor->password);
+        
+        if (!$cek) {
+            return redirect()->route('kelolaakun')->with('errorPendonor', 'Kata Sandi Lama Anda tidak cocok dengan yang diinputkan.');
+        }
+        
+        $cek2 = $request->passwordbaru == $request->passwordkonfirmasi;
+    
+        if (!$cek2) {
+            return redirect()->route('kelolaakun')->with('errorPendonor', 'Kata Sandi Baru dan Konfirmasinya tidak sama.');
+        }
+    
+        // Sekarang Anda dapat memperbarui kata sandi pengguna
+        $pendonor->update([
+            'password' => Hash::make($request->passwordbaru)
+        ]);
+    
+        return redirect()->route('kelolaakun')->with('successPendonor', 'Kata Sandi Anda berhasil diperbarui.');
     }
 
     public function updatepassworduser(Request $request, $id) {

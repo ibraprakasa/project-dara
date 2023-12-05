@@ -130,24 +130,26 @@
         </div>
         <div class="w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12">
           <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">Latest blog</h4>
+            <h4 class="mb-9 text-lg font-semibold text-white">Berita Terbaru</h4>
             <div class="flex flex-col gap-8">
+              @foreach($news as $row)
               <a href="blog-details.html" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
-                  <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-01.jpg') }}" alt="blog">
+                  <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="blog" width="70px" height="48px">
                 </div>
                 <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
-                  I think really important to design with...
+                  {{  $row->judul }}
                 </span>
               </a>
-              <a href="blog-details.html" class="group flex items-center gap-[22px]">
+              @endforeach
+              <!-- <a href="blog-details.html" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
                   <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-02.jpg') }}" alt="blog">
                 </div>
                 <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
                   Recognizing the need is the primary...
                 </span>
-              </a>
+              </a> -->
             </div>
           </div>
         </div>

@@ -80,18 +80,7 @@
   </a>
   <!-- ====== Back To Top End -->
 
-  <!-- ====== Made With Button Start -->
-  <a href="https://tailgrids.com/"
-    class="inline-flex items-center gap-[10px] py-2 px-[14px] rounded-lg bg-white shadow-2 fixed bottom-8 left-4 sm:left-9 z-[999]">
-    <span class="text-base font-medium text-dark-3">
-      Made with
-    </span>
-    <span class="w-px h-4 block bg-stroke"></span>
-    <span class="block max-w-[88px] w-full">
-      <img src="{{ asset('assets/assets-landing-page/images/brands/tailgrids.svg') }}" alt="tailgrids">
-    </span>
-  </a>
-  <!-- ====== Made With Button End -->
+
 
   <!-- ====== All Scripts -->
 

@@ -37,6 +37,12 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 Route::post('landing-page','App\Http\Controllers\LandingPageController@postInquiries')->name('landing-page.inquiries');
 
+// PART OF LANDING PAGE
+
+Route::get('about-details','App\Http\Controllers\LandingPageController@getAbout')->name('about-details');
+
+// END PART
+
 // END LANDING PAGE
 
 
@@ -88,6 +94,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::post('insertpendonorsuper', 'App\Http\Controllers\KelolaAkunController@insertpendonorsuper')->name('insertpendonorsuper');
     Route::post('updatependonorsuper/{id}', 'App\Http\Controllers\KelolaAkunController@updatependonorsuper')->name('updatependonorsuper');
     Route::delete('deletependonorsuper/{id}', 'App\Http\Controllers\KelolaAkunController@deletependonorsuper')->name('deletependonorsuper');
+    Route::post('updatepasswordpendonor/{id}', 'App\Http\Controllers\KelolaAkunController@updatepasswordpendonor')->name('updatepasswordpendonor');
     // END PENDONOR
 
     // USER
@@ -121,6 +128,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     
     Route::post('kirimbalasanpesan','App\Http\Controllers\FeedbackController@postReply')->name('kirimbalasanpesan');
     Route::post('kirimtestimoni/{id}','App\Http\Controllers\FeedbackController@postTestimoni')->name('kirimtestimoni');
+    Route::post('batalkirimtestimoni/{id}','App\Http\Controllers\FeedbackController@postBatalTestimoni')->name('batalkirimtestimoni');
 
     Route::delete('deletetestimoni/{id}','App\Http\Controllers\FeedbackController@deleteTestimoni')->name('deletetestimoni');
     Route::delete('deletepesan/{id}','App\Http\Controllers\FeedbackController@deletePesan')->name('deletepesan');
@@ -135,5 +143,6 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function () {
     Route::post('insertpendonor', 'App\Http\Controllers\DataPendonorController@insertpendonor')->name('insertpendonor');
     Route::post('updatependonor/{id}', 'App\Http\Controllers\DataPendonorController@updatependonor')->name('updatependonor');
     Route::delete('deletependonor/{id}', 'App\Http\Controllers\DataPendonorController@deletependonor')->name('deletependonor');
+    Route::post('updatepasswordpendonor/{id}', 'App\Http\Controllers\DataPendonorController@updatepasswordpendonor')->name('updatepasswordpendonor');
     //END
 });

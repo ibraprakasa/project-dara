@@ -1,13 +1,8 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Kelola Akun')
 @section('content')
 
-<head>
-    <title>
-        DARA || Kelola Akun
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="row text-center">
     <div class="" style="width:820px;margin-top:100px; margin-bottom:-90px; margin-left:60px">
@@ -304,7 +299,7 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="goldar">Golongan Darah</label>
-                                <select class="kolom form-control" name="id_golongan_darah" id="select"  required oninvalid="this.setCustomValidity('Pilih Goldar Terlebih dahulu.')" oninput="this.setCustomValidity('')">
+                                <select class="kolom form-control" name="id_golongan_darah" id="select" required oninvalid="this.setCustomValidity('Pilih Goldar Terlebih dahulu.')" oninput="this.setCustomValidity('')">
                                     <option disabled selected value="">Pilih Golongan Darah</option>
                                     @foreach($goldar as $darah)
                                     <option class="kolom form-control" value="{{ $darah->id }}">{{ $darah->nama }}</option>
@@ -383,7 +378,7 @@
                         <div class="col">
                             <div class="form-group" style="color:black; font-weight:bold">
                                 <label for="password">Password</label>
-                                <input class="kolom form-control" name="password" type="password" id="password">
+                                <input type="text" class="kolom form-control" placeholder="Ketuk untuk mengganti password" readonly data-toggle="modal" data-target="#gantipassword{{ $row->id }}" data-dismiss="modal">
                             </div>
                         </div>
                         <div class="col">
@@ -551,6 +546,48 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+
+<!-- MODAL GANTI PASSWORD PENDONOR -->
+@foreach($data as $row)
+<div class="modal fade" id="gantipassword{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="gantipasswordLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Ubah Kata Sandi</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
+              <span aria-hidden=" true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('updatepasswordpendonor', ['id' => $row->id]) }}" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="email">Kode - Nama</label>
+                        <input class="kolom form-control" name="kodesxnama" type=text" id="kodexnama" value="{{ $row->kode_pendonor }}- {{ $row->nama }}" readonly>
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="passwordlama">Kata Sandi Lama</label>
+                        <input class="kolom form-control" name="passwordlama" type="password" id="passwordlama" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Lama.')" oninput="this.setCustomValidity('')">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="passwordbaru">Kata Sandi Baru</label>
+                        <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru"  required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Baru.')" oninput="this.setCustomValidity('')">
+                    </div>
+                    <div class="form-group" style="color:black; font-weight:bold">
+                        <label for="passwordkonfirmasi">Konfirmasi Kata Sandi Baru</label>
+                        <input class="kolom form-control" name="passwordkonfirmasi" type="password" id="passwordkonfirmasi" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Konfirmasi Password Baru.')" oninput="this.setCustomValidity('')">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
 
 <!-- MODALL FILTER PENDONOR -->
 @foreach($data as $row)
