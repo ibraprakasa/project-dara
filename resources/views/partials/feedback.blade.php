@@ -86,7 +86,7 @@ use Carbon\Carbon;
                 <th scope="col">Rating</th>
                 <th scope="col">Tanggal Rating</th>
                 <th scope="col">Status</th>
-                <th colspan="2" scope="col">Action</th>
+                <th colspan="3" scope="col">Action</th>
             </tr>
         </thead>
         <tbody class="waduh">
@@ -137,16 +137,13 @@ use Carbon\Carbon;
                 </td>
                 @if($row->status)
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#batalkirimtestimoni{{ $row->id }}" title="Tampil di Website">
-                        <i class="fa fa-check-circle" style="color: #03A13B;"></i>
-                    </button>
+                    Tampil
                 </td>
                 @elseif($row->status === 0 )
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}" title="Tidak Tampil di Website">
-                        <i class="fa fa-times-circle" style="color: #E70000;"></i>
-                    </button>
-                </td> @endif
+                    -
+                </td> 
+                @endif
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
                         <i class="bi bi-trash3" style="color:#E70000;"></i>
@@ -157,7 +154,19 @@ use Carbon\Carbon;
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
-
+                @if($row->status)
+                <td>
+                    <button class="custom-button" data-toggle="modal" data-target="#batalkirimtestimoni{{ $row->id }}" title="Tampil di Website">
+                        <i class="fa fa-check-circle" style="color: #03A13B;"></i>
+                    </button>
+                </td>
+                @elseif($row->status === 0 )
+                <td>
+                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}" title="Tidak Tampil di Website">
+                        <i class="fa fa-times-circle" style="color: #E70000;"></i>
+                    </button>
+                </td> 
+                @endif
             </tr>
             @endforeach
             @endif

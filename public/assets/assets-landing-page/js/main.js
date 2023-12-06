@@ -20,7 +20,7 @@
           "assets/assets-landing-page/images/logo/dara.png"
       } else {
         document.querySelector(".header-logo").src =
-          "assets/assets-landing-page/images/logo/dara-white.png"
+          "assets/assets-landing-page/images/logo/dara1-transformed.png"
       }
     }
 

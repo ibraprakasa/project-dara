@@ -35,6 +35,7 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 // LANDING PAGE
 
 Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
+Route::get('news-detail/{id}', 'App\Http\Controllers\LandingPageController@getNewsDetail')->name('news-detail');
 Route::post('landing-page','App\Http\Controllers\LandingPageController@postInquiries')->name('landing-page.inquiries');
 
 // PART OF LANDING PAGE

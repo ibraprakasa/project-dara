@@ -19,10 +19,13 @@ class LandingPageController extends Controller
         return view('landing-page.details.index',compact('testi','news3','news2','newsAll'));
     }
 
-    public function getAbout()
+    public function getNewsDetail($id)
     {
-        $news = Berita::latest('created_at')->take(3)->get();
-        return view('landing-page.details.about-details',compact('news'));
+        $newsDetail = Berita::find($id);
+        $news2 = Berita::latest('created_at')->take(2)->get();
+        $news3 = Berita::inRandomOrder()->take(3)->get();
+
+        return view('landing-page.details.news-detail',compact('newsDetail','news2','news3'));
     }
 
     public function postInquiries()

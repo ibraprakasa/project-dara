@@ -1,10 +1,10 @@
-<footer class="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]" data-wow-delay=".15s">
+<footer id="footer" class="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]" data-wow-delay=".15s">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12">
           <div class="mb-10 w-full">
             <a href="javascript:void(0)" class="mb-6 inline-block max-w-[160px]">
-              <img src="{{ asset('assets/assets-landing-page/images/logo/dara-white.png') }}" alt="logo" class="max-w-full" />
+              <img src="{{ asset('assets/assets-landing-page/images/logo/dara1-transformed.png') }}" alt="logo" class="max-w-full" />
             </a>
             <p class="mb-8 max-w-[270px] text-base text-gray-7">
             Setetes Darah Akan Sangat Berarti. Jangan Lewatkan Kesempatan untuk Memberi.
@@ -74,26 +74,26 @@
         </div>
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
           <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">Features</h4>
+            <h4 class="mb-9 text-lg font-semibold text-white">Fitur</h4>
             <ul>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  How it works
+                  Berita
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Privacy policy
+                  Lokasi
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Terms of Service
+                  Forum
                 </a>
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Refund policy
+                  Riwayat
                 </a>
               </li>
             </ul>
@@ -146,22 +146,8 @@
     <div class="mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]">
       <div class="container">
         <div class="-mx-4 flex flex-wrap">
-          <div class="w-full px-4 md:w-2/3 lg:w-1/2">
-            <div class="my-1">
-              <div class="-mx-3 flex items-center justify-center md:justify-start">
-                <a href="javascript:void(0)" class="px-3 text-base text-gray-7 hover:text-white hover:underline">
-                  Privacy policy
-                </a>
-                <a href="javascript:void(0)" class="px-3 text-base text-gray-7 hover:text-white hover:underline">
-                  Legal notice
-                </a>
-                <a href="javascript:void(0)" class="px-3 text-base text-gray-7 hover:text-white hover:underline">
-                  Terms of service
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="w-full px-4 md:w-1/3 lg:w-1/2">
+         
+          <div class="w-full px-4 text-right">
             <div class="my-1 flex justify-center md:justify-end">
               <p class="text-base text-gray-7">
                 Designed and Developed by

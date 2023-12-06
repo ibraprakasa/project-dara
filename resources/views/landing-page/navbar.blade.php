@@ -3,7 +3,7 @@
       <div class="relative -mx-4 flex items-center justify-between">
         <div class="w-60 max-w-full px-4">
           <a href="index.html" class="navbar-logo block w-full py-5">
-            <img src="{{ asset('assets/assets-landing-page/images/logo/dara-white.png') }}" alt="logo" class="header-logo w-full" />
+            <img src="{{ asset('assets/assets-landing-page/images/logo/dara1-transformed.png') }}" alt="logo" class="header-logo w-full" />
           </a>
         </div>
         <div class="flex w-full items-center justify-between px-4">
@@ -15,7 +15,7 @@
               <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
             </button>
             <nav id="navbarCollapse"
-              class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
+              class="absolute rigxht-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
               <ul class="blcok lg:flex 2xl:ml-20">
                 <li class="group relative">
                   <a href="#home"
