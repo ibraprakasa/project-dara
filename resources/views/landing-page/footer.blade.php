@@ -153,7 +153,7 @@
                 Designed and Developed by
                 <a href="https://tailgrids.com" rel="nofollow noopner" target="_blank"
                   class="text-gray-1 hover:underline">
-                  TailGrids and UIdeck
+                  DARA
                 </a>
               </p>
             </div>

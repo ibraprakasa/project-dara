@@ -27,6 +27,22 @@
     </button>
 </div>
 
+<div class="filter btn-group">
+    <form action="/berita" method="GET" style="display: flex;">
+        <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter berdasarkan
+            </button>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
+                <button class="dropdown-item" type="submit" name="sort" value="satuminggu">1 Minggu Terakhir</button>
+                <button class="dropdown-item" type="submit" name="sort" value="satubulan">1 Bulan Terakhir</button>
+                <button class="dropdown-item" type="submit" name="sort" value="satutahun">1 Tahun Terakhir</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
 <div class="filter btn-group wow">
     @if(session('error'))
     <div class="alert-container">

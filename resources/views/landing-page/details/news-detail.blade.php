@@ -124,29 +124,29 @@
                   {{ $newsDetail->judul }}
                 </h2>
                 <p class="wow fadeInUp mb-6 text-base text-body-color" data-wow-delay=".1s">
-                  {{ $newsDetail->deskripsi }}
+                {!! nl2br(e($newsDetail->deskripsi)) !!}
                 </p>
                 <div class="-mx-4 mb-12 flex flex-wrap items-center">
                   <div class="w-full px-4 md:w-1/2">
                     <div class="wow fadeInUp mb-8 flex flex-wrap items-center gap-3 md:mb-0" data-wow-delay=".1s">
                       <a href="javascript:void(0)"
                         class="block rounded-md bg-primary/[0.08] py-[5px] px-[14px] text-base text-dark hover:bg-primary hover:text-white">
-                        Design
+                        Acara
                       </a>
                       <a href="javascript:void(0)"
                         class="block rounded-md bg-primary/[0.08] py-[5px] px-[14px] text-base text-dark hover:bg-primary hover:text-white">
-                        Development
+                        Donor Darah
                       </a>
                       <a href="javascript:void(0)"
                         class="block rounded-md bg-primary/[0.08] py-[5px] px-[14px] text-base text-dark hover:bg-primary hover:text-white">
-                        Info
+                        Informasi
                       </a>
                     </div>
                   </div>
                   <div class="w-full px-4 md:w-1/2">
                     <div class="wow fadeInUp flex items-center md:justify-end" data-wow-delay=".1s">
                       <span class="mr-5 text-sm font-medium text-body-color">
-                        Share This Post
+                        Bagikan
                       </span>
                       <div class="flex items-center gap-[10px]">
                         <a href="javascript:void(0)">
@@ -187,25 +187,25 @@
             </div>
             <div class="w-full px-4 lg:w-4/12">
               <div>
-                <div
+                <!-- <div
                   class="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-primary py-[60px] px-11 text-center lg:px-8"
                   data-wow-delay=".1s
                     ">
                   <h3 class="mb-[6px] text-[28px] leading-[40px] font-semibold text-white">
-                    Join our newsletter!
+                    Ikuti komunitas kami!
                   </h3>
                   <p class="mb-5 text-base text-white">
-                    Enter your email to receive our latest newsletter.
+                    Masukkan email Anda untuk memantau informasi donor darah lebih lanjut.
                   </p>
                   <form>
-                    <input type="email" placeholder="Your email address"
+                    <input type="email" placeholder="Masukkan email Anda"
                       class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-white/10 text-center text-base text-white placeholder:text-white/60 outline-none focus:border-white focus-visible:shadow-none" />
-                    <input type="submit" value="Subscribe Now"
+                    <input type="submit" value="Kirim"
                       class="mb-4 h-[50px] w-full cursor-pointer rounded-md bg-secondary text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:bg-[#0BB489]" />
                   </form>
                   <p class="text-sm font-medium text-white">
-                    Don't worry, we don't spam
-                  </p>
+                    Jangan khawatir, email Anda aman.
+                </p>
 
                   <div>
                     <span class="absolute top-0 right-0">
@@ -281,17 +281,53 @@
                       </svg>
                     </span>
                   </div>
+                </div> -->
+
+                <div class="-mx-4 mb-8 flex flex-wrap">
+                  <div class="w-full px-4">
+                    <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark sm:text-[28px]"
+                      data-wow-delay=".1s
+                        ">
+                      Berita Terpopuler
+                    </h2>
+                    <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+                  </div>
+                  
+                  @foreach($news4 as $row)
+                  <div class="w-full px-4 md:w-1/2 lg:w-full">
+                    <div class="wow fadeInUp mb-5 flex w-full items-center border-b border-stroke pb-5"
+                      data-wow-delay=".1s
+                        ">
+                      <div class="mr-5 h-20 w-full max-w-[80px] overflow-hidden" style="margin-top: 10px;">
+                        <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="image" class="w-full mt-3" />
+                      </div>
+                      <div class="w-full">
+                        <h4>
+                          <a href="{{ route('news-detail', ['id' => $row->id]) }}"
+                            class="mb-1 inline-block text-lg font-medium leading-snug text-dark hover:text-primary lg:text-base xl:text-lg">
+                            {{ $row->judul }}
+                          </a>
+                        </h4>
+                        <p class="text-sm text-body-color">{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j M Y') }}</p>
+                      </div>
+                    </div>
+                  </div>
+                  @endforeach
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        
       </div>
+
+      
 
       <div class="-mx-4 flex flex-wrap">
         <div class="wow fadeInUp mt-14 w-full px-4" data-wow-delay=".2s">
           <h2 class="relative pb-5 text-2xl font-semibold text-dark sm:text-[36px]">
-            Related Articles
+            Berita Terkait
           </h2>
           <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
         </div>
