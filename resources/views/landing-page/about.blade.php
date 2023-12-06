@@ -12,11 +12,6 @@
                 <br> <br>
                 Wujudkan Mimpi Bersama dengan Sentuhan Kebaikan. DARA tidak hanya sekadar aplikasi, tapi juga sebuah panggilan untuk berbagi kehidupan.
               </p>
-
-              <a href="javascript:void(0)"
-                class="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-primary rounded-md px-7 bg-primary hover:bg-blue-dark hover:border-blue-dark">
-                Know More
-              </a>
             </div>
           </div>
 

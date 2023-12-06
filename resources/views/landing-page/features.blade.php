@@ -1,10 +1,10 @@
-<section class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">
+<section id=featur class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4">
           <div class="mb-12 mx-auto max-w-[485px] lg:mb-[70px] text-center">
             <span class="mb-2 block text-lg font-semibold text-primary">
-              Features
+              Fitur
             </span>
             <h2 class="mb-2 text-2xl font-bold text-dark sm:text-3xl md:text-[30px] md:leading-[1.2]">
               Main features of the application

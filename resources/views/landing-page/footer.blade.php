@@ -47,26 +47,26 @@
         </div>
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
           <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">About Us</h4>
+            <h4 class="mb-9 text-lg font-semibold text-white">Tentang kami</h4>
             <ul>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Home
+                  Beranda
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Features
+                <a href="#featur" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Fitur
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  About
+                <a href="#about" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Tentang
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
-                  Testimonial
+                <a href="#t estimonials" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Testimoni 
                 </a>
               </li>
             </ul>
@@ -74,7 +74,7 @@
         </div>
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
           <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">Features</h4>
+            <h4 class="mb-9 text-lg font-semibold text-white">Fitur</h4>
             <ul>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
@@ -99,10 +99,36 @@
             </ul>
           </div>
         </div>
-        
+        <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
+          <div class="mb-10 w-full">
+            <h4 class="mb-9 text-lg font-semibold text-white">Patner</h4>
+            <ul>
+              <li>
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Codelabs
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                    Cybertech
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Teknologi Informasi
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Politeknik Negeri Padang
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
         <div class="w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12">
           <div class="mb-10 w-full">
-            <h4 class="mb-9 text-lg font-semibold text-white">Latest blog</h4>
+            <h4 class="mb-9 text-lg font-semibold text-white">Berita Terakhir</h4>
             <div class="flex flex-col gap-8">
               <a href="blog-details.html" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">

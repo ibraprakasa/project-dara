@@ -1,4 +1,4 @@
-<section class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]">
+<section id=team class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]">
   <div class="container mx-auto">
     <div class="-mx-4 flex flex-wrap">
       <div class="w-full px-4">
