@@ -8,7 +8,7 @@
   <title>
     DARA Apps || Rincian Berita
   </title>
-  <link rel="shortcut icon" href="../assets/assets-landing-page/images/logo/daraicononly.png" type="image/x-icon" />
+  <link rel="shortcut icon" href="../assets/img/daraicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/tailwind.css" />

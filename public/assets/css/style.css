@@ -165,5 +165,35 @@ body{
     }
   }
   
-
+  @media screen and (max-width: 1400px) and (min-width: 1024px) {
+    
+  
+    .title {
+      font-size: 15px; 
+    }
+  
+    .slogan {
+      font-size: 10px; 
+    }
+  
+    .logopmi {
+      margin-top: 5px; 
+    }
+  
+    .iconjudul {
+      margin-right: 5px; 
+    }
+  
+    .btn {
+      padding: 5px 10px; 
+    }
+  
+    .alert-container1 {
+      padding: 5px 10px; 
+    }
+  
+    .alert-icon {
+      font-size: 20px;
+    }
+  }
   
