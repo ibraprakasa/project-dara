@@ -1,4 +1,4 @@
-<section id="features" class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">
+<section id="features" class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px] ">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4">

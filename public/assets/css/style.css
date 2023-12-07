@@ -111,7 +111,7 @@ body{
   
     .logopmi {
       margin-top: 5px;
-    }
+  }
   
     .iconjudul {
       margin-right: 5px;
@@ -133,7 +133,6 @@ body{
   @media screen and (max-width: 1024px) and (min-width: 768px) {
     .login-form {
       width: 50%; 
-      padding: 10px; 
     }
   
     .title {

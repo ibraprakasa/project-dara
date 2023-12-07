@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // LOGIN LOGOUT
-Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
+Route::get('/login', 'App\Http\Controllers\LoginController@login')->name('login');
 Route::post('loginaksi', 'App\Http\Controllers\LoginController@loginaksi')->name('loginaksi');
 Route::post('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->name('logoutaksi')->middleware('auth');
 // END 
@@ -34,7 +34,7 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 
 // LANDING PAGE
 
-Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
+Route::get('/', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
 Route::get('news-detail/{id}', 'App\Http\Controllers\LandingPageController@getNewsDetail')->name('news-detail');
 Route::post('landing-page','App\Http\Controllers\LandingPageController@postInquiries')->name('landing-page.inquiries');
 
