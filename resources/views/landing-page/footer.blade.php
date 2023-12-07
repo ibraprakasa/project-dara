@@ -116,6 +116,11 @@
                 </a>
               </li>
               <li>
+                <a href="https://ti.pnp.ac.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                Teknologi Informasi
+                </a>
+              </li>
+              <li>
                 <a href="https://www.pnp.ac.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Politeknik Negeri Padang
                 </a>

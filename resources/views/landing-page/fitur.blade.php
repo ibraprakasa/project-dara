@@ -31,7 +31,7 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Berita
             </h4>
-            <p class="mb-8 text-body-color lg:mb-9">  
+            <p align="justify" class="mb-8 text-body-color lg:mb-9">  
             Fitur News menyajikan informasi terkini di beranda DARA, termasuk FAQ, Jadwal, dan artikel terbaru seputar donor darah, 
             mengundang Anda untuk merasakan kehangatan dalam setiap tetes darah yang disumbangkan.
             </p>
@@ -51,7 +51,7 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Lokasi
             </h4>
-            <p class="text mb-8 text-body-color lg:mb-9">
+            <p align="justify" class="text mb-8 text-body-color lg:mb-9">
               Fitur ini memudahkan Anda menemukan lokasi donor darah terdekat dan mendapatkan informasi jadwal terkini, untuk partisipasi yang lebih efisien dalam mendukung kegiatan donor darah.
             </p>
           </div>
@@ -70,7 +70,7 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Forum
             </h4>
-            <p class="mb-8 text-body-color lg:mb-9">
+            <p align="justify" class="mb-8 text-body-color lg:mb-9">
               Fitur forum memfasilitasi pendonor untuk memperbarui postingan dan memperbarui informasi terkini secara praktis, menjadikan pengalaman berbagi dan interaksi lebih dinamis dengan pendonor lainnya.
             </p>
           </div>

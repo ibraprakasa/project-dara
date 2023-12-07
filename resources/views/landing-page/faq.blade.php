@@ -25,10 +25,10 @@
             </svg>
           </div>
           <div class="w-full">
-            <h3 class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
+            <h3 align="justify" class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
               Apa yang membuat DARA menjadi solusi unik di dunia donor darah?
             </h3>
-            <p class="text-base text-body-color">
+            <p align="justify" class="text-base text-body-color">
               DARA menggabungkan kebutuhan donor darah dengan teknologi modern, menyajikan pengalaman donor yang interaktif, informatif, dan terkoneksi.
           </div>
         </div>
@@ -41,10 +41,10 @@
             </svg>
           </div>
           <div class="w-full">
-            <h3 class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
+            <h3 align="justify" class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
               Mengapa penting bagi para donor darah untuk merasakan atmosfer komunitas?
             </h3>
-            <p class="text-base text-body-color">
+            <p align="justify" class="text-base text-body-color">
               DARA memahami bahwa memberikan darah adalah pengalaman pribadi, dan atmosfer komunitas membantu mendukung, menginspirasi, dan merayakan pencapaian bersama.
             </p>
           </div>
@@ -60,10 +60,10 @@
             </svg>
           </div>
           <div class="w-full">
-            <h3 class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
+            <h3 align="justify" class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
               Bagaimana memperoleh informasi terkini seputar donor darah di DARA?
             </h3>
-            <p class="text-base text-body-color">
+            <p align="justify" class="text-base text-body-color">
               Pengguna dapat menjelajahi informasi terkini di beranda DARA, termasuk FAQ, Jadwal, dan artikel terbaru seputar donor darah untuk pengalaman yang lebih menarik.
             </p>
           </div>
@@ -77,10 +77,10 @@
             </svg>
           </div>
           <div class="w-full">
-            <h3 class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
+            <h3 align="justify" class="mb-6 text-xl font-semibold text-dark sm:text-2xl lg:text-xl xl:text-2xl">
               Bagaimana DARA memanfaatkan fitur Riwayat untuk personalisasi pengalaman donor darah?
             </h3>
-            <p class="text-base text-body-color">
+            <p align="justify" class="text-base text-body-color">
               Melalui fitur Riwayat, DARA mencatat setiap langkah perjalanan donor, termasuk lokasi dan waktu, menciptakan catatan pribadi yang bermakna untuk setiap pengguna.
             </p>
           </div>

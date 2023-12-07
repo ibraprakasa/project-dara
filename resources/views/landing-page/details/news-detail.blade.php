@@ -117,13 +117,13 @@
           <div class="-mx-4 flex flex-wrap">
             <div class="w-full px-4 lg:w-8/12">
               <div>
-                <h2
+                <h2 
                   class="wow fadeInUp mb-8 text-2xl font-bold text-dark sm:text-3xl md:text-[35px] md:leading-[1.28]"
                   data-wow-delay=".1s
                     ">
                   {{ $newsDetail->judul }}
                 </h2>
-                <p class="wow fadeInUp mb-6 text-base text-body-color" data-wow-delay=".1s">
+                <p align="justify" class="wow fadeInUp mb-6 text-base text-body-color" data-wow-delay=".1s">
                 {!! nl2br(e($newsDetail->deskripsi)) !!}
                 </p>
                 <div class="-mx-4 mb-12 flex flex-wrap items-center">
@@ -303,7 +303,7 @@
                       </div>
                       <div class="w-full">
                         <h4>
-                          <a href="{{ route('news-detail', ['id' => $row->id]) }}"
+                          <a align="justify" href="{{ route('news-detail', ['id' => $row->id]) }}"
                             class="mb-1 inline-block text-lg font-medium leading-snug text-dark hover:text-primary lg:text-base xl:text-lg">
                             {{ $row->judul }}
                           </a>
@@ -347,12 +347,12 @@
                 {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j F Y') }}
               </span>
               <h3>
-                <a href="{{ route('news-detail', ['id' => $row->id]) }}"
+                <a align="justify" href="{{ route('news-detail', ['id' => $row->id]) }}"
                   class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
                   {{ $row->judul }}
                 </a>
               </h3>
-              <p class="max-w-[370px] text-base text-body-color">
+              <p align="justify" class="max-w-[370px] text-base text-body-color">
               {{ \Illuminate\Support\Str::limit(strip_tags($row->deskripsi), 150) }}
               </p>
             </div>
