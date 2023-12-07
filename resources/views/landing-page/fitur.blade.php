@@ -32,7 +32,7 @@
               Berita
             </h4>
             <p align="justify" class="mb-8 text-body-color lg:mb-9">  
-            Fitur News menyajikan informasi terkini di beranda DARA, termasuk FAQ, Jadwal, dan artikel terbaru seputar donor darah, 
+            Menyajikan informasi terkini di beranda DARA, termasuk FAQ, Jadwal, dan artikel terbaru seputar donor darah, 
             mengundang Anda untuk merasakan kehangatan dalam setiap tetes darah yang disumbangkan.
             </p>
           </div>
@@ -52,7 +52,7 @@
               Lokasi
             </h4>
             <p align="justify" class="text mb-8 text-body-color lg:mb-9">
-              Fitur ini memudahkan Anda menemukan lokasi donor darah terdekat dan mendapatkan informasi jadwal terkini, untuk partisipasi yang lebih efisien dalam mendukung kegiatan donor darah.
+              Memudahkan Anda menemukan lokasi donor darah terdekat dan mendapatkan informasi jadwal terkini, untuk partisipasi yang lebih efisien dalam mendukung kegiatan donor darah.
             </p>
           </div>
         </div>
@@ -71,7 +71,7 @@
               Forum
             </h4>
             <p align="justify" class="mb-8 text-body-color lg:mb-9">
-              Fitur forum memfasilitasi pendonor untuk memperbarui postingan dan memperbarui informasi terkini secara praktis, menjadikan pengalaman berbagi dan interaksi lebih dinamis dengan pendonor lainnya.
+              Memfasilitasi pendonor untuk memperbarui postingan dan memperbarui informasi terkini secara praktis, menjadikan pengalaman berbagi dan interaksi lebih dinamis dengan pendonor lainnya.
             </p>
           </div>
         </div>
@@ -90,7 +90,7 @@
               Riwayat
             </h4>
             <p class="mb-8 text-body-color lg:mb-9">
-            Fitur riwayat ini menampilkan sejarah donasi darah pendonor, memberikan informasi mengenai setiap kontribusi yang diberikan di lokasi terdekat. Rasakan dampak positifnya dalam setiap riwayat donasi Anda.
+            Menampilkan sejarah donasi darah pendonor, memberikan informasi mengenai setiap kontribusi yang diberikan di lokasi terdekat. Rasakan dampak positifnya dalam setiap riwayat donasi Anda.
             </p>
           </div>
         </div>
