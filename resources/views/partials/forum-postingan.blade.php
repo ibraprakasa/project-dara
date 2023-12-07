@@ -80,9 +80,16 @@
                 <td class="truncate-text">{{ $row->text }}</td>
                 <td>
                     @if($row->gambar == null)
+<<<<<<< HEAD
                         <img src="assets/img/daraicon.png"" alt="" style="width:100px; height:100px;">
                     @else
                         <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
+=======
+                    <!-- <img src="../assets/img/daraicon.png"" alt="" style=" width:100px; height:100px;"> -->
+                    <b>Tidak ada gambar</b>
+                    @else
+                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
+>>>>>>> 3c1c13982799d69e8d9d9e318f0366881bf2d03d
                         <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
                     </a>
                     @endif
@@ -260,4 +267,4 @@
     </div>
     <!--  END MODAL  -->
 
-@endsection
+    @endsection

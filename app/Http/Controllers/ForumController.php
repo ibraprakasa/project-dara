@@ -129,9 +129,10 @@ class ForumController extends Controller
 
             if (file_exists($gambarPath)) {
                 unlink($gambarPath);
+                $postingan->delete();
+            }elseif($postingan->gambar == null){
+                $postingan->delete();
             }
-
-            $postingan->delete();
     
             return redirect()->route('forum-postingan')->with('success', 'Postingan berhasil dihapus.');
         }
