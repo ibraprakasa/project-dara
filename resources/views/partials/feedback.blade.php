@@ -137,11 +137,11 @@ use Carbon\Carbon;
                 </td>
                 @if($row->status)
                 <td>
-                    Tampil
+                    <b>Tampil</b>
                 </td>
                 @elseif($row->status === 0 )
                 <td>
-                    -
+                    <b>-</b>
                 </td> 
                 @endif
                 <td>
@@ -260,9 +260,9 @@ use Carbon\Carbon;
                 {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
             </td>
             @if($row->status == 1)
-            <td>-</td>
+            <td><b>-</b></td>
             @elseif($row->status == 2)
-            <td>Dibalas</td>
+            <td><b>Dibalas</b></td>
             @endif
             <td>
                 <button class="custom-button" data-toggle="modal" data-target="#deletepesan{{ $row->id }}">
