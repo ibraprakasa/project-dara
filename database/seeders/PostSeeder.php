@@ -13,8 +13,8 @@ class PostSeeder extends Seeder
     {
         DB::table('posts')->insertGetId(array(
             'id_pendonor' => '10',
-            'text' => 'Ini adalah status dari pendonor',
-            'gambar' => '1697793546.jpeg',
+            'text' => null,
+            'gambar' => '1697794271.png',
             'created_at' =>now(),
             'updated_at' =>now(),
         ));

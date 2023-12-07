@@ -77,15 +77,22 @@
                 <th scope="row">{{ $key+$postingan->firstItem() }}</th>
                 <td>{{ $row->pendonor->kode_pendonor }}</td>
                 <td>{{ $row->pendonor->nama }}</td>
+                @if($row->text == null)
+                <td><b>Tidak ada teks</b></td>
+                @else
                 <td class="truncate-text">{{ $row->text }}</td>
+                @endif
                 <td>
                     @if($row->gambar == null)
+<<<<<<< HEAD
 <<<<<<< HEAD
                         <img src="assets/img/daraicon.png"" alt="" style="width:100px; height:100px;">
                     @else
                         <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
 =======
                     <!-- <img src="../assets/img/daraicon.png"" alt="" style=" width:100px; height:100px;"> -->
+=======
+>>>>>>> edc1f5986469f791aa5349aeeb37be7e2f832251
                     <b>Tidak ada gambar</b>
                     @else
                     <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
