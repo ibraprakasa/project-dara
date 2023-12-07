@@ -50,7 +50,7 @@
 
               <a class="flex items-center gap-4">
                 <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                  <img src="{{ asset('assets/img/' . $row->pendonor->gambar) }}" alt="author" class="w-[50px] h-[50px] rounded-full overflow-hidden" />
+                  <img src="{{ asset('images/' . $row->pendonor->gambar) }}" alt="author" class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                 </div>
 
                 <div>

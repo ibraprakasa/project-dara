@@ -482,8 +482,8 @@
             <div class="modal-body">
                 <div class="form-group" style="text-align: center;">
                     @if ($row->gambar)
-                    <a data-fancybox="gallery" href="{{ asset('assets/img/'.$row->gambar) }}" data-caption="{{ $row->nama }}">
-                        <img src="{{ asset('assets/img/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
+                    <a data-fancybox="gallery" href="{{ asset('images/'.$row->gambar) }}" data-caption="{{ $row->nama }}">
+                        <img src="{{ asset('images/' . $row->gambar) }}" alt="" width="150" height="140" style="border-radius: 25%;">
                     </a>
                     @else
                     <img src="{{ asset('assets/img/userblue.png') }}" alt="" width="150" height="140" style="border-radius: 25%; border: 2px solid black;">
