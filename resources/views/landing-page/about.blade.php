@@ -1,57 +1,35 @@
-<section id="about" class="bg-gray-1 pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">
+<section id="tentang" class="bg-gray-1 pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">
     <div class="container">
       <div class="wow fadeInUp" data-wow-delay=".2s">
         <div class="-mx-4 flex flex-wrap items-center">
           <div class="w-full px-4 lg:w-1/2">
             <div class="mb-12 max-w-[540px] lg:mb-0">
               <h2 class="mb-5 text-3xl font-bold leading-tight text-dark sm:text-[40px] sm:leading-[1.2]">
-                Brilliant Toolkit to Build Nextgen Website Faster.
+              DARA, Aplikasi Pendonor untuk Mewujudkan Mimpi Bersama.
               </h2>
-              <p class="mb-10 text-base leading-relaxed text-body-color">
-                The main ‘thrust' is to focus on educating attendees on how to best protect highly vulnerable business
-                applications with
-                interactive panel discussions and roundtables led by subject matter experts.
+              <p align="justify" class="mb-10 text-base leading-relaxed text-body-color">
+              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses pendonoran, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
                 <br> <br>
-                The main ‘thrust' is to focus on educating attendees on how to best protect highly vulnerable business
-                applications with
-                interactive panel.
+                Wujudkan Mimpi Bersama dengan Sentuhan Kebaikan. DARA tidak hanya sekadar aplikasi, tapi juga sebuah panggilan untuk berbagi kehidupan.
               </p>
-
-              <a href="javascript:void(0)"
-                class="inline-flex items-center justify-center py-3 text-base font-medium text-center text-white border border-primary rounded-md px-7 bg-primary hover:bg-blue-dark hover:border-blue-dark">
-                Know More
-              </a>
             </div>
           </div>
 
-          <div class="w-full px-4 lg:w-1/2">
+          <div class="w-full px-4 lg:w-1/2 ">
             <div class="flex flex-wrap -mx-2 sm:-mx-4 lg:-mx-2 xl:-mx-4">
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
-                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-01.jpg') }}" alt="about image"
+                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[700px]">
+                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 7.png') }}" alt="about image"
+                    class="object-cover object-center w-full h-full" />
+                </div>
+              </div>
+              <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
+                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[700px]">
+                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 5.png') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
               </div>
 
-              <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
-                <div class="mb-4 sm:mb-8 sm:h-[220px] md:h-[346px] lg:mb-4 lg:h-[225px] xl:mb-8 xl:h-[310px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/about-image-02.jpg') }}" alt="about image"
-                    class="object-cover object-center w-full h-full" />
-                </div>
-
-                <div
-                  class="bg-primary relative z-10 mb-4 flex items-center justify-center overflow-hidden py-12 px-6 sm:mb-8 sm:h-[160px] sm:p-5 lg:mb-4 xl:mb-8">
-                  <div>
-                    <span class="block text-5xl font-extrabold text-white">
-                      09
-                    </span>
-                    <span class="block text-base font-semibold text-white">
-                      We have
-                    </span>
-                    <span class="block text-base font-medium text-white text-opacity-70">
-                      Years of experience
-                    </span>
-                  </div>
                   <div>
                     <span class="absolute top-0 left-0 -z-10">
                       <svg width="106" height="144" viewBox="0 0 106 144" fill="none"

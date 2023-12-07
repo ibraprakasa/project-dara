@@ -1,14 +1,8 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Laporan')
 @section('content')
 
-<head>
-    <title>
-        DARA || Laporan
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-</head>
 
 <div class="filter btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
@@ -138,7 +132,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                     </button>
                 </div>
             </form>
@@ -248,8 +242,8 @@
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" style="border-radius:10px;background-color: #E70000;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id }}">Hapus Laporan Asli</button>
-                <button type="button" class="btn btn-primary" style="border-radius:10px;background-color: #3B4B65;" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id }}">Hapus Laporan Palsu</button>
+                <button type="button" class="btn btn-danger modalbuttondanger-style" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id }}">Hapus Laporan Asli</button>
+                <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id }}">Hapus Laporan Palsu</button>
             </div>
         </div>
     </div>
@@ -275,8 +269,8 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -303,8 +297,8 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>

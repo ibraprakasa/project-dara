@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Forum')
 @section('content')
-
-<head>
-    <title>
-        DARA || Forum
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
@@ -119,8 +113,8 @@
                 @method('DELETE')
                 <input type="hidden" name="id" value="{{ $row->id }}">
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -160,13 +154,12 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!--  END MODAL  -->
-
 
 @endsection

@@ -1,15 +1,14 @@
 <div id="home" class="relative overflow-hidden bg-primary pt-[120px] md:pt-[130px] lg:pt-[160px]">
     <div class="container">
       <div class="-mx-4 flex flex-wrap items-center">
-        <div class="w-full px-4">
+      <div class="w-full md:w-1/2 px-4"> <!-- Bagian teks (setengah lebar pada layar medium dan lebih besar) -->
           <div class="hero-content wow fadeInUp mx-auto max-w-[780px] text-center" data-wow-delay=".2s">
             <h1
-              class="mb-6 text-3xl font-bold leading-snug text-white sm:text-4xl sm:leading-snug lg:text-5xl lg:leading-[1.2]">
-              Open-Source Web Template for SaaS, Startup, Apps, and More
+              class="mb-6 text-2xl font-bold leading-snug text-white sm:text-3xl sm:leading-snug lg:text-4xl lg:leading-[1.2]">
+              Jelajahi Pengalaman Donor Darah Terbaik Anda dengan DARA.            
             </h1>
             <p class="mx-auto mb-9 max-w-[600px] font-medium text-base text-white sm:text-lg sm:leading-[1.44]">
-              Multidisciplinary Web Template Built with Your Favourite
-              Technology - HTML Bootstrap, Tailwind and React NextJS.
+            Temukan Kegembiraan dalam Memberikan dengan DARA Apps: Mempermudah dan Memperkaya Pengalaman Donor Darah di Kota Padang.
             </p>
             <ul class="mb-10 flex gap-5 flex-wrap items-center justify-center">
               <li>
@@ -19,7 +18,7 @@
                 </a>
               </li>
               <li>
-                <a href="https://github.com/tailgrids/play-tailwind" target="_blank"
+                <a href="https://github.com/ibraprakasa/project-dara" target="_blank"
                   class="flex items-center gap-4 py-[14px] rounded-md bg-white/[0.12] px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark">
                   <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -37,17 +36,13 @@
                 </a>
               </li>
             </ul>
-            <div class="wow fadeInUp text-center" data-wow-delay=".3s">
-              <img src="{{ asset('assets/assets-landing-page/images/hero/brand.svg') }}" alt="image" 
-                class="mx-auto w-full max-w-[250px] opacity-50 transition duration-300 ease-in-out hover:opacity-100" />
-            </div>
           </div>
         </div>
 
-        <div class="w-full px-4">
+        <div class="w-full md:w-1/2 px-4"> <!-- Bagian gambar (setengah lebar pada layar medium dan lebih besar) -->
           <div class="wow fadeInUp relative z-10 mx-auto max-w-[845px]" data-wow-delay=".25s">
-            <div class="mt-16">
-              <img src="{{ asset('assets/assets-landing-page/images/hero/hero-image.jpg') }}" alt="hero"
+            <div class="mt-11">
+              <img src="{{ asset('assets/assets-landing-page/images/hero/tanpagarudanobg.png') }}" alt="hero"
                 class="mx-auto max-w-full rounded-t-xl rounded-tr-xl" />
             </div>
             <div class="absolute bottom-0 -left-9 z-[-1]">
@@ -221,5 +216,23 @@
           </div>
         </div>
       </div>
+    </div>
+    <div>
+      <span class="absolute top-0 left-0">
+        <svg width="495" height="570" viewBox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+          <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+          <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white"
+            stroke-opacity="0.08" stroke-width="12" />
+        </svg>
+      </span>
+      <span class="absolute bottom-0 right-0">
+        <svg width="493" height="570" viewBox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+          <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+          <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white"
+            stroke-opacity="0.06" stroke-width="13" />
+        </svg>
+      </span>
     </div>
   </div>

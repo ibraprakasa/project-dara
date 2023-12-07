@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Jadwal Donor')
 @section('content')
-
-<head>
-    <title>
-        DARA || Jadwal Donor
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">

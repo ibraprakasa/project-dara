@@ -2,6 +2,11 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+.thead-style{
+    background-color:#3B4B65; 
+    color:white;
+}
+
 .truncate-text {
     white-space: nowrap;
     overflow: hidden;
@@ -21,10 +26,11 @@ body {
     color: white;
 }
 
-.bi {
+.bi, .fa {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 21px;
 }
+
 
 .filte {
     margin-top: 9px;
@@ -59,6 +65,8 @@ body {
 .wow {
     width: auto;
 }
+
+
 
 
 .btn-primary:hover {
@@ -111,16 +119,16 @@ body {
     overflow: auto !important;
     min-height: 200px !important;
     color: black !important;
-    font-weight: bold !important;
     text-align: justify;
 }
 
 .kolom {
-    background-color: #D9D9D9 !important;
     font-family: 'Poppins', sans-serif !important;
+    background-color: #D9D9D9 !important;
 }
 
 .kolom:focus {
+    border: 1px solid #3B4B65;
     background-color: white !important;
     box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
     outline: none;
@@ -200,6 +208,7 @@ body {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
+    position: absolute;
 }
 
 .whitebold {
@@ -422,12 +431,6 @@ table td {
     margin-top: 45px;
 }
 
-.gambar1 {
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
-}
 
 .dropdown-toggle, .dropdown-item{
     font-family: 'Poppins', sans-serif;
@@ -482,9 +485,8 @@ table td {
 .berita-title {
     display: block;
     font-size: 20px;
-    font-weight: bold;
     text-align: center;
-    font-style: italic;
+    color:navy;
 }
 
 .rating-title {
@@ -519,6 +521,14 @@ table td {
     margin-top: 40px;
     margin-right: 20px;
     margin-bottom: -10px;
+}
+
+@media screen and (max-width: 768px) {
+    .breadcrumb-container {
+        visibility: hidden;
+    }
+    
+    
 }
 
 
@@ -593,7 +603,7 @@ table td {
     margin-left: 20px;
 }
 
-.insertbar-style{
+.inserticon-style{
     border-radius:15px 0 0 15px;
     width: 22px; 
     display: flex; 
@@ -603,10 +613,24 @@ table td {
     font-family: 'Poppins', sans-serif;
 }
 
-.inserticon-style{
+.insertbar-style{
     background-color: #d9d9d9; 
     color:black;
     border-radius:0 0 0 0;
+}
+
+.ambilicon-style{
+    border-radius:15px 0 0 15px;
+    width: 22px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    background-color: #3B4B65;
+}
+
+.ambilbar-style{
+    background-color: #d9d9d9; 
+    color:black;
 }
 
 .searchbar-style {
@@ -635,5 +659,51 @@ table td {
     background-color: #3B4B65;
 }
 
+.filter-icon, .insertbar-style, .ambilbar-style{
+    font-family: 'Poppins', sans-serif;
+}
 
+.modalbuttonsuccess-style{
+    background-color: #03A13B; 
+}
+
+.modalbuttondanger-style{
+    background-color: #E70000; 
+}
+
+.modalbuttonclose-style{
+    background-color: black;
+}
+
+.modalbuttonlaporanpalsu{
+    background-color: #3B4B65;
+}
+
+.modalbuttonsuccess-style,
+.modalbuttondanger-style,
+.modalbuttonclose-style,
+.modalbuttonlaporanpalsu {
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px
+}
+
+.select2-container--bootstrap .select2-selection--single {
+    background-color: #d9d9d9;
+}
+
+.select2-container--bootstrap .select2-selection--single:focus {
+    background-color: white ;
+}
+
+ .sidebar.active {
+    width: 0; /* Lebar sidebar saat ditutup */
+ }
+
+ .main-panel {
+    transition: margin-left .5s; /* Animasi perubahan margin utama saat sidebar ditutup/buka */
+ }
+
+ .main-panel.active {
+    margin-left: 0; /* Margin utama saat sidebar ditutup */
+ }
 

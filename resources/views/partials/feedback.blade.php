@@ -4,14 +4,8 @@ use Carbon\Carbon;
 
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Tanggapan')
 @section('content')
-
-<head>
-    <title>
-        DARA || Tanggapan
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
@@ -142,9 +136,13 @@ use Carbon\Carbon;
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
                 </td>
                 @if($row->status)
-                <td>Ditampilkan</td>
-                @elseif($row->status === 0)
-                <td>-</td>
+                <td>
+                    Tampil
+                </td>
+                @elseif($row->status === 0 )
+                <td>
+                    -
+                </td> 
                 @endif
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
@@ -156,11 +154,19 @@ use Carbon\Carbon;
                         <i class="bi bi-info-square" style="color:black;"></i>
                     </button>
                 </td>
+                @if($row->status)
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}">
-                        <i class="bi bi-arrow-right-circle-fill" style="color: #3B4B65;"></i>
+                    <button class="custom-button" data-toggle="modal" data-target="#batalkirimtestimoni{{ $row->id }}" title="Tampil di Website">
+                        <i class="fa fa-check-circle" style="color: #03A13B;"></i>
                     </button>
                 </td>
+                @elseif($row->status === 0 )
+                <td>
+                    <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}" title="Tidak Tampil di Website">
+                        <i class="fa fa-times-circle" style="color: #E70000;"></i>
+                    </button>
+                </td> 
+                @endif
             </tr>
             @endforeach
             @endif
@@ -327,7 +333,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>
@@ -353,8 +359,8 @@ use Carbon\Carbon;
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style" v>>Hapus</button>
                 </div>
             </form>
         </div>
@@ -369,20 +375,48 @@ use Carbon\Carbon;
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Kirim Testimoni</h5>
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Kirim</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Tampilkan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
+              Publikasikan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
             </div>
             <form action="{{ route('kirimtestimoni', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">KIRIM</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Ya</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endforeach
+<!-- END MODAL -->
+
+<!-- MODAL BATAL KIRIM TESTIMONI -->
+@foreach($data as $key => $row)
+<div class="modal fade" id="batalkirimtestimoni{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="exampleModalLabel">Sembunyikan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Sembunyikan testimoni baris ke-{{ $key+$data->firstItem() }} dari Website DARA?
+            </div>
+            <form action="{{ route('batalkirimtestimoni', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('POST')
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tidak</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Ya</button>
                 </div>
             </form>
         </div>
@@ -489,7 +523,7 @@ use Carbon\Carbon;
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>
@@ -538,7 +572,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius: 10px">Terapkan</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
                 </div>
             </form>
         </div>
@@ -564,8 +598,8 @@ use Carbon\Carbon;
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger" style="background-color: #E70000; border-radius:10px">Hapus</button>
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
         </div>
@@ -626,20 +660,18 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
                 @if($row->reply == null)
-                <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Balas</button>
+                <button type="submit" data-dismiss="modal" data-target="#replypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary modalbuttonlaporanpalsu">Balas</button>
                 @elseif($row->reply != null)
-                <button type="submit" data-dismiss="modal" data-target="#sudahreplypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary" style="background-color: #3B4B65; border-radius:10px">Lihat Balasan</button>
+                <button type="submit" data-dismiss="modal" data-target="#sudahreplypesan{{ $row->id }}" data-toggle="modal" class="btn btn-primary modalbuttonlaporanpalsu">Lihat Balasan</button>
                 @endif
             </div>
         </div>
     </div>
 </div>
 @endforeach
-
 <!-- END MODAL -->
-
 
 <!-- MODAL BALAS PESAN -->
 @foreach($data1 as $key => $row)
@@ -691,7 +723,7 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Kirim</button>
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Kirim</button>
                 </div>
             </form>
         </div>
@@ -748,7 +780,7 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark" style="background-color: black; border-radius:10px" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
             </div>
         </div>
     </div>

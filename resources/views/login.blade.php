@@ -15,7 +15,8 @@
 </head>
 
 <body>
-    <div class="global-container"><br>
+    <div class="global-container">
+        <br>
         <div class="card login-form"">
         <div class=" icon-text">
             <img src="../assets/img/daraicon.png" class="iconjudul" alt="">
@@ -65,6 +66,7 @@
             <div class="text-center logopmi">
                 <img src="../assets/img/logopmi.png" alt="">
             </div>
+            
         </form>
     </div>
 </body>

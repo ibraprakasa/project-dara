@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Akun')
 @section('content')
-
-<head>
-  <title>
-    DARA || Akun
-  </title>
-  <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="content">
   @if(session('error'))
@@ -54,7 +48,7 @@
     <label for="role">Role</label>
     <input class="form-control input" name="role" type="text" id="role" placeholder="{{ Auth::user()->role->role_name }}" readonly>
   </div>
-  <button type="button" class="btn btn-success" data-toggle="modal" data-target=".editakun" style="margin-top:10px;border-radius:10px; background-color:#03A13B">Edit</button>
+  <button type="button" class="btn btn-success modalbuttonsuccess-style" data-toggle="modal" data-target=".editakun" style="margin-top:20px;">Edit</button>
 
   <!-- MODAL -->
   <div class="modal fade editakun" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -88,7 +82,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+            <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
           </div>
         </form>
         <!-- END MODAL -->
@@ -112,19 +106,19 @@
           <div class="modal-body">
             <div class="form-group" style="color:black; font-weight:bold">
               <label for="passwordlama">Kata Sandi Lama</label>
-              <input class="kolom form-control" name="passwordlama" type="password" id="passwordlama">
+              <input class="kolom form-control" name="passwordlama" type="password" id="passwordlama" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Lama.')" oninput="this.setCustomValidity('')">
             </div>
             <div class="form-group" style="color:black; font-weight:bold">
               <label for="passwordbaru">Kata Sandi Baru</label>
-              <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru">
+              <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Baru.')" oninput="this.setCustomValidity('')">
             </div>
             <div class="form-group" style="color:black; font-weight:bold">
               <label for="passwordkonfirmasi">Konfirmasi Kata Sandi Baru</label>
-              <input class="kolom form-control" name="passwordkonfirmasi" type="password" id="passwordkonfirmasi">
+              <input class="kolom form-control" name="passwordkonfirmasi" type="password" id="passwordkonfirmasi" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Konfirmasi Password Baru.')" oninput="this.setCustomValidity('')">
             </div>
           </div>
           <div class="modal-footer">
-            <button type="submit" class="btn btn-success" style="background-color: #03A13B; border-radius:10px">Simpan</button>
+            <button type="submit" class="btn btn-success modalbuttonsuccess-style">Ubah</button>
           </div>
         </form>
         <!-- END MODAL -->
