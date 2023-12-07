@@ -84,19 +84,9 @@
                 @endif
                 <td>
                     @if($row->gambar == null)
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <img src="assets/img/daraicon.png"" alt="" style="width:100px; height:100px;">
-                    @else
-                        <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
-=======
-                    <!-- <img src="../assets/img/daraicon.png"" alt="" style=" width:100px; height:100px;"> -->
-=======
->>>>>>> edc1f5986469f791aa5349aeeb37be7e2f832251
                     <b>Tidak ada gambar</b>
                     @else
                     <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
->>>>>>> 3c1c13982799d69e8d9d9e318f0366881bf2d03d
                         <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
                     </a>
                     @endif
