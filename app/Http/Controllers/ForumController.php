@@ -127,12 +127,12 @@ class ForumController extends Controller
 
             $gambarPath = public_path('assets/post/' . $postingan->gambar);
 
-            if (file_exists($gambarPath)) {
+            if (is_file($gambarPath)) {
+                // Hapus gambar jika itu adalah file
                 unlink($gambarPath);
-                $postingan->delete();
-            }elseif($postingan->gambar == null){
-                $postingan->delete();
             }
+
+            $postingan->delete();
     
             return redirect()->route('forum-postingan')->with('success', 'Postingan berhasil dihapus.');
         }
