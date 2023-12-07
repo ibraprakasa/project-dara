@@ -91,6 +91,19 @@ class PostControllerAPI extends Controller
 
     public function addPost(Request $request)
     {
+        // Validate the request data
+    $validator = Validator::make($request->all(), [
+        'text' => 'required_without:gambar|string', 
+        'gambar' => 'required_without:text|image',
+    ]);
+
+    // If validation fails, return the errors
+    if ($validator->fails()) {
+        return response()->json([
+            'success' => false,
+            'message' => $validator->errors()
+        ]);
+    }
         $user = auth()->guard('api')->user();
 
         $post = Post::create([
