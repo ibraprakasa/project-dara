@@ -89,7 +89,7 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Riwayat
             </h4>
-            <p class="mb-8 text-body-color lg:mb-9">
+            <p align="justify" class="mb-8 text-body-color lg:mb-9">
             Menampilkan sejarah donasi darah pendonor, memberikan informasi mengenai setiap kontribusi yang diberikan di lokasi terdekat. Rasakan dampak positifnya dalam setiap riwayat donasi Anda.
             </p>
           </div>

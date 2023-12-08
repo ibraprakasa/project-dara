@@ -50,22 +50,22 @@
             <h4 class="mb-9 text-lg font-semibold text-white">Tentang Kami</h4>
             <ul>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                <a href="{{ route('landing-page') }}#home" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Beranda
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                <a href="{{ route('landing-page') }}#features" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Fitur
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                <a href="{{ route('landing-page') }}#testimonials" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Ulasan
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                <a href="{{ route('landing-page') }}#team" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Tim
                 </a>
               </li>
@@ -133,7 +133,7 @@
             <h4 class="mb-9 text-lg font-semibold text-white">Berita Terbaru</h4>
             <div class="flex flex-col gap-8">
               @foreach($news2 as $row)
-              <a href="blog-details.html" class="group flex items-center gap-[22px]">
+              <a href="{{ route('news-detail', ['id' => $row->id]) }}" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
                   <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="blog" width="70px" height="48px">
                 </div>

@@ -24,7 +24,11 @@ class LandingPageController extends Controller
         $newsDetail = Berita::find($id);
         $news2 = Berita::latest('created_at')->take(2)->get();
         $news3 = Berita::inRandomOrder()->take(3)->get();
-        $news4 = Berita::inRandomOrder()->take(4)->get();
+
+        $newsDetail->increment('views');
+
+        $news4 = Berita::orderByDesc('views')->take(4)->get();
+
 
         return view('landing-page.details.news-detail',compact('newsDetail','news2','news3','news4'));
     }

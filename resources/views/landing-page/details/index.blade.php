@@ -162,7 +162,23 @@
     });
   </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ambil ID target dari URL
+        var targetId = window.location.hash.substring(1);
 
+        // Temukan elemen target
+        var targetElement = document.getElementById(targetId);
+
+        // Lakukan autoscroll dengan animasi jika elemen ditemukan
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    });
+</script>
 </body>
 
 </html>
