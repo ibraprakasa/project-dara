@@ -138,7 +138,7 @@
                                 <i class="col pl-1 bi bi-image"></i> Pilih Gambar
                             </label>
                             <div class="col">
-                                <input class="kolom form-control" name="gambar" type="file" id="gambar" required accept=".jpg, .jpeg, .png, .svg" oninvalid="this.setCustomValidity('Masukkan Gambar terlebih dahulu.')" oninput="this.setCustomValidity('')">
+                                <input class="kolom form-control" name="gambar" type="file" id="gambar" required accept=".jpg, .jpeg, .png, .svg, .webp" oninvalid="this.setCustomValidity('Masukkan Gambar terlebih dahulu.')" oninput="this.setCustomValidity('')">
                                 <span id="keterangan-gambar" style="color: black; font-weight:bold">Tidak ada gambar yang dipilih</span>
                             </div>
                         </div>

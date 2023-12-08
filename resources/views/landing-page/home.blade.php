@@ -20,8 +20,8 @@
               <li>
                 <a href="https://github.com/ibraprakasa/project-dara" target="_blank"
                   class="flex items-center gap-4 py-[14px] rounded-md bg-white/[0.12] px-6 text-base font-medium text-white transition duration-300 ease-in-out hover:bg-white hover:text-dark">
-                  
-                  Star on Github
+                  <img src="../assets/assets-landing-page/images/hero/playstore.png" alt="playstore" width="24" height="24">
+                  Google Play
                 </a>
               </li>
             </ul>
