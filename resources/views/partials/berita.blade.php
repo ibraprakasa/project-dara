@@ -340,25 +340,6 @@
     </script>
 <?php endforeach; ?>
 
-<!-- @foreach($data as $row)
-<script>
-    var inputGambar{{ $row->id }} = document.getElementById('gambar{{ $row->id }}');
-    var keteranganGambar{{ $row->id }} = document.getElementById('keterangan-gambar{{ $row->id }}');
-
-    // Menambahkan event listener untuk memantau pemilihan file
-    inputGambar{{ $row->id }}.addEventListener('change', function() {
-        if (inputGambar{{ $row->id }}.files.length > 0) {
-            // Jika ada file yang dipilih, update teks keterangan
-            keteranganGambar{{ $row->id }}.textContent = 'Gambar telah dipilih: ' + inputGambar{{ $row->id }}.files[0].name;
-        } else {
-            // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
-            keteranganGambar{{ $row->id }}.textContent = 'Tidak ada gambar yang dipilih';
-        }
-    });
-</script>
-@endforeach -->
-
-
-
-
 @endsection
+
+

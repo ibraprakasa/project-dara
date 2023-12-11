@@ -38,12 +38,12 @@
             </p>
             <ul class="flex items-center justify-center gap-[10px]">
               <li>
-                <a href="{{ route('landing-page') }}" class="flex items-center gap-[10px] text-base font-medium text-black hover:text-primary">
+                <a href="{{ route('landing-page') }}" class="flex items-center gap-[10px] text-base font-medium text-white hover:text-primary">
                   Beranda
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0)"  onclick="refreshPage()" class="flex items-center gap-[10px] text-base font-medium text-black hover:text-primary">
+                <a href="javascript:void(0)"  onclick="refreshPage()" class="flex items-center gap-[10px] text-base font-medium text-white hover:text-primary">
                   <span class="text-black"> / </span>
                   Rincian
                 </a>
@@ -52,6 +52,24 @@
           </div>
         </div>
       </div>
+    </div>
+    <div>
+      <span class="absolute top-0 left-0">
+        <svg width="100" height="600" viewBox="0 0 495 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="55" cy="442" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+          <circle cx="446" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+          <path d="M245.406 137.609L233.985 94.9852L276.609 106.406L245.406 137.609Z" stroke="white"
+            stroke-opacity="0.08" stroke-width="12" />
+        </svg>
+      </span>
+      <span class="absolute bottom-0 right-0">
+        <svg width="100" height="600" viewBox="0 0 493 470" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="462" cy="5" r="138" stroke="white" stroke-opacity="0.04" stroke-width="50" />
+          <circle cx="49" cy="470" r="39" stroke="white" stroke-opacity="0.04" stroke-width="20" />
+          <path d="M222.393 226.701L272.808 213.192L259.299 263.607L222.393 226.701Z" stroke="white"
+            stroke-opacity="0.06" stroke-width="13" />
+        </svg>
+      </span>
     </div>
   </div>
   <!-- ====== Banner Section End -->
@@ -258,7 +276,7 @@
   <!-- ====== Back To Top End -->
 
   <!-- ====== Made With Button Start -->
-  <a href="https://tailgrids.com/"
+  <a href=javascript:void(0)"
     class="inline-flex items-center gap-[10px] py-2 px-[14px] rounded-lg bg-white shadow-2 fixed bottom-8 left-4 sm:left-9 z-[999]">
     <span class="text-base font-medium text-dark-3">
       Made with

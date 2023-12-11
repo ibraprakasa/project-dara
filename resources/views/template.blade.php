@@ -49,7 +49,7 @@
       <!-- Content -->
       @yield('content')
       <!-- EndContent -->
-
+      @yield('footer')
     </div>
   </div>
   <!--   Core JS Files   -->

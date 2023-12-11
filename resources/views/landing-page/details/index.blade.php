@@ -76,7 +76,7 @@
   </a>
   <!-- ====== Back To Top End -->
 
-  <a href="https://tailgrids.com/"
+  <a href="javascript:void(0)"
     class="inline-flex items-center gap-[10px] py-2 px-[14px] rounded-lg bg-white shadow-2 fixed bottom-8 left-4 sm:left-9 z-[999]">
     <span class="text-base font-medium text-dark-3">
       Made with

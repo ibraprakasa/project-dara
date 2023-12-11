@@ -8,7 +8,7 @@
               DARA, Aplikasi Pendonor untuk Mewujudkan Mimpi Bersama.
               </h2>
               <p align="justify" class="mb-10 text-base leading-relaxed text-body-color">
-              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses pendonoran, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
+              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses donor darah, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
                 <br> <br>
                 Wujudkan Mimpi Bersama dengan Sentuhan Kebaikan. DARA tidak hanya sekadar aplikasi, tapi juga sebuah panggilan untuk berbagi kehidupan.
               </p>

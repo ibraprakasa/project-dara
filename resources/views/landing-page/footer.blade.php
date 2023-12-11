@@ -156,7 +156,7 @@
             <div class="my-1 flex justify-center md:justify-end">
               <p class="text-base text-gray-7">
                 Designed and Developed by
-                <a href="https://tailgrids.com" rel="nofollow noopner" target="_blank"
+                <a href="javascript:void(0)" rel="nofollow noopner"
                   class="text-gray-1 hover:underline">
                   DARA
                 </a>
