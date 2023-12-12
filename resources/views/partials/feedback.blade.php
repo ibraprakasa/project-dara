@@ -13,13 +13,7 @@ use Carbon\Carbon;
     <link href="../assets/css/stylepartials.css" rel="stylesheet">
 </head>
 
-<div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('landing-page') }}">Pergi ke Halaman Website DARA Apps</a></li>
-        </ol>
-    </nav>
-</div>
+ 
 
 <div class="row text-center">
     <div class="col" style="margin-top:9px; margin-bottom:-70px; margin-left:45px">

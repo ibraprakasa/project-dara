@@ -7,6 +7,9 @@
         <a href="https://www.instagram.com/cybertech_pnp/" target="_blank">
           <img src="{{ asset('assets/assets-landing-page/images/brands/2.png') }}" alt="lineicons">
         </a>
+        <a href="https://ti.pnp.ac.id/" target="_blank">
+          <img src="{{ asset('assets/assets-landing-page/images/brands/4.png') }}" alt="lineicons">
+        </a>
         <a href="https://www.pnp.ac.id/" target="_blank">
           <img src="{{ asset('assets/assets-landing-page/images/brands/3.png') }}" alt="uideck">
         </a>
