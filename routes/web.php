@@ -54,6 +54,8 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
     Route::get('stokdarah', 'App\Http\Controllers\StokDarahController@index')->name('stokdarah');
     Route::post('insertstok', 'App\Http\Controllers\StokDarahController@insertstok')->name('insertstok');
     Route::post('updatestok', 'App\Http\Controllers\StokDarahController@updatestok')->name('updatestok');
+
+    Route::get('/stok/{id}','App\Http\Controllers\StokDarahController@getStok');
     // END STOK DARAH
 
     // AKUN
@@ -75,8 +77,11 @@ Route::group(['middleware' => ['auth', 'checkrole:1,2']], function () {
 
     //JADWAL DONOR 
     Route::get('jadwaldonor', 'App\Http\Controllers\JadwalDonorController@index')->name('jadwaldonor');
+    Route::get('editjadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@getEdit')->name('editjadwaldonor');
+
     Route::post('insertjadwaldonor', 'App\Http\Controllers\JadwalDonorController@insertjadwaldonor')->name('insertjadwaldonor');
     Route::post('updatejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@updatejadwaldonor')->name('updatejadwaldonor');
+
     Route::delete('deletejadwaldonor/{id}', 'App\Http\Controllers\JadwalDonorController@deletejadwaldonor')->name('deletejadwaldonor');
     //END JADWAL DONOR
 

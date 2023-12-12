@@ -707,3 +707,7 @@ table td {
     margin-left: 0; /* Margin utama saat sidebar ditutup */
  }
 
+ .modal { 
+    overflow: auto !important; 
+}
+
