@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // LOGIN LOGOUT
-Route::get('/', 'App\Http\Controllers\LoginController@login')->name('login');
+Route::get('/login', 'App\Http\Controllers\LoginController@login')->name('login');
 Route::post('loginaksi', 'App\Http\Controllers\LoginController@loginaksi')->name('loginaksi');
 Route::post('logoutaksi', 'App\Http\Controllers\LoginController@logoutaksi')->name('logoutaksi')->middleware('auth');
 // END 
@@ -34,10 +34,17 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 
 // LANDING PAGE
 
-Route::get('landing-page', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
+Route::get('/', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
+Route::get('news-detail/{id}', 'App\Http\Controllers\LandingPageController@getNewsDetail')->name('news-detail');
 Route::post('landing-page','App\Http\Controllers\LandingPageController@postInquiries')->name('landing-page.inquiries');
 Route::get('berita-show/{id}','App\Http\Controllers\LandingPageController@getShow')->name('berita-show');
 // Route::get('show', 'App\Http\Controllers\LandingPageController@getShow')->name('landing-page.show');
+
+// PART OF LANDING PAGE
+
+Route::get('about-details','App\Http\Controllers\LandingPageController@getAbout')->name('about-details');
+
+// END PART
 
 // END LANDING PAGE
 
@@ -90,6 +97,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     Route::post('insertpendonorsuper', 'App\Http\Controllers\KelolaAkunController@insertpendonorsuper')->name('insertpendonorsuper');
     Route::post('updatependonorsuper/{id}', 'App\Http\Controllers\KelolaAkunController@updatependonorsuper')->name('updatependonorsuper');
     Route::delete('deletependonorsuper/{id}', 'App\Http\Controllers\KelolaAkunController@deletependonorsuper')->name('deletependonorsuper');
+    Route::post('updatepasswordpendonor/{id}', 'App\Http\Controllers\KelolaAkunController@updatepasswordpendonor')->name('updatepasswordpendonor');
     // END PENDONOR
 
     // USER
@@ -123,6 +131,7 @@ Route::group(['middleware' => ['auth', 'checkrole:1']], function () {
     
     Route::post('kirimbalasanpesan','App\Http\Controllers\FeedbackController@postReply')->name('kirimbalasanpesan');
     Route::post('kirimtestimoni/{id}','App\Http\Controllers\FeedbackController@postTestimoni')->name('kirimtestimoni');
+    Route::post('batalkirimtestimoni/{id}','App\Http\Controllers\FeedbackController@postBatalTestimoni')->name('batalkirimtestimoni');
 
     Route::delete('deletetestimoni/{id}','App\Http\Controllers\FeedbackController@deleteTestimoni')->name('deletetestimoni');
     Route::delete('deletepesan/{id}','App\Http\Controllers\FeedbackController@deletePesan')->name('deletepesan');
@@ -137,5 +146,6 @@ Route::group(['middleware' => ['auth', 'checkrole:2']], function () {
     Route::post('insertpendonor', 'App\Http\Controllers\DataPendonorController@insertpendonor')->name('insertpendonor');
     Route::post('updatependonor/{id}', 'App\Http\Controllers\DataPendonorController@updatependonor')->name('updatependonor');
     Route::delete('deletependonor/{id}', 'App\Http\Controllers\DataPendonorController@deletependonor')->name('deletependonor');
+    Route::post('updatepasswordpendonor/{id}', 'App\Http\Controllers\DataPendonorController@updatepasswordpendonor')->name('updatepasswordpendonor');
     //END
 });

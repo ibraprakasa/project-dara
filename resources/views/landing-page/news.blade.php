@@ -1,4 +1,4 @@
-<section id=berita class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-white">
+<section id="news" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 bg-white">
     <div class="container mx-auto">
       <div class="flex flex-wrap justify-center -mx-4">
         <div class="w-full px-4">
@@ -16,12 +16,12 @@
         </div>
       </div>
       <div class="flex flex-wrap -mx-4">
-        @foreach($news as $row)
+        @foreach($news3 as $row)
         <div class="w-full px-4 md:w-1/2 lg:w-1/3">
           <div class="wow fadeInUp group mb-10" data-wow-delay=".1s">
             <div class="mb-8 overflow-hidden rounded-[5px]">
-              <a href="{{ route('berita-show', ['id' => $row->id]) }}" class="block">
-              <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
+              <a href="{{ route('news-detail', ['id' => $row->id]) }}" class="block">
+                <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="image" class="w-full transition group-hover:rotate-6 group-hover:scale-125" />
                </a>
             </div>
             <div>
@@ -30,17 +30,18 @@
                 {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j F Y') }}
               </span>
               <h3>
-                <a href="javascript:void(0)"
+                <a align="justify" href="{{ route('news-detail', ['id' => $row->id]) }}"
                   class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
                   {{ $row->judul }}
                 </a>
               </h3>
-              <p class="max-w-[370px] text-base text-body-color">
-                {{ $row->judul }}
+              <p align="justify" class="max-w-[370px] text-base text-body-color">
+              {{ \Illuminate\Support\Str::limit(strip_tags($row->deskripsi), 150) }}
               </p>
             </div>
           </div>
         </div>
         @endforeach
+      </div> 
     </div>
   </section>

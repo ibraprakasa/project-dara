@@ -1,4 +1,4 @@
-<footer class="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]" data-wow-delay=".15s">
+<footer id="footer" class="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]" data-wow-delay=".15s">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-4/12 xl:w-3/12">
@@ -47,19 +47,31 @@
         </div>
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
           <div class="mb-10 w-full">
+<<<<<<< HEAD
             <h4 class="mb-9 text-lg font-semibold text-white">Tentang kami</h4>
             <ul>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+=======
+            <h4 class="mb-9 text-lg font-semibold text-white">Tentang Kami</h4>
+            <ul>
+              <li>
+                <a href="{{ route('landing-page') }}#home" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                   Beranda
                 </a>
               </li>
               <li>
+<<<<<<< HEAD
                 <a href="#featur" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+=======
+                <a href="{{ route('landing-page') }}#features" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                   Fitur
                 </a>
               </li>
               <li>
+<<<<<<< HEAD
                 <a href="#about" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Tentang
                 </a>
@@ -67,6 +79,15 @@
               <li>
                 <a href="#t estimonials" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
                   Testimoni 
+=======
+                <a href="{{ route('landing-page') }}#testimonials" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Ulasan
+                </a>
+              </li>
+              <li>
+                <a href="{{ route('landing-page') }}#team" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Tim
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                 </a>
               </li>
             </ul>
@@ -101,6 +122,7 @@
         </div>
         <div class="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-3/12 xl:w-2/12">
           <div class="mb-10 w-full">
+<<<<<<< HEAD
             <h4 class="mb-9 text-lg font-semibold text-white">Patner</h4>
             <ul>
               <li>
@@ -120,6 +142,29 @@
               </li>
               <li>
                 <a href="javascript:void(0)" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+=======
+            <h4 class="mb-9 text-lg font-semibold text-white">
+              Partner Kami
+            </h4>
+            <ul>
+              <li>
+                <a href="https://www.codelabs.co.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  CodeLabs 
+                </a>
+              </li>
+              <li>
+              <a href="https://www.instagram.com/cybertech_pnp/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                  Cybertech PNP
+                </a>
+              </li>
+              <li>
+                <a href="https://ti.pnp.ac.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+                Teknologi Informasi
+                </a>
+              </li>
+              <li>
+                <a href="https://www.pnp.ac.id/" target="_blank" class="mb-3 inline-block text-base text-gray-7 hover:text-primary">
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                   Politeknik Negeri Padang
                 </a>
               </li>
@@ -128,24 +173,22 @@
         </div>
         <div class="w-full px-4 md:w-2/3 lg:w-6/12 xl:w-3/12">
           <div class="mb-10 w-full">
+<<<<<<< HEAD
             <h4 class="mb-9 text-lg font-semibold text-white">Berita Terakhir</h4>
+=======
+            <h4 class="mb-9 text-lg font-semibold text-white">Berita Terbaru</h4>
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
             <div class="flex flex-col gap-8">
-              <a href="blog-details.html" class="group flex items-center gap-[22px]">
+              @foreach($news2 as $row)
+              <a href="{{ route('news-detail', ['id' => $row->id]) }}" class="group flex items-center gap-[22px]">
                 <div class="overflow-hidden rounded">
-                  <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-01.jpg') }}" alt="blog">
+                  <img src="{{ asset('assets/img/' .$row->gambar) }}" alt="blog" width="70px" height="48px">
                 </div>
                 <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
-                  I think really important to design with...
+                  {{  $row->judul }}
                 </span>
               </a>
-              <a href="blog-details.html" class="group flex items-center gap-[22px]">
-                <div class="overflow-hidden rounded">
-                  <img src="{{ asset('assets/assets-landing-page/images/blog/blog-footer-02.jpg') }}" alt="blog">
-                </div>
-                <span class="max-w-[180px] text-gray-7 text-base group-hover:text-white">
-                  Recognizing the need is the primary...
-                </span>
-              </a>
+              @endforeach
             </div>
           </div>
         </div>
@@ -155,14 +198,19 @@
     <div class="mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]">
       <div class="container">
         <div class="-mx-4 flex flex-wrap">
+<<<<<<< HEAD
           <div class="w-full px-4 md:w-2/3 lg:w-1/2">
 
           </div>
           <div class="w-full px-4 md:w-1/3 lg:w-1/2">
+=======
+         
+          <div class="w-full px-4 text-right">
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
             <div class="my-1 flex justify-center md:justify-end">
               <p class="text-base text-gray-7">
                 Designed and Developed by
-                <a href="https://tailgrids.com" rel="nofollow noopner" target="_blank"
+                <a href="javascript:void(0)" rel="nofollow noopner"
                   class="text-gray-1 hover:underline">
                   DARA
                 </a>

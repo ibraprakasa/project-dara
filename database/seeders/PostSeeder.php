@@ -12,18 +12,7 @@ class PostSeeder extends Seeder
     public function run(): void
     {
         DB::table('posts')->insertGetId(array(
-<<<<<<< HEAD
-<<<<<<< HEAD
             'id_pendonor' => '1',
-=======
-            'id_pendonor' => '10',
->>>>>>> 76a76523381a7402caf2a24bd4a422584af6b80b
-=======
-            'id_pendonor' => '10',
-=======
-            'id_pendonor' => '1',
->>>>>>> 9a8511b2388a10af3a1dda67a9231608ea051f75
->>>>>>> 07bd78a0f832732285adfb4e2b00d1819c73ac9c
             'text' => 'Ini adalah status dari pendonor',
             'gambar' => '1697793546.jpeg',
             'created_at' =>now(),

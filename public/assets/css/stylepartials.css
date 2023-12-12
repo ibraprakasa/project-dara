@@ -26,10 +26,11 @@ body {
     color: white;
 }
 
-.bi {
+.bi, .fa {
     font-weight: bold;
-    font-size: 22px;
+    font-size: 21px;
 }
+
 
 .filte {
     margin-top: 9px;
@@ -64,6 +65,8 @@ body {
 .wow {
     width: auto;
 }
+
+
 
 
 .btn-primary:hover {
@@ -120,8 +123,8 @@ body {
 }
 
 .kolom {
-    background-color: #D9D9D9 !important;
     font-family: 'Poppins', sans-serif !important;
+    background-color: #D9D9D9 !important;
 }
 
 .kolom:focus {
@@ -205,6 +208,7 @@ body {
     padding: 10px;
     border: 1px solid #cccccc;
     border-radius: 5px;
+    position: absolute;
 }
 
 .whitebold {
@@ -427,12 +431,6 @@ table td {
     margin-top: 45px;
 }
 
-.gambar1 {
-    width: 260px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 150px;
-}
 
 .dropdown-toggle, .dropdown-item{
     font-family: 'Poppins', sans-serif;
@@ -523,6 +521,14 @@ table td {
     margin-top: 40px;
     margin-right: 20px;
     margin-bottom: -10px;
+}
+
+@media screen and (max-width: 768px) {
+    .breadcrumb-container {
+        visibility: hidden;
+    }
+    
+    
 }
 
 
@@ -673,11 +679,31 @@ table td {
     background-color: #3B4B65;
 }
 
-.modalbuttonsuccess-style, .modalbuttondanger-style, .modalbuttonclose-style,.modalbuttonlaporanpalsu{
+.modalbuttonsuccess-style,
+.modalbuttondanger-style,
+.modalbuttonclose-style,
+.modalbuttonlaporanpalsu {
     font-family: 'Poppins', sans-serif;
-    border-radius:10px
+    border-radius: 10px
 }
 
+.select2-container--bootstrap .select2-selection--single {
+    background-color: #d9d9d9;
+}
 
+.select2-container--bootstrap .select2-selection--single:focus {
+    background-color: white ;
+}
 
+ .sidebar.active {
+    width: 0; /* Lebar sidebar saat ditutup */
+ }
+
+ .main-panel {
+    transition: margin-left .5s; /* Animasi perubahan margin utama saat sidebar ditutup/buka */
+ }
+
+ .main-panel.active {
+    margin-left: 0; /* Margin utama saat sidebar ditutup */
+ }
 

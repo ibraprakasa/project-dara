@@ -1,14 +1,8 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Jadwal Donor')
 @section('content')
 
-<head>
-    <title>
-        DARA || Jadwal Donor
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
@@ -324,11 +318,11 @@
         </div>
     </div>
 </div>
-<script>
+<!-- <script>
     $('#editjadwaldonor{{ $row->id }}').on('shown.bs.modal', function () {
         initMap{{ $row->id }}();
     });
-</script>
+</script> -->
 @endforeach
 <!-- END MODAL -->
 
@@ -405,7 +399,7 @@
     window.initMap = initMap;
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>@foreach($data as $row)
-<script>
+<!-- <script>
     function initMap{{ $row->id }}() {
         // Ambil latitude dan longitude dari variabel PHP
         var latitude = {{ $row->latitude }};
@@ -424,6 +418,6 @@
             title: 'Lokasi Donor',
         });
     }
-</script>
+</script> -->
 @endforeach
 @endsection

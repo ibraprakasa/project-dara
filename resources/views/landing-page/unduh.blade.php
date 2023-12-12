@@ -1,4 +1,4 @@
-<section class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]">
+<section id="download" class="relative z-10 overflow-hidden bg-primary py-20 lg:py-[115px]">
     <div class="container mx-auto">
       <div class="relative overflow-hidden">
         <div class="flex flex-wrap items-stretch -mx-4">
@@ -8,11 +8,19 @@
                 <span>Jadilah pahlawan kebaikan! </span>
               </h2>
               <p class="mb-6 mx-auto max-w-[515px] text-base leading-[1.5] text-white">
+<<<<<<< HEAD:resources/views/landing-page/cta.blade.php
                 Download aplikasi DARA sekarang dan saksikan bagaimana setiap tetes darah yang Anda sumbangkan membuat perbedaan besar.
               </p>
               <a href="javascript:void(0)"
                 class="inline-block py-3 text-base font-medium text-white transition border border-transparent rounded-md bg-secondary px-7 hover:bg-[#0BB489]">
                   Donwload
+=======
+              Unduh aplikasi DARA sekarang dan saksikan bagaimana setiap tetes darah yang Anda sumbangkan membuat perbedaan besar!
+              </p>
+              <a href="javascript:void(0)"
+                class="inline-block py-3 text-base font-medium text-white transition border border-transparent rounded-md bg-secondary px-7 hover:bg-[#0BB489]">
+                Unduh disini! 
+>>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da:resources/views/landing-page/unduh.blade.php
               </a>
             </div>
           </div>

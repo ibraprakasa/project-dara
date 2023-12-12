@@ -127,7 +127,8 @@ class ForumController extends Controller
 
             $gambarPath = public_path('assets/post/' . $postingan->gambar);
 
-            if (file_exists($gambarPath)) {
+            if (is_file($gambarPath)) {
+                // Hapus gambar jika itu adalah file
                 unlink($gambarPath);
             }
 

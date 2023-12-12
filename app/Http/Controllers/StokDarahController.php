@@ -21,8 +21,8 @@ class StokDarahController extends Controller
         ->select('golongandarah.nama', 'stokdarah.jumlah', 'stokdarah.updated_at')
         ->orderBy('golongandarah.nama')
         ->get();
-        $kode_pendonor = Pendonor::all();
-        $lokasi = JadwalDonor::all();
+        $kode_pendonor = Pendonor::orderBy('kode_pendonor')->get();
+        $lokasi = JadwalDonor::orderBy('lokasi')->get();
         
         return view('partials.stokdarah', compact('data','kode_pendonor','lokasi'));
     }

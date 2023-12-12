@@ -1,4 +1,4 @@
-<section id=featur class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px]">
+<section id="features" class="pt-20 pb-8 lg:pt-[120px] lg:pb-[70px] ">
     <div class="container">
       <div class="-mx-4 flex flex-wrap">
         <div class="w-full px-4">
@@ -7,7 +7,7 @@
               Fitur
             </span>
             <h2 class="mb-2 text-2xl font-bold text-dark sm:text-3xl md:text-[30px] md:leading-[1.2]">
-              Main features of the application
+              Fitur Utama Aplikasi
             </h2>
             <p class="text-base text-body-color">
             Kami menghadirkan aplikasi DARA yang simpel namun elegan, 
@@ -31,8 +31,8 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Berita
             </h4>
-            <p class="mb-8 text-body-color lg:mb-9">  
-            Fitur News menyajikan informasi terkini di beranda DARA, termasuk FAQ, Jadwal, dan artikel terbaru seputar donor darah, 
+            <p align="justify" class="mb-8 text-body-color lg:mb-9">  
+            Menyajikan informasi terkini di beranda DARA, termasuk FAQ, Jadwal, dan artikel terbaru seputar donor darah, 
             mengundang Anda untuk merasakan kehangatan dalam setiap tetes darah yang disumbangkan.
             </p>
           </div>
@@ -51,8 +51,8 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Lokasi
             </h4>
-            <p class="text mb-8 text-body-color lg:mb-9">
-              Fitur ini memudahkan Anda menemukan lokasi donor darah terdekat dan mendapatkan informasi jadwal terkini, untuk partisipasi yang lebih efisien dalam mendukung kegiatan donor darah.
+            <p align="justify" class="text mb-8 text-body-color lg:mb-9">
+              Memudahkan Anda menemukan lokasi donor darah terdekat dan mendapatkan informasi jadwal terkini, untuk partisipasi yang lebih efisien dalam mendukung kegiatan donor darah.
             </p>
           </div>
         </div>
@@ -70,8 +70,8 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Forum
             </h4>
-            <p class="mb-8 text-body-color lg:mb-9">
-              Fitur forum memfasilitasi sipendonor untuk memperbarui postingan dan memperbarui informasi terkini secara praktis, menjadikan pengalaman berbagi dan interaksi lebih dinamis dengan pendonor lainnya.
+            <p align="justify" class="mb-8 text-body-color lg:mb-9">
+              Memfasilitasi pendonor untuk memperbarui postingan dan memperbarui informasi terkini secara praktis, menjadikan pengalaman berbagi dan interaksi lebih dinamis dengan pendonor lainnya.
             </p>
           </div>
         </div>
@@ -89,8 +89,8 @@
             <h4 class="mb-3 text-xl font-bold text-dark">
               Riwayat
             </h4>
-            <p class="mb-8 text-body-color lg:mb-9">
-            Fitur riwayat ini menampilkan sejarah donasi darah sipendonor, memberikan informasi mengenai setiap kontribusi yang diberikan di lokasi terdekat. Rasakan dampak positifnya dalam setiap riwayat donasi Anda.
+            <p align="justify" class="mb-8 text-body-color lg:mb-9">
+            Menampilkan sejarah donasi darah pendonor, memberikan informasi mengenai setiap kontribusi yang diberikan di lokasi terdekat. Rasakan dampak positifnya dalam setiap riwayat donasi Anda.
             </p>
           </div>
         </div>

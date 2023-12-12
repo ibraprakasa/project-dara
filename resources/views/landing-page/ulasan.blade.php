@@ -4,7 +4,7 @@
       <div class="w-full px-4">
         <div class="mx-auto mb-[60px] max-w-[485px] text-center">
           <span class="block mb-2 text-lg font-semibold text-primary">
-            Testimoni
+            Ulasan
           </span>
           <h2 class="text-dark mb-3 text-3xl leading-[1.2] font-bold sm:text-1xl md:text-[20px]">
             Membangun Harapan Bersama
@@ -50,7 +50,7 @@
 
               <a class="flex items-center gap-4">
                 <div class="w-[50px] h-[50px] rounded-full overflow-hidden">
-                  <img src="{{ asset('assets/img/' . $row->pendonor->gambar) }}" alt="author" class="w-[50px] h-[50px] rounded-full overflow-hidden" />
+                  <img src="{{ asset('images/' . $row->pendonor->gambar) }}" alt="author" class="w-[50px] h-[50px] rounded-full overflow-hidden" />
                 </div>
 
                 <div>
