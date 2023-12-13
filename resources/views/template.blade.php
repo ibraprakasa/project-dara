@@ -73,17 +73,13 @@
 
       var titleElement = document.querySelector('.navbar-brand');
 
-      // Loop melalui setiap tautan sidebar
       $(".sidebar a").each(function() {
-        // Memeriksa apakah tautan saat ini sesuai dengan path URL saat ini
         if ($(this).attr("href") === currentPath) {
-          // Mengubah warna latar belakang sidebar
           $(".active").css("background-color", "#1B77A0");
-          return false; // Berhenti dari loop jika tautan cocok
+          return false; 
         }
       });
 
-      // Mendapatkan parameter query 'search' dari URL
       var searchParam = new URLSearchParams(window.location.search).get('search');
       var idParam = new URLSearchParams(window.location.search).get('id'); // Mendapatkan parameter 'id' dari URL
 
@@ -92,6 +88,7 @@
         'stokdarah': 'STOK DARAH',
         'riwayatdonor': 'RIWAYAT',
         'jadwaldonor': 'JADWAL DONOR',
+        'editjadwaldonor': 'EDIT JADWAL DONOR',
         'kelolaakun': 'KELOLA AKUN',
         'datapendonor': 'DATA PENDONOR',
         'berita': 'BERITA DONOR',
@@ -108,7 +105,13 @@
       var originalTitle = pageTitleMap[currentPage] || '';
 
       if (idParam) {
-        titleElement.innerHTML = 'INFORMASI DETAIL';
+        if (currentPage === 'infopendaftar') {
+          titleElement.innerHTML = 'INFO PENDAFTAR'; 
+        } else if (currentPage === 'editjadwaldonor') {
+          titleElement.innerHTML = 'EDIT JADWAL DONOR'; 
+        } else {
+          titleElement.innerHTML = 'INFORMASI DETAIL';
+        }
         $(".active").css("background-color", "#1B77A0");
       } else if (searchParam) {
         titleElement.innerHTML = originalTitle;
