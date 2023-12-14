@@ -35,11 +35,12 @@ Route::post('lupapassword3', 'App\Http\Controllers\LupaPasswordController@postPa
 // LANDING PAGE
 
 Route::get('/', 'App\Http\Controllers\LandingPageController@getIndex')->name('landing-page');
-Route::get('news-detail/{id}', 'App\Http\Controllers\LandingPageController@getNewsDetail')->name('news-detail');
 Route::post('landing-page','App\Http\Controllers\LandingPageController@postInquiries')->name('landing-page.inquiries');
 
 // PART OF LANDING PAGE
 
+Route::get('news-detail/{id}', 'App\Http\Controllers\LandingPageController@getNewsDetail')->name('news-detail');
+Route::get('news-list', 'App\Http\Controllers\LandingPageController@getNewsList')->name('news-list');
 Route::get('about-details','App\Http\Controllers\LandingPageController@getAbout')->name('about-details');
 
 // END PART

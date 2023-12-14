@@ -33,6 +33,14 @@ class LandingPageController extends Controller
         return view('landing-page.details.news-detail',compact('newsDetail','news2','news3','news4'));
     }
 
+    public function getNewsList()
+    {
+        $news = Berita::orderBy('created_at')->paginate(12);
+        $news2 = Berita::latest('created_at')->take(2)->get();
+
+        return view('landing-page.details.news-grid-detail',compact('news','news2'));
+    }
+
     public function postInquiries()
     {
         $nama = request()->input('name');
