@@ -15,8 +15,12 @@ class RiwayatDonorControllerAPI extends Controller
     public function show(){
         $user = auth()->guard('api')->user();
         $riwayatDonor = RiwayatDonor::where('pendonor_id',$user->id)->get();
+        $total_donor = 0;
+        foreach ($riwayatDonor as $riwayat) {
+            $total_donor += $riwayat->jumlah_donor;
+        }
         return response()->json([
-            'total_donor_darah' => $user->total_donor_darah,
+            'total_donor_darah' => $total_donor,
             'riwayat'=>$riwayatDonor
         ]);
     }

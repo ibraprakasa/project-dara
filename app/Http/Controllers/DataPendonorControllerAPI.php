@@ -6,6 +6,7 @@ use App\Models\GolonganDarah;
 use App\Models\JadwalDonor;
 use App\Models\JadwalPendonor;
 use App\Models\Pendonor;
+use App\Models\RiwayatDonor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -150,6 +151,11 @@ class DataPendonorControllerAPI extends Controller
         if(!$goldar){
             $goldar = null;
         }
+        $riwayatDonor = RiwayatDonor::where('pendonor_id',$user->id)->get();
+        $total_donor = 0;
+        foreach ($riwayatDonor as $riwayat) {
+            $total_donor += $riwayat->jumlah_donor;
+        }
         return response()->json([
             'success' => true,
             'user' => [
@@ -167,7 +173,7 @@ class DataPendonorControllerAPI extends Controller
                 'tanggal_lahir' => $user->tanggal_lahir,
                 'kontak_pendonor' => $user->kontak_pendonor,
                 'jenis_kelamin' => $user->jenis_kelamin,
-                'total_donor_darah' => $user->total_donor_darah
+                'total_donor_darah' => $total_donor
                 ]
         ]);
     }
