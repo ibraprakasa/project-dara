@@ -284,7 +284,7 @@ class DataPendonorControllerAPI extends Controller
     public function editPassword(Request $request){
         $userId = auth()->guard('api')->user();
         $validator = Validator::make($request->all(), [
-            'password_lama' => 'required|min:5',
+            'password_lama' => 'required',
             'password_baru' => 'required|min:5',
         ]);
     
