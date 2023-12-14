@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    DARA Apps || Rincian Berita
+    Rincian Berita
   </title>
   <link rel="shortcut icon" href="../assets/img/daraicon.png" type="image/x-icon" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
