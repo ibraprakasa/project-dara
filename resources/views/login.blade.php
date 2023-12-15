@@ -11,7 +11,7 @@
     <link href="../assets/css/style.css" rel="stylesheet">
     <link href="../assets/css/bootstrap-icons-1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link rel="dara-touch-icon" sizes="120x120" href="../assets/img/daraicon.png">
-    <link rel="icon" type="image/png" href="../assets/img/daraicon.png">
+    <link rel="icon" type="image/x-icon" href="../assets/img/daraiconico.ico">
 </head>
 
 <body>
