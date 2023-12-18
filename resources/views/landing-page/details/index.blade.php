@@ -8,7 +8,7 @@
   <title>
     DARA Apps 
   </title>
-  <link rel="shortcut icon" href="../assets/img/daraicon.png" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../assets/img/daraiconico.ico">
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/tailwind.css" />
@@ -75,7 +75,7 @@
     <span class="mt-[6px] h-3 w-3 rotate-45 border-t border-l border-white"></span>
   </a>
   <!-- ====== Back To Top End -->
-
+<!-- 
   <a href="javascript:void(0)"
     class="inline-flex items-center gap-[10px] py-2 px-[14px] rounded-lg bg-white shadow-2 fixed bottom-8 left-4 sm:left-9 z-[999]">
     <span class="text-base font-medium text-dark-3">
@@ -85,7 +85,7 @@
     <span class="block max-w-[88px] w-full">
       <img src="{{ asset('assets/assets-landing-page/images/logo/dara.png') }}" alt="tailgrids">
     </span>
-  </a>
+  </a> -->
 
   <!-- ====== All Scripts -->
 

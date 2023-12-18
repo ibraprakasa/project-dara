@@ -8,7 +8,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('jadwaldonor') }}">Jadwal</a></li>
-            <li class="breadcrumb-item">Info Pendaftar Lokasi</li>
+            <li class="breadcrumb-item" aria-current="page">Info Pendaftar</li>
         </ol>
     </nav>
 </div>
@@ -109,9 +109,12 @@
                 <td>{{ $row->kontak }}</td>
                 <td>{{ $row->jumlah_pendonor }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" id="" data-target="#editjadwaldonor{{ $row->id }}"  >
-                        <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
-                    </button>
+                    <form action="{{ route('editjadwaldonor', ['id' => $row->id]) }}" method="GET">
+                        <input class="btn" type="text" value="{{  $row->id }}" name="id" hidden />
+                        <button class="custom-button">
+                            <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletejadwaldonor{{ $row->id }}">
@@ -228,7 +231,7 @@
 <!-- END MODAL -->
 
 <!-- MODAL EDIT JADWAL DONOR -->
-@foreach($data as $row)
+<!-- @foreach($data as $row)
 <div class="modal fade" id="editjadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -281,7 +284,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col mt-2">
-                            <div id="map{{ $row->id }}" style="height: 262px;"></div>
+                            <div id="mapEdit{{ $row->id }}" style="height: 262px;"></div>
                         </div>
                         <div class="col">
                             <div class="row">
@@ -318,12 +321,7 @@
         </div>
     </div>
 </div>
-<!-- <script>
-    $('#editjadwaldonor{{ $row->id }}').on('shown.bs.modal', function () {
-        initMap{{ $row->id }}();
-    });
-</script> -->
-@endforeach
+@endforeach -->
 <!-- END MODAL -->
 
 <!-- MODAL DELETE JADWAL DONOR -->
@@ -353,6 +351,8 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>
 
 <script>
     // Menambahkan variabel untuk menyimpan referensi ke elemen input latitude dan longitude
@@ -396,28 +396,10 @@
             editLongitudeInput.value = longitude;
         });
     }
+
     window.initMap = initMap;
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>@foreach($data as $row)
-<!-- <script>
-    function initMap{{ $row->id }}() {
-        // Ambil latitude dan longitude dari variabel PHP
-        var latitude = {{ $row->latitude }};
-        var longitude = {{ $row->longitude }};
 
-        // Buat objek peta dengan koordinat yang diambil
-        var map = new google.maps.Map(document.getElementById('map{{ $row->id }}'), {
-            center: { lat: latitude, lng: longitude },
-            zoom: 15, // Sesuaikan zoom sesuai kebutuhan
-        });
 
-        // Tambahkan marker di lokasi yang ditentukan
-        var marker = new google.maps.Marker({
-            position: { lat: latitude, lng: longitude },
-            map: map,
-            title: 'Lokasi Donor',
-        });
-    }
-</script> -->
-@endforeach
+
 @endsection

@@ -594,6 +594,13 @@ table td {
     display: none;
 }
 
+.alamat{
+    resize: both !important;
+    overflow: auto !important;
+    min-height: 150px !important;
+    text-align: justify;
+}
+
 .invalid-feedback {
     font-size: 12px;
 }
@@ -706,4 +713,8 @@ table td {
  .main-panel.active {
     margin-left: 0; /* Margin utama saat sidebar ditutup */
  }
+
+ .modal { 
+    overflow: auto !important; 
+}
 

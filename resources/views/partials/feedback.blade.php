@@ -850,5 +850,16 @@ use Carbon\Carbon;
     };
 </script>
 
-
+<script>
+    $(document).ready(function() {
+        // Event listener untuk menampilkan modal Balas Pesan saat tombol "Balas" di modal Detail Pesan ditekan
+        $('.modalbuttonlaporanpalsu').on('click', function() {
+            // Tutup modal Detail Pesan
+            $('#infopesan{{ $row->id }}').modal('hide');
+            
+            // Tampilkan modal Balas Pesan
+            $('#replypesan{{ $row->id }}').modal('show');
+        });
+    });
+</script>
 @endsection

@@ -38,7 +38,7 @@
                 </a>
             </li>
             <hr class="jaraksidebar">
-            <li class="{{ request()->routeIs('jadwaldonor', 'infopendaftar') ? 'active' : '' }}">
+            <li class="{{ request()->routeIs('jadwaldonor', 'infopendaftar', 'editjadwaldonor') ? 'active' : '' }}">
                 <a href="{{ route('jadwaldonor') }}" style="color: white; font-weight:bold; ">
                     <i class="bi bi-calendar-event" style="color: white; font-weight:bold;"></i>
                     <p>Jadwal</p>
