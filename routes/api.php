@@ -48,6 +48,7 @@ Route::post('/jadwal-donor-pendonor', [JadwalPendonorControllerAPI::class, 'daft
 Route::get('/jadwal-donor-pendonor/{id}', [JadwalPendonorControllerAPI::class, 'find']);
 
 Route::get('/profile', [DataPendonorControllerAPI::class, 'showProfile']);
+Route::post('/profile-cari', [DataPendonorControllerAPI::class, 'searchPendonor']);
 Route::get('/profile/{id}', [DataPendonorControllerAPI::class, 'showProfileOtherDonor']);
 Route::post('/profile-edit-gambar', [DataPendonorControllerAPI::class, 'updateGambar']);
 Route::post('/profile-edit-data', [DataPendonorControllerAPI::class, 'updateData']);

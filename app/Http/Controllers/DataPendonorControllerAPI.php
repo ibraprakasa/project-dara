@@ -315,6 +315,27 @@ class DataPendonorControllerAPI extends Controller
         ]);
     }
 
+    public function searchPendonor(Request $request){
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string',
+        ]);
+    
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 403);
+        }
+    
+        $query = Pendonor::query();
+    
+        if ($request->has('nama')) {
+            $query->where('nama', 'LIKE', '%' . $request->input('nama') . '%');
+        }
+    
+        $result = $query->get();
+    
+        return response()->json($result);
+    }
+
     public function logout(){        
         //remove token
         $removeToken = JWTAuth::invalidate(JWTAuth::getToken());
