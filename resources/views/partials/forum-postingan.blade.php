@@ -84,22 +84,12 @@
                 @endif
                 <td>
                     @if($row->gambar == null)
-<<<<<<< HEAD
-                    <img src="assets/img/daraicon.png"" alt="" style=" width:100px; height:100px;">
-                    @else
-                    <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
-                        <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
-                    </a> @endif
-
-
-=======
                     <b>Tidak ada gambar</b>
                     @else
                     <a data-fancybox="gallery" href="{{ asset('assets/post/'.$row->gambar) }}" data-caption="{{ $row->text }}">
                         <img src="{{ asset('assets/post/'.$row->gambar) }}" alt="" style="width:100px; height:100px;">
                     </a>
                     @endif
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                 </td>
                 <td>
                     {{ $row->comments->count() }}

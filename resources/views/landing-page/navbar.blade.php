@@ -19,49 +19,26 @@
               <ul class="blcok lg:flex 2xl:ml-20">
                 <li class="group relative">
                   <a href="#home"
-<<<<<<< HEAD
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
-                    Beranda
-                  </a>
-                </li>
-                <li class="group relative">
-                  <a href="#featur"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
-                    Fitur
-                  </a>
-                </li>
-                <li class="group relative">
-                  <a href="#about"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-                    Tentang
-                  </a>
-                </li>
-                <li class="group relative">
-                  <a href="#testimonials"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-                    Testimoni
-=======
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
                     Beranda
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#features"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
+                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
                     Fitur
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#tentang"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
+                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
                     Tentang
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#testimonials"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
+                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
                     Ulasan
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                   </a>
                 </li>
                 <!-- <li class="group relative">
@@ -72,32 +49,19 @@
                 </li> -->
                 <li class="group relative">
                   <a href="#team"
-<<<<<<< HEAD
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-=======
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                     Tim
                   </a>
                 </li>
                 <li class="group relative">
-<<<<<<< HEAD
-                  <a href="#berita"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-=======
                   <a href="#news"
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
+                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
                     Berita
                   </a>
                 </li>
                 <li class="group relative">
                   <a href="#contact"
-<<<<<<< HEAD
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
-=======
-                    class="ud-menu-scroll mx-8 flex py-2 font-medium text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                     Kontak
                   </a>
                 </li>

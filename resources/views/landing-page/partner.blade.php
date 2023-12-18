@@ -10,9 +10,6 @@
         <a href="https://ti.pnp.ac.id/" target="_blank">
           <img src="{{ asset('assets/assets-landing-page/images/brands/4.png') }}" alt="Tekinfo">
         </a>
-        <a href="https://ti.pnp.ac.id/" target="_blank">
-          <img src="{{ asset('assets/assets-landing-page/images/brands/4.png') }}" alt="lineicons">
-        </a>
         <a href="https://www.pnp.ac.id/" target="_blank">
           <img src="{{ asset('assets/assets-landing-page/images/brands/3.png') }}" alt="PNP">
         </a>

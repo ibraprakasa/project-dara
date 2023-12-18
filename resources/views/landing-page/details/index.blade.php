@@ -37,15 +37,9 @@
   @include('landing-page.about')
   <!-- ====== About Section End -->
 
-<<<<<<< HEAD
-  <!-- ====== CTA Section Start -->
-  @include('landing-page.cta')
-  <!-- ====== CTA Section End -->
-=======
   <!-- ====== Unduh Section Start -->
   @include('landing-page.unduh')
   <!-- ====== Unduh Section End -->
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
 
   <!-- ====== Testimonial Section Start -->
   @include('landing-page.ulasan')
@@ -89,11 +83,7 @@
     </span>
     <span class="w-px h-4 block bg-stroke"></span>
     <span class="block max-w-[88px] w-full">
-<<<<<<< HEAD
-      <img src="{{ asset('assets/assets-landing-page/images/brands/dara.png') }}" alt="tailgrids">
-=======
       <img src="{{ asset('assets/assets-landing-page/images/logo/dara.png') }}" alt="tailgrids">
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
     </span>
   </a>
 

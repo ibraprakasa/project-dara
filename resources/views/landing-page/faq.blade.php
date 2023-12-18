@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<section id= faq class="relative z-20 overflow-hidden bg-white pt-20 pb-8 lg:pt-[120px] lg:pb-[50px]">
-=======
 <section id="faq" class="relative z-20 overflow-hidden bg-white pt-20 pb-8 lg:pt-[120px] lg:pb-[50px]">
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
   <div class="container mx-auto">
     <div class="flex flex-wrap -mx-4">
       <div class="w-full px-4">

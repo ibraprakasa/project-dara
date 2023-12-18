@@ -7,13 +7,8 @@
               <h2 class="mb-5 text-3xl font-bold leading-tight text-dark sm:text-[40px] sm:leading-[1.2]">
               DARA, Aplikasi Pendonor untuk Mewujudkan Mimpi Bersama.
               </h2>
-<<<<<<< HEAD
-              <p class="mb-10 text-base leading-relaxed text-body-color">
-              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses pendonoran, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
-=======
               <p align="justify" class="mb-10 text-base leading-relaxed text-body-color">
               Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses donor darah, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
                 <br> <br>
                 Wujudkan Mimpi Bersama dengan Sentuhan Kebaikan. DARA tidak hanya sekadar aplikasi, tapi juga sebuah panggilan untuk berbagi kehidupan.
               </p>

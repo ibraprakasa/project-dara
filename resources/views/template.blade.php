@@ -6,12 +6,6 @@
   <link rel="dara-touch-icon" sizes="120x120" href="../assets/img/daraicon.png">
   <link rel="icon" type="image/png" href="../assets/img/daraicon.png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-<<<<<<< HEAD
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"  />
-  
-=======
-
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -22,11 +16,8 @@
   <link href="../assets/css/bootstrap-icons-1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
   <link href="../assets/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-<<<<<<< HEAD
-=======
   <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" rel="stylesheet" />
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link href="../assets/css/stylepartials.css" rel="stylesheet">

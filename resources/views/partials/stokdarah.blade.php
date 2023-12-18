@@ -167,11 +167,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script>
-<<<<<<< HEAD
-    $(document).ready(function() {
-        $('#selectPendonor').select2({
-            minimumInputLength: 1, // Jumlah karakter minimum sebelum pencarian dimulai
-=======
     $(document).ready(function(){
         $("#selectPendonor").select2({
             placeholder : 'Pilih Pendonor',
@@ -193,7 +188,6 @@
             width: '100%', // Atur lebar sesuai kebutuhan
             allowClear: true,
             theme: "bootstrap"
->>>>>>> ed571ea4d3581fa444a8f015504d5408ec0e39da
         });
     });
 </script>
