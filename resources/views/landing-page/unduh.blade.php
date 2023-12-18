@@ -58,7 +58,7 @@
           </div>
           <div class="text-center">
             <h4 class="mb-4 text-5xl font-semibold text-dark">
-              500++
+              {{ $totalRiwayatAmbil }}00++
             </h4>
             <p class="text-body-color mb-5 text-sm">
               Stok Darah yang sudah didonasikan ke yang lebih membutuhkan.
@@ -96,7 +96,7 @@
           </div>
           <div class="text-center">
             <h4 class="mb-4 text-5xl font-semibold text-black">
-              1000++
+              {{ $pendonor }}00++
             </h4>
             <p class="text-body-color mb-5 text-sm">
               Pendonor yang menjadi bagian dari DARA untuk menyalurkan bantuan.
@@ -134,7 +134,7 @@
           </div>
           <div class="text-center">
             <h4 class="mb-4 text-5xl font-semibold text-black">
-              100++
+              {{ $thisMonthBerita }}0++
             </h4>
             <p class="text-body-color mb-5 text-sm">
               Berita yang masuk dalam satu bulan terakhir.
@@ -171,7 +171,7 @@
           </div>
           <div class="text-center">
             <h4 class="mb-4 text-5xl font-semibold text-dark">
-              250++
+              {{ $thisYearJadwal }}0++
             </h4>
             <p class="text-body-color mb-5 text-sm">
               Jadwal yang sudah terlaksana dalam satu tahun terakhir.
