@@ -10,7 +10,7 @@ use Carbon\Carbon;
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('landing-page') }}">Pergi ke Halaman Website DARA Apps</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('landing-page') }}" target="_blank">Pergi ke Halaman Website DARA Apps</a></li>
         </ol>
     </nav>
 </div>
