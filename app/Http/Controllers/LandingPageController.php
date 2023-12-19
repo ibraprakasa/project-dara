@@ -4,19 +4,36 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\Inquiries;
+use App\Models\JadwalDonor;
+use App\Models\Pendonor;
+use App\Models\RiwayatAmbil;
 use App\Models\Testimonial;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {
     public function getIndex()
     {
+        $thisYear = Carbon::now()->format('Y');
+        $thisMonth = Carbon::now()->format('m');
+
         $testi=Testimonial::all();
+
         $news3 = Berita::latest('created_at')->take(3)->get();
         $news2 = Berita::latest('created_at')->take(2)->get();
         $newsAll=Berita::all();
+        $totalBerita = Berita::count();
+        $thisMonthBerita = Berita::whereMonth('created_at', $thisMonth)->count();
 
-        return view('landing-page.details.index',compact('testi','news3','news2','newsAll'));
+        $totalJadwal = JadwalDonor::count();
+        $thisYearJadwal = JadwalDonor::whereYear('created_at', $thisYear)->count();
+
+        $totalRiwayatAmbil = RiwayatAmbil::sum('jumlah_ambil');
+
+        $pendonor=Pendonor::count();
+
+        return view('landing-page.details.index',compact('testi','news3','news2','newsAll','pendonor','thisMonthBerita','thisYearJadwal','totalRiwayatAmbil'));
     }
 
     public function getNewsDetail($id)

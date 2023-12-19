@@ -8,7 +8,7 @@
   <title>
     Daftar Berita
   </title>
-  <link rel="shortcut icon" href="../assets/img/daraicon.png" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../assets/img/daraiconico.ico">
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/tailwind.css" />
