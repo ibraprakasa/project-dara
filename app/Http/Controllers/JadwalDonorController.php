@@ -59,6 +59,39 @@ class JadwalDonorController extends Controller
     }
 
 
+    public function insertjadwaldonor(Request $request)
+    {
+        JadwalDonor::create($request->all());
+        return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil ditambahkan.');
+    }
+
+    public function getEdit(Request $request, $id)
+    {
+        $jadwalDonor = JadwalDonor::find($id);
+
+        return view('partials.editjadwaldonor', compact('jadwalDonor'));   
+    }
+
+    public function updatejadwaldonor(Request $request, $id)
+    {
+        // Mengambil data berdasarkan $id
+        $jadwalDonor = JadwalDonor::find($id);
+
+        // Memperbarui data dengan nilai dari $request->all()
+        $jadwalDonor->update($request->all());
+
+        return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil diperbarui.');
+    }
+
+    public function deletejadwaldonor($id)
+    {
+        $jadwalDonor = JadwalDonor::find($id);
+        $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id);
+        $jadwalPendonor->delete();
+        $jadwalDonor->delete();
+
+        return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil dihapus.');
+    }
 
     public function infopendaftar(Request $request)
     {
@@ -105,31 +138,5 @@ class JadwalDonorController extends Controller
         $pendaftar->delete();
         $jumlahPendaftar->update();
         return redirect()->route('infopendaftar', ['id' => $request->input('id_jadwal')])->with('success', 'Pendaftar berhasil dihapus.');
-    }
-    public function insertjadwaldonor(Request $request)
-    {
-        JadwalDonor::create($request->all());
-        return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil ditambahkan.');
-    }
-
-    public function updatejadwaldonor(Request $request, $id)
-    {
-        // Mengambil data berdasarkan $id
-        $jadwalDonor = JadwalDonor::find($id);
-
-        // Memperbarui data dengan nilai dari $request->all()
-        $jadwalDonor->update($request->all());
-
-        return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil diperbarui.');
-    }
-
-    public function deletejadwaldonor($id)
-    {
-        $jadwalDonor = JadwalDonor::find($id);
-        $jadwalPendonor = JadwalPendonor::where('id_jadwal_donor_darah', $jadwalDonor->id);
-        $jadwalPendonor->delete();
-        $jadwalDonor->delete();
-
-        return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil dihapus.');
     }
 }

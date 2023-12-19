@@ -1,19 +1,13 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Jadwal Donor')
 @section('content')
-
-<head>
-    <title>
-        DARA || Jadwal Donor
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('jadwaldonor') }}">Jadwal</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="#">Info Pendaftar Lokasi</a></li>
+            <li class="breadcrumb-item" aria-current="page"><a href="#">Info Pendaftar</a></li>
         </ol>
     </nav>
 </div>

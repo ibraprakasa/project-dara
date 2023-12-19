@@ -10,20 +10,24 @@ class BeritaController extends Controller
     public function index()
     {
         $search = request()->input('search');
+        $tanggalawal = request()->input('tanggal_dari');
+        $tanggalakhir = request()->input('tanggal_sampai');
         $successMessage = null;
         $query = Berita::query();
 
         if ($search) {
             $query->where('judul', 'LIKE', '%' . $search . '%');
+            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
         }
 
-        if($search){
-            $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
+        if ($tanggalawal && $tanggalakhir) {
+            $query->whereBetween('created_at', [$tanggalawal . ' 00:00:00', $tanggalakhir . ' 23:59:59']);
+            $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }
 
         $data = $query->paginate(5);
 
-        return view('partials.berita', compact('data','successMessage'));
+        return view('partials.berita', compact('data','successMessage','search'));
     }
 
     public function insertberita(Request $request){

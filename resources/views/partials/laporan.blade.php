@@ -1,14 +1,8 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Laporan')
 @section('content')
 
-<head>
-    <title>
-        DARA || Laporan
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-</head>
 
 <div class="filter btn-group">
     <form action="/laporan" method="GET" style="display: flex;">

@@ -47,7 +47,7 @@
             <div class="row">
                 <div class="col-md-10">
                     <div class="form-group">
-                        <input type="text" id="otpInput" name="otp" class="form-control" placeholder="Kode OTP Anda" required autofocus>
+                        <input type="text" id="otpInput" name="otp" class="form-control" placeholder="Kode OTP Anda" required autofocus oninvalid="this.setCustomValidity('Masukkan kode OTP yang telah dikirim ke alamat email Anda')" oninput="this.setCustomValidity('')">
                     </div>
                 </div>
                 <div class="col-md-1">

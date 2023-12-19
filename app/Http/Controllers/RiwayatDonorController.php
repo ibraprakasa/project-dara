@@ -52,8 +52,6 @@ class RiwayatDonorController extends Controller
             $query1->whereBetween('tanggal_ambil', [$tanggalawal, $tanggalakhir]);
         }
 
-        $query->orderBy('tanggal_donor');
-        $query1->orderBy('tanggal_ambil');
 
         if ($search) {
             $successMessage = 'Hasil Pencarian untuk "' . $search . '"';
@@ -81,6 +79,10 @@ class RiwayatDonorController extends Controller
             $successMessage = 'Filter Berdasarkan Tanggal Awal "' . $tanggalawal . '" sampai dengan "' .$tanggalakhir .'"' ;
         }
         
+        $query->join('pendonor','riwayatdonor.pendonor_id', '=', 'pendonor.id')
+        ->orderBy('kode_pendonor');
+        $query1->join('pendonor','riwayatambil.pendonor_id', '=', 'pendonor.id')
+        ->orderBy('kode_pendonor');
         
         $riwayat_donor =  $query->paginate(10);
         $riwayat_ambil =  $query1->paginate(10);

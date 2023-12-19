@@ -1,13 +1,7 @@
 @extends('template')
 @extends('sidebar')
+@section('judul_halaman', 'Forum')
 @section('content')
-
-<head>
-    <title>
-        DARA || Forum
-    </title>
-    <link href="../assets/css/stylepartials.css" rel="stylesheet">
-</head>
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
