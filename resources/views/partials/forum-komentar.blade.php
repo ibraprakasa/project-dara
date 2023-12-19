@@ -1,5 +1,4 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Forum')
 @section('content')
 

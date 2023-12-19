@@ -1,5 +1,4 @@
 @extends('template')
-@extends('sidebar')
 
 @section('judul_halaman', 'Stok Darah')
 @section('content')

@@ -3,7 +3,6 @@ use Carbon\Carbon;
 @endphp
 
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Riwayat')
 
 @section('content')

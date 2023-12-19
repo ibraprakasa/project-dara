@@ -33,7 +33,7 @@
 <body>
   <div class="wrapper">
     <!-- Sidebar -->
-    @yield('sidebar')
+    @include('sidebar')
     <!-- End Sidebar -->
     <div class="main-panel" style="background-color:white">
       <!-- Navbar -->
@@ -142,6 +142,30 @@
     });
   </script>
 
+<!-- MODAL KELUAR AKUN -->
+<div class="modal fade logoutdara" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Pemberitahuan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
+              <span aria-hidden=" true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('logoutaksi') }}" method="POST">
+                @csrf
+                <div class="modal-body" style="color:red;">
+                    Apakah Anda yakin ingin keluar dari akun Anda?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Keluar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- END MODAL -->
 
 </body>
 
