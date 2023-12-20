@@ -3,24 +3,24 @@
 @section('content')
 
 
-<div class="filter btn-group">
+<div class="filter1 btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
 </div>
 
 
-<div class="filter btn-group">
+<div class="filter1 btn-group">
     <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterlaporan">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
     </button>
 </div>
 
-<div class="filter btn-group wow">
+<div class="filter1 btn-group wow">
     @if(session('error'))
     <div class="alert-container11">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->

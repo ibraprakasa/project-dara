@@ -1,4 +1,4 @@
-<div class="sidebar"  data-color="white" data-active-color="danger">
+<div class="sidebar" id="sidebar" data-color="white" data-active-color="danger">
     <div class="logo" style="margin-left:2px">
         <a href="#" class="simple-text logo-mini">
             <div class="logo-image-small">
@@ -9,7 +9,7 @@
             Hi, {{ Auth::user()->name }} !
         </a>
     </div>
-    
+
     <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:auto; height:100vh">
         <ul class="nav">
             <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
@@ -110,5 +110,3 @@
         </ul>
     </div>
 </div>
-
-

@@ -6,16 +6,16 @@ use Carbon\Carbon;
 @section('judul_halaman', 'Tanggapan')
 @section('content')
 
-<div class="breadcrumb-container">
+<!-- <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('landing-page') }}" target="_blank">Pergi ke Halaman Website DARA Apps</a></li>
         </ol>
     </nav>
-</div>
+</div> -->
 
-<div class="row text-center">
-    <div class="col" style="margin-top:9px; margin-bottom:-70px; margin-left:45px">
+<!-- <div class="row text-center">
+    <div class="col" style="margin-top:85px; margin-bottom:-61px; margin-left:45px">
         <div class="row" style="width:125%;font-weight: bold">
             <a href="#" id="tomboltestimoni" style="text-decoration:none;margin-right: 20px" class="col">
                 Testimoni
@@ -26,13 +26,29 @@ use Carbon\Carbon;
         </div>
     </div>
     <div class="col"></div>
+</div> -->
+
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-md" style="margin-top: 85px; margin-bottom: -62px; margin-left: 30px">
+            <div class="row tombol-style">
+                <a href="#" id="tomboltestimoni" style="text-decoration: none; margin-right: 20px" class="col">
+                    Testimoni
+                </a>
+                <a href="#" id="tombolpesan" style="text-decoration: none" class="col">
+                    Pesan
+                </a>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
 </div>
 
 <div class="content">
     <div class="tes1" id="filtertestimoni" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
         <div class="filterfeedback btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
+                <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
                 <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -184,14 +200,14 @@ use Carbon\Carbon;
         <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
             <div class="filterfeedback btn-group">
                 <form action="/feedback" method="GET" style="display: flex;">
-                    <input class="btn searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
+                    <input class="btn btn-primary searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
                     <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
                 </form>
 
                 <div class="search-filter-group"">
-                    <button type=" submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
+                    <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
                     <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
                     <span style="font-size: 12px; color: white;">Filter</span>
                     </button>

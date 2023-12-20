@@ -8,23 +8,25 @@ use Carbon\Carbon;
 @section('content')
 
 
-<div class="row text-center">
-    <div class="col" style="margin-top:100px; margin-bottom:-62px; margin-left:45px">
-        <div class="row" style="width:125%;font-weight: bold">
-            <a href="#" id="tombol1" style="text-decoration: none; margin-right: 20px" class="col">
-                Riwayat Donor Darah
-            </a>
-            <a href="#" id="tombol2" style="text-decoration: none" class="col">
-                Riwayat Ambil Darah
-            </a>
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-md" style="margin-top: 85px; margin-bottom: -62px; margin-left: 30px">
+            <div class="row tombol-style">
+                <a href="#" id="tombol1" style="text-decoration: none; margin-right: 20px" class="col">
+                    Riwayat Donor Darah
+                </a>
+                <a href="#" id="tombol2" style="text-decoration: none" class="col">
+                    Riwayat Ambil Darah
+                </a>
+            </div>
         </div>
+        <div class="col"></div>
     </div>
-    <div class="col"></div>
 </div>
 
 <div class="waw btn-group" style="margin-top:75px; margin-bottom:-83px">
     <form action="/riwayatdonor" method="GET" style="display: flex;">
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

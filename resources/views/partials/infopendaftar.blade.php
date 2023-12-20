@@ -13,9 +13,9 @@
 
 <div class="filte btn-group">
     <form action="/infopendaftar" method="GET" style="display: flex;">
-    <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+    <input class="btn btn-primary" type="text" name="id" value="{{ request('id') }}" hidden>
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">
+        <button type="submit" class="btn btn-primarysearchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>

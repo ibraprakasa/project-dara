@@ -2,7 +2,7 @@
 @section('judul_halaman', 'Forum')
 @section('content')
 
-<div class="breadcrumb-container">
+<!-- <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
@@ -10,25 +10,25 @@
             <li class="breadcrumb-item">Balasan</a></li>
         </ol>
     </nav>
-</div>
+</div> -->
 
-<div class="filte btn-group">
+<div class="filter1 btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Postingan...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Postingan...">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
 </div>
 
-<div class="filte btn-group">
+<div class="filter1 btn-group">
     <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterpostingan">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
     </button>
 </div>
 
-<div class="filte btn-group wow">
+<div class="filter1 btn-group wow">
     @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->

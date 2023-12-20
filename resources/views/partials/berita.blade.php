@@ -5,36 +5,35 @@
 @section('content')
 
 
-<div class="filter btn-group">
+<div class="filter1 btn-group">
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Judul...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Judul...">
+        <button type="submit" class="btn btn-primary     searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
 
     <div class="ml-4">
-        <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-dark inserticon-style">
+        <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-primary     inserticon-style">
             <i class="bi bi-file-plus " style="font-size: 20px; color: white;"></i>
         </button>
 
     </div>
 
-    <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahberita" type="button">
-            Tambah
-        </button>
-
-    <div class="ml-4">
-    <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterberita">
-        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-        <span style="font-size: 12px; color: white;">Filter</span>
+    <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahberita" type="button">
+        Tambah
     </button>
-    </div>
+
 </div>
-
-
-<div class="filter btn-group wow">
+<div class="filter100 btn-group wow">
+    <div class="">
+        <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterberita">
+            <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+            <span style="font-size: 12px; color: white;">Filter</span>
+        </button>
+    </div>
+    <div class="ml-4">
     @if(session('error'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
@@ -61,7 +60,10 @@
         </div>
     </div>
     @endif
+    </div>
 </div>
+
+
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
@@ -93,8 +95,8 @@
                 <td class="truncate-text">{{ $row->deskripsi }}</td>
                 <td>{{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('l, j F Y') }}<br>
                     {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('H:i') }} WIB
-                </td>               
-                 <td>
+                </td>
+                <td>
                     <button class="custom-button" data-toggle="modal" data-target="#editberita{{ $row->id }}">
                         <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
                     </button>
@@ -120,7 +122,7 @@
 
 <!-- MODAL INSERT BERITA -->
 <div class="modal fade tambahberita" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Berita</h5>
@@ -163,7 +165,7 @@
 <!-- MODAL EDIT BERITA -->
 @foreach($data as $row)
 <div class="modal fade" id="editberita{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Berita</h5>
@@ -188,7 +190,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="judulberita">Judul Berita</label>
-                        <input class="kolom form-control" name="judul" type="text" id="judulberita" value="{{ $row->judul }}">
+                        <textarea class="kolom form-control" name="judul" type="text" id="judulberita">{{ $row->judul }}</textarea>
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="alamat">Deskripsi</label>
@@ -269,39 +271,39 @@
 
 <!-- MODAL FILTER POSTINGAN -->
 <div class="modal fade" id="filterberita" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{ route('berita') }}" method="GET">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                    <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
-                                </div>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tanggal</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('berita') }}" method="GET">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
                             </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                    <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
-                                </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
-                    </div>
-                </form>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success modalbuttonsuccess-style">Terapkan</button>
+                </div>
+            </form>
         </div>
     </div>
-    <!--  END MODAL  -->
+</div>
+<!--  END MODAL  -->
 
 <script>
     // Mendapatkan elemen input file
@@ -340,5 +342,3 @@
 <?php endforeach; ?>
 
 @endsection
-
-

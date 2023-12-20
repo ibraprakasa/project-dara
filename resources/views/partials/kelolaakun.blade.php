@@ -4,7 +4,7 @@
 
 
 <div class="row text-center">
-    <div class="" style="width:820px;margin-top:100px; margin-bottom:-90px; margin-left:60px">
+    <div class="" style="width:820px;margin-top:85px; margin-bottom:-90px; margin-left:60px">
         <div class="row" style="font-weight: bold">
             <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
                 Pendonor
@@ -21,8 +21,8 @@
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
-                <button type="submit" class="btn btn-dark searchicon-style">
+                <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+                <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
             </form>
@@ -30,11 +30,11 @@
 
         <div class="filter btn-group">
 
-            <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
+            <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
                 <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
             </button>
 
-            <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
+            <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
                 Tambah
             </button>
 
@@ -136,8 +136,8 @@
         <div class="tes2" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
             <div class="filter btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
-                    <input class="btn searchbar-style" type="search" name="searchuser" placeholder="Cari User...">
-                    <button type="submit" class="btn btn-dark searchicon-style">
+                    <input class="btn btn-primary searchbar-style" type="search" name="searchuser" placeholder="Cari User...">
+                    <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
                 </form>
@@ -145,11 +145,11 @@
 
             <div class="filter btn-group">
 
-                <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahuser">
+                <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahuser">
                     <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
                 </button>
 
-                <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahuser" type="button">
+                <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahuser" type="button">
                     Tambah
                 </button>
 
