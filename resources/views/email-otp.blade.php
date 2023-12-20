@@ -10,4 +10,3 @@
     OTP kamu adalah : {{ $otp }}
 </body>
 </html>
-email otp blade

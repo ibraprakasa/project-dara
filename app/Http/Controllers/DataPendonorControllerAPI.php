@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 
+use function PHPUnit\Framework\isEmpty;
+
 class DataPendonorControllerAPI extends Controller
 {
     public function __construct()
@@ -332,6 +334,9 @@ class DataPendonorControllerAPI extends Controller
         }
     
         $result = $query->get();
+        if($result.isEmpty()){
+            return response()->json($result,403);
+        }
     
         return response()->json($result);
     }
