@@ -59,7 +59,7 @@ use Carbon\Carbon;
 <div class="content">
     <table class="table table-bordered" id="tabel1" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
@@ -72,7 +72,7 @@ use Carbon\Carbon;
         <tbody class="waduh">
             @if(count($riwayat_donor) == 0)
             <tr>
-                <td colspan="6" style="font-weight: bold;text-align:center;">Riwayat donor belum ada</td>
+                <td colspan="7" style="font-weight: bold;text-align:center;">Riwayat donor belum ada</td>
             </tr>
             @else
             @foreach($riwayat_donor as $key => $rd)

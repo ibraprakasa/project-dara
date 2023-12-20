@@ -53,7 +53,7 @@
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">KODE PELAPOR</th>
                 <th scope="col">NAMA PELAPOR</th>

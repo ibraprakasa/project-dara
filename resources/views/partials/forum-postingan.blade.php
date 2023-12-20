@@ -19,16 +19,15 @@
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
-</div>
 
-<div class="filter1 btn-group">
+    <div class="ml-4">
     <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterpostingan">
         <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
         <span style="font-size: 12px; color: white;">Filter</span>
     </button>
-</div>
-
-<div class="filter1 btn-group wow">
+    </div>
+    
+    <div class="ml-4">
     @if(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
@@ -43,18 +42,18 @@
         @else
         <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
         @endif
-        <div>
+        <div style="white-space: nowrap;">
             {{ $successMessage }}
         </div>
     </div>
     @endif
+    </div>
 </div>
-
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>

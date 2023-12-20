@@ -24,7 +24,7 @@
     </button>
 </div>
 
-<div class="filter1 btn-group wow">
+<div class="nomargintop btn-group wow">
     @if(session('error'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->

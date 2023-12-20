@@ -93,7 +93,7 @@ use Carbon\Carbon;
     </div>
     <table class="table table-bordered" id="tabeltestimoni" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
@@ -247,7 +247,7 @@ use Carbon\Carbon;
 
 <table class="table table-bordered" id="tabelpesan">
     <thead class="thead" style="background-color:#3B4B65; color:white;">
-        <tr>
+        <tr style="white-space: nowrap;">
             <th scope="col">#</th>
             <th scope="col">Nama</th>
             <th scope="col">Email</th>
