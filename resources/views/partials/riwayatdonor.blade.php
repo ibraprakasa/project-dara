@@ -47,7 +47,7 @@ use Carbon\Carbon;
             @else
             <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
             @endif
-            <div>
+            <div style="white-space: nowrap;">
                 {{ $successMessage }}
             </div>
         </div>

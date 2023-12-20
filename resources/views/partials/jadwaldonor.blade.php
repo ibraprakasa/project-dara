@@ -60,7 +60,7 @@
             @elseif($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @endif
-            <div>
+            <div style="white-space: nowrap;">
                 {{ $successMessage }}
             </div>
         </div>

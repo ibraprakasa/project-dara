@@ -5,48 +5,47 @@
 
 <div class="filter1 btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
-        <button type="submit" class="btn btn-primary searchicon-style">
-            <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-        </button>
+            <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
+            <button type="submit" class="btn btn-primary searchicon-style">
+                <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+            </button>
     </form>
-</div>
 
-
-<div class="filter1 btn-group">
-    <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterlaporan">
-        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-        <span style="font-size: 12px; color: white;">Filter</span>
-    </button>
-</div>
-
-<div class="filter1 btn-group wow">
-    @if(session('error'))
-    <div class="alert-container11">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
-            {{ session('error') }}
-        </div>
+    <div class="ml-4">
+        <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterlaporan">
+            <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+            <span style="font-size: 12px; color: white;">Filter</span>
+        </button>
     </div>
-    @elseif(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div>
-            {{ session('success') }}
+
+    <div class="ml-4">
+        @if(session('error'))
+        <div class="alert-container11">
+            <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+            <div>
+                {{ session('error') }}
+            </div>
         </div>
-    </div>
-    @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($search)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-        @else
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @elseif(session('success'))
+        <div class="alert-container1 success">
+            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+            <div>
+                {{ session('success') }}
+            </div>
+        </div>
+        @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div style="white-space: nowrap;">
+                {{ $successMessage }}
+            </div>
+        </div>
         @endif
-        <div>
-            {{ $successMessage }}
-        </div>
     </div>
-    @endif
 </div>
 
 
