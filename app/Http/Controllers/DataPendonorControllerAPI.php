@@ -334,7 +334,7 @@ class DataPendonorControllerAPI extends Controller
         }
     
         $result = $query->get();
-        if($result.isEmpty()){
+        if($result->isEmpty()){
             return response()->json($result,403);
         }
     
