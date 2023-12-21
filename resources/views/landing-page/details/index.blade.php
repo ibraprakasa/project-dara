@@ -38,7 +38,7 @@
   <!-- ====== About Section End -->
 
   <!-- ====== Unduh Section Start -->
-  @include('landing-page.unduh')
+  @include('landing-page.skala')
   <!-- ====== Unduh Section End -->
 
   <!-- ====== Testimonial Section Start -->

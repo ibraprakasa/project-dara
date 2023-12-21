@@ -46,7 +46,7 @@
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
                     Pertanyaan
                   </a>
-                </li> -->
+                </li> --> 
                 <li class="group relative">
                   <a href="#team"
                     class="ud-menu-scroll mx-8 flex py-2 font-medium text-lg text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-10">
