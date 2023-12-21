@@ -49,14 +49,14 @@
                 @if(session('errorPendonor'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div>
-                    <div>
+                    <div class="nowrap">
                         {{ session('errorPendonor') }}
                     </div>
                 </div>
                 @elseif(session('successPendonor'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div>
-                    <div>
+                    <div class="nowrap">
                         {{ session('successPendonor') }}
                     </div>
                 </div>
@@ -169,14 +169,14 @@
                     @if(session('errorUser'))
                     <div class="alert-container">
                         <div class="alert-icon">&#9888;</div>
-                        <div>
+                        <div class="nowrap">
                             {{ session('errorUser') }}
                         </div>
                     </div>
                     @elseif(session('successUser'))
                     <div class="alert-container1 success">
                         <div class="alert-icon">&#10004;</div>
-                        <div>
+                        <div class="nowrap">
                             {{ session('successUser') }}
                         </div>
                     </div>

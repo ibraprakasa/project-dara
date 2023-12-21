@@ -49,7 +49,7 @@
                 {{ $row->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j F Y') }}
               </span>
               <h3>
-                <a href="blog-details.html"
+                <a href="{{ route('news-detail', ['id' => $row->id]) }}"
                   class="inline-block mb-4 text-xl font-semibold text-dark hover:text-primary sm:text-2xl lg:text-xl xl:text-2xl">
                   {{ $row->judul }}
                 </a>

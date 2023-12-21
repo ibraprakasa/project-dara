@@ -48,8 +48,6 @@
     </div>
 </div>
 
-
-
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
@@ -90,7 +88,6 @@
         </tbody>
     </table>
     {{ $report ->links() }}
-
 </div>
 
 <!-- MODAL FILTER LAPORAN -->
@@ -323,6 +320,5 @@
 </div>
 @endforeach
 <!-- END MODAL -->
-
 
 @endsection

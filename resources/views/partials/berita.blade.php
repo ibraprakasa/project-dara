@@ -37,14 +37,14 @@
     @if(session('error'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
+        <div class="nowrap">
             {{ session('error') }}
         </div>
     </div>
     @elseif(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div>
+        <div class="nowrap">
             {{ session('success') }}
         </div>
     </div>
@@ -120,7 +120,7 @@
 
 <!-- MODAL INSERT BERITA -->
 <div class="modal fade tambahberita" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Tambah Berita</h5>
@@ -163,7 +163,7 @@
 <!-- MODAL EDIT BERITA -->
 @foreach($data as $row)
 <div class="modal fade" id="editberita{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Edit Berita</h5>

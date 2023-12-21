@@ -34,14 +34,14 @@
     @if(session('errorPendonor'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div>
-        <div>
+        <div class="nowrap">
             {{ session('errorPendonor') }}
         </div>
     </div>
     @elseif(session('successPendonor'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div>
-        <div>
+        <div class="nowrap">
             {{ session('successPendonor') }}
         </div>
     </div>
@@ -52,7 +52,7 @@
         @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
         <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
         @endif
-        <div>
+        <div class="nowrap">
             {{ $successMessage }}
         </div>
     </div>

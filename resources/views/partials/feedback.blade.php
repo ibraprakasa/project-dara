@@ -65,14 +65,14 @@ use Carbon\Carbon;
                 @if(session('errorTestimoni'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div>
-                    <div>
+                    <div class="nowrap">
                         {{ session('errorTestimoni') }}
                     </div>
                 </div>
                 @elseif(session('successTestimoni'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-                    <div>
+                    <div class="nowrap">
                         {{ session('successTestimoni') }}
                     </div>
                 </div>
@@ -83,7 +83,7 @@ use Carbon\Carbon;
                     @elseif($tanggalawal && $tanggalakhir && $ratingdara && $filterStatus|| $tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir && $filterStatus || $ratingdara && $filterStatus || $ratingdara || $filterStatus)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
-                    <div>
+                    <div class="nowrap">
                         {{ $successMessage }}
                     </div>
                 </div>
@@ -157,7 +157,7 @@ use Carbon\Carbon;
                 @elseif($row->status === 0 )
                 <td>
                     <b>-</b>
-                </td> 
+                </td>
                 @endif
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
@@ -180,7 +180,7 @@ use Carbon\Carbon;
                     <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}" title="Tidak Tampil di Website">
                         <i class="fa fa-times-circle" style="color: #E70000;"></i>
                     </button>
-                </td> 
+                </td>
                 @endif
             </tr>
             @endforeach
@@ -207,7 +207,7 @@ use Carbon\Carbon;
                 </form>
 
                 <div class="search-filter-group"">
-                    <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
+                    <button type=" submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpesan">
                     <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
                     <span style="font-size: 12px; color: white;">Filter</span>
                     </button>
@@ -217,14 +217,14 @@ use Carbon\Carbon;
                     @if(session('errorPesan'))
                     <div class=" alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-                    <div>
+                    <div class="nowrap">
                         {{ session('errorPesan') }}
                     </div>
                 </div>
                 @elseif(session('successPesan'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-                    <div>
+                    <div class="nowrap">
                         {{ session('successPesan') }}
                     </div>
                 </div>
@@ -235,7 +235,7 @@ use Carbon\Carbon;
                     @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
-                    <div>
+                    <div class="nowrap">
                         {{ $successMessagePesan }}
                     </div>
                 </div>
@@ -396,7 +396,7 @@ use Carbon\Carbon;
                 </button>
             </div>
             <div class="modal-body">
-              Publikasikan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
+                Publikasikan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
             </div>
             <form action="{{ route('kirimtestimoni', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -870,7 +870,7 @@ use Carbon\Carbon;
         $('.modalbuttonlaporanpalsu').on('click', function() {
             // Tutup modal Detail Pesan
             $('#infopesan{{ $row->id }}').modal('hide');
-            
+
             // Tampilkan modal Balas Pesan
             $('#replypesan{{ $row->id }}').modal('show');
         });
