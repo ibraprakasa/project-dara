@@ -3,29 +3,32 @@ use Carbon\Carbon;
 @endphp
 
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Riwayat')
+@section('breadcrumb', 'Riwayat')
+
 
 @section('content')
 
 
-<div class="row text-center">
-    <div class="col" style="margin-top:100px; margin-bottom:-62px; margin-left:45px">
-        <div class="row" style="width:125%;font-weight: bold">
-            <a href="#" id="tombol1" style="text-decoration: none; margin-right: 20px" class="col">
-                Riwayat Donor Darah
-            </a>
-            <a href="#" id="tombol2" style="text-decoration: none" class="col">
-                Riwayat Ambil Darah
-            </a>
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-md" style="margin-top: 85px; margin-bottom: -62px; margin-left: 30px">
+            <div class="row tombol-style">
+                <a href="#" id="tombol1" style="text-decoration: none; margin-right: 20px" class="col">
+                    Riwayat Donor Darah
+                </a>
+                <a href="#" id="tombol2" style="text-decoration: none" class="col">
+                    Riwayat Ambil Darah
+                </a>
+            </div>
         </div>
+        <div class="col"></div>
     </div>
-    <div class="col"></div>
 </div>
 
 <div class="waw btn-group" style="margin-top:75px; margin-bottom:-83px">
     <form action="/riwayatdonor" method="GET" style="display: flex;">
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
@@ -46,7 +49,7 @@ use Carbon\Carbon;
             @else
             <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
             @endif
-            <div>
+            <div style="white-space: nowrap;">
                 {{ $successMessage }}
             </div>
         </div>
@@ -58,7 +61,7 @@ use Carbon\Carbon;
 <div class="content">
     <table class="table table-bordered" id="tabel1" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
@@ -71,7 +74,7 @@ use Carbon\Carbon;
         <tbody class="waduh">
             @if(count($riwayat_donor) == 0)
             <tr>
-                <td colspan="6" style="font-weight: bold;text-align:center;">Riwayat donor belum ada</td>
+                <td colspan="7" style="font-weight: bold;text-align:center;">Riwayat donor belum ada</td>
             </tr>
             @else
             @foreach($riwayat_donor as $key => $rd)

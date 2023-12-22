@@ -1,42 +1,41 @@
 @extends('template')
-@extends('sidebar')
-
 @section('judul_halaman', 'Stok Darah')
+@section('breadcrumb', 'Stok Darah')
 @section('content')
 
 
-<div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahstokdarah">
+<div class="filter5 btn-group">
+    <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahstokdarah">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
+    <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
         Tambah
     </button>
 </div>
 
-<div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark ambilicon-style" data-toggle="modal" data-target=".ambilstokdarah">
+<div class="filter5 btn-group">
+    <button type="button" class="btn btn-primary ambilicon-style" data-toggle="modal" data-target=".ambilstokdarah">
         <i class="bi bi-file-minus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary ambilbar-style" data-toggle="modal" data-target=".ambilstokdarah" type="button">
+    <button class="btn btn-primary ambilbar-style" data-toggle="modal" data-target=".ambilstokdarah" type="button">
         Ambil
     </button>
 </div>
 
-<div class="filter1 btn-group wow">
+<div class="nomargintop btn-group wow">
     @if(session('error'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
+        <div class="nowrap">
             {{ session('error') }}
         </div>
     </div>
     @elseif(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div>
+        <div class="nowrap">
             {{ session('success') }}
         </div>
     </div>
@@ -44,7 +43,7 @@
 </div>
 
 
-<div class="content" style="margin-top: 20px;">
+<div class="content content-responsive" style="margin-top: 20px;">
     <table class="table table-bordered">
         <thead class="thead thead-style">
             <tr>

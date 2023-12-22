@@ -1,9 +1,9 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Forum')
+@section('breadcrumb','Forum')
 @section('content')
 
-<div class="breadcrumb-container">
+<!-- <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
@@ -11,53 +11,53 @@
             <li class="breadcrumb-item">Balasan</li>
         </ol>
     </nav>
-</div>
+</div> -->
 
-<div class="filte btn-group">
+<div class="filter1 btn-group">
     @foreach($komentar as $row)
     <form action="{{ route('forum-komentar', ['id_post' => $row->id_post]) }}" method="GET" style="display: flex;">
         <input type="hidden" name="id" value="{{ $row->id }}">
         @endforeach
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Komentar...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Komentar...">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
-</div>
 
-<div class="filte btn-group">
-    <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterkomentar">
-        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-        <span style="font-size: 12px; color: white;">Filter</span>
-    </button>
-</div>
-
-<div class="filte btn-group wow">
-    @if(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div>
-            {{ session('success') }}
-        </div>
+    <div class="ml-4">
+        <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterkomentar">
+            <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+            <span style="font-size: 12px; color: white;">Filter</span>
+        </button>
     </div>
-    @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($search)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-        @else
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+
+    <div class="ml-4">
+        @if(session('success'))
+        <div class="alert-container1 success">
+            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+            <div class="nowrap">
+                {{ session('success') }}
+            </div>
+        </div>
+        @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div style="white-space: nowrap;">
+                {{ $successMessage }}
+            </div>
+        </div>
         @endif
-        <div>
-            {{ $successMessage }}
-        </div>
     </div>
-    @endif
 </div>
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">kode_pendonor</th>
                 <th scope="col">nama</th>

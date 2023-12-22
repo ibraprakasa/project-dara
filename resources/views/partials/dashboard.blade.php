@@ -1,9 +1,8 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Dashboard')
 @section('content')
 
-<div class="content">
+<div class="content" style="margin-top: 79px;">
 
   <div class="row">
     @foreach ($golonganDarahCounts as $golonganDarahCount)
