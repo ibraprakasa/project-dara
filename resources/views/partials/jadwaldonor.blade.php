@@ -1,85 +1,78 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Jadwal Donor')
+@section('breadcrumb', 'Jadwal')
 @section('content')
 
-
-<div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('jadwaldonor') }}">Jadwal</a></li>
-            <li class="breadcrumb-item">Info Pendaftar Lokasi</li>
-        </ol>
-    </nav>
-</div>
-
-<div class="filte btn-group">
+<div class="filter1 btn-group">
     <form action="/jadwaldonor" method="GET" style="display: flex;">
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Lokasi...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Lokasi...">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
-</div>
 
-<div class="filte btn-group">
-    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahjadwaldonor">
-        <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
-    </button>
+    <div class="ml-4">
+        <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahjadwaldonor">
+            <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+        </button>
 
-    <button class="btn btn-secondary insertbar-style" type="button" data-toggle="modal" data-target=".tambahjadwaldonor">
+    </div>
+
+    <button class="btn btn-primary insertbar-style" type="button" data-toggle="modal" data-target=".tambahjadwaldonor">
         Tambah
     </button>
+
 </div>
 
-<div class="filte btn-group">
-    <form action="/jadwaldonor" method="GET" style="display: flex;">
-        <div class="dropdown">
-            <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Filter berdasarkan
-            </button>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
-                <button class="dropdown-item" type="submit" name="sort" value="abjad">Abjad</button>
-                <button class="dropdown-item" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
-                <button class="dropdown-item" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
+<div class="filter100 btn-group wow">
+    <div>
+        <form action="/jadwaldonor" method="GET">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Filter berdasarkan
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
+                    <button class="dropdown-item" type="submit" name="sort" value="abjad">Abjad</button>
+                    <button class="dropdown-item" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
+                    <button class="dropdown-item" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="ml-4">
+        @if(session('error'))
+        <div class="alert-container">
+            <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+            <div class="nowrap">
+                {{ session('error') }}
             </div>
         </div>
-    </form>
-</div>
-
-<div class="filte btn-group wow">
-    @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
-            {{ session('error') }}
+        @elseif(session('success'))
+        <div class="alert-container1 success">
+            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+            <div class="nowrap">
+                {{ session('success') }}
+            </div>
         </div>
-    </div>
-    @elseif(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div>
-            {{ session('success') }}
+        @elseif(isset($successMessage))
+        <div class="alert-container12 success">
+            @if($sortMessage)
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @elseif($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @endif
+            <div style="white-space: nowrap;">
+                {{ $successMessage }}
+            </div>
         </div>
-    </div>
-    @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($sortMessage)
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
-        @elseif($search)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
         @endif
-        <div>
-            {{ $successMessage }}
-        </div>
     </div>
-    @endif
 </div>
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Lokasi</th>
                 <th scope="col">Alamat</th>
@@ -109,9 +102,12 @@
                 <td>{{ $row->kontak }}</td>
                 <td>{{ $row->jumlah_pendonor }}</td>
                 <td>
-                    <button class="custom-button" data-toggle="modal" data-target="#editjadwaldonor{{ $row->id }}">
-                        <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
-                    </button>
+                    <form action="{{ route('editjadwaldonor', ['id' => $row->id]) }}" method="GET">
+                        <input class="btn" type="text" value="{{  $row->id }}" name="id" hidden />
+                        <button class="custom-button">
+                            <i class="bi bi-pencil-square" style="color:#03A13B;"></i>
+                        </button>
+                    </form>
                 </td>
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletejadwaldonor{{ $row->id }}">
@@ -228,7 +224,7 @@
 <!-- END MODAL -->
 
 <!-- MODAL EDIT JADWAL DONOR -->
-@foreach($data as $row)
+<!-- @foreach($data as $row)
 <div class="modal fade" id="editjadwaldonor{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
@@ -281,7 +277,7 @@
                     </div>
                     <div class="row mb-3">
                         <div class="col mt-2">
-                            <div id="map{{ $row->id }}" style="height: 262px;"></div>
+                            <div id="mapEdit{{ $row->id }}" style="height: 262px;"></div>
                         </div>
                         <div class="col">
                             <div class="row">
@@ -318,7 +314,7 @@
         </div>
     </div>
 </div>
-@endforeach
+@endforeach -->
 <!-- END MODAL -->
 
 <!-- MODAL DELETE JADWAL DONOR -->
@@ -348,6 +344,8 @@
 </div>
 @endforeach
 <!-- END MODAL -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>
 
 <script>
     // Menambahkan variabel untuk menyimpan referensi ke elemen input latitude dan longitude
@@ -391,7 +389,10 @@
             editLongitudeInput.value = longitude;
         });
     }
+
     window.initMap = initMap;
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0DnOUYUBmubrtiYkon5_68Q8V8L2rfn8&callback=initMap&v=weekly" defer></script>
+
+
+
 @endsection

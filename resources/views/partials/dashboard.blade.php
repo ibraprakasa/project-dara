@@ -1,9 +1,8 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Dashboard')
 @section('content')
 
-<div class="content">
+<div class="content" style="margin-top: 79px;">
 
   <div class="row">
     @foreach ($golonganDarahCounts as $golonganDarahCount)
@@ -272,4 +271,27 @@
   var chart = new ApexCharts(document.querySelector("#chartGoldar"), options);
   chart.render();
 </script>
+@endsection
+
+@section('footer')
+<footer class="footer footer-black  footer-white ">
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="footer-nav">
+              <ul>
+                <li><a href="{{ route('landing-page') }}#news" target="_blank">BERITA</a></li>
+                <li><a href="{{ route('landing-page') }}#contact" target="_blank">KONTAK</a></li>
+                <li><a href="{{ route('landing-page') }}" target="_blank">LANDING PAGE</a></li>
+              </ul>
+            </nav>
+            <div class="credits ml-auto">
+              <span class="copyright">
+                © <script>
+                  document.write(new Date().getFullYear())
+                </script>, made with <i class="fa fa-heart heart"></i> by DARA Tim
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
 @endsection

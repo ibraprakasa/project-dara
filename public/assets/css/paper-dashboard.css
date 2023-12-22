@@ -421,6 +421,10 @@ Copyright (c) 2015 Daniel Eden
     position: relative;
     top: 1px; }
 
+    .navbar.navbar-expand-lg.navbar-absolute.fixed-top.navbar-transparent {
+      border-bottom: none !important;
+  }
+
 .btn-primary {
   background-color: #51cbce;
   color: #FFFFFF; }
@@ -1498,7 +1502,8 @@ body {
   font-size: 14px;
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased; }
+  -webkit-font-smoothing: antialiased; 
+}
 
 .main {
   position: relative;
@@ -2993,7 +2998,8 @@ License - nucleoapp.com/license/
 .wrapper {
   position: relative;
   top: 0;
-  height: 100vh; }
+  height: 100vh; 
+}
   .wrapper.wrapper-full-page {
     min-height: 100vh;
     height: auto; }
@@ -4221,3 +4227,5 @@ License - nucleoapp.com/license/
   margin-left: 16px;
   margin-top: 10px;
 }
+
+

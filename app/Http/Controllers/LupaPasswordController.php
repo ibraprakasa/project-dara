@@ -15,7 +15,7 @@ class LupaPasswordController extends Controller
 {
     public function getEmail()
     {
-        return view('lupapassword1');
+        return view('auth.lupapassword1');
     }
 
     public function postEmail(Request $request)
@@ -47,7 +47,7 @@ class LupaPasswordController extends Controller
 
     public function getOTP()
     {
-        return view('lupapassword2');
+        return view('auth.lupapassword2');
     }
 
     public function postOTP(Request $request)
@@ -67,7 +67,7 @@ class LupaPasswordController extends Controller
 
     public function getPasswordResetForm()
     {
-        return view('lupapassword3');
+        return view('auth.lupapassword3');
     }
 
     public function postPasswordReset(Request $request)

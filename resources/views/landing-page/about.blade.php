@@ -8,7 +8,7 @@
               DARA, Aplikasi Pendonor untuk Mewujudkan Mimpi Bersama.
               </h2>
               <p align="justify" class="mb-10 text-base leading-relaxed text-body-color">
-              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses pendonoran, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
+              Membuka peluang bagi mereka yang ingin berbagi kebaikan melalui donor untuk merangkul impian bersama. Dengan antarmuka yang ramah pengguna, DARA memudahkan proses donor darah, memberikan kesempatan pada setiap individu untuk menjadi pahlawan bagi yang membutuhkan.
                 <br> <br>
                 Wujudkan Mimpi Bersama dengan Sentuhan Kebaikan. DARA tidak hanya sekadar aplikasi, tapi juga sebuah panggilan untuk berbagi kehidupan.
               </p>
@@ -19,13 +19,13 @@
             <div class="flex flex-wrap -mx-2 sm:-mx-4 lg:-mx-2 xl:-mx-4">
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                 <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[700px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 7.png') }}" alt="about image"
+                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 7-resize.png') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
               </div>
               <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
                 <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[700px]">
-                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 5.png') }}" alt="about image"
+                  <img src="{{ asset('assets/assets-landing-page/images/about/Group 5-resize.png') }}" alt="about image"
                     class="object-cover object-center w-full h-full" />
                 </div>
               </div>

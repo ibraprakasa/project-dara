@@ -44,19 +44,6 @@ class DashboardController extends Controller
             $jumlahAcaraDonor[] = $acaraPerBulan;
         }
 
-        // $data = RiwayatDonor::whereMonth('tanggal_donor', 10)->get()->toArray();
-        // dd($data);
-
-        // foreach ($bulan as $blnStok){
-        //     $data  = new GolonganDarah();
-        //     $data = $data
-        //         ->whereHas('pendonor.riwayatDonor')
-        //         ->with(['pendonor', 'pendonor.riwayatDonor' => function($q){
-        //             return $q->whereMonth('tanggal_donor',10);
-        //         }]);
-        //         dd($data->get()->toArray());
-        // }
-
         //KONDISI GRAFIK STOK DARAH MASUK
         $bulanStokDarah = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('gambar',255)->nullable(false);
             $table->text('judul')->nullable(false);
             $table->text('deskripsi')->nullable(false);
+            $table->unsignedInteger('views')->default(0);
             $table->timestamps();
         });
     }

@@ -1,4 +1,4 @@
-<section id="contact" class="relative py-20 md:py-[120px]">
+ <section id="contact" class="relative py-20 md:py-[120px]">
   <div class="absolute top-0 left-0 z-[-1] h-1/2 w-full bg-[#E9F9FF] lg:h-[45%] xl:h-1/2"></div>
   <div class="container px-4">
     <div class="-mx-4 flex flex-wrap items-center">

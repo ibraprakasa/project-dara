@@ -1,87 +1,85 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Kelola Akun')
+@section('breadcrumb', 'Kelola Akun')
 @section('content')
 
-
-<div class="row text-center">
-    <div class="" style="width:820px;margin-top:100px; margin-bottom:-90px; margin-left:60px">
-        <div class="row" style="font-weight: bold">
-            <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
-                Pendonor
-            </a>
-            <a href="#" id="tomboluser" style="text-decoration: none;" class="col">
-                User
-            </a>
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-md" style="margin-top: 85px; margin-bottom: -62px; margin-left: 30px">
+            <div class="row tombol-style">
+                <a href="#" id="tombolpendonor" style="text-decoration: none; margin-right: 20px" class="col">
+                    Pendonor
+                </a>
+                <a href="#" id="tomboluser" style="text-decoration: none" class="col">
+                    User
+                </a>
+            </div>
         </div>
+        <div class="col"></div>
     </div>
-    <div class="col"></div>
 </div>
 
 <div class="content" id="search-results">
     <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filter btn-group">
+        <div class="filter1 btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
-                <button type="submit" class="btn btn-dark searchicon-style">
+                <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+                <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
             </form>
-        </div>
 
-        <div class="filter btn-group">
+            <div class="ml-4">
+                <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
+                    <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+                </button>
+            </div>
 
-            <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
-                <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
-            </button>
-
-            <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
+            <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
                 Tambah
             </button>
 
-
-        </div>
-
-        <div class="filter btn-group">
-            <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpendonor">
-                <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-                <span style="font-size: 12px; color: white;">Filter</span>
-            </button>
-        </div>
-
-        <div class="filter btn-group wow">
-            @if(session('errorPendonor'))
-            <div class="alert-container">
-                <div class="alert-icon">&#9888;</div>
-                <div>
-                    {{ session('errorPendonor') }}
-                </div>
+            <div class="ml-4">
+                <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpendonor">
+                    <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+                    <span style="font-size: 12px; color: white;">Filter</span>
+                </button>
             </div>
-            @elseif(session('successPendonor'))
-            <div class="alert-container1 success">
-                <div class="alert-icon">&#10004;</div>
-                <div>
-                    {{ session('successPendonor') }}
+
+            <div class="ml-4">
+                @if(session('errorPendonor'))
+                <div class="alert-container">
+                    <div class="alert-icon">&#9888;</div>
+                    <div class="nowrap">
+                        {{ session('errorPendonor') }}
+                    </div>
                 </div>
-            </div>
-            @elseif(isset($successMessage))
-            <div class="alert-container12 success">
-                @if($searchPendonor)
-                <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
-                <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                @elseif(session('successPendonor'))
+                <div class="alert-container1 success">
+                    <div class="alert-icon">&#10004;</div>
+                    <div class="nowrap">
+                        {{ session('successPendonor') }}
+                    </div>
+                </div>
+                @elseif(isset($successMessage))
+                <div class="alert-container12 success">
+                    @if($searchPendonor)
+                    <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                    @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
+                    <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                    @endif
+                    <div style="white-space: nowrap;">
+                        {{ $successMessage }}
+                    </div>
+                </div>
                 @endif
-                <div>
-                    {{ $successMessage }}
-                </div>
             </div>
-            @endif
         </div>
 
     </div>
     <table id="tabelpendonor" class="table table-bordered">
         <thead class="thead">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
@@ -129,81 +127,79 @@
             @endif
         </tbody>
     </table>
+
     <div class="pagination1">
         {{ $data->links() }}
     </div>
 
     <div class="filtering" id="filteruser">
         <div class="tes2" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
-            <div class="filter btn-group">
+            <div class="filter1 btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
-                    <input class="btn searchbar-style" type="search" name="searchuser" placeholder="Cari User...">
-                    <button type="submit" class="btn btn-dark searchicon-style">
+                    <input class="btn btn-primary searchbar-style" type="search" name="searchuser" placeholder="Cari User...">
+                    <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
                 </form>
-            </div>
 
-            <div class="filter btn-group">
+                <div class="ml-4">
+                    <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahuser">
+                        <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+                    </button>
+                </div>
 
-                <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahuser">
-                    <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
-                </button>
-
-                <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahuser" type="button">
+                <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahuser" type="button">
                     Tambah
                 </button>
 
-            </div>
+                <div class="ml-4">
+                    <form action="/kelolaakun" method="GET" style="display: flex;">
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Filter berdasarkan
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="sortDropdown">
+                                <button class="dropdown-item" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
+                                <button class="dropdown-item" type="submit" name="sortuser" value="admin">Admin saja</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
 
-            <div class="filter btn-group">
-                <form action="/kelolaakun" method="GET" style="display: flex;">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filter berdasarkan
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
-                            <button class="dropdown-item" type="submit" name="sortuser" value="superadmin">Superadmin saja</button>
-                            <button class="dropdown-item" type="submit" name="sortuser" value="admin">Admin saja</button>
+                <div class="ml-4">
+                    @if(session('errorUser'))
+                    <div class="alert-container">
+                        <div class="alert-icon">&#9888;</div>
+                        <div class="nowrap">
+                            {{ session('errorUser') }}
                         </div>
                     </div>
-                </form>
-            </div>
-
-
-            <div class="filter btn-group wow">
-                @if(session('errorUser'))
-                <div class="alert-container">
-                    <div class="alert-icon">&#9888;</div>
-                    <div>
-                        {{ session('errorUser') }}
+                    @elseif(session('successUser'))
+                    <div class="alert-container1 success">
+                        <div class="alert-icon">&#10004;</div>
+                        <div class="nowrap">
+                            {{ session('successUser') }}
+                        </div>
                     </div>
-                </div>
-                @elseif(session('successUser'))
-                <div class="alert-container1 success">
-                    <div class="alert-icon">&#10004;</div>
-                    <div>
-                        {{ session('successUser') }}
+                    @elseif(isset($successMessageUser))
+                    <div class="alert-container12 success">
+                        @if($searchUser)
+                        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+                        @elseif($sort)
+                        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+                        @endif
+                        <div style="white-space: nowrap;">
+                            {{ $successMessageUser }}
+                        </div>
                     </div>
-                </div>
-                @elseif(isset($successMessageUser))
-                <div class="alert-container12 success">
-                    @if($searchUser)
-                    <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-                    @elseif($sort)
-                    <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
-                    <div>
-                        {{ $successMessageUser }}
-                    </div>
                 </div>
-                @endif
             </div>
         </div>
     </div>
     <table id="tabeluser" class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Nama</th>
                 <th scope="col">Alamat</th>
@@ -431,6 +427,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
@@ -571,7 +568,7 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="passwordbaru">Kata Sandi Baru</label>
-                        <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru"  required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Baru.')" oninput="this.setCustomValidity('')">
+                        <input class="kolom form-control" name="passwordbaru" type="password" id="passwordbaru" required minlength="8" oninvalid="this.setCustomValidity('Masukkan Password Baru.')" oninput="this.setCustomValidity('')">
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="passwordkonfirmasi">Konfirmasi Kata Sandi Baru</label>
@@ -579,6 +576,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-dismiss="modal" data-toggle="modal" data-target="#editpendonor{{ $row->id }}">Kembali</button>
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>
@@ -724,6 +722,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
                 </div>
             </form>

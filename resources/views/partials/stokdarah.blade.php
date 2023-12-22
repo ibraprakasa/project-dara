@@ -1,42 +1,41 @@
 @extends('template')
-@extends('sidebar')
-
 @section('judul_halaman', 'Stok Darah')
+@section('breadcrumb', 'Stok Darah')
 @section('content')
 
 
-<div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahstokdarah">
+<div class="filter5 btn-group">
+    <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahstokdarah">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
+    <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahstokdarah" type="button">
         Tambah
     </button>
 </div>
 
-<div class="filter1 btn-group">
-    <button type="button" class="btn btn-dark ambilicon-style" data-toggle="modal" data-target=".ambilstokdarah">
+<div class="filter5 btn-group">
+    <button type="button" class="btn btn-primary ambilicon-style" data-toggle="modal" data-target=".ambilstokdarah">
         <i class="bi bi-file-minus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary ambilbar-style" data-toggle="modal" data-target=".ambilstokdarah" type="button" >
+    <button class="btn btn-primary ambilbar-style" data-toggle="modal" data-target=".ambilstokdarah" type="button">
         Ambil
     </button>
 </div>
 
-<div class="filter1 btn-group wow">
+<div class="nomargintop btn-group wow">
     @if(session('error'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div>
+        <div class="nowrap">
             {{ session('error') }}
         </div>
     </div>
     @elseif(session('success'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div>
+        <div class="nowrap">
             {{ session('success') }}
         </div>
     </div>
@@ -44,7 +43,7 @@
 </div>
 
 
-<div class="content" style="margin-top: 20px;">
+<div class="content content-responsive" style="margin-top: 20px;">
     <table class="table table-bordered">
         <thead class="thead thead-style">
             <tr>
@@ -89,7 +88,7 @@
                     <div class="form-group">
                         <label for="goldar" style="color:black; font-weight:bold">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="selectPendonor" required oninvalid="this.setCustomValidity('Pilih Pendonor terlebih dahulu.')" oninput="this.setCustomValidity('')">
-                        <option disabled selected value="" >Pilih Pendonor</option>
+                            <option disabled selected value="">Pilih Pendonor</option>
                             @foreach($kode_pendonor as $kp)
                             <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
                             @endforeach
@@ -98,7 +97,7 @@
                     <div class="form-group">
                         <label for="lokasi" style="color:black; font-weight:bold">Lokasi</label>
                         <select class="kolom form-control" name="lokasi" id="selectLokasi" required required oninvalid="this.setCustomValidity('Pilih Lokasi Donor terlebih dahulu.')" oninput="this.setCustomValidity('')">
-                            <option disabled selected value="" >Pilih Lokasi</option>
+                            <option disabled selected value="">Pilih Lokasi</option>
                             @foreach($lokasi as $lp)
                             <option class="kolom form-control" value="{{ $lp->lokasi }}">{{ $lp->lokasi }}</option>
                             @endforeach
@@ -106,13 +105,13 @@
                     </div>
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Jumlah Kantong</label>
-                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5"  required oninvalid="this.setCustomValidity('Jumlah Kantong harus diisi.')" oninput="this.setCustomValidity('')">
+                        <input class="kolom form-control" name="jumlah" type="number" id="jumlah" placeholder="ex : 5" required oninvalid="this.setCustomValidity('Jumlah Kantong harus diisi.')" oninput="this.setCustomValidity('')">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Tambah</button>
                 </div>
-        </form>
+            </form>
         </div>
     </div>
 </div>
@@ -135,9 +134,15 @@
                     <div class="form-group">
                         <label for="goldar" style="color:black; font-weight:bold">Pendonor</label>
                         <select class="kolom form-control" name="kode_pendonor" id="selectPendonorAmbil" required oninvalid="this.setCustomValidity('Pilih Pendonor terlebih dahulu.')" oninput="this.setCustomValidity('')">
-                            <option disabled selected value="" >Pilih Pendonor</option>
+                            <option disabled selected value="">Pilih Pendonor</option>
                             @foreach($kode_pendonor as $kp)
-                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }}</option>
+                            <option class="kolom form-control" value="{{ $kp->kode_pendonor }}">{{ $kp->kode_pendonor }} - {{ $kp->nama }} - {{ $kp->golongandarah->nama }} -<br> 
+                                @if($kp->total_donor_darah == null)
+                                0 Kantong
+                                @else
+                                {{ $kp->total_donor_darah }} Kantong
+                                @endif
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -152,7 +157,7 @@
                     <div class="form-group" style="color:black; font-weight:bold">
                         <label for="jumlah">Kontak</label>
                         <input class="kolom form-control" name="kontak" type="number" id="kontak" placeholder="ex : 0822******" required oninvalid="this.setCustomValidity('Kontak Lokasi harus diisi.')" oninput="this.setCustomValidity('')">
-                    </div>
+                    </div>  
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Simpan</button>
@@ -167,24 +172,31 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $("#selectPendonor").select2({
-            placeholder : 'Pilih Pendonor',
-            dropdownParent : $('#modaltambahstokdarah'),
+            placeholder: 'Pilih Pendonor',
+            dropdownParent: $('#modaltambahstokdarah'),
             width: '100%', // Atur lebar sesuai kebutuhan
             allowClear: true,
             theme: "bootstrap"
         });
         $("#selectLokasi").select2({
-            placeholder : 'Pilih Lokasi',
-            dropdownParent : $('#modaltambahstokdarah'),
-            width : '100%',
-            allowClear : true,
+            placeholder: 'Pilih Lokasi',
+            dropdownParent: $('#modaltambahstokdarah'),
+            width: '100%',
+            allowClear: true,
             theme: "bootstrap"
         });
         $("#selectPendonorAmbil").select2({
-            placeholder : 'Pilih Pendonor',
-            dropdownParent : $('#modalambilstokdarah'),
+            placeholder: 'Pilih Pendonor',
+            dropdownParent: $('#modalambilstokdarah'),
+            width: '100%', // Atur lebar sesuai kebutuhan
+            allowClear: true,
+            theme: "bootstrap"
+        });
+        $("#selectStokDarah").select2({
+            placeholder: 'Tanpa Filter',
+            dropdownParent: $('#modalambilstokdarah'),
             width: '100%', // Atur lebar sesuai kebutuhan
             allowClear: true,
             theme: "bootstrap"

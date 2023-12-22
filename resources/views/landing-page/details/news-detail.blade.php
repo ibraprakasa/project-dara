@@ -6,9 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>
-    DARA Apps || Rincian Berita
+    Rincian Berita
   </title>
-  <link rel="shortcut icon" href="../assets/img/daraicon.png" type="image/x-icon" />
+  <link rel="icon" type="image/x-icon" href="../assets/img/daraiconico.ico">
   <link rel="stylesheet" href="../assets/assets-landing-page/css/swiper-bundle.min.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/animate.css" />
   <link rel="stylesheet" href="../assets/assets-landing-page/css/tailwind.css" />
@@ -25,35 +25,7 @@
   <!-- ====== Navbar Section End -->
 
   <!-- ====== Banner Section Start -->
-  <div class="relative z-10 overflow-hidden pt-[120px] pb-[60px] md:pt-[130px] lg:pt-[160px]">
-    <div class="w-full h-px bg-gradient-to-r from-stroke/0 via-stroke to-stroke/0 absolute left-0 bottom-0">
-    </div>
-    <div class="container">
-      <div class="-mx-4 flex flex-wrap items-center">
-        <div class="w-full px-4">
-          <div class="text-center">
-            <h1 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[40px] md:leading-[1.2]">Rincian Berita</h1>
-            <p class="mb-5 text-base text-body-color">
-            Ada beragam informasi yang dapat ditemukan untuk mendapatkan gambaran lebih lanjut.            
-            </p>
-            <ul class="flex items-center justify-center gap-[10px]">
-              <li>
-                <a href="{{ route('landing-page') }}" class="flex items-center gap-[10px] text-base font-medium text-dark hover:text-primary">
-                  Beranda
-                </a>
-              </li>
-              <li>
-                <a href="javascript:void(0)"  onclick="refreshPage()" class="flex items-center gap-[10px] text-base font-medium text-body-color hover:text-primary">
-                  <span class="text-body-color"> / </span>
-                  Rincian
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  @include('landing-page.banner')
   <!-- ====== Banner Section End -->
 
   <!-- ====== Blog Details Section Start -->
@@ -80,23 +52,6 @@
                     </span>
                     {{ $newsDetail->created_at->setTimezone('Asia/Jakarta')->translatedFormat('j F Y') }}
                   </p>
-
-                  <!-- <p class="mr-5 flex items-center text-sm font-medium text-white md:mr-6">
-                    <span class="mr-3">
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current">
-                        <path
-                          d="M11.1002 4.875H4.6502C4.3502 4.875 4.0752 5.125 4.0752 5.45C4.0752 5.775 4.3252 6.025 4.6502 6.025H11.1252C11.4252 6.025 11.7002 5.775 11.7002 5.45C11.7002 5.125 11.4252 4.875 11.1002 4.875Z"
-                        />
-                        <path
-                          d="M9.8002 7.92505H4.6502C4.3502 7.92505 4.0752 8.17505 4.0752 8.50005C4.0752 8.82505 4.3252 9.07505 4.6502 9.07505H9.8002C10.1002 9.07505 10.3752 8.82505 10.3752 8.50005C10.3752 8.17505 10.1002 7.92505 9.8002 7.92505Z"
-                        />
-                        <path
-                          d="M13.9998 1.9751H1.9998C1.1498 1.9751 0.424805 2.6751 0.424805 3.5501V12.9751C0.424805 13.3751 0.649805 13.7501 1.0248 13.9251C1.1748 14.0001 1.3248 14.0251 1.4748 14.0251C1.7248 14.0251 1.9498 13.9501 2.1498 13.7751L4.2748 12.0251H13.9998C14.8498 12.0251 15.5748 11.3251 15.5748 10.4501V3.5501C15.5748 2.6751 14.8498 1.9751 13.9998 1.9751ZM14.4498 10.4501C14.4498 10.7001 14.2498 10.9001 13.9998 10.9001H4.0748C3.9498 10.9001 3.8248 10.9501 3.7248 11.0251L1.5748 12.8001V3.5501C1.5748 3.3001 1.7748 3.1001 2.0248 3.1001H14.0248C14.2748 3.1001 14.4748 3.3001 14.4748 3.5501V10.4501H14.4498Z"
-                        />
-                      </svg>
-                    </span>
-                    09
-                  </p> -->
                   <p class="flex items-center text-sm font-medium text-white">
                     <span class="mr-3">
                       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="fill-current">
@@ -108,7 +63,7 @@
                         />
                       </svg>
                     </span>
-                    35
+                    {{ $newsDetail->views }}
                   </p>
                 </div>
               </div>
@@ -187,102 +142,6 @@
             </div>
             <div class="w-full px-4 lg:w-4/12">
               <div>
-                <!-- <div
-                  class="wow fadeInUp relative mb-12 overflow-hidden rounded-[5px] bg-primary py-[60px] px-11 text-center lg:px-8"
-                  data-wow-delay=".1s
-                    ">
-                  <h3 class="mb-[6px] text-[28px] leading-[40px] font-semibold text-white">
-                    Ikuti komunitas kami!
-                  </h3>
-                  <p class="mb-5 text-base text-white">
-                    Masukkan email Anda untuk memantau informasi donor darah lebih lanjut.
-                  </p>
-                  <form>
-                    <input type="email" placeholder="Masukkan email Anda"
-                      class="mb-4 h-[50px] w-full rounded-md border border-transparent bg-white/10 text-center text-base text-white placeholder:text-white/60 outline-none focus:border-white focus-visible:shadow-none" />
-                    <input type="submit" value="Kirim"
-                      class="mb-4 h-[50px] w-full cursor-pointer rounded-md bg-secondary text-center text-sm font-medium text-white transition duration-300 ease-in-out hover:bg-opacity-90 hover:bg-[#0BB489]" />
-                  </form>
-                  <p class="text-sm font-medium text-white">
-                    Jangan khawatir, email Anda aman.
-                </p>
-
-                  <div>
-                    <span class="absolute top-0 right-0">
-                      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.39737" cy="44.6026" r="1.39737" transform="rotate(-90 1.39737 44.6026)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="1.39737" cy="7.9913" r="1.39737" transform="rotate(-90 1.39737 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="44.6026" r="1.39737" transform="rotate(-90 13.6943 44.6026)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="7.9913" r="1.39737" transform="rotate(-90 13.6943 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="44.6026" r="1.39737" transform="rotate(-90 25.9911 44.6026)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="7.9913" r="1.39737" transform="rotate(-90 25.9911 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="38.288" cy="44.6026" r="1.39737" transform="rotate(-90 38.288 44.6026)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="38.288" cy="7.9913" r="1.39737" transform="rotate(-90 38.288 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="1.39737" cy="32.3058" r="1.39737" transform="rotate(-90 1.39737 32.3058)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="32.3058" r="1.39737" transform="rotate(-90 13.6943 32.3058)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="32.3058" r="1.39737" transform="rotate(-90 25.9911 32.3058)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="38.288" cy="32.3058" r="1.39737" transform="rotate(-90 38.288 32.3058)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="1.39737" cy="20.0086" r="1.39737" transform="rotate(-90 1.39737 20.0086)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="20.0086" r="1.39737" transform="rotate(-90 13.6943 20.0086)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="20.0086" r="1.39737" transform="rotate(-90 25.9911 20.0086)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="38.288" cy="20.0086" r="1.39737" transform="rotate(-90 38.288 20.0086)" fill="white"
-                          fill-opacity="0.44" />
-                      </svg>
-                    </span>
-                    <span class="absolute bottom-0 left-0">
-                      <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="1.39737" cy="44.6026" r="1.39737" transform="rotate(-90 1.39737 44.6026)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="1.39737" cy="7.9913" r="1.39737" transform="rotate(-90 1.39737 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="44.6026" r="1.39737" transform="rotate(-90 13.6943 44.6026)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="7.9913" r="1.39737" transform="rotate(-90 13.6943 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="44.6026" r="1.39737" transform="rotate(-90 25.9911 44.6026)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="7.9913" r="1.39737" transform="rotate(-90 25.9911 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="38.288" cy="44.6026" r="1.39737" transform="rotate(-90 38.288 44.6026)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="38.288" cy="7.9913" r="1.39737" transform="rotate(-90 38.288 7.9913)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="1.39737" cy="32.3058" r="1.39737" transform="rotate(-90 1.39737 32.3058)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="32.3058" r="1.39737" transform="rotate(-90 13.6943 32.3058)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="32.3058" r="1.39737" transform="rotate(-90 25.9911 32.3058)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="38.288" cy="32.3058" r="1.39737" transform="rotate(-90 38.288 32.3058)" fill="white"
-                          fill-opacity="0.44" />
-                        <circle cx="1.39737" cy="20.0086" r="1.39737" transform="rotate(-90 1.39737 20.0086)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="13.6943" cy="20.0086" r="1.39737" transform="rotate(-90 13.6943 20.0086)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="25.9911" cy="20.0086" r="1.39737" transform="rotate(-90 25.9911 20.0086)"
-                          fill="white" fill-opacity="0.44" />
-                        <circle cx="38.288" cy="20.0086" r="1.39737" transform="rotate(-90 38.288 20.0086)" fill="white"
-                          fill-opacity="0.44" />
-                      </svg>
-                    </span>
-                  </div>
-                </div> -->
-
                 <div class="-mx-4 mb-8 flex flex-wrap">
                   <div class="w-full px-4">
                     <h2 class="wow fadeInUp relative pb-5 text-2xl font-semibold text-dark sm:text-[28px]"
@@ -317,13 +176,8 @@
               </div>
             </div>
           </div>
-        </div>
-
-        
+        </div>        
       </div>
-
-      
-
       <div class="-mx-4 flex flex-wrap">
         <div class="wow fadeInUp mt-14 w-full px-4" data-wow-delay=".2s">
           <h2 class="relative pb-5 text-2xl font-semibold text-dark sm:text-[36px]">
@@ -367,6 +221,7 @@
   <!-- ====== Footer Section Start -->
   @include('landing-page.footer')
   <!-- ====== Footer Section End -->
+  
 
   <!-- ====== Back To Top Start -->
   <a href="javascript:void(0)"
@@ -376,7 +231,7 @@
   <!-- ====== Back To Top End -->
 
   <!-- ====== Made With Button Start -->
-  <a href="https://tailgrids.com/"
+  <a href=javascript:void(0)"
     class="inline-flex items-center gap-[10px] py-2 px-[14px] rounded-lg bg-white shadow-2 fixed bottom-8 left-4 sm:left-9 z-[999]">
     <span class="text-base font-medium text-dark-3">
       Made with
@@ -388,10 +243,8 @@
   </a>
   <!-- ====== Made With Button End -->
 
-  <!-- ====== All Scripts -->
   <script src="../assets/assets-landing-page/js/swiper-bundle.min.js"></script>
-  <script src="../assets/assets-landing-page/js/main.js"></script></body>
-
+  <script src="../assets/assets-landing-page/js/main.js"></script>
   <script>
     function refreshPage() {
         location.reload();

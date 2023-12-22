@@ -15,15 +15,15 @@ class ReplySeeder extends Seeder
     {
         DB::table('balas_comments')->insertGetId(array(
             'id_pendonor' => '10',
-            'id_comment' => '32',
+            'id_comment' => '53',
             'text' => 'Ini adalah balas komen dari pendonor A',
             'created_at' =>now(),
             'updated_at' =>now(),
         ));
 
         DB::table('balas_comments')->insertGetId(array(
-            'id_pendonor' => '12',
-            'id_comment' => '46',
+            'id_pendonor' => '5',
+            'id_comment' => '53',
             'text' => 'Ini adalah balas komen dari pendonor B',
             'created_at' =>now(),
             'updated_at' =>now(),
