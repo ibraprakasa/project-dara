@@ -738,6 +738,8 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-dark modalbuttonclose-style mr-auto" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-dismiss="modal" data-toggle="modal" data-target="#infopesan{{ $row->id }}">Kembali</button>
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Kirim</button>
                 </div>
             </form>
@@ -795,7 +797,8 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style mr-auto" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-dismiss="modal" data-toggle="modal" data-target="#infopesan{{ $row->id }}">Kembali</button>
             </div>
         </div>
     </div>
