@@ -57,21 +57,12 @@
                 </div>
 
                 <div class="row" style="margin-top: -15px;">
-                    <div class="col-md-6">
-                        <p class="text-left ml-2">
-                            <a href="{{ route('landing-page') }}" style="color:blue">
-                               Landing Page
-                            </a>
-                        </p>
-                    </div>
-
-                    <div class="col-md-6">
                         <p class="text-right">
                             <a href="{{ route('lupapassword1') }}" style="color:red">
                                 Lupa Password?
                             </a>
                         </p>
-                    </div>
+                    
                 </div>
 
                 <button type="submit" class="btn btn-block btn-danger">Masuk</button>
