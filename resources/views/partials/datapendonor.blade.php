@@ -1,24 +1,24 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Pendonor')
+@section('breadcrumb','Pendonor')
 @section('content')
 
 <div class="filter btn-group">
     <form action="/datapendonor" method="GET">
-        <input class="btn searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+        <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
     </form>
-    <button type="button" class="btn searchicon-style">
+    <button type="button" class="btn btn-primary searchicon-style">
         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
     </button>
 </div>
 
 <div class="filter btn-group">
 
-    <button type="button" class="btn btn-dark inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
+    <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
         <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
     </button>
 
-    <button class="btn btn-secondary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
+    <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
         Tambah
     </button>
 
@@ -35,14 +35,14 @@
     @if(session('errorPendonor'))
     <div class="alert-container">
         <div class="alert-icon">&#9888;</div>
-        <div>
+        <div class="nowrap">
             {{ session('errorPendonor') }}
         </div>
     </div>
     @elseif(session('successPendonor'))
     <div class="alert-container1 success">
         <div class="alert-icon">&#10004;</div>
-        <div>
+        <div class="nowrap">
             {{ session('successPendonor') }}
         </div>
     </div>
@@ -53,7 +53,7 @@
         @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
         <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
         @endif
-        <div>
+        <div class="nowrap">
             {{ $successMessage }}
         </div>
     </div>

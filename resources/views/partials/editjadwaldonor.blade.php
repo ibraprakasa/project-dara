@@ -1,6 +1,6 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Jadwal Donor')
+@section('breadcrumb','Jadwal')
 @section('content')
 
 

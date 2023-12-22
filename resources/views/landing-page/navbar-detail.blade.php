@@ -3,7 +3,7 @@
         <div class="relative -mx-4 flex items-center justify-between">
             <div class="w-60 max-w-full px-4">
                 <a href="{{ route('landing-page') }}" class="navbar-logo block w-full py-5">
-                    <img src="../assets/assets-landing-page/images/logo/dara1-transformed.png" alt="logo" class="w-full" />
+                    <img src="../assets/assets-landing-page/images/logo/dara.png" alt="logo" class="w-full" />
                 </a>
             </div>
             <div class="flex w-full items-center justify-between px-4">

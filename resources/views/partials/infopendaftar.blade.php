@@ -1,6 +1,6 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Jadwal Donor')
+@section('breadcrumb','Jadwal')
 @section('content')
 
 <div class="breadcrumb-container">
@@ -14,9 +14,9 @@
 
 <div class="filte btn-group">
     <form action="/infopendaftar" method="GET" style="display: flex;">
-    <input class="btn" type="text" name="id" value="{{ request('id') }}" hidden>
-        <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">
-        <button type="submit" class="btn btn-dark searchicon-style">
+    <input class="btn btn-primary" type="text" name="id" value="{{ request('id') }}" hidden>
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">
+        <button type="submit" class="btn btn-primarysearchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -26,14 +26,14 @@
 @if(session('error'))
   <div class="alert-container">
     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-    <div>
+    <div class="nowrap">
       {{ session('error') }}
     </div>
   </div>
   @elseif(session('success'))
   <div class="alert-container1 success">
     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-    <div>
+    <div class="nowrap">
       {{ session('success') }}
     </div>
   </div>
@@ -42,7 +42,7 @@
         @if($successMessage)
         <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
         @endif
-        <div>
+        <div class="nowrap">
             {{ $successMessage }}
         </div>
     </div>

@@ -1,8 +1,4 @@
-@section('sidebar')
-
-<link href="../assets/css/stylepartials.css" rel="stylesheet">
-
-<div class="sidebar"  data-color="white" data-active-color="danger">
+<div class="sidebar" id="sidebar" data-color="white" data-active-color="danger">
     <div class="logo" style="margin-left:2px">
         <a href="#" class="simple-text logo-mini">
             <div class="logo-image-small">
@@ -13,7 +9,7 @@
             Hi, {{ Auth::user()->name }} !
         </a>
     </div>
-    
+
     <div class="sidebar-wrapper" style="background-color:#3B4B65; overflow:auto; height:100vh">
         <ul class="nav">
             <li class="{{ request()->routeIs('dashboard') ? 'active' : '' }}">
@@ -114,29 +110,3 @@
         </ul>
     </div>
 </div>
-
-<!-- MODAL KELUAR AKUN -->
-<div class="modal fade logoutdara" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Pemberitahuan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
-              <span aria-hidden=" true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('logoutaksi') }}" method="POST">
-                @csrf
-                <div class="modal-body" style="color:red;">
-                    Apakah Anda yakin ingin keluar dari akun Anda?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
-                    <button type="submit" class="btn btn-danger modalbuttondanger-style">Keluar</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-<!-- END MODAL -->
-@endsection

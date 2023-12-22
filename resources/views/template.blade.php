@@ -21,6 +21,7 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="../assets/demo/demo.css" rel="stylesheet" />
   <link href="../assets/css/stylepartials.css" rel="stylesheet">
+  <!-- <link href="../assets/css/stylesidebar.css" rel="stylesheet"> -->
 
   <title>
     DARA || @yield('judul_halaman', 'Judul Default')
@@ -32,17 +33,47 @@
 <body>
   <div class="wrapper">
     <!-- Sidebar -->
-    @yield('sidebar')
+    @include('sidebar')
     <!-- End Sidebar -->
     <div class="main-panel" style="background-color:white">
       <!-- Navbar -->
-      <nav class="nav-title" style="margin-bottom:-80px">
+      <!-- <nav class="nav-title" style="margin-bottom:-80px">
           <div class="title">
             <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
               <span id="pageTitle">Title</span>
             </a>
           </div>
 
+      </nav> -->
+      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid container-style">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle">
+              <button type="button" class="navbar-toggler" onclick="toggleSidebar()">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand navbar-style" href="javascript:;">
+              <span id="pageTitle">Title</span>
+            </a>
+          </div>
+          <div class="collapse navbar-collapse justify-content-end" id="navigation">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                    @hasSection('breadcrumb')
+                    <li class="breadcrumb-item">@yield('breadcrumb')</li>
+                    @endif
+                  </ol>
+                </nav>
+              </li>
+            </ul>
+          </div>
+        </div>
       </nav>
       <!-- End Navbar -->
       <!-- Content -->
@@ -51,18 +82,17 @@
       @yield('footer')
     </div>
   </div>
-  <!--   Core JS Files   -->
+
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>
   <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Notifications Plugin    -->
   <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script><!-- Paper Dashboard DEMO methods, don't include it in your project! -->
   <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <!-- <script src="../assets/js/sidebar.js"></script> -->
 
 
   <script>
@@ -78,7 +108,11 @@
         if ($(this).attr("href") === currentPath) {
           // Mengubah warna latar belakang sidebar
           $(".active").css("background-color", "#1B77A0");
+<<<<<<< HEAD
           return false; // Berhenti dari loop jika tautan cocok
+=======
+          return false;
+>>>>>>> 0823241284f7f0ef799627da4234a70180fc15c2
         }
       });
 
@@ -107,7 +141,17 @@
       var originalTitle = pageTitleMap[currentPage] || '';
 
       if (idParam) {
+<<<<<<< HEAD
         titleElement.innerHTML = 'INFORMASI DETAIL';
+=======
+        if (currentPage === 'infopendaftar') {
+          titleElement.innerHTML = 'INFO PENDAFTAR';
+        } else if (currentPage === 'editjadwaldonor') {
+          titleElement.innerHTML = 'EDIT JADWAL DONOR';
+        } else {
+          titleElement.innerHTML = 'INFORMASI DETAIL';
+        }
+>>>>>>> 0823241284f7f0ef799627da4234a70180fc15c2
         $(".active").css("background-color", "#1B77A0");
       } else if (searchParam) {
         titleElement.innerHTML = originalTitle;
@@ -138,6 +182,30 @@
     });
   </script>
 
+  <!-- MODAL KELUAR AKUN -->
+  <div class="modal fade logoutdara" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 style="color:black; font-weight: bold;" class="modal-title" id="titlemodal">Pemberitahuan</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"">
+              <span aria-hidden=" true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('logoutaksi') }}" method="POST">
+          @csrf
+          <div class="modal-body" style="color:red;">
+            Apakah Anda yakin ingin keluar dari akun Anda?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-danger modalbuttondanger-style">Keluar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!-- END MODAL -->
 
 </body>
 

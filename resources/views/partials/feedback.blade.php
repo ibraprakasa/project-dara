@@ -3,10 +3,11 @@ use Carbon\Carbon;
 @endphp
 
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Tanggapan')
+@section('breadcrumb', 'Tanggapan')
 @section('content')
 
+<<<<<<< HEAD
 
 <div class="breadcrumb-container">
     <nav aria-label="breadcrumb">
@@ -25,16 +26,29 @@ use Carbon\Carbon;
             <a href="#" id="tombolpesan" style="text-decoration:none" class="col">
                 Pesan
             </a>
+=======
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-md" style="margin-top: 85px; margin-bottom: -62px; margin-left: 30px">
+            <div class="row tombol-style">
+                <a href="#" id="tomboltestimoni" style="text-decoration: none; margin-right: 20px" class="col">
+                    Testimoni
+                </a>
+                <a href="#" id="tombolpesan" style="text-decoration: none" class="col">
+                    Pesan
+                </a>
+            </div>
+>>>>>>> 0823241284f7f0ef799627da4234a70180fc15c2
         </div>
+        <div class="col"></div>
     </div>
-    <div class="col"></div>
 </div>
 
 <div class="content">
     <div class="tes1" id="filtertestimoni" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
         <div class="filterfeedback btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
+                <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
                 <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -51,14 +65,14 @@ use Carbon\Carbon;
                 @if(session('errorTestimoni'))
                 <div class="alert-container">
                     <div class="alert-icon">&#9888;</div>
-                    <div>
+                    <div class="nowrap">
                         {{ session('errorTestimoni') }}
                     </div>
                 </div>
                 @elseif(session('successTestimoni'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-                    <div>
+                    <div class="nowrap">
                         {{ session('successTestimoni') }}
                     </div>
                 </div>
@@ -69,7 +83,7 @@ use Carbon\Carbon;
                     @elseif($tanggalawal && $tanggalakhir && $ratingdara && $filterStatus|| $tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir && $filterStatus || $ratingdara && $filterStatus || $ratingdara || $filterStatus)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
-                    <div>
+                    <div class="nowrap">
                         {{ $successMessage }}
                     </div>
                 </div>
@@ -79,7 +93,7 @@ use Carbon\Carbon;
     </div>
     <table class="table table-bordered" id="tabeltestimoni" style="display:none">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr style="white-space: nowrap;">
                 <th scope="col">#</th>
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
@@ -143,7 +157,7 @@ use Carbon\Carbon;
                 @elseif($row->status === 0 )
                 <td>
                     <b>-</b>
-                </td> 
+                </td>
                 @endif
                 <td>
                     <button class="custom-button" data-toggle="modal" data-target="#deletetestimoni{{ $row->id }}">
@@ -166,7 +180,7 @@ use Carbon\Carbon;
                     <button class="custom-button" data-toggle="modal" data-target="#kirimtestimoni{{ $row->id }}" title="Tidak Tampil di Website">
                         <i class="fa fa-times-circle" style="color: #E70000;"></i>
                     </button>
-                </td> 
+                </td>
                 @endif
             </tr>
             @endforeach
@@ -186,7 +200,7 @@ use Carbon\Carbon;
         <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
             <div class="filterfeedback btn-group">
                 <form action="/feedback" method="GET" style="display: flex;">
-                    <input class="btn searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
+                    <input class="btn btn-primary searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
                     <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
@@ -203,14 +217,14 @@ use Carbon\Carbon;
                     @if(session('errorPesan'))
                     <div class=" alert-container">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-                    <div>
+                    <div class="nowrap">
                         {{ session('errorPesan') }}
                     </div>
                 </div>
                 @elseif(session('successPesan'))
                 <div class="alert-container1 success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-                    <div>
+                    <div class="nowrap">
                         {{ session('successPesan') }}
                     </div>
                 </div>
@@ -221,7 +235,7 @@ use Carbon\Carbon;
                     @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)
                     <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
                     @endif
-                    <div>
+                    <div class="nowrap">
                         {{ $successMessagePesan }}
                     </div>
                 </div>
@@ -233,7 +247,7 @@ use Carbon\Carbon;
 
 <table class="table table-bordered" id="tabelpesan">
     <thead class="thead" style="background-color:#3B4B65; color:white;">
-        <tr>
+        <tr style="white-space: nowrap;">
             <th scope="col">#</th>
             <th scope="col">Nama</th>
             <th scope="col">Email</th>
@@ -382,7 +396,7 @@ use Carbon\Carbon;
                 </button>
             </div>
             <div class="modal-body">
-              Publikasikan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
+                Publikasikan testimoni baris ke-{{ $key+$data->firstItem() }} ke Website DARA?
             </div>
             <form action="{{ route('kirimtestimoni', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -724,6 +738,8 @@ use Carbon\Carbon;
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-dark modalbuttonclose-style mr-auto" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-dismiss="modal" data-toggle="modal" data-target="#infopesan{{ $row->id }}">Kembali</button>
                     <button type="submit" class="btn btn-success modalbuttonsuccess-style">Kirim</button>
                 </div>
             </form>
@@ -781,7 +797,8 @@ use Carbon\Carbon;
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-dark modalbuttonclose-style mr-auto" data-dismiss="modal">Tutup</button>
+                <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-dismiss="modal" data-toggle="modal" data-target="#infopesan{{ $row->id }}">Kembali</button>
             </div>
         </div>
     </div>
@@ -850,5 +867,20 @@ use Carbon\Carbon;
     };
 </script>
 
+<<<<<<< HEAD
 
+=======
+<script>
+    $(document).ready(function() {
+        // Event listener untuk menampilkan modal Balas Pesan saat tombol "Balas" di modal Detail Pesan ditekan
+        $('.modalbuttonlaporanpalsu').on('click', function() {
+            // Tutup modal Detail Pesan
+            $('#infopesan{{ $row->id }}').modal('hide');
+
+            // Tampilkan modal Balas Pesan
+            $('#replypesan{{ $row->id }}').modal('show');
+        });
+    });
+</script>
+>>>>>>> 0823241284f7f0ef799627da4234a70180fc15c2
 @endsection

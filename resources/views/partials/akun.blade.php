@@ -1,9 +1,9 @@
 @extends('template')
-@extends('sidebar')
 @section('judul_halaman', 'Akun')
+@section('breadcrumb', 'Akun')
 @section('content')
 
-<div class="content">
+<div class="content" style="margin-top: 85px;">
   @if(session('error'))
   <div class="alert-container">
     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
