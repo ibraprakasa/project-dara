@@ -4,6 +4,8 @@ use Carbon\Carbon;
 
 @extends('template')
 @section('judul_halaman', 'Riwayat')
+@section('breadcrumb', 'Riwayat')
+
 
 @section('content')
 

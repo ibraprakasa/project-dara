@@ -1,5 +1,6 @@
 @extends('template')
 @section('judul_halaman', 'Akun')
+@section('breadcrumb', 'Akun')
 @section('content')
 
 <div class="content" style="margin-top: 85px;">

@@ -4,29 +4,8 @@ use Carbon\Carbon;
 
 @extends('template')
 @section('judul_halaman', 'Tanggapan')
+@section('breadcrumb', 'Tanggapan')
 @section('content')
-
-<!-- <div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('landing-page') }}" target="_blank">Pergi ke Halaman Website DARA Apps</a></li>
-        </ol>
-    </nav>
-</div> -->
-
-<!-- <div class="row text-center">
-    <div class="col" style="margin-top:85px; margin-bottom:-61px; margin-left:45px">
-        <div class="row" style="width:125%;font-weight: bold">
-            <a href="#" id="tomboltestimoni" style="text-decoration:none;margin-right: 20px" class="col">
-                Testimoni
-            </a>
-            <a href="#" id="tombolpesan" style="text-decoration:none" class="col">
-                Pesan
-            </a>
-        </div>
-    </div>
-    <div class="col"></div>
-</div> -->
 
 <div class="container-fluid">
     <div class="row text-center">

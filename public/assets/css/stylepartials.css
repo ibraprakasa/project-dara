@@ -550,6 +550,12 @@ table td {
 
 .breadcrumb {
     background-color: white;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.container-style{
+    margin-top: -20px;
 }
 
 
@@ -664,6 +670,10 @@ table td {
     border-radius: 15px 0 0 0;
 }
 
+.searchbar-style:hover{
+    cursor: text !important;
+}
+
 
 .searchicon-style {
     font-family: 'Poppins', sans-serif;
@@ -772,5 +782,7 @@ table td {
         overflow-y: scroll;
     }.nomargintop {
         margin-top: 10px;
+    }.container-style{
+        margin:0 !important;
     }
 }

@@ -1,6 +1,6 @@
 @extends('template')
-
 @section('judul_halaman', 'Stok Darah')
+@section('breadcrumb', 'Stok Darah')
 @section('content')
 
 

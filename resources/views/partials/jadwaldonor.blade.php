@@ -1,5 +1,6 @@
 @extends('template')
 @section('judul_halaman', 'Jadwal Donor')
+@section('breadcrumb', 'Jadwal')
 @section('content')
 
 <div class="filter1 btn-group">

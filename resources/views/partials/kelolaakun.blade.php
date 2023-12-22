@@ -1,5 +1,6 @@
 @extends('template')
 @section('judul_halaman', 'Kelola Akun')
+@section('breadcrumb', 'Kelola Akun')
 @section('content')
 
 <div class="container-fluid">

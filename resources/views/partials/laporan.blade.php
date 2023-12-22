@@ -1,7 +1,7 @@
 @extends('template')
 @section('judul_halaman', 'Laporan')
+@section('breadcrumb', 'Laporan')
 @section('content')
-
 
 <div class="filter1 btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
