@@ -149,7 +149,7 @@ class DataPendonorControllerAPI extends Controller
 
     public function showProfileOtherDonor($id){
         $user = Pendonor::where('id',$id)->first();
-        $goldar = GolonganDarah::find($user->id_golongan_darah)->first();
+        $goldar = GolonganDarah::where('id',$user->id_golongan_darah)->first();
         if(!$goldar){
             $goldar = null;
         }
