@@ -58,7 +58,7 @@ class DataPendonorControllerAPI extends Controller
     public function home(){
         $currentDate = Carbon::today()->format('Y-m-d');
         $user = auth()->guard('api')->user();
-        $goldar = GolonganDarah::find($user->id_golongan_darah)->first();
+        $goldar = GolonganDarah::where('id',$user->id_golongan_darah)->first();
         if(!$goldar){
             $goldar = null;
         }
