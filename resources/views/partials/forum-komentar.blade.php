@@ -1,5 +1,6 @@
 @extends('template')
 @section('judul_halaman', 'Forum')
+@section('breadcrumb','Forum')
 @section('content')
 
 <!-- <div class="breadcrumb-container">

@@ -1,16 +1,7 @@
 @extends('template')
 @section('judul_halaman', 'Forum')
+@section('breadcrumb','Forum')
 @section('content')
-
-<!-- <div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarLink">Komentar</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="#">Balasan</a></li>
-        </ol>
-    </nav>
-</div> -->
 
 <div class="filter1 btn-group">
     @foreach($balas as $row)
