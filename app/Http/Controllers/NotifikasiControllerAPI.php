@@ -47,21 +47,18 @@ class NotifikasiControllerAPI extends Controller
                     $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
                     $balasComment = BalasComment::where('id_comment', $comment->id_comment)->first();
                     if ($comment->id_pendonor != $user->id && $balasComment == null) {
-                        $balasCommentx = BalasComment::where('id_comment', $comment->id)->first();
-                        if($balasCommentx->id_pendonor != $user->id){
-                            $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
-                            $diff = $notif->updated_at->diffForHumans();
-                            $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-                            $responseData[] = [
-                                'id' => $notif->id,
-                                'id_post' => $notif->id_post,
-                                'id_comment' => $notif->id_comment,
-                                'id_balas_comment' => $notif->id_balas_comment,
-                                'status_read' => $notif->status_read,
-                                'pendonor' => $pendonor,
-                                'update' => $diff
-                            ];
-                        }
+                        $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'pendonor' => $pendonor,
+                            'update' => $diff
+                        ];
                     }
                 }
 
