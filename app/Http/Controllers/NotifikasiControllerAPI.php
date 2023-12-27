@@ -56,6 +56,7 @@ class NotifikasiControllerAPI extends Controller
                             'id_comment' => $notif->id_comment,
                             'id_balas_comment' => $notif->id_balas_comment,
                             'status_read' => $notif->status_read,
+                            'id_pembalas' => $balasComment->id_pendonor,
                             'pendonor' => $pendonor,
                             'update' => $diff
                         ];
@@ -75,6 +76,7 @@ class NotifikasiControllerAPI extends Controller
                             'id_comment' => $notif->id_comment,
                             'id_balas_comment' => $notif->id_balas_comment,
                             'status_read' => $notif->status_read,
+                            'id_pembalas' => 0,
                             'pendonor' => $pendonor,
                             'update' => $diff
                         ];
