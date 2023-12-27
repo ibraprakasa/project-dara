@@ -34,109 +34,52 @@ class NotifikasiControllerAPI extends Controller
         $responseData = [];
         $test = [];
         foreach ($notifikasi as $notif) {
-            // $expiredDate = Carbon::parse($notif->updated_at)->addMonths(2);
-            // if (Carbon::now()->gt($expiredDate)) {
-            //     $notif->delete(); // Hapus notifikasi yang sudah lewat dari 2 bulan
-            //     continue; // Lewati notifikasi yang sudah dihapus
-            // }
+            $expiredDate = Carbon::parse($notif->updated_at)->addMonths(2);
+            if (Carbon::now()->gt($expiredDate)) {
+                $notif->delete(); // Hapus notifikasi yang sudah lewat dari 2 bulan
+                continue; // Lewati notifikasi yang sudah dihapus
+            }
 
             $post = Post::where('id', $notif->id_post)->first(); // Dapatkan instance model Post
             if ($post) {
-                if($post->id_pendonor == $user->id){
-                    $comment = Comment::where('id',$notif->id_comment)->first();
-                    if($comment){
-                        if($comment->id_pendonor != $user->id){
-                            $balasComment = BalasComment::where('id_comment', $comment->id)->first();
-                            if($balasComment){
-                                if($balasComment->id_pendonor != $user->id){
-                                    $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
-                                    $diff = $notif->updated_at->diffForHumans();
-                                    $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-                                    $responseData[] = [
-                                        'id' => $notif->id,
-                                        'id_post' => $notif->id_post,
-                                        'id_comment' => $notif->id_comment,
-                                        'id_balas_comment' => $notif->id_balas_comment,
-                                        'status_read' => $notif->status_read,
-                                        'pendonor' => $pendonor,
-                                        'update' => $diff
-                                    ];
-                                }
-                            }else{
-                                $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
-                                $diff = $notif->updated_at->diffForHumans();
-                                $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-                                $responseData[] = [
-                                    'id' => $notif->id,
-                                    'id_post' => $notif->id_post,
-                                    'id_comment' => $notif->id_comment,
-                                    'id_balas_comment' => 0,
-                                    'status_read' => $notif->status_read,
-                                    'pendonor' => $pendonor,
-                                    'update' => $diff
-                                ];
-                            }
-                        }else{
-                            $balasComment = BalasComment::where('id_comment', $comment->id)->first();
-                            if($balasComment){
-                                if($balasComment->id_pendonor != $user->id){
-                                    $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
-                                    $diff = $notif->updated_at->diffForHumans();
-                                    $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-                                    $responseData[] = [
-                                        'id' => $notif->id,
-                                        'id_post' => $notif->id_post,
-                                        'id_comment' => $notif->id_comment,
-                                        'id_balas_comment' => $notif->id_balas_comment,
-                                        'status_read' => $notif->status_read,
-                                        'pendonor' => $pendonor,
-                                        'update' => $diff
-                                    ];
-                                }
-                            }
-                        }
-                    }
-                }else{
-
-                }
                 // $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post
-            //     if ($post->id_pendonor == $user->id) {
-            //         $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
-            //         $balasComment = BalasComment::where('id_comment', $comment->id)->first();
-            //         if ($comment->id_pendonor != $user->id && $balasComment == null) {
-                        // $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
-                        // $diff = $notif->updated_at->diffForHumans();
-                        // $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-                        // $responseData[] = [
-                        //     'id' => $notif->id,
-                        //     'id_post' => $notif->id_post,
-                        //     'id_comment' => $notif->id_comment,
-                        //     'id_balas_comment' => $notif->id_balas_comment,
-                        //     'status_read' => $notif->status_read,
-                        //     'pendonor' => $pendonor,
-                        //     'update' => $diff
-                        // ];
-            //         }
-            //     }
+                if ($post->id_pendonor == $user->id) {
+                    $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
+                    $balasComment = BalasComment::where('id_comment', $comment->id_comment)->first();
+                    if ($comment->id_pendonor != $user->id && $balasComment == null) {
+                        $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'pendonor' => $pendonor,
+                            'update' => $diff
+                        ];
+                    }
+                }
 
-            //     $commentMe = Comment::where('id', $notif->id_comment)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Comment
-            //     if ($commentMe) {
-            //         $balasComment = BalasComment::where('id', $notif->id_balas_comment)->first(); // Dapatkan instance model BalasComment
-            //         if ($balasComment && $balasComment->id_pendonor != $user->id) {
-            //             $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
-            //             $diff = $notif->updated_at->diffForHumans();
-            //             $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-            //             $responseData[] = [
-            //                 'id' => $notif->id,
-            //                 'id_post' => $notif->id_post,
-            //                 'id_comment' => $notif->id_comment,
-            //                 'id_balas_comment' => $notif->id_balas_comment,
-            //                 'status_read' => $notif->status_read,
-            //                 'pendonor' => $pendonor,
-            //                 'update' => $diff
-            //             ];
-            //         }
-            //     }
+                $commentMe = Comment::where('id', $notif->id_comment)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Comment
+                if ($commentMe) {
+                    $balasComment = BalasComment::where('id', $notif->id_balas_comment)->first(); // Dapatkan instance model BalasComment
+                    if ($balasComment && $balasComment->id_pendonor != $user->id) {
+                        $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'pendonor' => $pendonor,
+                            'update' => $diff
+                        ];
+                    }
+                }
             }
         }
         $this->resDataNotif = $responseData;
