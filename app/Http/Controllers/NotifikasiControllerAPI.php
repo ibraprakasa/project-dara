@@ -46,7 +46,7 @@ class NotifikasiControllerAPI extends Controller
                 if ($post->id_pendonor == $user->id) {
                     $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
                     $balasComment = BalasComment::where('id_comment', $comment->id)->first();
-                    if ($comment->id_pendonor != $user->id && $balasComment == null) {
+                    if ($comment->id_pendonor != $user->id && !$balasComment) {
                         $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
                         $diff = $notif->updated_at->diffForHumans();
                         $diff = str_replace('dari sekarang', 'yang lalu', $diff);
@@ -59,7 +59,7 @@ class NotifikasiControllerAPI extends Controller
                             'pendonor' => $pendonor,
                             'update' => $diff
                         ];
-                    }else if($comment->id_pendonor != $user->id && $balasComment != null){
+                    }else if($comment->id_pendonor != $user->id && $balasComment){
                         if($balasComment->id_pendonor != $user->id){
                             $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
                             $diff = $notif->updated_at->diffForHumans();
@@ -74,7 +74,7 @@ class NotifikasiControllerAPI extends Controller
                                 'update' => $diff
                             ];
                         }
-                    }else if($comment->id_pendonor == $user->id && $balasComment != null){
+                    }else if($comment->id_pendonor == $user->id && $balasComment){
                         if($balasComment->id_pendonor != $user->id){
                             $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
                             $diff = $notif->updated_at->diffForHumans();
