@@ -21,78 +21,71 @@ class NotifikasiControllerAPI extends Controller
     }
 
     public function show()
-{
-    $user = auth()->guard('api')->user();
-    $notifikasi = Notifikasi::all();
-
-    if (!$notifikasi->count()) {
-        return response()->json([
-            'success' => false,
-            'message' => 'notifikasi belum ada'
-        ], 404);
-    }
-
-    $responseData = [];
-
-    foreach ($notifikasi as $notif) {
-        $this->handleNotification($notif, $user, $responseData);
-    }
-
-    $this->resDataNotif = array_reverse($responseData);
-    return response()->json($this->resDataNotif);
-}
-
-private function handleNotification($notif, $user, &$responseData)
-{
-    $expiredDate = Carbon::parse($notif->updated_at)->addMonths(2);
-
-    if (Carbon::now()->gt($expiredDate)) {
-        $notif->delete();
-        return; // Lewati notifikasi yang sudah dihapus
-    }
-
-    $post = Post::find($notif->id_post);
-
-    if ($post) {
-        $this->handlePostNotification($notif, $user, $responseData, $post);
-    } else {
-        $this->handleCommentNotification($notif, $user, $responseData);
-    }
-}
-
-private function handlePostNotification($notif, $user, &$responseData, $post)
-{
-    if ($post->id_pendonor == $user->id) {
-        $this->handleCommentNotification($notif, $user, $responseData);
-    }
-}
-
-private function handleCommentNotification($notif, $user, &$responseData)
-{
-    $comment = Comment::find($notif->id_comment);
-
-    if ($comment && $comment->id_pendonor != $user->id) {
-        $balasComment = BalasComment::where('id_comment', $comment->id)->first();
-
-        if (!$balasComment || ($balasComment && $balasComment->id_pendonor != $user->id)) {
-            $pendonor = Pendonor::find($comment->id_pendonor);
-
-            $diff = $notif->updated_at->diffForHumans();
-            $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-
-            $responseData[] = [
-                'id' => $notif->id,
-                'id_post' => $notif->id_post,
-                'id_comment' => $notif->id_comment,
-                'id_balas_comment' => $notif->id_balas_comment,
-                'status_read' => $notif->status_read,
-                'pendonor' => $pendonor,
-                'update' => $diff
-            ];
+    {
+        $user = auth()->guard('api')->user();
+        $notifikasi = Notifikasi::all();
+        if (!$notifikasi) {
+            return response()->json([
+                'success' => false,
+                'message' => 'notifikasi belum ada'
+            ], 404);
         }
-    }
-}
 
+        $responseData = [];
+        $test = [];
+        foreach ($notifikasi as $notif) {
+            // $expiredDate = Carbon::parse($notif->updated_at)->addMonths(2);
+            // if (Carbon::now()->gt($expiredDate)) {
+            //     $notif->delete(); // Hapus notifikasi yang sudah lewat dari 2 bulan
+            //     continue; // Lewati notifikasi yang sudah dihapus
+            // }
+
+            $post = Post::where('id', $notif->id_post)->first(); // Dapatkan instance model Post
+            if ($post) {
+                // $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post
+                if ($post->id_pendonor == $user->id) {
+                    $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
+                    $balasComment = BalasComment::where('id_comment', $comment->id_comment)->first();
+                    if ($comment->id_pendonor != $user->id && $balasComment == null) {
+                        $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'pendonor' => $pendonor,
+                            'update' => $diff
+                        ];
+                    }
+                }
+
+                $commentMe = Comment::where('id', $notif->id_comment)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Comment
+                if ($commentMe) {
+                    $balasComment = BalasComment::where('id', $notif->id_balas_comment)->first(); // Dapatkan instance model BalasComment
+                    if ($balasComment && $balasComment->id_pendonor != $user->id) {
+                        $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'pendonor' => $pendonor,
+                            'update' => $diff
+                        ];
+                    }
+                }
+            }
+        }
+        $this->resDataNotif = $responseData;
+        $responseData = array_reverse($responseData);
+        return response()->json($responseData);
+    }
 
     public function updateStatusRead($id)
     {
