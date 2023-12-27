@@ -126,10 +126,11 @@ class NotifikasiControllerAPI extends Controller
 
     public function totalNotif()
     {
+        $user = auth()->guard('api')->user();
         $this->show();
         $total_notif = 0;
         foreach ($this->resDataNotif as $res) {
-            if ($res['status_read'] == false) {
+            if ($res['status_read'] == false && $res['id_pembalas'] != $user->id ) {
                 $total_notif++;
             }
         }
