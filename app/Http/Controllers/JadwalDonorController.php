@@ -74,10 +74,8 @@ class JadwalDonorController extends Controller
 
     public function updatejadwaldonor(Request $request, $id)
     {
-        // Mengambil data berdasarkan $id
         $jadwalDonor = JadwalDonor::find($id);
 
-        // Memperbarui data dengan nilai dari $request->all()
         $jadwalDonor->update($request->all());
 
         return redirect()->route('jadwaldonor')->with('success', 'Jadwal berhasil diperbarui.');

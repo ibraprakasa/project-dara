@@ -4,16 +4,7 @@
 @section('content')
 
 
-<div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('jadwaldonor') }}">Jadwal</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="#">Edit Jadwal</a></li>
-        </ol>
-    </nav>
-</div>
-
-<div class="container mt-3 ml-3">
+<div class="container ml-3" style="margin-top: 80px;">
     <form action="{{ route('updatejadwaldonor', ['id' => $jadwalDonor->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mb-2">
