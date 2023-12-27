@@ -45,8 +45,7 @@ class NotifikasiControllerAPI extends Controller
                 // $postMe = Post::where('id', $notif->id_post)->where('id_pendonor', $user->id)->first(); // Dapatkan instance model Post
                 if ($post->id_pendonor == $user->id) {
                     $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
-                    $balasComment = BalasComment::where('id_comment', $comment->id_comment)->first();
-                    $balasCommentx = BalasComment::where('id', $notif->id_balas_comment)->first();
+                    $balasComment = BalasComment::where('id_comment', $comment->id)->first();
                     if ($comment->id_pendonor != $user->id && $balasComment == null) {
                         $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
                         $diff = $notif->updated_at->diffForHumans();
@@ -57,7 +56,21 @@ class NotifikasiControllerAPI extends Controller
                             'id_comment' => $notif->id_comment,
                             'id_balas_comment' => $notif->id_balas_comment,
                             'status_read' => $notif->status_read,
-                            'id_pembalas' => $balasCommentx->id_pendonor,
+                            'id_pembalas' => 0,
+                            'pendonor' => $pendonor,
+                            'update' => $diff
+                        ];
+                    }else if($comment->id_pendonor != $user->id && $balasComment){
+                        $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'id_pembalas' => $balasComment->id_pendonor,
                             'pendonor' => $pendonor,
                             'update' => $diff
                         ];
