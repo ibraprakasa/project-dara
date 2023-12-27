@@ -39,7 +39,7 @@ Route::get("/home", [DataPendonorControllerAPI::class, 'home']);
 Route::get('/berita', [BeritaControllerAPI::class, 'show']);
 
 //untuk menu lokasi donor
-Route::get('/jadwal-donor-darah', [JadwalDonorControllerAPI::class, 'show']);
+Route::post('/jadwal-donor-darah', [JadwalDonorControllerAPI::class, 'show']);
 //menu riwayat donor
 Route::get('/riwayat-donor-darah', [RiwayatDonorControllerAPI::class, 'show']);
 
