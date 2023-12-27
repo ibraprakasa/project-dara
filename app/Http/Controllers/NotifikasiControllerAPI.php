@@ -57,6 +57,7 @@ class NotifikasiControllerAPI extends Controller
                             'id_balas_comment' => $notif->id_balas_comment,
                             'status_read' => $notif->status_read,
                             'pendonor' => $pendonor,
+                            'id_pembalas_comment' =>$balasComment->id_pendonor,
                             'update' => $diff
                         ];
                     }
@@ -67,19 +68,18 @@ class NotifikasiControllerAPI extends Controller
                     $balasComment = BalasComment::where('id', $notif->id_balas_comment)->first(); // Dapatkan instance model BalasComment
                     if ($balasComment && $balasComment->id_pendonor != $user->id) {
                         $pendonor = Pendonor::where('id', $balasComment->id_pendonor)->first();
-                        if($balasComment->id_pendonor != $user->id){
-                            $diff = $notif->updated_at->diffForHumans();
-                            $diff = str_replace('dari sekarang', 'yang lalu', $diff);
-                            $responseData[] = [
-                                'id' => $notif->id,
-                                'id_post' => $notif->id_post,
-                                'id_comment' => $notif->id_comment,
-                                'id_balas_comment' => $notif->id_balas_comment,
-                                'status_read' => $notif->status_read,
-                                'pendonor' => $pendonor,
-                                'update' => $diff
-                            ];
-                        }
+                        $diff = $notif->updated_at->diffForHumans();
+                        $diff = str_replace('dari sekarang', 'yang lalu', $diff);
+                        $responseData[] = [
+                            'id' => $notif->id,
+                            'id_post' => $notif->id_post,
+                            'id_comment' => $notif->id_comment,
+                            'id_balas_comment' => $notif->id_balas_comment,
+                            'status_read' => $notif->status_read,
+                            'pendonor' => $pendonor,
+                            'id_pembalas_comment' =>$balasComment->id_pendonor,
+                            'update' => $diff
+                        ];
                     }
                 }
             }
