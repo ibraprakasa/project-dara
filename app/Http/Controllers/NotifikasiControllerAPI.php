@@ -46,7 +46,7 @@ class NotifikasiControllerAPI extends Controller
                 if ($post->id_pendonor == $user->id) {
                     $comment = Comment::where('id',$notif->id_comment)->first(); // Dapatkan instance model Comment
                     $balasComment = BalasComment::where('id_comment', $comment->id_comment)->first();
-                    $balasCommentx = BalasComment::where('id_comment', $notif->id_balas_comment)->first();
+                    $balasCommentx = BalasComment::where('id', $notif->id_balas_comment)->first();
                     if ($comment->id_pendonor != $user->id && $balasComment == null) {
                         $pendonor = Pendonor::where('id', $comment->id_pendonor)->first();
                         $diff = $notif->updated_at->diffForHumans();
