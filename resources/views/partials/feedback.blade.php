@@ -42,21 +42,21 @@ use Carbon\Carbon;
 
             <div class="search-filter-group">
                 @if(session('errorTestimoni'))
-                <div class="alert-container">
+                <div class="alert alert-failed">
                     <div class="alert-icon">&#9888;</div>
                     <div class="nowrap">
                         {{ session('errorTestimoni') }}
                     </div>
                 </div>
                 @elseif(session('successTestimoni'))
-                <div class="alert-container1 success">
+                <div class="alert alert-success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div class="nowrap">
                         {{ session('successTestimoni') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
-                <div class="alert-container12 success">
+                <div class="alert-filter">
                     @if($search)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                     @elseif($tanggalawal && $tanggalakhir && $ratingdara && $filterStatus|| $tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir && $filterStatus || $ratingdara && $filterStatus || $ratingdara || $filterStatus)
@@ -96,7 +96,7 @@ use Carbon\Carbon;
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
                 @if($row->star == 5)
-                <td>
+                <td class="nowrap">
                     @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
                         @endfor
                 </td>
@@ -169,11 +169,6 @@ use Carbon\Carbon;
     <div class="pagination1">
         {{ $data->links() }}
     </div>
-    <!-- <div class="tomboltampilkan" id="tomboltampilkan">
-            <button class="btn btn-success gaya-tampilkan">
-                Kirim
-            </button>
-        </div> -->
 
     <div class="filtering" id="filterpesan">
         <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
@@ -194,21 +189,21 @@ use Carbon\Carbon;
 
                 <div class="search-filter-group"">
                     @if(session('errorPesan'))
-                    <div class=" alert-container">
+                    <div class="alert alert-failed">
                     <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
                     <div class="nowrap">
                         {{ session('errorPesan') }}
                     </div>
                 </div>
                 @elseif(session('successPesan'))
-                <div class="alert-container1 success">
+                <div class="alert alert-success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div class="nowrap">
                         {{ session('successPesan') }}
                     </div>
                 </div>
                 @elseif(isset($successMessagePesan))
-                <div class="alert-container12 success">
+                <div class="alert-filter">
                     @if($searchPesan)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                     @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)

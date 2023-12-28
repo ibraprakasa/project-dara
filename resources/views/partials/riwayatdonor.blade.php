@@ -43,7 +43,7 @@ use Carbon\Carbon;
 
     <div class="search-filter-group">
         @if(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @else

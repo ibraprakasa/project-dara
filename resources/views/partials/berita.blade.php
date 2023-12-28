@@ -7,7 +7,7 @@
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
         <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Judul...">
-        <button type="submit" class="btn btn-primary     searchicon-style">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -25,39 +25,39 @@
 
 </div>
 <div class="filter100 btn-group wow">
-    <div class="">
+    <div>
         <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterberita">
             <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
     <div class="ml-4">
-    @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div class="nowrap">
-            {{ session('error') }}
+        @if(session('error'))
+        <div class="alert alert-failed">
+            <div class="alert-icon">&#9888;</div> 
+            <div class="nowrap">
+                {{ session('error') }}
+            </div>
         </div>
-    </div>
-    @elseif(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div class="nowrap">
-            {{ session('success') }}
+        @elseif(session('success'))
+        <div class="alert alert-success">
+            <div class="alert-icon">&#10004;</div> 
+            <div class="nowrap">
+                {{ session('success') }}
+            </div>
         </div>
-    </div>
-    @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($search)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-        @else
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @elseif(isset($successMessage))
+        <div class="alert-filter">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div style="white-space: nowrap;">
+                {{ $successMessage }}
+            </div>
+        </div>
         @endif
-        <div style="white-space: nowrap;">
-            {{ $successMessage }}
-        </div>
-    </div>
-    @endif
     </div>
 </div>
 

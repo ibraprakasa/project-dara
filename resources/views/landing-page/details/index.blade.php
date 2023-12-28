@@ -37,9 +37,9 @@
   @include('landing-page.about')
   <!-- ====== About Section End -->
 
-  <!-- ====== Unduh Section Start -->
-  @include('landing-page.unduh')
-  <!-- ====== Unduh Section End -->
+  <!-- ====== Skala Section Start -->
+  @include('landing-page.skala')
+  <!-- ====== Skala Section End -->
 
   <!-- ====== Testimonial Section Start -->
   @include('landing-page.ulasan')

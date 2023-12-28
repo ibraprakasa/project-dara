@@ -3,67 +3,65 @@
 @section('breadcrumb','Pendonor')
 @section('content')
 
-<div class="filter btn-group">
+<div class="filter1 btn-group">
     <form action="/datapendonor" method="GET">
         <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
     </form>
     <button type="button" class="btn btn-primary searchicon-style">
         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
     </button>
-</div>
 
-<div class="filter btn-group">
-
-    <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
-        <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
-    </button>
+    <div class="ml-4">
+        <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahpendonor">
+            <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
+        </button>
+    </div>
 
     <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahpendonor" type="button">
         Tambah
     </button>
 
-</div>
-
-<div class="filter btn-group">
-    <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpendonor">
-        <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
-        <span style="font-size: 12px; color: white;">Filter</span>
-    </button>
-</div>
-
-<div class="filter btn-group">
-    @if(session('errorPendonor'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div>
-        <div class="nowrap">
-            {{ session('errorPendonor') }}
-        </div>
+    <div class="ml-4">
+        <button type="submit" class="btn btn-primary filter-icon" data-toggle="modal" data-target=".filterpendonor">
+            <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
+            <span style="font-size: 12px; color: white;">Filter</span>
+        </button>
     </div>
-    @elseif(session('successPendonor'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div>
-        <div class="nowrap">
-            {{ session('successPendonor') }}
+
+    <div class="ml-4">
+        @if(session('errorPendonor'))
+        <div class="alert alert-failed">
+            <div class="alert-icon">&#9888;</div>
+            <div class="nowrap">
+                {{ session('errorPendonor') }}
+            </div>
         </div>
-    </div>
-    @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($searchPendonor)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-        @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @elseif(session('successPendonor'))
+        <div class="alert alert-success">
+            <div class="alert-icon">&#10004;</div>
+            <div class="nowrap">
+                {{ session('successPendonor') }}
+            </div>
+        </div>
+        @elseif(isset($successMessage))
+        <div class="alert-filter">
+            @if($searchPendonor)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div class="nowrap">
+                {{ $successMessage }}
+            </div>
+        </div>
         @endif
-        <div class="nowrap">
-            {{ $successMessage }}
-        </div>
     </div>
-    @endif
 </div>
 
 <div class="content" style="margin-top: 20px;">
     <table class="table table-bordered" style="text-align:center">
         <thead class="thead" style="background-color:#3B4B65; color:white;">
-            <tr>
+            <tr class="nowrap">
                 <th scope="col">#</th>
                 <th scope="col">No. Pendonor</th>
                 <th scope="col">Nama Pendonor</th>

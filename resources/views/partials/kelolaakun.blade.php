@@ -48,21 +48,21 @@
 
             <div class="ml-4">
                 @if(session('errorPendonor'))
-                <div class="alert-container">
+                <div class="alert alert-failed">
                     <div class="alert-icon">&#9888;</div>
                     <div class="nowrap">
                         {{ session('errorPendonor') }}
                     </div>
                 </div>
                 @elseif(session('successPendonor'))
-                <div class="alert-container1 success">
+                <div class="alert alert-success">
                     <div class="alert-icon">&#10004;</div>
                     <div class="nowrap">
                         {{ session('successPendonor') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
-                <div class="alert-container12 success">
+                <div class="alert-filter">
                     @if($searchPendonor)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                     @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
@@ -168,21 +168,21 @@
 
                 <div class="ml-4">
                     @if(session('errorUser'))
-                    <div class="alert-container">
+                    <div class="alert alert-failed">
                         <div class="alert-icon">&#9888;</div>
                         <div class="nowrap">
                             {{ session('errorUser') }}
                         </div>
                     </div>
                     @elseif(session('successUser'))
-                    <div class="alert-container1 success">
+                    <div class="alert alert-success">
                         <div class="alert-icon">&#10004;</div>
                         <div class="nowrap">
                             {{ session('successUser') }}
                         </div>
                     </div>
                     @elseif(isset($successMessageUser))
-                    <div class="alert-container12 success">
+                    <div class="alert-filter">
                         @if($searchUser)
                         <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                         @elseif($sort)

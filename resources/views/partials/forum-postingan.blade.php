@@ -20,14 +20,14 @@
 
     <div class="ml-4">
         @if(session('success'))
-        <div class="alert-container1 success">
+        <div class="alert alert-success">
             <div class="alert-icon">&#10004;</div>
             <div class="nowrap">
                 {{ session('success') }}
             </div>
         </div>
         @elseif(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @else

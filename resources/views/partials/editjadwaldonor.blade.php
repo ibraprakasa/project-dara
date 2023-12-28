@@ -1,6 +1,6 @@
 @extends('template')
-@section('judul_halaman', 'Jadwal Donor')
-@section('breadcrumb','Jadwal')
+@section('judul_halaman', 'Edit Jadwal Donor')
+@section('breadcrumb','Edit Jadwal')
 @section('content')
 
 

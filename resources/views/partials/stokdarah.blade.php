@@ -26,15 +26,15 @@
 
 <div class="nomargintop btn-group wow">
     @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+    <div class="alert alert-container">
+        <div class="alert-icon">&#9888;</div> 
         <div class="nowrap">
             {{ session('error') }}
         </div>
     </div>
     @elseif(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+    <div class="alert alert-container1 success">
+        <div class="alert-icon">&#10004;</div> 
         <div class="nowrap">
             {{ session('success') }}
         </div>

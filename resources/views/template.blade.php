@@ -38,44 +38,7 @@
     <!-- End Sidebar -->
     <div class="main-panel" style="background-color:white">
       <!-- Navbar -->
-      <!-- <nav class="nav-title" style="margin-bottom:-80px">
-          <div class="title">
-            <a class="navbar-brand" href="javascript:;" style="visibility: hidden;margin-left:12px;margin-top:10px;border-radius:10px;text-align:center;width:350px;background-color:#3B4B65; color:white; font-weight:bold">
-              <span id="pageTitle">Title</span>
-            </a>
-          </div>
-
-      </nav> -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid container-style">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler" onclick="toggleSidebar()">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a class="navbar-brand navbar-style" href="javascript:;">
-              <span id="pageTitle">Title</span>
-            </a>
-          </div>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item" aria-current="page"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                    @hasSection('breadcrumb')
-                    <li class="breadcrumb-item">@yield('breadcrumb')</li>
-                    @endif
-                  </ol>
-                </nav>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+      @include('navbar')
       <!-- End Navbar -->
       <!-- Content -->
       @yield('content')
@@ -111,7 +74,7 @@
       });
 
       var searchParam = new URLSearchParams(window.location.search).get('search');
-      var idParam = new URLSearchParams(window.location.search).get('id'); // Mendapatkan parameter 'id' dari URL
+      var idParam = new URLSearchParams(window.location.search).get('id'); 
 
       var pageTitleMap = {
         'dashboard': 'DASHBOARD',
@@ -170,6 +133,13 @@
     $(document).ready(function() {
       $("[data-fancybox]").fancybox();
     });
+  </script>
+
+  <script>
+  $(document).ready(function() {
+    // Hide the alert containers after 5 seconds
+    $('.alert').delay(3000).fadeOut(1000);
+  });
   </script>
 
   <!-- MODAL KELUAR AKUN -->

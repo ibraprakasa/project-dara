@@ -17,7 +17,7 @@
             <img src="{{ asset('assets/assets-landing-page/images/scale/stokdarah.gif') }}" alt="team image" class="h-[200px] w-[200px] rounded-full" />
             <span class="bg-secondary absolute bottom-0 left-0 -z-10 h-10 w-10 rounded-full opacity-0 transition-all group-hover:opacity-100"></span>
             <span class="absolute top-0 right-0 -z-10 opacity-0 transition-all group-hover:opacity-100">
-              <svg width="55" height="53" viewBox="0 0 55 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg width="45" height="53" viewBox="0 0 55 53" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.5118 3.1009C13.3681 3.1009 14.0622 2.40674 14.0622 1.55045C14.0622 0.69416 13.3681 0 12.5118 0C11.6555 0 10.9613 0.69416 10.9613 1.55045C10.9613 2.40674 11.6555 3.1009 12.5118 3.1009Z" fill="#3758F9" />
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M22.5038 3.1009C23.3601 3.1009 24.0543 2.40674 24.0543 1.55045C24.0543 0.69416 23.3601 0 22.5038 0C21.6475 0 20.9534 0.69416 20.9534 1.55045C20.9534 2.40674 21.6475 3.1009 22.5038 3.1009Z" fill="#3758F9" />
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M32.4958 3.1009C33.3521 3.1009 34.0463 2.40674 34.0463 1.55045C34.0463 0.69416 33.3521 0 32.4958 0C31.6395 0 30.9454 0.69416 30.9454 1.55045C30.9454 2.40674 31.6395 3.1009 32.4958 3.1009Z" fill="#3758F9" />
@@ -61,7 +61,7 @@
               {{ $totalRiwayatAmbil }}00++
             </h4>
             <p class="text-body-color mb-5 text-sm">
-              Stok Darah yang sudah didonasikan ke yang lebih membutuhkan.
+              Stok Darah yang sudah didonasikan atau didonorkan.
             </p>
             
           </div>
@@ -99,7 +99,7 @@
               {{ $pendonor }}00++
             </h4>
             <p class="text-body-color mb-5 text-sm">
-              Pendonor yang menjadi bagian dari DARA untuk menyalurkan bantuan.
+              Pendonor yang menjadi bagian dari DARA.
             </p>
             
           </div>
@@ -108,7 +108,7 @@
       <div class="w-full px-4 sm:w-1/1 lg:w-1/4 xl:w-1/4">
         <div class="group shadow-testimonial mb-8 rounded-xl bg-white px-5 pt-12 pb-10">
           <div class="relative z-10 mx-auto mb-5 h-[200px] w-[200px]"">
-            <img src="{{ asset('assets/assets-landing-page/images/scale/berita.gif') }}" alt="team image" class="h-[200px] w-[200px]" rounded-full" />
+            <img src="{{ asset('assets/assets-landing-page/images/scale/news.gif') }}" alt="team image" class="h-[200px] w-[200px]" rounded-full" />
             <span class="bg-secondary absolute bottom-0 left-0 -z-10 h-10 w-10 rounded-full opacity-0 transition-all group-hover:opacity-100"></span>
             <span class="absolute top-0 right-0 -z-10 opacity-0 transition-all group-hover:opacity-100">
               <svg width="45" height="53" viewBox="0 0 45 53" fill="none" xmlns="http://www.w3.org/2000/svg">
