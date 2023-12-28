@@ -13,7 +13,7 @@
     </nav>
 </div> -->
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     @foreach($komentar as $row)
     <form action="{{ route('forum-komentar', ['id_post' => $row->id_post]) }}" method="GET" style="display: flex;">
         <input type="hidden" name="id" value="{{ $row->id }}">

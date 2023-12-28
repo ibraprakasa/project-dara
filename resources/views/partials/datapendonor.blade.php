@@ -3,7 +3,7 @@
 @section('breadcrumb','Pendonor')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/datapendonor" method="GET">
         <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
     </form>
@@ -492,7 +492,6 @@
         var select = document.getElementById('select');
         var selectedValue = select.options[select.selectedIndex].value;
 
-        // Jika pengguna memilih opsi, sembunyikan opsi pertama
         if (selectedValue !== "") {
             select.options[0].style.display = 'none';
         }

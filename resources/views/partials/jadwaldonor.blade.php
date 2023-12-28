@@ -3,7 +3,7 @@
 @section('breadcrumb', 'Jadwal')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <div>
         <form action="/jadwaldonor" method="GET" style="display: flex;">
             <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Lokasi...">
@@ -360,14 +360,13 @@
             zoom: 15,
             center: myLatlng,
         });
-        // Create a marker variable to hold the marker
+
         let marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            draggable: true, // Allow the marker to be dragged
+            draggable: true,
         });
 
-        // Create an info window for the marker
         let infoWindow = new google.maps.InfoWindow({
             content: "Klik map untuk mendapatkan lokasi (Lat/Long)",
             position: myLatlng,
@@ -376,14 +375,11 @@
         infoWindow.open(map);
 
         map.addListener("click", (mapsMouseEvent) => {
-            // Update the marker's position based on the click event
             marker.setPosition(mapsMouseEvent.latLng);
 
-            // Get the latitude and longitude of the clicked location
             const latitude = mapsMouseEvent.latLng.lat();
             const longitude = mapsMouseEvent.latLng.lng();
 
-            // Update the latitude and longitude input fields
             editLatitudeInput.value = latitude;
             editLongitudeInput.value = longitude;
         });

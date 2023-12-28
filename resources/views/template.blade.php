@@ -137,7 +137,6 @@
 
   <script>
   $(document).ready(function() {
-    // Hide the alert containers after 5 seconds
     $('.alert').delay(3000).fadeOut(1000);
   });
   </script>

@@ -3,7 +3,7 @@
 @section('breadcrumb','Info Pendaftar')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/infopendaftar" method="GET" style="display: flex;">
         <input class="btn btn-primary" type="text" name="id" value="{{ request('id') }}" hidden>
         <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">

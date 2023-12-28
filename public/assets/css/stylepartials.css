@@ -31,44 +31,19 @@ body {
     font-size: 21px;
 }
 
-
-.filte {
-    margin-top: 9px;
-    margin-left: 27px;
-}
-
 .filter {
-    margin-top: 100px;
-    margin-left: 27px;
+    margin-top: 80px;
+    margin-left: 33px;
 }
 
-.filterfeedback {
+.filter2menu {
     margin-top: 90px;
     margin-left: 27px;
 }
 
-.nomargintop {
-    margin-top:80px;
-    margin-left: 33px;
-}
-
-.filter1 {
-    margin-top: 80px;
-    margin-left: 33px;
-}
-
-.filter5{
+.filterstok{
     margin-top: 80px;
     margin-left: 40px;
-}
-
-.filter2 {
-    margin-top: -45px;
-    margin-left: -30px;
-}
-
-.wow {
-    width: auto;
 }
 
 .btn-primary:hover {
@@ -430,7 +405,6 @@ table td {
     font-size: 3rem;
 }
 
-
 .jaraksidebar {
     font-weight: bold;
     border-top: 2px solid white;
@@ -444,7 +418,6 @@ table td {
     margin-right: auto;
     margin-top: 30px;
 }
-
 
 .dropdown-toggle, .dropdown-item{
     font-family: 'Poppins', sans-serif;
@@ -498,7 +471,6 @@ table td {
     background-color: #f1f1f1;
 }
 
-
 .berita-title {
     display: block;
     font-size: 20px;
@@ -551,8 +523,6 @@ table td {
     margin-top: -20px;
 }
 
-
-
 .breadcrumb-item a {
     color: #3B4B65;
     font-weight: bold;
@@ -590,11 +560,6 @@ table td {
     display: none;
     justify-content: flex-end;
 }
-
-/* .gaya-tampilkan{
-    background-color:#03A13B;
-    border-radius:15px; 
-} */
 
 .filtering {
     display: none;
@@ -667,7 +632,6 @@ table td {
     cursor: text !important;
 }
 
-
 .searchicon-style {
     font-family: 'Poppins', sans-serif;
     border-radius: 0 0 15px 0;
@@ -723,15 +687,15 @@ table td {
 }
 
  .sidebar.active {
-    width: 0; /* Lebar sidebar saat ditutup */
+    width: 0; 
  }
 
  .main-panel {
-    transition: margin-left .5s; /* Animasi perubahan margin utama saat sidebar ditutup/buka */
+    transition: margin-left .5s; 
  }
 
  .main-panel.active {
-    margin-left: 0; /* Margin utama saat sidebar ditutup */
+    margin-left: 0; 
  }
 
  .modal { 
@@ -741,11 +705,6 @@ table td {
 .tombol-style{
     width:125%;
     font-weight: bold
-}
-
-.filter100{
-    margin-top: 80px;
-    margin-left: 30px;
 }
 
 .nowrap{
@@ -767,14 +726,10 @@ table td {
     }
     .resizable {
         min-height: 200px !important;
-    }.filter100{
-        margin-top: 0;
     }.breadcrumb-container {
         visibility: hidden;
     }.sidebar-wrapper {
         overflow-y: scroll;
-    }.nomargintop {
-        margin-top: 10px;
     }.container-style{
         margin:0 !important;
     }

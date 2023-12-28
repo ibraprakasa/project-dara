@@ -121,7 +121,6 @@
             center: myLatlng,
         });
 
-        // Create a marker
         const marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
@@ -129,30 +128,23 @@
             draggable: true,
         });
 
-        // Create an info window for the marker
         const infowindow = new google.maps.InfoWindow({
             content: lokasi,
         });
 
-        // Open info window when marker is clicked
         marker.addListener('click', function() {
             infowindow.open(map, marker);
         });
 
-        // Update latitude and longitude when marker is dragged
         marker.addListener('dragend', function(event) {
             const updatedLatlng = event.latLng;
-            // Update your latitude and longitude input fields here if needed
             editLatitudeInput.value = updatedLatlng.lat();
             editLongitudeInput.value = updatedLatlng.lng();        
         });
 
-        // Add click event listener to the map
         map.addListener('click', function(event) {
-            // Move the marker to the clicked location
             marker.setPosition(event.latLng);
 
-            // Update latitude and longitude input fields here if needed
             editLatitudeInput.value = event.latLng.lat();
             editLongitudeInput.value = event.latLng.lng();
         });

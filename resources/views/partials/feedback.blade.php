@@ -25,7 +25,7 @@ use Carbon\Carbon;
 
 <div class="content">
     <div class="tes1" id="filtertestimoni" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filterfeedback btn-group">
+        <div class="filter2menu btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
                 <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
                 <button type="submit" class="btn btn-primary searchicon-style">
@@ -190,14 +190,14 @@ use Carbon\Carbon;
                 <div class="search-filter-group"">
                     @if(session('errorPesan'))
                     <div class="alert alert-failed">
-                    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                    <div class="alert-icon">&#9888;</div>
                     <div class="nowrap">
                         {{ session('errorPesan') }}
                     </div>
                 </div>
                 @elseif(session('successPesan'))
                 <div class="alert alert-success">
-                    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                    <div class="alert-icon">&#10004;</div>
                     <div class="nowrap">
                         {{ session('successPesan') }}
                     </div>
@@ -795,42 +795,38 @@ use Carbon\Carbon;
             tabelpesan.style.display = "none";
             filtertestimoni.style.display = "block"; // 
             filterpesan.style.display = "none"; // 
-            // tomboltampilkan.style.display = "flex";
             document.getElementById("tomboltestimoni").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.add("tabel-aktif");
             document.getElementById("tombolpesan").classList.remove("tabel-aktif");
             document.getElementById("tombolpesan").classList.add("tabel-mati");
-            pagination1.style.display = "block"; // Menampilkan paginasi 1
-            pagination2.style.display = "none"; // Menyembunyikan paginasi 2
+            pagination1.style.display = "block";
+            pagination2.style.display = "none"; 
         } else if (idTabel === "tabelpesan") {
             tabeltestimoni.style.display = "none";
             tabelpesan.style.display = "table";
             filtertestimoni.style.display = "none"; // 
             filterpesan.style.display = "block"; // 
-            // tomboltampilkan.style.display = "none";
             document.getElementById("tombolpesan").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.remove("tabel-aktif");
             document.getElementById("tombolpesan").classList.add("tabel-aktif");
             document.getElementById("tomboltestimoni").classList.add("tabel-mati");
-            pagination1.style.display = "none"; // Menyembunyikan paginasi 1
-            pagination2.style.display = "block"; // Menampilkan paginasi 2
+            pagination1.style.display = "none"; 
+            pagination2.style.display = "block"; 
 
         }
-        // Simpan status ke localStorage
         localStorage.setItem('tabelStatus', idTabel);
     }
     document.getElementById("tomboltestimoni").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); 
         tampilkanTabel("tabeltestimoni");
     });
 
     document.getElementById("tombolpesan").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); 
         tampilkanTabel("tabelpesan");
     });
 
     window.onload = function() {
-        // Ambil status dari localStorage jika ada
         const status = localStorage.getItem('tabelStatus');
 
         if (status === 'tabelpesan') {
@@ -843,12 +839,9 @@ use Carbon\Carbon;
 
 <script>
     $(document).ready(function() {
-        // Event listener untuk menampilkan modal Balas Pesan saat tombol "Balas" di modal Detail Pesan ditekan
         $('.modalbuttonlaporanpalsu').on('click', function() {
-            // Tutup modal Detail Pesan
             $('#infopesan{{ $row->id }}').modal('hide');
 
-            // Tampilkan modal Balas Pesan
             $('#replypesan{{ $row->id }}').modal('show');
         });
     });

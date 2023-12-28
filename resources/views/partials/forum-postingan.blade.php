@@ -3,7 +3,7 @@
 @section('breadcrumb', 'Forum')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
         <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Postingan...">
         <button type="submit" class="btn btn-primary searchicon-style">

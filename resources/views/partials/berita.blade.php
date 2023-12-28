@@ -3,7 +3,7 @@
 @section('breadcrumb', 'Berita')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
         <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Judul...">
@@ -300,18 +300,13 @@
 <!--  END MODAL  -->
 
 <script>
-    // Mendapatkan elemen input file
     var inputGambar = document.getElementById('gambar');
-    // Mendapatkan elemen span keterangan
     var keteranganGambar = document.getElementById('keterangan-gambar');
 
-    // Menambahkan event listener untuk memantau pemilihan file
     inputGambar.addEventListener('change', function() {
         if (inputGambar.files.length > 0) {
-            // Jika ada file yang dipilih, update teks keterangan
             keteranganGambar.textContent = 'Gambar telah dipilih : ' + inputGambar.files[0].name;
         } else {
-            // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
             keteranganGambar.textContent = 'Tidak ada gambar yang dipilih';
         }
     });
@@ -322,13 +317,10 @@
         var inputGambar<?php echo $row->id; ?> = document.getElementById('gambar<?php echo $row->id; ?>');
         var keteranganGambar<?php echo $row->id; ?> = document.getElementById('keterangan-gambar<?php echo $row->id; ?>');
 
-        // Menambahkan event listener untuk memantau pemilihan file
         inputGambar<?php echo $row->id; ?>.addEventListener('change', function() {
             if (inputGambar<?php echo $row->id; ?>.files.length > 0) {
-                // Jika ada file yang dipilih, update teks keterangan
                 keteranganGambar<?php echo $row->id; ?>.textContent = 'Gambar telah diganti : ' + inputGambar<?php echo $row->id; ?>.files[0].name;
             } else {
-                // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
                 keteranganGambar<?php echo $row->id; ?>.textContent = 'Tidak ada gambar yang dipilih';
             }
         });

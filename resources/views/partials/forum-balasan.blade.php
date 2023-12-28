@@ -3,7 +3,7 @@
 @section('breadcrumb','Forum')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     @foreach($balas as $row)
     <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET" style="display: flex;">
     <input type="hidden" name="id" value="{{ $row->id }}">
