@@ -6,7 +6,7 @@
 <div class="filter btn-group">
     <form action="/infopendaftar" method="GET" style="display: flex;">
         <input class="btn btn-primary" type="text" name="id" value="{{ request('id') }}" hidden>
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Pendonor...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Pendonor..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

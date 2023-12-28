@@ -5,8 +5,7 @@
 
 <div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">
-        @csrf
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Judul...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Judul..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

@@ -5,7 +5,7 @@
 
 <div class="filter btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
-            <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
+            <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Laporan..." value="{{ request('search') }}">
             <button type="submit" class="btn btn-primary searchicon-style">
                 <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
             </button>

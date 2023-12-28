@@ -28,7 +28,7 @@ use Carbon\Carbon;
 
 <div class="waw btn-group" style="margin-top:75px; margin-bottom:-83px">
     <form action="/riwayatdonor" method="GET" style="display: flex;">
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Riwayat..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>

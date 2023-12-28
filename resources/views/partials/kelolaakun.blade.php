@@ -23,7 +23,7 @@
     <div class="tes1" id="filterpendonor" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
         <div class="filter2menu btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
-                <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+                <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -136,7 +136,7 @@
         <div class="tes2" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
             <div class="filter1 btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
-                    <input class="btn btn-primary searchbar-style" type="search" name="searchuser" placeholder="Cari User...">
+                    <input class="btn btn-primary searchbar-style" type="search" name="searchuser" placeholder="Cari User..." value="{{ request('search') }}">
                     <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>

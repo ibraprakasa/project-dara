@@ -5,7 +5,7 @@
 
 <div class="filter btn-group">
     <form action="/datapendonor" method="GET">
-        <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
+        <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor..." value="{{ request('search') }}">
     </form>
     <button type="button" class="btn btn-primary searchicon-style">
         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
