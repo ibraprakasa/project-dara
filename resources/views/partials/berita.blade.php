@@ -16,32 +16,30 @@
         <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-primary     inserticon-style">
             <i class="bi bi-file-plus " style="font-size: 20px; color: white;"></i>
         </button>
-
     </div>
 
     <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahberita" type="button">
         Tambah
     </button>
 
-</div>
-<div class="filter100 btn-group wow">
-    <div>
+    <div class="ml-4">
         <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterberita">
             <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
+
     <div class="ml-4">
         @if(session('error'))
         <div class="alert alert-failed">
-            <div class="alert-icon">&#9888;</div> 
+            <div class="alert-icon">&#9888;</div>
             <div class="nowrap">
                 {{ session('error') }}
             </div>
         </div>
         @elseif(session('success'))
         <div class="alert alert-success">
-            <div class="alert-icon">&#10004;</div> 
+            <div class="alert-icon">&#10004;</div>
             <div class="nowrap">
                 {{ session('success') }}
             </div>
@@ -265,7 +263,7 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL FILTER POSTINGAN -->
+<!-- MODAL FILTER BERITA -->
 <div class="modal fade" id="filterberita" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -281,13 +279,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari" required oninvalid="this.setCustomValidity('Harap isi tanggal awal.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai" required oninvalid="this.setCustomValidity('Harap isi tanggal akhir.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
