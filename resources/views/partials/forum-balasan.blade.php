@@ -1,18 +1,9 @@
 @extends('template')
 @section('judul_halaman', 'Forum')
+@section('breadcrumb','Forum')
 @section('content')
 
-<!-- <div class="breadcrumb-container">
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('forum-postingan') }}">Postingan</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="#" id="komentarLink">Komentar</a></li>
-            <li class="breadcrumb-item" aria-current="page"><a href="#">Balasan</a></li>
-        </ol>
-    </nav>
-</div> -->
-
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     @foreach($balas as $row)
     <form action="{{ route('forum-balasan', ['id_comment' => $row->id_comment]) }}" method="GET" style="display: flex;">
     <input type="hidden" name="id" value="{{ $row->id }}">
@@ -32,14 +23,14 @@
 
     <div class="ml-4">
     @if(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+    <div class="alert alert-success">
+        <div class="alert-icon">&#10004;</div>
         <div class="nowrap">
             {{ session('success') }}
         </div>
     </div>
     @elseif(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @else

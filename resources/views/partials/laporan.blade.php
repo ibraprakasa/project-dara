@@ -3,7 +3,7 @@
 @section('breadcrumb', 'Laporan')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/laporan" method="GET" style="display: flex;">
             <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Laporan...">
             <button type="submit" class="btn btn-primary searchicon-style">
@@ -20,21 +20,21 @@
 
     <div class="ml-4">
         @if(session('error'))
-        <div class="alert-container11">
-            <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+        <div class="alert alert-failed">
+            <div class="alert-icon">&#9888;</div> 
             <div>
                 {{ session('error') }}
             </div>
         </div>
         @elseif(session('success'))
-        <div class="alert-container1 success">
-            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+        <div class="alert alert-success">
+            <div class="alert-icon">&#10004;</div> 
             <div>
                 {{ session('success') }}
             </div>
         </div>
         @elseif(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @else
@@ -237,7 +237,7 @@
                 @endif
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger modalbuttondanger-style" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id }}">Hapus Laporan Asli</button>
+                <button type="button" class="btn btn-danger modalbuttondanger-style mr-auto" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanasli{{ $row->id }}">Hapus Laporan Asli</button>
                 <button type="button" class="btn btn-primary modalbuttonlaporanpalsu" data-toggle="modal" data-dismiss="modal" data-target="#deletelaporanpalsu{{ $row->id }}">Hapus Laporan Palsu</button>
             </div>
         </div>
@@ -264,7 +264,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="button" data-toggle="modal" data-target="#infolaporan{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>
@@ -292,7 +292,7 @@
                 @csrf
                 @method('DELETE')
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
+                    <button type="button" data-toggle="modal" data-target="#infolaporan{{ $row->id_post }}-{{ $row->id_comment }}-{{ $row->id_reply }}" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Batal</button>
                     <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
                 </div>
             </form>

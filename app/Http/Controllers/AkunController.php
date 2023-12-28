@@ -21,7 +21,6 @@ class AkunController extends Controller
             'alamat' => $request->input('alamat'),
             'email' => $request->input('email'),
             'nohp' => $request->input('nohp'),
-            // Dan seterusnya, sesuai dengan kolom-kolom yang ingin Anda perbarui.
         ]);
         return redirect()->route('akun')->with('success','Informasi Akun berhasil diperbarui.');
     }

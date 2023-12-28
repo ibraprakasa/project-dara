@@ -3,35 +3,33 @@
 @section('breadcrumb', 'Jadwal')
 @section('content')
 
-<div class="filter1 btn-group">
-    <form action="/jadwaldonor" method="GET" style="display: flex;">
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Lokasi...">
-        <button type="submit" class="btn btn-primary searchicon-style">
-            <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
-        </button>
-    </form>
+<div class="filter btn-group">
+    <div>
+        <form action="/jadwaldonor" method="GET" style="display: flex;">
+            <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Lokasi...">
+            <button type="submit" class="btn btn-primary searchicon-style">
+                <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
+            </button>
+        </form>
+    </div>
 
     <div class="ml-4">
         <button type="button" class="btn btn-primary inserticon-style" data-toggle="modal" data-target=".tambahjadwaldonor">
             <i class="bi bi-file-plus" style="font-size: 20px; color: white;"></i>
         </button>
-
     </div>
 
     <button class="btn btn-primary insertbar-style" type="button" data-toggle="modal" data-target=".tambahjadwaldonor">
         Tambah
     </button>
 
-</div>
-
-<div class="filter100 btn-group wow">
-    <div>
+    <div class="ml-4">
         <form action="/jadwaldonor" method="GET">
             <div class="dropdown">
                 <button class="btn btn-primary dropdown-toggle" type="button" id="sortDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Filter berdasarkan
                 </button>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="sortDropdown">
+                <div class="dropdown-menu dropdown-menu-center" aria-labelledby="sortDropdown">
                     <button class="dropdown-item" type="submit" name="sort" value="abjad">Abjad</button>
                     <button class="dropdown-item" type="submit" name="sort" value="tanggal_asc">Tanggal Terdekat</button>
                     <button class="dropdown-item" type="submit" name="sort" value="tanggal_desc">Tanggal Terakhir</button>
@@ -39,23 +37,24 @@
             </div>
         </form>
     </div>
+
     <div class="ml-4">
         @if(session('error'))
-        <div class="alert-container">
-            <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+        <div class="alert alert-failed">
+            <div class="alert-icon">&#9888;</div>
             <div class="nowrap">
                 {{ session('error') }}
             </div>
         </div>
         @elseif(session('success'))
-        <div class="alert-container1 success">
-            <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+        <div class="alert alert-success">
+            <div class="alert-icon">&#10004;</div> 
             <div class="nowrap">
                 {{ session('success') }}
             </div>
         </div>
         @elseif(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($sortMessage)
             <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
             @elseif($search)
@@ -361,14 +360,13 @@
             zoom: 15,
             center: myLatlng,
         });
-        // Create a marker variable to hold the marker
+
         let marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            draggable: true, // Allow the marker to be dragged
+            draggable: true,
         });
 
-        // Create an info window for the marker
         let infoWindow = new google.maps.InfoWindow({
             content: "Klik map untuk mendapatkan lokasi (Lat/Long)",
             position: myLatlng,
@@ -377,14 +375,11 @@
         infoWindow.open(map);
 
         map.addListener("click", (mapsMouseEvent) => {
-            // Update the marker's position based on the click event
             marker.setPosition(mapsMouseEvent.latLng);
 
-            // Get the latitude and longitude of the clicked location
             const latitude = mapsMouseEvent.latLng.lat();
             const longitude = mapsMouseEvent.latLng.lng();
 
-            // Update the latitude and longitude input fields
             editLatitudeInput.value = latitude;
             editLongitudeInput.value = longitude;
         });

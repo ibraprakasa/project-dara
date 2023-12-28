@@ -3,11 +3,11 @@
 @section('breadcrumb', 'Berita')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/berita" method="GET" style="display: flex;">
         @csrf
         <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Judul...">
-        <button type="submit" class="btn btn-primary     searchicon-style">
+        <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
     </form>
@@ -16,48 +16,46 @@
         <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-primary     inserticon-style">
             <i class="bi bi-file-plus " style="font-size: 20px; color: white;"></i>
         </button>
-
     </div>
 
     <button class="btn btn-primary insertbar-style" data-toggle="modal" data-target=".tambahberita" type="button">
         Tambah
     </button>
 
-</div>
-<div class="filter100 btn-group wow">
-    <div class="">
+    <div class="ml-4">
         <button type="button" class="btn btn-primary filter-icon" data-toggle="modal" data-target="#filterberita">
             <i class="bi bi-filter" style="font-size: 20px; color: white; padding-right:10px;"></i>
             <span style="font-size: 12px; color: white;">Filter</span>
         </button>
     </div>
+
     <div class="ml-4">
-    @if(session('error'))
-    <div class="alert-container">
-        <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
-        <div class="nowrap">
-            {{ session('error') }}
+        @if(session('error'))
+        <div class="alert alert-failed">
+            <div class="alert-icon">&#9888;</div>
+            <div class="nowrap">
+                {{ session('error') }}
+            </div>
         </div>
-    </div>
-    @elseif(session('success'))
-    <div class="alert-container1 success">
-        <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
-        <div class="nowrap">
-            {{ session('success') }}
+        @elseif(session('success'))
+        <div class="alert alert-success">
+            <div class="alert-icon">&#10004;</div>
+            <div class="nowrap">
+                {{ session('success') }}
+            </div>
         </div>
-    </div>
-    @elseif(isset($successMessage))
-    <div class="alert-container12 success">
-        @if($search)
-        <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
-        @else
-        <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+        @elseif(isset($successMessage))
+        <div class="alert-filter">
+            @if($search)
+            <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
+            @else
+            <div class="alert-icon"><img src="{{ asset('assets/img/filter.png') }}" width="24;" height="20"></div>
+            @endif
+            <div style="white-space: nowrap;">
+                {{ $successMessage }}
+            </div>
+        </div>
         @endif
-        <div style="white-space: nowrap;">
-            {{ $successMessage }}
-        </div>
-    </div>
-    @endif
     </div>
 </div>
 
@@ -265,7 +263,7 @@
 @endforeach
 <!-- END MODAL -->
 
-<!-- MODAL FILTER POSTINGAN -->
+<!-- MODAL FILTER BERITA -->
 <div class="modal fade" id="filterberita" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -281,13 +279,13 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari" required oninvalid="this.setCustomValidity('Harap isi tanggal awal.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai" required oninvalid="this.setCustomValidity('Harap isi tanggal akhir.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                     </div>
@@ -302,18 +300,13 @@
 <!--  END MODAL  -->
 
 <script>
-    // Mendapatkan elemen input file
     var inputGambar = document.getElementById('gambar');
-    // Mendapatkan elemen span keterangan
     var keteranganGambar = document.getElementById('keterangan-gambar');
 
-    // Menambahkan event listener untuk memantau pemilihan file
     inputGambar.addEventListener('change', function() {
         if (inputGambar.files.length > 0) {
-            // Jika ada file yang dipilih, update teks keterangan
             keteranganGambar.textContent = 'Gambar telah dipilih : ' + inputGambar.files[0].name;
         } else {
-            // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
             keteranganGambar.textContent = 'Tidak ada gambar yang dipilih';
         }
     });
@@ -324,13 +317,10 @@
         var inputGambar<?php echo $row->id; ?> = document.getElementById('gambar<?php echo $row->id; ?>');
         var keteranganGambar<?php echo $row->id; ?> = document.getElementById('keterangan-gambar<?php echo $row->id; ?>');
 
-        // Menambahkan event listener untuk memantau pemilihan file
         inputGambar<?php echo $row->id; ?>.addEventListener('change', function() {
             if (inputGambar<?php echo $row->id; ?>.files.length > 0) {
-                // Jika ada file yang dipilih, update teks keterangan
                 keteranganGambar<?php echo $row->id; ?>.textContent = 'Gambar telah diganti : ' + inputGambar<?php echo $row->id; ?>.files[0].name;
             } else {
-                // Jika tidak ada file yang dipilih, kembalikan teks keterangan ke default
                 keteranganGambar<?php echo $row->id; ?>.textContent = 'Tidak ada gambar yang dipilih';
             }
         });

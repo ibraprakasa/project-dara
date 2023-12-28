@@ -5,15 +5,15 @@
 
 <div class="content" style="margin-top: 85px;">
   @if(session('error'))
-  <div class="alert-container">
-    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+  <div class="alert alert-failed">
+    <div class="alert-icon">&#9888;</div>
     <div>
       {{ session('error') }}
     </div>
   </div>
   @elseif(session('success'))
-  <div class="alert-container2 success">
-    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+  <div class="alert alert-success-akun">
+    <div class="alert-icon">&#10004;</div> 
     <div>
       {{ session('success') }}
     </div>

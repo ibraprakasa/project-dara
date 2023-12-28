@@ -20,8 +20,8 @@
 </div>
 
 <div class="content" id="search-results">
-    <div class="tes1" id="filterpendonor" style="margin-top:-90px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filter1 btn-group">
+    <div class="tes1" id="filterpendonor" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
+        <div class="filter2menu btn-group">
             <form action="/kelolaakun" method="GET" style="display: flex;">
                 <input class="btn btn-primary searchbar-style" type="search" name="searchpendonor" placeholder="Cari Pendonor...">
                 <button type="submit" class="btn btn-primary searchicon-style">
@@ -48,21 +48,21 @@
 
             <div class="ml-4">
                 @if(session('errorPendonor'))
-                <div class="alert-container">
+                <div class="alert alert-failed">
                     <div class="alert-icon">&#9888;</div>
                     <div class="nowrap">
                         {{ session('errorPendonor') }}
                     </div>
                 </div>
                 @elseif(session('successPendonor'))
-                <div class="alert-container1 success">
+                <div class="alert alert-success">
                     <div class="alert-icon">&#10004;</div>
                     <div class="nowrap">
                         {{ session('successPendonor') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
-                <div class="alert-container12 success">
+                <div class="alert-filter">
                     @if($searchPendonor)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                     @elseif($jenisKelamin && $golonganDarah || $jenisKelamin || $golonganDarah)
@@ -168,21 +168,21 @@
 
                 <div class="ml-4">
                     @if(session('errorUser'))
-                    <div class="alert-container">
+                    <div class="alert alert-failed">
                         <div class="alert-icon">&#9888;</div>
                         <div class="nowrap">
                             {{ session('errorUser') }}
                         </div>
                     </div>
                     @elseif(session('successUser'))
-                    <div class="alert-container1 success">
+                    <div class="alert alert-success">
                         <div class="alert-icon">&#10004;</div>
                         <div class="nowrap">
                             {{ session('successUser') }}
                         </div>
                     </div>
                     @elseif(isset($successMessageUser))
-                    <div class="alert-container12 success">
+                    <div class="alert-filter">
                         @if($searchUser)
                         <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                         @elseif($sort)
@@ -814,44 +814,42 @@
 
         if (idTabel === "tabelpendonor") {
             tabelpendonor.style.display = "table";
-            filterpendonor.style.display = "block"; // Menampilkan filter pendonor
+            filterpendonor.style.display = "block"; 
             tabeluser.style.display = "none";
-            filteruser.style.display = "none"; // Menyembunyikan filter user
+            filteruser.style.display = "none"; 
             tombolpendonor.classList.remove("tabel-mati");
             tombolpendonor.classList.add("tabel-aktif");
             tomboluser.classList.remove("tabel-aktif");
             tomboluser.classList.add("tabel-mati");
-            pagination1.style.display = "block"; // Menampilkan paginasi 1
-            pagination2.style.display = "none"; // Menyembunyikan paginasi 2
+            pagination1.style.display = "block"; 
+            pagination2.style.display = "none"; 
         } else if (idTabel === "tabeluser") {
             tabelpendonor.style.display = "none";
-            filterpendonor.style.display = "none"; // Menyembunyikan filter pendonor
+            filterpendonor.style.display = "none"; 
             tabeluser.style.display = "table";
-            filteruser.style.display = "block"; // Menampilkan filter user
+            filteruser.style.display = "block"; 
             tomboluser.classList.remove("tabel-mati");
             tombolpendonor.classList.remove("tabel-aktif");
             tomboluser.classList.add("tabel-aktif");
             tombolpendonor.classList.add("tabel-mati");
-            pagination1.style.display = "none"; // Menyembunyikan paginasi 1
-            pagination2.style.display = "block"; // Menampilkan paginasi 2
+            pagination1.style.display = "none"; 
+            pagination2.style.display = "block"; 
         }
 
-        // Simpan status ke localStorage
         localStorage.setItem('tabelStatus', idTabel);
     }
 
     document.getElementById("tombolpendonor").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); 
         tampilkanTabel("tabelpendonor");
     });
 
     document.getElementById("tomboluser").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); 
         tampilkanTabel("tabeluser");
     });
 
     window.onload = function() {
-        // Ambil status dari localStorage jika ada
         const status = localStorage.getItem('tabelStatus');
         if (status === 'tabeluser') {
             tampilkanTabel("tabeluser");
@@ -866,7 +864,6 @@
         var select = document.getElementById('select');
         var selectedValue = select.options[select.selectedIndex].value;
 
-        // Jika pengguna memilih opsi, sembunyikan opsi pertama
         if (selectedValue !== "") {
             select.options[0].style.display = 'none';
         }
