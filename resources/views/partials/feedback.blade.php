@@ -94,7 +94,11 @@ use Carbon\Carbon;
                 <th scope="row">{{ $key+$data->firstItem() }}</th>
                 <td>{{ $row->pendonor->kode_pendonor }}</td>
                 <td>{{ $row->pendonor->nama }}</td>
+                @if($row->text === null || $row->text === '')
+                <td class="truncate-text"><b>-</b></td>
+                @else
                 <td class="truncate-text">{{ $row->text }}</td>
+                @endif
                 @if($row->star == 5)
                 <td class="nowrap">
                     @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
