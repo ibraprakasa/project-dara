@@ -90,6 +90,11 @@ class FeedbackController extends Controller
             $successMessage = 'Filter Berdasarkan Rating Bintang "' . $ratingdara . '"';
         }
 
+        $totalRating = Testimonial::sum('star');
+        $totalField = Testimonial::count();
+
+        $rataRating = $totalRating/$totalField;
+
         $query->orderByDesc('star');
         $query1->orderBy('name');
 
@@ -109,7 +114,8 @@ class FeedbackController extends Controller
             'statusPesan',
             'filterStatus',
             'tanggalawalpesan',
-            'tanggalakhirpesan'
+            'tanggalakhirpesan',
+            'rataRating'
         ));
     }
 

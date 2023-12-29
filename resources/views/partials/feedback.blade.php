@@ -77,7 +77,7 @@ use Carbon\Carbon;
                 <th scope="col">Kode Pendonor</th>
                 <th scope="col">Nama Pendonor</th>
                 <th scope="col">Deskripsi</th>
-                <th scope="col">Rating</th>
+                <th scope="col">Rating ( {{ $rataRating }} )</th>
                 <th scope="col">Tanggal Rating</th>
                 <th scope="col">Status</th>
                 <th colspan="3" scope="col">Action</th>
