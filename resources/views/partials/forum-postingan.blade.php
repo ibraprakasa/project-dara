@@ -232,14 +232,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
-                                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
+                                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari Tanggal</label>
+                                                <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari" oninvalid="this.setCustomValidity('Harap isi tanggal awal.')" required oninput="this.setCustomValidity('')">
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
-                                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
+                                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai Tanggal</label>
+                                                <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai" oninvalid="this.setCustomValidity('Harap isi tanggal akhir.')" required oninput="this.setCustomValidity('')">
                                             </div>
                                         </div>
                                     </div>

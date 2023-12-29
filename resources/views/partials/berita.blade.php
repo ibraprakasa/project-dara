@@ -12,7 +12,7 @@
     </form>
 
     <div class="ml-4">
-        <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-primary     inserticon-style">
+        <button type="button" data-toggle="modal" data-target=".tambahberita" class="btn btn-primary inserticon-style">
             <i class="bi bi-file-plus " style="font-size: 20px; color: white;"></i>
         </button>
     </div>
@@ -277,13 +277,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari" required oninvalid="this.setCustomValidity('Harap isi tanggal awal.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai" required oninvalid="this.setCustomValidity('Harap isi tanggal akhir.')" oninput="this.setCustomValidity('')">
                             </div>
                         </div>

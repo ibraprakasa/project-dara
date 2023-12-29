@@ -290,13 +290,13 @@ use Carbon\Carbon;
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
                             </div>
                         </div>
@@ -536,13 +536,13 @@ use Carbon\Carbon;
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_dari_pesan" id="tanggal_dari">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_sampai_pesan" id="tanggal_sampai">
                             </div>
                         </div>
