@@ -172,7 +172,7 @@ use Carbon\Carbon;
 
     <div class="filtering" id="filterpesan">
         <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
-            <div class="filterfeedback btn-group">
+            <div class="filter2menu btn-group">
                 <form action="/feedback" method="GET" style="display: flex;">
                     <input class="btn btn-primary searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan..." value="{{ request('search') }}">
                     <button type="submit" class="btn btn-primary searchicon-style">
@@ -290,13 +290,13 @@ use Carbon\Carbon;
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_dari" id="tanggal_dari">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_sampai" id="tanggal_sampai">
                             </div>
                         </div>
@@ -536,13 +536,13 @@ use Carbon\Carbon;
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_dari">Dari Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_dari_pesan" id="tanggal_dari">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai</label>
+                                <label style="color:black;font-weight:bold" for="tanggal_sampai">Sampai Tanggal</label>
                                 <input type="date" class="kolom form-control" name="tanggal_sampai_pesan" id="tanggal_sampai">
                             </div>
                         </div>
