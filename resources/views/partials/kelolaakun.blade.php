@@ -133,8 +133,8 @@
     </div>
 
     <div class="filtering" id="filteruser">
-        <div class="tes2" style="margin-top:-100px;margin-left:-32px;margin-bottom:10px;">
-            <div class="filter btn-group">
+        <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
+            <div class="filter2menu btn-group">
                 <form action="/kelolaakun" method="GET" style="display: flex;">
                     <input class="btn btn-primary searchbar-style" type="search" name="searchuser" placeholder="Cari User..." value="{{ request('search') }}">
                     <button type="submit" class="btn btn-primary searchicon-style">
