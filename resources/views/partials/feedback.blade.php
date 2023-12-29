@@ -25,9 +25,9 @@ use Carbon\Carbon;
 
 <div class="content">
     <div class="tes1" id="filtertestimoni" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
-        <div class="filterfeedback btn-group">
+        <div class="filter2menu btn-group">
             <form action="/feedback" method="GET" style="display: flex;">
-                <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Testimoni...">
+                <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Testimoni..." value="{{ request('search') }}">
                 <button type="submit" class="btn btn-primary searchicon-style">
                     <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                 </button>
@@ -42,21 +42,21 @@ use Carbon\Carbon;
 
             <div class="search-filter-group">
                 @if(session('errorTestimoni'))
-                <div class="alert-container">
+                <div class="alert alert-failed">
                     <div class="alert-icon">&#9888;</div>
                     <div class="nowrap">
                         {{ session('errorTestimoni') }}
                     </div>
                 </div>
                 @elseif(session('successTestimoni'))
-                <div class="alert-container1 success">
+                <div class="alert alert-success">
                     <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
                     <div class="nowrap">
                         {{ session('successTestimoni') }}
                     </div>
                 </div>
                 @elseif(isset($successMessage))
-                <div class="alert-container12 success">
+                <div class="alert-filter">
                     @if($search)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                     @elseif($tanggalawal && $tanggalakhir && $ratingdara && $filterStatus|| $tanggalawal && $tanggalakhir && $ratingdara || $tanggalawal && $tanggalakhir && $filterStatus || $ratingdara && $filterStatus || $ratingdara || $filterStatus)
@@ -96,7 +96,7 @@ use Carbon\Carbon;
                 <td>{{ $row->pendonor->nama }}</td>
                 <td class="truncate-text">{{ $row->text }}</td>
                 @if($row->star == 5)
-                <td>
+                <td class="nowrap">
                     @for ($i = 0; $i < 5; $i++) <i class="bi bi-star-fill" style="color:#F29F05"></i>
                         @endfor
                 </td>
@@ -169,17 +169,12 @@ use Carbon\Carbon;
     <div class="pagination1">
         {{ $data->links() }}
     </div>
-    <!-- <div class="tomboltampilkan" id="tomboltampilkan">
-            <button class="btn btn-success gaya-tampilkan">
-                Kirim
-            </button>
-        </div> -->
 
     <div class="filtering" id="filterpesan">
         <div class="tes2" style="margin-top:-110px;margin-left:-26px;margin-bottom:10px;">
             <div class="filterfeedback btn-group">
                 <form action="/feedback" method="GET" style="display: flex;">
-                    <input class="btn btn-primary searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan...">
+                    <input class="btn btn-primary searchbar-style" type="search" name="searchpesan" placeholder="Cari Pesan..." value="{{ request('search') }}">
                     <button type="submit" class="btn btn-primary searchicon-style">
                         <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
                     </button>
@@ -194,21 +189,21 @@ use Carbon\Carbon;
 
                 <div class="search-filter-group"">
                     @if(session('errorPesan'))
-                    <div class=" alert-container">
-                    <div class="alert-icon">&#9888;</div> <!-- Ikon segitiga peringatan -->
+                    <div class="alert alert-failed">
+                    <div class="alert-icon">&#9888;</div>
                     <div class="nowrap">
                         {{ session('errorPesan') }}
                     </div>
                 </div>
                 @elseif(session('successPesan'))
-                <div class="alert-container1 success">
-                    <div class="alert-icon">&#10004;</div> <!-- Ikon ceklis untuk sukses -->
+                <div class="alert alert-success">
+                    <div class="alert-icon">&#10004;</div>
                     <div class="nowrap">
                         {{ session('successPesan') }}
                     </div>
                 </div>
                 @elseif(isset($successMessagePesan))
-                <div class="alert-container12 success">
+                <div class="alert-filter">
                     @if($searchPesan)
                     <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
                     @elseif($tanggalawalpesan || $tanggalakhirpesan || $statusPesan)
@@ -800,42 +795,38 @@ use Carbon\Carbon;
             tabelpesan.style.display = "none";
             filtertestimoni.style.display = "block"; // 
             filterpesan.style.display = "none"; // 
-            // tomboltampilkan.style.display = "flex";
             document.getElementById("tomboltestimoni").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.add("tabel-aktif");
             document.getElementById("tombolpesan").classList.remove("tabel-aktif");
             document.getElementById("tombolpesan").classList.add("tabel-mati");
-            pagination1.style.display = "block"; // Menampilkan paginasi 1
-            pagination2.style.display = "none"; // Menyembunyikan paginasi 2
+            pagination1.style.display = "block";
+            pagination2.style.display = "none"; 
         } else if (idTabel === "tabelpesan") {
             tabeltestimoni.style.display = "none";
             tabelpesan.style.display = "table";
             filtertestimoni.style.display = "none"; // 
             filterpesan.style.display = "block"; // 
-            // tomboltampilkan.style.display = "none";
             document.getElementById("tombolpesan").classList.remove("tabel-mati");
             document.getElementById("tomboltestimoni").classList.remove("tabel-aktif");
             document.getElementById("tombolpesan").classList.add("tabel-aktif");
             document.getElementById("tomboltestimoni").classList.add("tabel-mati");
-            pagination1.style.display = "none"; // Menyembunyikan paginasi 1
-            pagination2.style.display = "block"; // Menampilkan paginasi 2
+            pagination1.style.display = "none"; 
+            pagination2.style.display = "block"; 
 
         }
-        // Simpan status ke localStorage
         localStorage.setItem('tabelStatus', idTabel);
     }
     document.getElementById("tomboltestimoni").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); 
         tampilkanTabel("tabeltestimoni");
     });
 
     document.getElementById("tombolpesan").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); 
         tampilkanTabel("tabelpesan");
     });
 
     window.onload = function() {
-        // Ambil status dari localStorage jika ada
         const status = localStorage.getItem('tabelStatus');
 
         if (status === 'tabelpesan') {
@@ -848,12 +839,9 @@ use Carbon\Carbon;
 
 <script>
     $(document).ready(function() {
-        // Event listener untuk menampilkan modal Balas Pesan saat tombol "Balas" di modal Detail Pesan ditekan
         $('.modalbuttonlaporanpalsu').on('click', function() {
-            // Tutup modal Detail Pesan
             $('#infopesan{{ $row->id }}').modal('hide');
 
-            // Tampilkan modal Balas Pesan
             $('#replypesan{{ $row->id }}').modal('show');
         });
     });

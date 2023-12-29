@@ -33,25 +33,21 @@ class StokDarahController extends Controller
         $jumlah = $request->input('jumlah');
         $lokasi = $request->input('lokasi');
 
-        // Cari data stok darah berdasarkan kode pendonor yang dipilih
         $findPendonor = Pendonor::where('kode_pendonor', $kode_pendonor)->first();
         $findLokasi = JadwalDonor::where('lokasi', $lokasi)->first();
         $gol_darah = GolonganDarah::where('id', $findPendonor->id_golongan_darah)->first();
         $stokDarah = StokDarah::where('gol_darah', $gol_darah->id)->first();
 
         if ($stokDarah) {
-            // Jika data stok darah dengan golongan darah yang sama sudah ada, tambahkan jumlahnya
             $stokDarah->jumlah += $jumlah;
             $stokDarah->save();
         } else {
-            // Jika tidak ada data stok darah dengan golongan darah yang sama, buat entri baru
             $stokDarah = new StokDarah();
             $stokDarah->gol_darah = $gol_darah->id;
             $stokDarah->jumlah = $jumlah;
             $stokDarah->save();
         }
 
-        //masukkan ke dalam riwayat donor
         RiwayatDonor::create([
             'pendonor_id' => $findPendonor->id,
             'jumlah_donor' => $jumlah,
@@ -61,7 +57,6 @@ class StokDarahController extends Controller
 
         $findPendonor->total_donor_darah += $jumlah;
         $findPendonor->update();
-        // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
         return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil ditambahkan.');
     }
 
@@ -72,19 +67,15 @@ class StokDarahController extends Controller
         $penerima = $request->input('penerima');
         $kontak_penerima = $request->input('kontak');
 
-        // Cari data stok darah berdasarkan kode pendonor yang dipilih
         $findPendonor = Pendonor::where('kode_pendonor', $kode_pendonor)->first();
         $gol_darah = GolonganDarah::where('id', $findPendonor->id_golongan_darah)->first();
         $stokDarah = StokDarah::where('gol_darah', $gol_darah->id)->first();
 
         if ($stokDarah) {
-            // Periksa apakah stok mencukupi untuk dikurangkan
             if ($stokDarah->jumlah >= $jumlah) {
-                // Jika data stok darah dengan golongan darah yang sama sudah ada, kurangkan jumlahnya
                 $stokDarah->jumlah -= $jumlah;
                 $stokDarah->save();
 
-                //masukkan ke riwayat ambil
                 RiwayatAmbil::create([
                     'pendonor_id' => $findPendonor->id,
                     'jumlah_ambil' => $jumlah,
@@ -96,14 +87,11 @@ class StokDarahController extends Controller
                 $findPendonor->total_donor_darah -= $jumlah;
                 $findPendonor->update();
 
-                // Setelah operasi insert atau update selesai, Anda dapat melakukan redirect
                 return redirect()->route('stokdarah')->with('success', 'Stok Darah berhasil diperbarui.');
             } else {
-                // Jika stok tidak mencukupi, kembalikan dengan pesan kesalahan
                 return redirect()->back()->with('error', 'Stok Darah tidak cukup.');
             }
         } else {
-            // Jika tidak ada data stok darah dengan golongan darah yang sama, kembalikan dengan pesan kesalahan
             return redirect()->back()->with('error', 'Stok Darah tidak ada.');
         }
     }

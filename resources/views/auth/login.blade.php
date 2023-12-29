@@ -49,11 +49,11 @@
             <form action="{{ route('loginaksi') }}" method="post">
             @csrf
             <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email" required="">
+                <input type="email" name="email" class="form-control" placeholder="Email" required autofocus>
             </div>
 
             <div class="form-group">
-                <input type="password" name="password" class="form-control" placeholder="Password" required="">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
             </div>
             
             <p style="margin-top:-15px" class="text-right">

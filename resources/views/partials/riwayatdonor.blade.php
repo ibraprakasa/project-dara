@@ -28,7 +28,7 @@ use Carbon\Carbon;
 
 <div class="waw btn-group" style="margin-top:75px; margin-bottom:-83px">
     <form action="/riwayatdonor" method="GET" style="display: flex;">
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Riwayat...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Riwayat..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
@@ -43,7 +43,7 @@ use Carbon\Carbon;
 
     <div class="search-filter-group">
         @if(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @else
@@ -206,8 +206,8 @@ use Carbon\Carbon;
             document.getElementById("tombol1").classList.add("tabel-aktif");
             document.getElementById("tombol2").classList.remove("tabel-aktif");
             document.getElementById("tombol2").classList.add("tabel-mati");
-            pagination1.style.display = "block"; // Menampilkan paginasi 1
-            pagination2.style.display = "none"; // Menyembunyikan paginasi 2
+            pagination1.style.display = "block"; 
+            pagination2.style.display = "none"; 
         } else if (idTabel === "tabel2") {
             tabel1.style.display = "none";
             tabel2.style.display = "table";
@@ -215,25 +215,23 @@ use Carbon\Carbon;
             document.getElementById("tombol1").classList.remove("tabel-aktif");
             document.getElementById("tombol2").classList.add("tabel-aktif");
             document.getElementById("tombol1").classList.add("tabel-mati");
-            pagination1.style.display = "none"; // Menyembunyikan paginasi 1
-            pagination2.style.display = "block"; // Menampilkan paginasi 2
+            pagination1.style.display = "none"; 
+            pagination2.style.display = "block"; 
 
         }
-        // Simpan status ke localStorage
         localStorage.setItem('tabelStatus', idTabel);
     }
     document.getElementById("tombol1").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); //
         tampilkanTabel("tabel1");
     });
 
     document.getElementById("tombol2").addEventListener("click", function(e) {
-        e.preventDefault(); // Mencegah tindakan default tautan
+        e.preventDefault(); // 
         tampilkanTabel("tabel2");
     });
 
     window.onload = function() {
-        // Ambil status dari localStorage jika ada
         const status = localStorage.getItem('tabelStatus');
         if (status === 'tabel2') {
             tampilkanTabel("tabel2");

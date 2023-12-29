@@ -3,9 +3,9 @@
 @section('breadcrumb', 'Forum')
 @section('content')
 
-<div class="filter1 btn-group">
+<div class="filter btn-group">
     <form action="/forum-postingan" method="GET" style="display: flex;">
-        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Postingan...">
+        <input class="btn btn-primary searchbar-style" type="search" name="search" placeholder="Cari Postingan..." value="{{ request('search') }}">
         <button type="submit" class="btn btn-primary searchicon-style">
             <i class="bi bi-search" style="font-size: 20px; color: white;"></i>
         </button>
@@ -20,14 +20,14 @@
 
     <div class="ml-4">
         @if(session('success'))
-        <div class="alert-container1 success">
+        <div class="alert alert-success">
             <div class="alert-icon">&#10004;</div>
             <div class="nowrap">
                 {{ session('success') }}
             </div>
         </div>
         @elseif(isset($successMessage))
-        <div class="alert-container12 success">
+        <div class="alert-filter">
             @if($search)
             <div class="alert-icon"><i class="bi bi-search" style="color:#22A7E0"></i></div>
             @else
