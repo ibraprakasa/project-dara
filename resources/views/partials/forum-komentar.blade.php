@@ -158,10 +158,10 @@
             <div class="modal-body">
                 Apakah Anda yakin untuk menghapus komentar di baris {{ $key + $komentar->firstItem() }}?
             </div>
-            <form action="{{ route('deletekomentar', ['id' => $row->id]) }}" method="POST" enctype="multipart/form-data">
+            <form action="{{ route('deletekomentar', ['id' => $row->id, 'post_id' => request('id')]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('DELETE')
-                <input type="hidden" name="id_post" value="{{ request('id_post') }}">
+                <input type="hidden" name="id" value="{{ $row->id }}">
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark modalbuttonclose-style" data-dismiss="modal">Tutup</button>
                     <button type="submit" class="btn btn-danger modalbuttondanger-style">Hapus</button>
