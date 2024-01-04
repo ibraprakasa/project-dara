@@ -27,7 +27,7 @@ class LandingPageController extends Controller
         $thisMonthBerita = Berita::whereMonth('created_at', $thisMonth)->count();
 
         $totalJadwal = JadwalDonor::count();
-        $thisYearJadwal = JadwalDonor::whereYear('created_at', $thisYear)->count();
+        $thisYearJadwal = JadwalDonor::whereYear('tanggal_donor', $thisYear)->count();
 
         $totalRiwayatAmbil = RiwayatAmbil::sum('jumlah_ambil');
 
